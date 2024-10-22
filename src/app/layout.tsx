@@ -1,24 +1,13 @@
+import { localFontVariables } from "@/lib/fonts";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/shared/navbar";
 
 export const metadata: Metadata = {
   title: "TEDxUniversitasBrawijaya 2024",
   description:
     "TEDxUniversitasBrawijaya merupakan sebuah event yang diinisiasi oleh kumpulan mahasiswa Universitas Brawijaya yang diselenggarakan secara independen dengan lisensi dari TED",
 };
-
-const ppNeueMontreal = localFont({
-  src: "./fonts/PPNeueMontreal.woff",
-  variable: "--font-pp-neue-montreal",
-  weight: "100 500 600 700 800 900",
-});
-
-const wulkanDisplay = localFont({
-  src: "./fonts/WulkanDisplay.woff",
-  variable: "--font-wulkan-display",
-  weight: "100 500 600 700 800 900",
-});
 
 export default function RootLayout({
   children,
@@ -27,9 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body
-        className={`${ppNeueMontreal.variable} ${wulkanDisplay.variable} antialiased`}
-      >
+      <body className={`${localFontVariables} antialiased`}>
+        <Navbar />
         {children}
       </body>
     </html>

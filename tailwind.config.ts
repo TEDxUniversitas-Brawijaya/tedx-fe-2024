@@ -9,8 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        tedx: {
+          black: "#171715",
+          white: "#FFFFFF",
+        },
       },
       fontFamily: {
         "pp-neue-montreal": [

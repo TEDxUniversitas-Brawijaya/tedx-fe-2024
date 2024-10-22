@@ -1,3 +1,7 @@
 export default function HomePage() {
-  return <main className="text-7xl">HomePage</main>;
+  return (
+    <main className="flex h-[200vh] items-center justify-center text-7xl">
+      HomePage
+    </main>
+  );
 }
