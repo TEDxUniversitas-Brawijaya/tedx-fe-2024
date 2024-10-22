@@ -12,6 +12,12 @@ const config: Config = {
         tedx: {
           black: "#171715",
           white: "#FFFFFF",
+          green: {
+            DEFAULT: "#373D33",
+          },
+          red: {
+            DEFAULT: "#DC2625",
+          },
         },
       },
       fontFamily: {
