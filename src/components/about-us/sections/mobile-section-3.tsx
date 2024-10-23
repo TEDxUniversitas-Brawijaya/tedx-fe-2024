@@ -1,5 +1,5 @@
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 export default function MobileSection3() {
   const { scrollYProgress } = useScroll();

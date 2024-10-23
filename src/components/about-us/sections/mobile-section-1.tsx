@@ -79,8 +79,8 @@ export default function MobileSection1() {
           </h2>
           <p className="text-xl">
             TED (Technology, Entertainment, Design) adalah organisasi nirlaba
-            dengan semangat "Ideas Worth Spreading" yang tersebar luas melalui
-            Talks singkat dan powerful.
+            dengan semangat &quot;Ideas Worth Spreading&quot; yang tersebar luas
+            melalui Talks singkat dan powerful.
           </p>
         </div>
       </div>
