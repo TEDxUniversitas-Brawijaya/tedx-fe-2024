@@ -43,7 +43,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <button onClick={() => setShowMenu(true)}>
+        <button onClick={() => setShowMenu(true)} className="block md:hidden">
           <MenuIcon className="size-10" />
         </button>
       </nav>
