@@ -18,6 +18,9 @@ const config: Config = {
           red: {
             DEFAULT: "#DC2625",
           },
+          blue: {
+            sky: "#5CA6B0",
+          },
         },
       },
       fontFamily: {

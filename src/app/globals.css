@@ -6,4 +6,14 @@
   body {
     @apply font-pp-neue-montreal;
   }
+
+  &::-webkit-scrollbar:horizontal {
+    height: 0;
+    width: 0;
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb:horizontal {
+    display: none;
+  }
 }
