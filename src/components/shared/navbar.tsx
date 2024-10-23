@@ -8,14 +8,14 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-tedx-black text-tedx-white fixed z-30 flex w-full items-center justify-between gap-5 px-20 py-3">
+    <nav className="bg-tedx-black text-tedx-white fixed z-30 flex w-full items-center justify-between gap-5 px-5 py-3 md:px-20">
       <Link href={"/"}>
         <div className="relative aspect-[15/4] w-36">
           <Image src="/img/tedx-logo.png" alt="TEDxUB Logo" fill />
         </div>
       </Link>
 
-      <div className="space-x-10 font-semibold">
+      <div className="hidden space-x-10 font-semibold md:visible">
         <Link
           href={"/about-us"}
           className={`underline-offset-4 hover:underline ${pathname === "/about-us" && "text-tedx-red"}`}
