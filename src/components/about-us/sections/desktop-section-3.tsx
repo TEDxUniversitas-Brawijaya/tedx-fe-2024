@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
-export default function Section3() {
+export default function DesktopSection3() {
   const { scrollYProgress } = useScroll();
 
   const personScale = useTransform(scrollYProgress, [0.7, 1], [1, 0]);

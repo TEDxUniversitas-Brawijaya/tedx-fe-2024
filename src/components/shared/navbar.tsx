@@ -15,7 +15,7 @@ export default function Navbar() {
         </div>
       </Link>
 
-      <div className="hidden space-x-10 font-semibold md:visible">
+      <div className="hidden space-x-10 font-semibold md:block">
         <Link
           href={"/about-us"}
           className={`underline-offset-4 hover:underline ${pathname === "/about-us" && "text-tedx-red"}`}

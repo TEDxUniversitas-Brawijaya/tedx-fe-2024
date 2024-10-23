@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-export default function Section2() {
+export default function DesktopSection2() {
   const { scrollYProgress } = useScroll();
 
   const displayEyesNormal = useTransform(
@@ -42,7 +42,7 @@ export default function Section2() {
           className="-z-20"
         />
 
-        <div className="relative w-2/5 space-y-5 text-lg">
+        <div className="relative w-2/5 space-y-5 text-center text-lg">
           <h2 className="font-wulkan-display text-6xl font-black">
             Mengenal TEDx
           </h2>

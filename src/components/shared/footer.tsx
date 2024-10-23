@@ -5,9 +5,9 @@ export default function Footer() {
   return (
     <div className="bg-tedx-black relative z-0">
       <div className="absolute -z-10 h-full w-full">
-        <Image src={"/img/fog.png"} alt="Fog" fill />
+        <Image src={"/img/fog.png"} alt="Fog" fill className="object-cover" />
       </div>
-      <footer className="text-tedx-white flex items-end gap-20 px-20 pb-10 pt-32">
+      <footer className="text-tedx-white flex flex-col gap-20 px-5 pb-10 pt-32 md:flex-row md:items-end md:px-20">
         <div className="flex flex-col gap-5">
           <div className="relative h-[40px] w-[151px]">
             <Image src={"/img/tedx-logo.png"} alt="TEDx Logo" fill />

@@ -1,11 +1,11 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 
-export default function Section1() {
+export default function MobileSection1() {
   const { scrollYProgress } = useScroll();
 
-  const leftCloudX = useTransform(scrollYProgress, [0, 0.15], [-900, -300]);
-  const rightCloudX = useTransform(scrollYProgress, [0, 0.15], [900, 350]);
+  const leftCloudX = useTransform(scrollYProgress, [0, 0.15], [-300, -100]);
+  const rightCloudX = useTransform(scrollYProgress, [0, 0.15], [300, 100]);
   const smoothLeftCloudX = useSpring(leftCloudX, {
     stiffness: 100,
     damping: 20,
@@ -15,24 +15,28 @@ export default function Section1() {
     damping: 20,
   });
 
-  const sunScale = useTransform(scrollYProgress, [0.05, 0.15], [0, 5]);
+  const sunScale = useTransform(scrollYProgress, [0.05, 0.15], [0, 3]);
   const smoothSunScale = useSpring(sunScale, {
     stiffness: 100,
     damping: 20,
   });
 
-  const sunY = useTransform(scrollYProgress, [0, 0.05, 0.15], [0, -200, -400]);
+  const sunY = useTransform(
+    scrollYProgress,
+    [0, 0.05, 0.15],
+    [-1000, -700, -400],
+  );
   const smoothSunY = useSpring(sunY, {
     stiffness: 100,
     damping: 20,
   });
 
   return (
-    <section className="bg-tedx-blue-sky text-tedx-white z-30 h-[400vh]">
+    <section className="bg-tedx-blue-sky text-tedx-white z-30 h-[300vh]">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center">
         {/* Sun */}
         <motion.div
-          className="absolute bottom-40 right-64 aspect-square w-32"
+          className="absolute -right-10 bottom-40 aspect-square w-32"
           style={{ scale: smoothSunScale, y: smoothSunY }}
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
@@ -40,20 +44,15 @@ export default function Section1() {
           <Image src={"/svg/sun.svg"} alt="Hand" fill />
         </motion.div>
 
-        {/* Hand */}
-        <div className="absolute -bottom-10 right-52 aspect-[524/788] w-[20rem]">
-          <Image src={"/svg/hand-up.svg"} alt="Hand" fill />
-        </div>
-
         {/* Cloud */}
         <motion.div
-          className="absolute -bottom-20 aspect-[13/4] w-[70%]"
+          className="absolute -bottom-10 aspect-[13/4] w-[30rem]"
           style={{ x: smoothLeftCloudX }}
         >
           <Image src={"/svg/cloud-white.svg"} alt="Hand" fill />
         </motion.div>
         <motion.div
-          className="absolute -bottom-20 aspect-[13/4] w-[60%]"
+          className="absolute -bottom-10 aspect-[13/4] w-[27rem]"
           style={{ x: smoothRightCloudX }}
         >
           <Image src={"/svg/cloud-white.svg"} alt="Hand" fill />
@@ -66,7 +65,7 @@ export default function Section1() {
         <div className="absolute bottom-[40%] left-28 size-20 -rotate-[35deg] blur-sm">
           <Image src={"/svg/leaf.svg"} alt="Leaf" fill />
         </div>
-        <div className="absolute bottom-10 left-[40%] z-20 size-32 -rotate-[20deg]">
+        <div className="absolute bottom-10 left-[40%] size-32 -rotate-[20deg]">
           <Image src={"/svg/leaf.svg"} alt="Leaf" fill />
         </div>
 
@@ -74,8 +73,8 @@ export default function Section1() {
           <Image src={"/img/paper-texture-2.png"} alt="Paper Texture" fill />
         </div>
 
-        <div className="absolute left-52 top-52 w-1/3 space-y-5">
-          <h2 className="font-wulkan-display text-6xl font-black">
+        <div className="absolute z-10 flex h-screen w-full flex-col justify-end space-y-5 px-5 pb-32">
+          <h2 className="font-wulkan-display text-6xl font-black leading-tight">
             Seputar TED
           </h2>
           <p className="text-xl">
