@@ -21,7 +21,7 @@ export default function Section1() {
     damping: 20,
   });
 
-  const sunY = useTransform(scrollYProgress, [0, 0.15], [0, -400]);
+  const sunY = useTransform(scrollYProgress, [0, 0.05, 0.15], [0, -200, -400]);
   const smoothSunY = useSpring(sunY, {
     stiffness: 100,
     damping: 20,
