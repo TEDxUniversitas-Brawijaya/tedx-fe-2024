@@ -90,6 +90,7 @@ export default function Navbar() {
               Merch
             </Link>
             <Link
+              onClick={() => setShowMenu(false)}
               href={"/pencarian-volunteer"}
               className="rounded-md bg-tedx-red px-5 py-2 text-xl font-semibold transition-all duration-150 hover:bg-tedx-red/80"
             >
