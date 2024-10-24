@@ -61,7 +61,7 @@ export default function DesktopSection3() {
         />
 
         <motion.div
-          className="absolute -bottom-20 h-1/2 w-32"
+          className="absolute -bottom-20 aspect-[15/47] h-1/2"
           style={{ scale: smoothPersonScale, y: smoothPersonY }}
         >
           <Image src={"/img/person-walking.png"} alt="Person Walking" fill />

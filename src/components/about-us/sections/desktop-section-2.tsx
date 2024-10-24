@@ -59,11 +59,16 @@ export default function DesktopSection2() {
             TEDx dengan label ikonik bersimbol “x” bermakna bahwa events
             tersebut diselenggarakan secara independen dengan lisensi dari TED.
           </motion.p>
-          <motion.p className="absolute" style={{ opacity: opacityText3 }}>
-            TEDxUniversitasBrawijaya merupakan sebuah event yang diinisiasi oleh
-            kumpulan mahasiswa Universitas Brawijaya yang diselenggarakan secara
-            independen dengan lisensi dari TED.
-          </motion.p>
+          <motion.div
+            className="absolute flex w-full justify-center"
+            style={{ opacity: opacityText3 }}
+          >
+            <p className="max-w-[500px]">
+              TEDxUniversitasBrawijaya merupakan sebuah event yang diinisiasi
+              oleh kumpulan mahasiswa Universitas Brawijaya yang diselenggarakan
+              secara independen dengan lisensi dari TED.
+            </p>
+          </motion.div>
         </div>
 
         <div className="relative z-40 mt-20 flex h-10 w-1/2 justify-center">
