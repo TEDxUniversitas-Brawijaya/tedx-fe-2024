@@ -254,7 +254,7 @@ export default function VolunteerPageDesktop() {
           >
             TEDx dengan label ikonik bersimbol &quot;x&quot; bermakna bahwa
             events tersebut diselenggarakan secara independen dengan lisensi
-            dari TED. Maukah kamu menjadi bagian dari perjalanan ini?
+            dari TED. <br /> Maukah kamu menjadi bagian dari perjalanan ini?
           </motion.p>
 
           <motion.div
