@@ -22,8 +22,8 @@ export default function HomePageDesktop() {
     damping: 30,
   });
 
-  const leftCloud1X = useTransform(scrollYProgress, [0.4, 0.7], [0, -250]);
-  const rightCloud1X = useTransform(scrollYProgress, [0.4, 0.7], [0, 250]);
+  const leftCloud1X = useTransform(scrollYProgress, [0.4, 0.7], [0, -200]);
+  const rightCloud1X = useTransform(scrollYProgress, [0.4, 0.7], [0, 200]);
   const smoothLeftCloud1X = useSpring(leftCloud1X, {
     stiffness: 100,
     damping: 40,
@@ -146,7 +146,7 @@ export default function HomePageDesktop() {
         <div className="fixed w-full">
           {/* Hand */}
           <motion.div
-            className="absolute -top-[52vh] right-28 aspect-[1/1] w-[600px]"
+            className="absolute -top-[60vh] right-52 aspect-[1.2/2] w-[400px]"
             style={{
               x: smoothRightHandX,
               y: smoothRightHandY,
@@ -154,10 +154,10 @@ export default function HomePageDesktop() {
               scale: smoothHandScale,
             }}
           >
-            <Image src={"/svg/circular-hand.svg"} alt="Hand" fill />
+            <Image src={"/img/circular-hand.png"} alt="Hand" fill />
           </motion.div>
           <motion.div
-            className="absolute -bottom-[52vh] left-28 aspect-[1/1] w-[600px]"
+            className="absolute -bottom-[60vh] left-52 aspect-[1.2/2] w-[400px]"
             style={{
               x: smoothLeftHandX,
               y: smoothLeftHandY,
@@ -166,7 +166,7 @@ export default function HomePageDesktop() {
             }}
           >
             <Image
-              src={"/svg/circular-hand.svg"}
+              src={"/img/circular-hand.png"}
               alt="Hand"
               fill
               className="rotate-180"
@@ -175,22 +175,22 @@ export default function HomePageDesktop() {
 
           {/* Cloud 1 */}
           <motion.div
-            className="absolute -top-[68vh] right-20 aspect-[1/1.2] w-[700px]"
+            className="absolute -top-[45vh] right-14 aspect-[97/65] w-[700px]"
             style={{ x: smoothRightCloud1X }}
           >
             <Image
-              src={"/svg/cloud-blue-1.svg"}
+              src={"/img/cloud-blue-1.png"}
               alt="Blue Cloud"
               fill
               priority
             />
           </motion.div>
           <motion.div
-            className="absolute -bottom-[68vh] left-20 aspect-[1/1.2] w-[700px]"
+            className="absolute -bottom-[55vh] left-14 aspect-[97/65] w-[700px]"
             style={{ x: smoothLeftCloud1X }}
           >
             <Image
-              src={"/svg/cloud-blue-1.svg"}
+              src={"/img/cloud-blue-1.png"}
               alt="Blue Cloud"
               fill
               priority
@@ -200,17 +200,17 @@ export default function HomePageDesktop() {
 
           {/* Cloud 2 */}
           <motion.div
-            className="absolute -right-[17vw] -top-[58vh] aspect-[16/9] w-[700px]"
+            className="absolute -right-[17vw] -top-[68vh] aspect-[8/9] w-[500px]"
             style={{ x: smoothRightCloud2X }}
           >
-            <Image src={"/svg/cloud-blue-2.svg"} alt="Blue Cloud" fill />
+            <Image src={"/img/cloud-blue-2.png"} alt="Blue Cloud" fill />
           </motion.div>
           <motion.div
-            className="absolute -bottom-[58vh] -left-[17vw] aspect-[16/9] w-[700px]"
+            className="absolute -bottom-[68vh] -left-[17vw] aspect-[8/9] w-[500px]"
             style={{ x: smoothLeftCloud2X }}
           >
             <Image
-              src={"/svg/cloud-blue-2.svg"}
+              src={"/img/cloud-blue-2.png"}
               alt="Blue Cloud"
               fill
               className="rotate-180"
@@ -219,17 +219,17 @@ export default function HomePageDesktop() {
 
           {/* Cloud 3 */}
           <motion.div
-            className="absolute -bottom-[78vh] -right-[20vw] aspect-[1.2/1] w-[700px]"
+            className="absolute -bottom-[75vh] -right-[7vw] aspect-[50/97] w-[300px]"
             style={{ x: smoothRightCloud3X }}
           >
-            <Image src={"/svg/cloud-blue-3.svg"} alt="Blue Cloud" fill />
+            <Image src={"/img/cloud-blue-3.png"} alt="Blue Cloud" fill />
           </motion.div>
           <motion.div
-            className="absolute -left-[20vw] -top-[78vh] aspect-[1.2/1] w-[700px]"
+            className="absolute -left-[7vw] -top-[75vh] aspect-[50/97] w-[300px]"
             style={{ x: smoothLeftCloud3X }}
           >
             <Image
-              src={"/svg/cloud-blue-3.svg"}
+              src={"/img/cloud-blue-3.png"}
               alt="Blue Cloud"
               fill
               className="rotate-180"
@@ -238,17 +238,17 @@ export default function HomePageDesktop() {
 
           {/* Cloud 4 */}
           <motion.div
-            className="absolute -right-[20vw] -top-[38vh] aspect-[1.2/1] w-[700px]"
+            className="absolute -right-[5vw] -top-[37vh] aspect-[4/9] w-[250px]"
             style={{ x: smoothRightCloud4X }}
           >
-            <Image src={"/svg/cloud-blue-4.svg"} alt="Blue Cloud" fill />
+            <Image src={"/img/cloud-blue-4.png"} alt="Blue Cloud" fill />
           </motion.div>
           <motion.div
-            className="absolute -bottom-[38vh] -left-[20vw] aspect-[1.2/1] w-[700px]"
+            className="absolute -bottom-[37vh] -left-[5vw] aspect-[4/9] w-[250px]"
             style={{ x: smoothLeftCloud4X }}
           >
             <Image
-              src={"/svg/cloud-blue-4.svg"}
+              src={"/img/cloud-blue-4.png"}
               alt="Blue Cloud"
               fill
               className="rotate-180"
