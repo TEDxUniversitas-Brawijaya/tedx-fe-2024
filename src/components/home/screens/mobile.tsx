@@ -32,10 +32,11 @@ export default function HomePageMobile() {
   });
 
   return (
-    <main className="bg-tedx-green top-0 flex h-[200vh] justify-center">
+    <main className="top-0 flex h-[200vh] justify-center">
+      <div className="fixed -z-20 h-screen w-full bg-tedx-green" />
       <section className="flex h-screen w-full items-center justify-center">
         <motion.div
-          className="bg-tedx-black fixed z-20 h-screen w-full"
+          className="fixed z-20 h-screen w-full bg-tedx-black"
           style={{ opacity: opacityFilter }}
         />
         <motion.div
@@ -94,7 +95,7 @@ export default function HomePageMobile() {
         </div>
 
         <motion.div
-          className={`text-tedx-white fixed bottom-20 left-5 z-40 w-1/2 space-y-5 text-2xl font-black`}
+          className={`fixed bottom-20 left-5 z-40 w-1/2 space-y-5 text-2xl font-black text-tedx-white`}
           style={{ opacity: opacityText }}
         >
           <h2
@@ -110,7 +111,7 @@ export default function HomePageMobile() {
           <button>
             <Link
               href={"about-us"}
-              className="bg-tedx-red hover:bg-tedx-red/80 rounded-md px-7 py-3 text-base font-semibold transition-all duration-150"
+              className="rounded-md bg-tedx-red px-7 py-3 text-base font-semibold transition-all duration-150 hover:bg-tedx-red/80"
             >
               Jelajahi Mantramu
             </Link>
