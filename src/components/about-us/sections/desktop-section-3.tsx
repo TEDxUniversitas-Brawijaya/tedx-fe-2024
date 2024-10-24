@@ -4,13 +4,13 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 export default function DesktopSection3() {
   const { scrollYProgress } = useScroll();
 
-  const personScale = useTransform(scrollYProgress, [0.7, 1], [1, 0]);
+  const personScale = useTransform(scrollYProgress, [0.7, 0.9], [1, 0]);
   const smoothPersonScale = useSpring(personScale, {
     stiffness: 100,
     damping: 20,
   });
 
-  const personY = useTransform(scrollYProgress, [0.7, 1], [0, -80]);
+  const personY = useTransform(scrollYProgress, [0.7, 0.9], [0, -70]);
   const smoothPersonY = useSpring(personY, {
     stiffness: 100,
     damping: 20,
@@ -40,7 +40,7 @@ export default function DesktopSection3() {
   );
 
   return (
-    <section className="text-tedx-white relative -z-20 h-[500vh]">
+    <section className="relative -z-20 h-[500vh] text-tedx-white">
       <div className="sticky top-0 flex h-screen w-full flex-col items-center pt-52 text-center">
         <Image
           src={"/img/bg-paper-black.png"}
@@ -48,15 +48,20 @@ export default function DesktopSection3() {
           fill
           className="-z-20"
         />
-        <Image src={"/img/tunnel.png"} alt="Tunnel" fill className="-z-20" />
+        <Image
+          src={"/img/tunnel-full.png"}
+          alt="Tunnel"
+          fill
+          className="-z-20"
+        />
 
         <motion.div
-          className="bg-tedx-black absolute -z-10 h-full w-full"
+          className="absolute -z-10 h-full w-full bg-tedx-black"
           style={{ opacity: opacityFilter, y: -208 }}
         />
 
         <motion.div
-          className="absolute -bottom-20 aspect-[15/47] w-32"
+          className="absolute -bottom-20 h-1/2 w-32"
           style={{ scale: smoothPersonScale, y: smoothPersonY }}
         >
           <Image src={"/img/person-walking.png"} alt="Person Walking" fill />

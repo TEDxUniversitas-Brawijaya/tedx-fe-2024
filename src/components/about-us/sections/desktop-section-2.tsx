@@ -20,20 +20,24 @@ export default function DesktopSection2() {
     ["none", "none", "none", "none", "none", "block"],
   );
 
-  const opacityText1 = useTransform(scrollYProgress, [0.3, 0.35], [1, 0]);
+  const opacityText1 = useTransform(
+    scrollYProgress,
+    [0.3, 0.34, 0.349],
+    [1, 1, 0],
+  );
   const opacityText2 = useTransform(
     scrollYProgress,
-    [0, 0.35, 0.4, 0.45, 0.5],
-    [0, 0, 1, 1, 0],
+    [0.3, 0.34, 0.349, 0.355, 0.38, 0.39, 0.4, 0.45, 0.48, 0.49],
+    [0, 0, 0, 1, 1, 1, 1, 1, 1, 0],
   );
   const opacityText3 = useTransform(
     scrollYProgress,
-    [0, 0.35, 0.4, 0.45, 0.5, 0.55],
-    [0, 0, 0, 0, 0, 1],
+    [0, 0.35, 0.4, 0.45, 0.49, 0.5, 0.54, 0.55],
+    [0, 0, 0, 0, 0, 1, 1, 1],
   );
 
   return (
-    <section className="text-tedx-white relative -z-10 h-[500vh]">
+    <section className="relative -z-10 h-[500vh] text-tedx-white">
       <div className="sticky top-0 flex h-screen w-full flex-col items-center pt-20 text-center">
         <Image
           src={"/img/bg-paper-black.png"}
@@ -43,7 +47,7 @@ export default function DesktopSection2() {
         />
 
         <div className="relative w-2/5 space-y-5 text-center text-lg">
-          <h2 className="font-wulkan-display text-6xl font-black">
+          <h2 className="pt-10 font-wulkan-display text-6xl font-black">
             Mengenal TEDx
           </h2>
           <motion.p className="absolute" style={{ opacity: opacityText1 }}>

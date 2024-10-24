@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <div className="relative">
-      <nav className="bg-tedx-black text-tedx-white fixed z-30 flex w-full items-center justify-between gap-5 px-5 py-3 md:px-20">
+      <nav className="fixed z-30 flex w-full items-center justify-between gap-5 bg-tedx-black px-5 py-3 text-tedx-white md:px-20">
         <Link href={"/"}>
           <div className="relative aspect-[15/4] w-36">
             <Image src="/img/tedx-logo.png" alt="TEDxUB Logo" fill />
@@ -41,6 +41,12 @@ export default function Navbar() {
           >
             Merch
           </Link>
+          <Link
+            href={"/pencarian-volunteer"}
+            className="rounded-md bg-tedx-red px-5 py-2 text-base font-semibold transition-all duration-150 hover:bg-tedx-red/80"
+          >
+            Pencarian Volunteer
+          </Link>
         </div>
 
         <button onClick={() => setShowMenu(true)} className="block md:hidden">
@@ -49,9 +55,9 @@ export default function Navbar() {
       </nav>
       <motion.div
         animate={!showMenu ? {} : { top: "0", bottom: "0" }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-        className={`bg-tedx-black text-tedx-white fixed left-0 right-0 z-[100] h-screen overflow-hidden p-5 ${
-          !showMenu ? "hidden" : "top-[-200vh]"
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className={`fixed left-0 right-0 z-[100] h-screen overflow-hidden bg-tedx-black p-5 text-tedx-white ${
+          !showMenu ? "hidden" : "top-[-150vh]"
         }`}
       >
         <div className="flex w-full flex-col">
@@ -61,7 +67,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="relative flex grow flex-col items-center justify-center gap-5 pt-20 text-2xl font-semibold">
+          <div className="relative flex grow flex-col items-center justify-center gap-5 pt-20 text-xl font-semibold">
             <Link
               onClick={() => setShowMenu(false)}
               href={"/about-us"}
@@ -82,6 +88,12 @@ export default function Navbar() {
               className={`underline-offset-4 hover:underline ${pathname === "/merch" && "text-tedx-red"}`}
             >
               Merch
+            </Link>
+            <Link
+              href={"/pencarian-volunteer"}
+              className="rounded-md bg-tedx-red px-5 py-2 text-xl font-semibold transition-all duration-150 hover:bg-tedx-red/80"
+            >
+              Pencarian Volunteer
             </Link>
           </div>
 
