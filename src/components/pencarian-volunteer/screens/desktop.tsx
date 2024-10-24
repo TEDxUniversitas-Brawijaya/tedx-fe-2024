@@ -252,9 +252,9 @@ export default function VolunteerPageDesktop() {
             className="z-30 w-1/2 text-xl"
             style={{ opacity: opacitySection1 }}
           >
-            TEDx dengan label ikonik bersimbol “x” bermakna bahwa events
-            tersebut diselenggarakan secara independen dengan lisensi dari TED.
-            Maukah kamu menjadi bagian dari perjalanan ini?
+            TEDx dengan label ikonik bersimbol &quot;x&quot; bermakna bahwa
+            events tersebut diselenggarakan secara independen dengan lisensi
+            dari TED. Maukah kamu menjadi bagian dari perjalanan ini?
           </motion.p>
 
           <motion.div
@@ -264,7 +264,7 @@ export default function VolunteerPageDesktop() {
             <h3 className="w-fit font-wulkan-display text-3xl font-black italic">
               Executive Producer
             </h3>
-            <p className="">
+            <p>
               Memimpin semua produksi, perlengkapan, perencanaan, manajemen
               panggung, teknologi, selama acara berlangsung.
             </p>
@@ -276,11 +276,11 @@ export default function VolunteerPageDesktop() {
             <h3 className="w-fit font-wulkan-display text-3xl font-black italic">
               Event Manager
             </h3>
-            <p className="">
+            <p>
               Mengelola sebagian besar logistik hari acara, bertanggung jawab
-              untuk menciptakan "pengalaman TEDx" untuk tamu, mengelola kegiatan
-              hari acara di luar panggung utama, dan bertanggung jawab atas
-              kebutuhan tiket dan pendaftaran.
+              untuk menciptakan &quot;pengalaman TEDx&quot; untuk tamu,
+              mengelola kegiatan hari acara di luar panggung utama, dan
+              bertanggung jawab atas kebutuhan tiket dan pendaftaran.
             </p>
           </motion.div>
           <motion.div
@@ -290,7 +290,7 @@ export default function VolunteerPageDesktop() {
             <h3 className="w-fit font-wulkan-display text-3xl font-black italic">
               Curator
             </h3>
-            <p className="">
+            <p>
               Menentukan siapa yang akan membawakan talks di pre event dan main
               event serta topik yang akan dibawakan yang sejalan dengan grand
               theme TEDxUniversitasBrawijaya
@@ -303,7 +303,7 @@ export default function VolunteerPageDesktop() {
             <h3 className="w-fit font-wulkan-display text-3xl font-black italic">
               Communication, Editorial, Marketing
             </h3>
-            <p className="">
+            <p>
               Bertanggung jawab atas konten situs web, blog, dan media sosial
               dalam mempromosikan acara ke publik.
             </p>
@@ -315,7 +315,7 @@ export default function VolunteerPageDesktop() {
             <h3 className="w-fit font-wulkan-display text-3xl font-black italic">
               Design
             </h3>
-            <p className="">
+            <p>
               Bertanggung jawab dalam membuat logo acara, materi branding, dan
               aset estetika lainnya dalam tiap komponen acara.
             </p>
@@ -327,7 +327,7 @@ export default function VolunteerPageDesktop() {
             <h3 className="w-fit font-wulkan-display text-3xl font-black italic">
               Video Production
             </h3>
-            <p className="">
+            <p>
               Mengawasi video dan produksi acara - mulai dari mengelola
               kebutuhan audio dan video, operator kamera, dan streaming langsung
               acara.
@@ -340,7 +340,7 @@ export default function VolunteerPageDesktop() {
             <h3 className="w-fit font-wulkan-display text-3xl font-black italic">
               Website
             </h3>
-            <p className="">
+            <p>
               Bertanggung jawab untuk mengembangkan dan mengelola situs web yang
               dapat diakses dan dikelola dengan mudah.
             </p>
@@ -352,7 +352,7 @@ export default function VolunteerPageDesktop() {
             <h3 className="w-fit font-wulkan-display text-3xl font-black italic">
               Sponsorship
             </h3>
-            <p className="">
+            <p>
               Bertanggung jawab atas dana yang akan digunakan selama rangkaian
               TEDxUniversitasBrawijaya berlangsung, money flow dan strategi
               penggalangan dana ataupun mendapatkan sponsor.
@@ -363,8 +363,8 @@ export default function VolunteerPageDesktop() {
             style={{ opacity: opacitySection2 }}
             className="absolute flex h-screen w-1/2 flex-col items-center justify-center gap-5 pt-20 text-center"
           >
-            <h2 className="font-wulkan-display text-6xl">
-              Tertarik untuk menjadi bagian dari perjalanan mencari{" "}
+            <h2 className="font-wulkan-display text-6xl font-medium">
+              Tertarik untuk menjadi bagian dari perjalanan mencari <br />
               <span className="font-black">&apos;Mantra Diri&apos;</span>?
             </h2>
             <Link

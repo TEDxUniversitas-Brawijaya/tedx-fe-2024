@@ -17,9 +17,9 @@ export default function VolunteerPageMobile() {
             Pencarian <br /> Volunteer
           </h2>
           <p>
-            TEDx dengan label ikonik bersimbol “x” bermakna bahwa events
-            tersebut diselenggarakan secara independen dengan lisensi dari TED.
-            Maukah kamu menjadi bagian dari perjalanan ini?
+            TEDx dengan label ikonik bersimbol &quot;x&quot; bermakna bahwa
+            events tersebut diselenggarakan secara independen dengan lisensi
+            dari TED. Maukah kamu menjadi bagian dari perjalanan ini?
           </p>
         </section>
         <section className="flex justify-center">
@@ -43,9 +43,9 @@ export default function VolunteerPageMobile() {
             </h3>
             <p>
               Mengelola sebagian besar logistik hari acara, bertanggung jawab
-              untuk menciptakan "pengalaman TEDx" untuk tamu, mengelola kegiatan
-              hari acara di luar panggung utama, dan bertanggung jawab atas
-              kebutuhan tiket dan pendaftaran.
+              untuk menciptakan &quot;pengalaman TEDx&quot; untuk tamu,
+              mengelola kegiatan hari acara di luar panggung utama, dan
+              bertanggung jawab atas kebutuhan tiket dan pendaftaran.
             </p>
           </div>
           <div>
