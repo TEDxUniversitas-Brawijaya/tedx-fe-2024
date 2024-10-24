@@ -3,17 +3,20 @@ import Link from "next/link";
 
 export default function ComingSoonPage() {
   return (
-    <main className="bg-tedx-green text-tedx-white relative z-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden">
+    <main className="relative z-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden bg-tedx-green text-center text-tedx-white">
       <div className="absolute z-0 h-screen w-full opacity-10">
-        <Image src={"/img/paper-texture-1.png"} alt="Paper Texture" fill />
+        <Image src={"/img/paper-texture-3.png"} alt="Paper Texture" fill />
       </div>
-      <h2 className="font-wulkan-display z-20 text-7xl font-black">
+      <h2
+        className="z-20 font-wulkan-display text-7xl font-black"
+        style={{ textShadow: "2px 4px 4px rgba(0, 0, 0, 0.5)" }}
+      >
         Segera Datang
       </h2>
       <button className="z-20">
         <Link
           href={"about-us"}
-          className="bg-tedx-red hover:bg-tedx-red/80 rounded-md px-7 py-3 text-base font-semibold transition-all duration-150"
+          className="rounded-md bg-tedx-red px-7 py-3 text-base font-semibold transition-all duration-150 hover:bg-tedx-red/80"
         >
           Kembali
         </Link>

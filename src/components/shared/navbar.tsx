@@ -54,20 +54,33 @@ export default function Navbar() {
         </button>
       </nav>
       <motion.div
-        animate={!showMenu ? {} : { top: "0", bottom: "0" }}
+        initial={{ top: "-150vh" }}
+        animate={showMenu ? { top: "0", bottom: "0" } : { top: "-150vh" }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className={`fixed left-0 right-0 z-[100] h-screen overflow-hidden bg-tedx-black p-5 text-tedx-white ${
-          !showMenu ? "hidden" : "top-[-150vh]"
-        }`}
+        className="fixed left-0 right-0 z-[100] h-screen overflow-hidden bg-tedx-black p-5 text-tedx-white md:hidden"
       >
         <div className="flex w-full flex-col">
-          <div className="flex justify-end">
-            <button onClick={() => setShowMenu(false)}>
-              <XIcon className="size-10" />
-            </button>
+          <div className="flex justify-between">
+            <Link href={"/"} onClick={() => setShowMenu(false)}>
+              <div className="relative aspect-[15/4] w-36">
+                <Image src="/img/tedx-logo.png" alt="TEDxUB Logo" fill />
+              </div>
+            </Link>
+            <div className="flex justify-end">
+              <button onClick={() => setShowMenu(false)}>
+                <XIcon className="size-10" />
+              </button>
+            </div>
           </div>
 
           <div className="relative flex grow flex-col items-center justify-center gap-5 pt-20 text-xl font-semibold">
+            <Link
+              onClick={() => setShowMenu(false)}
+              href={"/"}
+              className={`underline-offset-4 hover:underline ${pathname === "/" && "text-tedx-red"}`}
+            >
+              Home
+            </Link>
             <Link
               onClick={() => setShowMenu(false)}
               href={"/about-us"}
@@ -92,14 +105,14 @@ export default function Navbar() {
             <Link
               onClick={() => setShowMenu(false)}
               href={"/pencarian-volunteer"}
-              className="rounded-md bg-tedx-red px-5 py-2 text-xl font-semibold transition-all duration-150 hover:bg-tedx-red/80"
+              className="mt-5 rounded-md bg-tedx-red px-5 py-2 text-xl font-semibold transition-all duration-150 hover:bg-tedx-red/80"
             >
               Pencarian Volunteer
             </Link>
           </div>
 
-          <div className="absolute -bottom-1/4 -left-0 flex w-full justify-center">
-            <div className="relative aspect-square w-full">
+          <div className="absolute -bottom-20 -left-0 flex w-full justify-center">
+            <div className="relative aspect-square w-2/3">
               <Image src={"/svg/x-shadow.svg"} alt="X" fill />
             </div>
           </div>

@@ -5,7 +5,7 @@ export default function DesktopSection1() {
   const { scrollYProgress } = useScroll();
 
   const leftCloudX = useTransform(scrollYProgress, [0, 0.15], [-900, -300]);
-  const rightCloudX = useTransform(scrollYProgress, [0, 0.15], [900, 350]);
+  const rightCloudX = useTransform(scrollYProgress, [0, 0.15], [900, 400]);
   const smoothLeftCloudX = useSpring(leftCloudX, {
     stiffness: 100,
     damping: 20,
@@ -28,8 +28,8 @@ export default function DesktopSection1() {
   });
 
   return (
-    <section className="bg-tedx-blue-sky text-tedx-white z-30 h-[400vh]">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center">
+    <section className="z-30 h-[400vh] bg-tedx-blue-sky text-tedx-white">
+      <div className="sticky top-0 flex h-screen w-full items-end justify-center">
         {/* Sun */}
         <motion.div
           className="absolute bottom-40 right-64 aspect-square w-32"
@@ -40,9 +40,11 @@ export default function DesktopSection1() {
           <Image src={"/svg/sun.svg"} alt="Hand" fill />
         </motion.div>
 
-        {/* Hand */}
-        <div className="absolute -bottom-10 right-52 aspect-[524/788] w-[20rem]">
-          <Image src={"/svg/hand-up.svg"} alt="Hand" fill />
+        <div className="relative h-full w-full overflow-hidden">
+          {/* Hand */}
+          <div className="absolute -bottom-10 right-52 aspect-[524/788] w-[20rem]">
+            <Image src={"/svg/hand-up.svg"} alt="Hand" fill />
+          </div>
         </div>
 
         {/* Cloud */}
@@ -56,7 +58,12 @@ export default function DesktopSection1() {
           className="absolute -bottom-20 aspect-[13/4] w-[60%]"
           style={{ x: smoothRightCloudX }}
         >
-          <Image src={"/svg/cloud-white.svg"} alt="Hand" fill />
+          <Image
+            src={"/svg/cloud-white.svg"}
+            alt="Hand"
+            fill
+            className="rotate-[5deg]"
+          />
         </motion.div>
 
         {/* Leaf */}
