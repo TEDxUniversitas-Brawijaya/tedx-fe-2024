@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply font-pp-neue-montreal;
-  }
-
   &::-webkit-scrollbar:horizontal {
     height: 0;
     width: 0;

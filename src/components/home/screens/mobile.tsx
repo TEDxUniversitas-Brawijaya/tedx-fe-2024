@@ -95,7 +95,7 @@ export default function HomePageMobile() {
         </div>
 
         <motion.div
-          className={`fixed bottom-20 left-5 z-40 w-1/2 space-y-5 text-2xl font-black text-tedx-white`}
+          className={`fixed bottom-20 left-5 z-40 space-y-5 text-2xl font-bold text-tedx-white`}
           style={{ opacity: opacityText }}
         >
           <h2
@@ -104,7 +104,7 @@ export default function HomePageMobile() {
           >
             <span>Mantra Diri :</span>
             <br />
-            <span className="font-wulkan-display text-6xl">
+            <span className="font-playfair-display text-5xl">
               Menembus Batas, Menyelami Realitas.
             </span>
           </h2>

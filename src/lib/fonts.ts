@@ -1,15 +1,11 @@
-import localFont from "next/font/local";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 
-const ppNeueMontreal = localFont({
-  src: "../app/fonts/PPNeueMontreal.woff",
-  variable: "--font-pp-neue-montreal",
-  weight: "100 500 600 700 800 900",
+const bodyFont = Plus_Jakarta_Sans({
+  subsets: ["latin-ext", "latin"],
 });
 
-const wulkanDisplay = localFont({
-  src: "../app/fonts/WulkanDisplay.woff",
-  variable: "--font-wulkan-display",
-  weight: "100 500 600 700 800 900",
+const headerFont = Playfair_Display({
+  subsets: ["latin-ext", "latin"],
 });
 
-export const localFontVariables = `${ppNeueMontreal.variable} ${wulkanDisplay.variable}`;
+export const localFontVariables = `${bodyFont.className} ${headerFont.style}`;

@@ -7,7 +7,7 @@ export default function NotFoundPage() {
       <div className="absolute z-0 h-screen w-full opacity-10">
         <Image src={"/img/paper-texture-1.png"} alt="Paper Texture" fill />
       </div>
-      <h2 className="z-20 font-wulkan-display text-7xl font-black">
+      <h2 className="font-playfair-display z-20 text-7xl font-bold">
         Halaman Tidak Ditemukan
       </h2>
       <button className="z-20">

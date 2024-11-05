@@ -33,7 +33,7 @@ export default function MobileSection2() {
   );
 
   return (
-    <section className="text-tedx-white relative -z-10 h-[400vh]">
+    <section className="relative -z-10 h-[400vh] text-tedx-white">
       <div className="sticky top-0 flex h-screen w-full flex-col items-center pt-20 text-center">
         <Image
           src={"/img/bg-paper-black.png"}
@@ -43,7 +43,7 @@ export default function MobileSection2() {
         />
 
         <div className="relative flex h-32 w-full flex-col items-center space-y-5 px-5 text-center text-lg">
-          <h2 className="font-wulkan-display text-5xl font-black leading-tight">
+          <h2 className="font-playfair-display text-4xl font-bold leading-tight">
             Mengenal TEDx
           </h2>
           <motion.p

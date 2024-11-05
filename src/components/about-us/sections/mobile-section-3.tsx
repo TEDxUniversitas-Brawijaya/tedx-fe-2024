@@ -26,7 +26,7 @@ export default function MobileSection3() {
   );
 
   return (
-    <section className="text-tedx-white relative -z-20 h-[400vh]">
+    <section className="relative -z-20 h-[400vh] text-tedx-white">
       <div className="sticky top-0 flex h-screen w-full flex-col items-center text-center">
         <Image
           src={"/img/bg-paper-black.png"}
@@ -36,13 +36,13 @@ export default function MobileSection3() {
         />
 
         <motion.div
-          className="absolute z-20 flex h-full w-full items-center text-3xl font-black"
+          className="absolute z-20 flex h-full w-full items-center text-3xl font-bold"
           style={{ opacity: opacityText1 }}
         >
           <h2 style={{ textShadow: "2px 4px 4px rgba(0, 0, 0, 0.7)" }}>
             <span>Mantra Diri :</span>
             <br />
-            <span className="font-wulkan-display text-6xl">
+            <span className="font-playfair-display text-6xl">
               Menembus Batas, Menyelami Realitas.
             </span>
           </h2>

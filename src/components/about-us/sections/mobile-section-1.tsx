@@ -32,7 +32,7 @@ export default function MobileSection1() {
   });
 
   return (
-    <section className="bg-tedx-blue-sky text-tedx-white z-30 h-[300vh]">
+    <section className="z-30 h-[300vh] bg-tedx-blue-sky text-tedx-white">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center">
         {/* Sun */}
         <motion.div
@@ -74,10 +74,10 @@ export default function MobileSection1() {
         </div>
 
         <div className="absolute z-10 flex h-screen w-full flex-col justify-end space-y-5 px-5 pb-32">
-          <h2 className="font-wulkan-display text-6xl font-black leading-tight">
+          <h2 className="font-playfair-display text-6xl font-bold leading-tight">
             Seputar TED
           </h2>
-          <p className="text-xl">
+          <p className="text-lg">
             TED (Technology, Entertainment, Design) adalah organisasi nirlaba
             dengan semangat &quot;Ideas Worth Spreading&quot; yang tersebar luas
             melalui Talks singkat dan powerful.

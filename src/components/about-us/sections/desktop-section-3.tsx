@@ -68,13 +68,13 @@ export default function DesktopSection3() {
         </motion.div>
 
         <motion.div
-          className="absolute z-20 w-1/2 text-3xl font-black"
+          className="absolute z-20 w-1/2 text-3xl font-bold"
           style={{ opacity: opacityText1 }}
         >
           <h2 style={{ textShadow: "2px 4px 4px rgba(0, 0, 0, 0.7)" }}>
             <span>Mantra Diri :</span>
             <br />
-            <span className="font-wulkan-display text-6xl">
+            <span className="font-playfair-display text-6xl">
               Menembus Batas, Menyelami Realitas.
             </span>
           </h2>

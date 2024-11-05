@@ -8,7 +8,7 @@ export default function ComingSoonPage() {
         <Image src={"/img/paper-texture-3.png"} alt="Paper Texture" fill />
       </div>
       <h2
-        className="z-20 font-wulkan-display text-7xl font-black"
+        className="font-playfair-display z-20 text-7xl font-bold"
         style={{ textShadow: "2px 4px 4px rgba(0, 0, 0, 0.5)" }}
       >
         Segera Datang

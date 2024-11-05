@@ -82,7 +82,7 @@ export default function DesktopSection1() {
         </div>
 
         <div className="absolute left-52 top-52 w-1/3 space-y-5">
-          <h2 className="font-wulkan-display text-6xl font-black">
+          <h2 className="font-playfair-display text-6xl font-bold">
             Seputar TED
           </h2>
           <p className="text-xl">

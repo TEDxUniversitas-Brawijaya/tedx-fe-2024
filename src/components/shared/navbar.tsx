@@ -41,12 +41,6 @@ export default function Navbar() {
           >
             Merch
           </Link>
-          <Link
-            href={"/pencarian-volunteer"}
-            className="rounded-md bg-tedx-red px-5 py-2 text-base font-semibold transition-all duration-150 hover:bg-tedx-red/80"
-          >
-            Pencarian Volunteer
-          </Link>
         </div>
 
         <button onClick={() => setShowMenu(true)} className="block md:hidden">
@@ -101,13 +95,6 @@ export default function Navbar() {
               className={`underline-offset-4 hover:underline ${pathname === "/merch" && "text-tedx-red"}`}
             >
               Merch
-            </Link>
-            <Link
-              onClick={() => setShowMenu(false)}
-              href={"/pencarian-volunteer"}
-              className="mt-5 rounded-md bg-tedx-red px-5 py-2 text-xl font-semibold transition-all duration-150 hover:bg-tedx-red/80"
-            >
-              Pencarian Volunteer
             </Link>
           </div>
 

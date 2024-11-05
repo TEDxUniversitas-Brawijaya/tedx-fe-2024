@@ -33,8 +33,8 @@ const config: Config = {
           "Arial",
           "sans-serif",
         ],
-        "wulkan-display": [
-          "var(--font-wulkan-display)",
+        "playfair-display": [
+          "Playfair Display",
           "Helvetica Neue",
           "Arial",
           "sans-serif",
