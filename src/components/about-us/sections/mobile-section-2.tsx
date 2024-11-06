@@ -43,7 +43,7 @@ export default function MobileSection2() {
         />
 
         <div className="relative flex h-32 w-full flex-col items-center space-y-5 px-5 text-center text-lg">
-          <h2 className="font-playfair-display text-4xl font-bold leading-tight">
+          <h2 className="font-header text-4xl font-bold leading-tight">
             Mengenal TEDx
           </h2>
           <motion.p

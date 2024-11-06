@@ -1,7 +1,7 @@
+import Navbar from "@/components/shared/navbar";
 import { localFontVariables } from "@/lib/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/shared/navbar";
 
 export const metadata: Metadata = {
   title: "TEDxUniversitasBrawijaya 2024",

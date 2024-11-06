@@ -266,7 +266,7 @@ export default function HomePageDesktop() {
           >
             <span>Mantra Diri :</span>
             <br />
-            <span className="font-playfair-display text-6xl">
+            <span className="font-header text-6xl">
               Menembus Batas, Menyelami Realitas.
             </span>
           </h2>

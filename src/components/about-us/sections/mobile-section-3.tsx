@@ -42,14 +42,14 @@ export default function MobileSection3() {
           <h2 style={{ textShadow: "2px 4px 4px rgba(0, 0, 0, 0.7)" }}>
             <span>Mantra Diri :</span>
             <br />
-            <span className="font-playfair-display text-6xl">
+            <span className="font-header text-6xl">
               Menembus Batas, Menyelami Realitas.
             </span>
           </h2>
         </motion.div>
 
         <motion.div
-          className="absolute z-20 flex h-full w-full items-center px-5 text-start text-lg font-semibold opacity-0"
+          className="absolute z-20 flex h-full w-full items-center px-5 text-start font-medium opacity-0"
           style={{ opacity: opacityText2 }}
         >
           <p style={{ textShadow: "2px 4px 4px rgba(0, 0, 0, 0.7)" }}>
@@ -66,7 +66,7 @@ export default function MobileSection3() {
           </p>
         </motion.div>
         <motion.div
-          className="absolute z-20 flex h-full w-full items-center px-5 text-start text-lg font-semibold opacity-0"
+          className="absolute z-20 flex h-full w-full items-center px-5 text-start font-medium opacity-0"
           style={{ opacity: opacityText3 }}
         >
           <p style={{ textShadow: "2px 4px 4px rgba(0, 0, 0, 0.7)" }}>
@@ -84,7 +84,7 @@ export default function MobileSection3() {
           </p>
         </motion.div>
         <motion.div
-          className="absolute z-20 flex h-full w-full items-center px-5 text-start text-lg font-semibold opacity-0"
+          className="absolute z-20 flex h-full w-full items-center px-5 text-start font-medium opacity-0"
           style={{ opacity: opacityText4 }}
         >
           <p style={{ textShadow: "2px 4px 4px rgba(0, 0, 0, 0.7)" }}>

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply font-body;
+  }
+
   &::-webkit-scrollbar:horizontal {
     height: 0;
     width: 0;

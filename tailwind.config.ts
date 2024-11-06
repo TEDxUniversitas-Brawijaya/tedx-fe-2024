@@ -27,18 +27,13 @@ const config: Config = {
         },
       },
       fontFamily: {
-        "pp-neue-montreal": [
-          "var(--font-pp-neue-montreal)",
+        header: [
+          "var(--font-broadsheet-ldo)",
           "Helvetica Neue",
           "Arial",
           "sans-serif",
         ],
-        "playfair-display": [
-          "Playfair Display",
-          "Helvetica Neue",
-          "Arial",
-          "sans-serif",
-        ],
+        body: ["var(--font-aileron)", "Helvetica Neue", "Arial", "sans-serif"],
       },
     },
   },

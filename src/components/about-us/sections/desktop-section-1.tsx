@@ -82,9 +82,7 @@ export default function DesktopSection1() {
         </div>
 
         <div className="absolute left-52 top-52 w-1/3 space-y-5">
-          <h2 className="font-playfair-display text-6xl font-bold">
-            Seputar TED
-          </h2>
+          <h2 className="font-header text-6xl font-bold">Seputar TED</h2>
           <p className="text-xl">
             TED (Technology, Entertainment, Design) adalah organisasi nirlaba
             dengan semangat &quot;Ideas Worth Spreading&quot; yang tersebar luas

@@ -104,7 +104,7 @@ export default function HomePageMobile() {
           >
             <span>Mantra Diri :</span>
             <br />
-            <span className="font-playfair-display text-5xl">
+            <span className="font-header text-5xl">
               Menembus Batas, Menyelami Realitas.
             </span>
           </h2>

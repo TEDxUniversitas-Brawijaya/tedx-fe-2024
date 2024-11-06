@@ -74,9 +74,7 @@ export default function MobileSection1() {
         </div>
 
         <div className="absolute z-10 flex h-screen w-full flex-col justify-end space-y-5 px-5 pb-32">
-          <h2 className="font-playfair-display text-6xl font-bold leading-tight">
-            Seputar TED
-          </h2>
+          <h2 className="font-header text-6xl font-bold">Seputar TED</h2>
           <p className="text-lg">
             TED (Technology, Entertainment, Design) adalah organisasi nirlaba
             dengan semangat &quot;Ideas Worth Spreading&quot; yang tersebar luas
