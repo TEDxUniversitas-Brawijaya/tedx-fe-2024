@@ -1,7 +1,6 @@
 import Footer from "@/components/shared/footer";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function VolunteerPageDesktop() {
   const { scrollYProgress } = useScroll();

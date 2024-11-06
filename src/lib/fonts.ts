@@ -1,13 +1,4 @@
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import localFont from "next/font/local";
-
-const body = Plus_Jakarta_Sans({
-  subsets: ["latin-ext", "latin"],
-});
-
-const header = Playfair_Display({
-  subsets: ["latin-ext", "latin"],
-});
 
 const headerFont = localFont({
   src: "../app/fonts/BroadsheetLDO.woff",
