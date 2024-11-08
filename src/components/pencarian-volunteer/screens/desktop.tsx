@@ -242,7 +242,7 @@ export default function VolunteerPageDesktop() {
           </motion.div>
 
           <motion.h2
-            className="font-header z-10 mt-32 text-7xl font-black"
+            className="z-10 mt-32 font-header text-7xl font-black"
             style={{ opacity: opacitySection1 }}
           >
             Pencarian Volunteer
@@ -260,7 +260,7 @@ export default function VolunteerPageDesktop() {
             className="absolute bottom-10 right-10 w-1/4 space-y-3 text-start"
             style={{ opacity: opacityText1 }}
           >
-            <h3 className="font-header w-fit text-3xl font-black italic">
+            <h3 className="w-fit font-header text-3xl font-black italic">
               Executive Producer
             </h3>
             <p>
@@ -272,7 +272,7 @@ export default function VolunteerPageDesktop() {
             className="absolute bottom-10 right-10 w-1/4 space-y-3 text-start"
             style={{ opacity: opacityText2 }}
           >
-            <h3 className="font-header w-fit text-3xl font-black italic">
+            <h3 className="w-fit font-header text-3xl font-black italic">
               Event Manager
             </h3>
             <p>
@@ -286,7 +286,7 @@ export default function VolunteerPageDesktop() {
             className="absolute bottom-10 right-10 w-1/4 space-y-3 text-start"
             style={{ opacity: opacityText3 }}
           >
-            <h3 className="font-header w-fit text-3xl font-black italic">
+            <h3 className="w-fit font-header text-3xl font-black italic">
               Curator
             </h3>
             <p>
@@ -299,7 +299,7 @@ export default function VolunteerPageDesktop() {
             className="absolute bottom-10 right-10 w-1/4 space-y-3 text-start"
             style={{ opacity: opacityText4 }}
           >
-            <h3 className="font-header w-fit text-3xl font-black italic">
+            <h3 className="w-fit font-header text-3xl font-black italic">
               Communication, Editorial, Marketing
             </h3>
             <p>
@@ -311,7 +311,7 @@ export default function VolunteerPageDesktop() {
             className="absolute bottom-10 right-10 w-1/4 space-y-3 text-start"
             style={{ opacity: opacityText5 }}
           >
-            <h3 className="font-header w-fit text-3xl font-black italic">
+            <h3 className="w-fit font-header text-3xl font-black italic">
               Design
             </h3>
             <p>
@@ -323,7 +323,7 @@ export default function VolunteerPageDesktop() {
             className="absolute bottom-10 right-10 w-1/4 space-y-3 text-start"
             style={{ opacity: opacityText6 }}
           >
-            <h3 className="font-header w-fit text-3xl font-black italic">
+            <h3 className="w-fit font-header text-3xl font-black italic">
               Video Production
             </h3>
             <p>
@@ -336,7 +336,7 @@ export default function VolunteerPageDesktop() {
             className="absolute bottom-10 right-10 w-1/4 space-y-3 text-start"
             style={{ opacity: opacityText7 }}
           >
-            <h3 className="font-header w-fit text-3xl font-black italic">
+            <h3 className="w-fit font-header text-3xl font-black italic">
               Website
             </h3>
             <p>
@@ -348,7 +348,7 @@ export default function VolunteerPageDesktop() {
             className="absolute bottom-10 right-10 w-1/4 space-y-3 text-start"
             style={{ opacity: opacityText8 }}
           >
-            <h3 className="font-header w-fit text-3xl font-black italic">
+            <h3 className="w-fit font-header text-3xl font-black italic">
               Sponsorship
             </h3>
             <p>
