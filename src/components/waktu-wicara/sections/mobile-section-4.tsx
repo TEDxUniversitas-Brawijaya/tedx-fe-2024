@@ -72,6 +72,12 @@ export default function MobileSection4() {
           />
         </div>
 
+        <div
+          className="absolute left-0 top-0 h-screen w-screen"
+        >
+          <div className="h-screen w-screen bg-gradient-to-b from-black to-transparent to-25%" />
+        </div>
+
         <div className="absolute left-0 top-0 h-screen w-screen">
           <div className="h-screen w-screen bg-gradient-to-t from-[#D9151C] to-transparent to-50% opacity-40" />
         </div>
