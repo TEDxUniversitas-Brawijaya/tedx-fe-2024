@@ -24,6 +24,9 @@ const config: Config = {
           blue: {
             sky: "#5CA6B0",
           },
+          yellow: {
+            DEFAULT: "#EED14E",
+          },
         },
       },
       fontFamily: {

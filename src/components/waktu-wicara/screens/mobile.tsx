@@ -1,3 +1,9 @@
+import MobileSection1 from "../sections/mobile-section-1";
+
 export default function WaktuWicaraPageMobile() {
-  return <div>WaktuWicaraMobilePage</div>;
+  return (
+    <main>
+      <MobileSection1 />
+    </main>
+  );
 }
