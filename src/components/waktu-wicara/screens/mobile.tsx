@@ -13,7 +13,7 @@ export default function WaktuWicaraPageMobile() {
 
   return (
     <main
-      className={`relative min-h-screen transition-colors duration-1000 ${bgColor} overflow-hidden`}
+      className={`transition-colors duration-1000 ${bgColor} relative min-h-screen overflow-clip`}
     >
       <AnimatePresence mode="wait">
         {!isClicked ? (
