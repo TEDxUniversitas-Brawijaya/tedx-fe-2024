@@ -74,7 +74,7 @@ export default function MobileSection2() {
           style={{ opacity: paperOpacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
-          transition={{ delay: 0.5, ease: "easeInOut" }}
+          transition={{ delay: 0.75, ease: "easeInOut" }}
         >
           <Image
             src="/img/paper-texture-4.png"
@@ -83,13 +83,12 @@ export default function MobileSection2() {
             priority
           />
         </motion.div>
-
         <motion.div
           className="absolute left-1/2 top-0 aspect-video h-screen -translate-x-1/2 transform"
           style={{ opacity: redLineOpacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, ease: "easeInOut" }}
+          transition={{ delay: 0.75, ease: "easeInOut" }}
         >
           <Image
             src="/img/red-line-overlay.png"
@@ -98,37 +97,33 @@ export default function MobileSection2() {
             priority
           />
         </motion.div>
-
         <motion.div
           className="absolute left-0 top-0 h-[120vh] w-screen"
           style={{ opacity: gradientOpacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, ease: "easeInOut" }}
+          transition={{ delay: 0.75, ease: "easeInOut" }}
         >
           <div className="h-screen w-screen bg-gradient-to-b from-[#0F0F0F] to-transparent to-75%" />
         </motion.div>
-
         <motion.div
           className="absolute -left-32 top-96 aspect-[15/47] w-96 blur-md"
           style={{ opacity: person1Opacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, ease: "easeInOut" }}
+          transition={{ delay: 0.75, ease: "easeInOut" }}
         >
           <Image src={"/img/person-walking.png"} alt="Person Walking" fill />
         </motion.div>
-
         <motion.div
           className="absolute -right-96 top-72 aspect-[15/47] w-[52rem]"
           style={{ opacity: person2Opacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, ease: "easeInOut" }}
+          transition={{ delay: 0.75, ease: "easeInOut" }}
         >
           <Image src={"/img/person-walking.png"} alt="Person Walking" fill />
         </motion.div>
-
         <div className="absolute bottom-0 top-0 w-[100%] overflow-hidden blur-xl">
           <motion.div
             className="z-15 absolute left-0 top-0 w-full bg-black"
@@ -138,7 +133,6 @@ export default function MobileSection2() {
               mask: topMaskValue,
             }}
           />
-
           <motion.div
             className="z-15 absolute bottom-0 left-0 w-full bg-black"
             style={{
@@ -148,11 +142,11 @@ export default function MobileSection2() {
             }}
           />
         </div>
-
         <motion.div
           className="transfrom absolute left-1/2 top-[35%] flex w-max -translate-x-1/2 flex-col items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          transition={{ delay: 0.75, ease: "easeInOut" }}
         >
           <h1 className="text-center font-header text-4xl leading-[4rem]">
             Waktu Wicara,
