@@ -48,23 +48,11 @@ export default function MobileSection2() {
   const person1Opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const person2Opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const gradientOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.9],
-    [1, 0],
-  );
+  const gradientOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
 
-  const paperOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.8],
-    [0.5, 0],
-  );
+  const paperOpacity = useTransform(scrollYProgress, [0, 0.8], [0.5, 0]);
 
-  const redLineOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.8],
-    [1, 0],
-  );
+  const redLineOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const backgroundColor = useTransform(
     scrollYProgress,
@@ -84,6 +72,9 @@ export default function MobileSection2() {
         <motion.div
           className="absolute left-0 top-0 aspect-video h-[160vh] opacity-50"
           style={{ opacity: paperOpacity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ delay: 0.5, ease: "easeInOut" }}
         >
           <Image
             src="/img/paper-texture-4.png"
@@ -96,6 +87,9 @@ export default function MobileSection2() {
         <motion.div
           className="absolute left-1/2 top-0 aspect-video h-screen -translate-x-1/2 transform"
           style={{ opacity: redLineOpacity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, ease: "easeInOut" }}
         >
           <Image
             src="/img/red-line-overlay.png"
@@ -108,6 +102,9 @@ export default function MobileSection2() {
         <motion.div
           className="absolute left-0 top-0 h-[120vh] w-screen"
           style={{ opacity: gradientOpacity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, ease: "easeInOut" }}
         >
           <div className="h-screen w-screen bg-gradient-to-b from-[#0F0F0F] to-transparent to-75%" />
         </motion.div>
@@ -115,6 +112,9 @@ export default function MobileSection2() {
         <motion.div
           className="absolute -left-32 top-96 aspect-[15/47] w-96 blur-md"
           style={{ opacity: person1Opacity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, ease: "easeInOut" }}
         >
           <Image src={"/img/person-walking.png"} alt="Person Walking" fill />
         </motion.div>
@@ -122,11 +122,18 @@ export default function MobileSection2() {
         <motion.div
           className="absolute -right-96 top-72 aspect-[15/47] w-[52rem]"
           style={{ opacity: person2Opacity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, ease: "easeInOut" }}
         >
           <Image src={"/img/person-walking.png"} alt="Person Walking" fill />
         </motion.div>
 
-        <div className="transfrom absolute left-1/2 top-[35%] flex w-max -translate-x-1/2 flex-col items-center justify-center">
+        <motion.div
+          className="transfrom absolute left-1/2 top-[35%] flex w-max -translate-x-1/2 flex-col items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
           <h1 className="text-center font-header text-4xl leading-[4rem]">
             Waktu Wicara,
           </h1>
@@ -136,7 +143,7 @@ export default function MobileSection2() {
             jiwa untuk mekar, berubah dan menemukan suara dalam keberanian yang
             penuh keyakinan.
           </h2>
-        </div>
+        </motion.div>
 
         <div className="absolute bottom-0 top-0 w-[100%] overflow-hidden blur-xl">
           <motion.div
