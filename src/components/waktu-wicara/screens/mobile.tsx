@@ -12,22 +12,9 @@ export default function WaktuWicaraPageMobile() {
   const [bgColor, setBgColor] = useState("bg-tedx-yellow");
 
   return (
-    <main className={`transition-colors duration-1000 ${bgColor}`}>
-      <motion.div
-        className="absolute -bottom-0 left-0 z-50 h-[50%] w-screen overflow-clip"
-        animate={{
-          opacity: isMaskVisible ? 1 : 0,
-        }}
-        transition={{
-          delay: 0.25,
-          duration: 0.5,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="absolute left-1/2 top-10 h-[140vh] w-[140%] origin-center -translate-x-1/2 transform overflow-y-clip">
-          <Image src="/svg/mask-open.svg" alt="Mask Open" fill priority />
-        </div>
-      </motion.div>
+    <main
+      className={`relative min-h-screen transition-colors duration-1000 ${bgColor} overflow-hidden`}
+    >
       <AnimatePresence mode="wait">
         {!isClicked ? (
           <motion.div
@@ -42,7 +29,7 @@ export default function WaktuWicaraPageMobile() {
                 setIsClicked(true);
                 await new Promise((resolve) => setTimeout(resolve, 2000));
                 setBgColor("bg-[#082427]");
-                await new Promise((resolve) => setTimeout(resolve, 1000));
+                await new Promise((resolve) => setTimeout(resolve, 2000));
                 setIsMaskVisible(false);
               }}
             />
@@ -55,6 +42,26 @@ export default function WaktuWicaraPageMobile() {
           </motion.div>
         )}
       </AnimatePresence>
+      {isMaskVisible && (
+        <motion.div
+          className="absolute left-1/2 top-[75vh] aspect-[3/4] w-[140%] origin-center"
+          initial={{
+            x: "-50%",
+          }}
+          animate={{
+            x: "-50%",
+            scale: isClicked ? [1, 1.1, 1.2, 12] : 1,
+            y: isClicked ? ["0", "-50%", "-80%", "-350%"] : 0,
+          }}
+          transition={{
+            delay: 0.25,
+            duration: 4,
+            ease: [0.645, 0.05, 0.05, 0.1],
+          }}
+        >
+          <Image src="/svg/mask-open.svg" alt="Mask Open" fill priority />
+        </motion.div>
+      )}
     </main>
   );
 }
