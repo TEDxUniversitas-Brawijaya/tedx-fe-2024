@@ -129,22 +129,6 @@ export default function MobileSection2() {
           <Image src={"/img/person-walking.png"} alt="Person Walking" fill />
         </motion.div>
 
-        <motion.div
-          className="transfrom absolute left-1/2 top-[35%] flex w-max -translate-x-1/2 flex-col items-center justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <h1 className="text-center font-header text-4xl leading-[4rem]">
-            Waktu Wicara,
-          </h1>
-          <h2 className="w-80 text-center font-light">
-            sang penjaga sunyi, saksi mata setiap jejak langkah insan menuju
-            aktualisasi diri. Setiap detik mengukir kisah, memberi ruang bagi
-            jiwa untuk mekar, berubah dan menemukan suara dalam keberanian yang
-            penuh keyakinan.
-          </h2>
-        </motion.div>
-
         <div className="absolute bottom-0 top-0 w-[100%] overflow-hidden blur-xl">
           <motion.div
             className="z-15 absolute left-0 top-0 w-full bg-black"
@@ -164,6 +148,22 @@ export default function MobileSection2() {
             }}
           />
         </div>
+
+        <motion.div
+          className="transfrom absolute left-1/2 top-[35%] flex w-max -translate-x-1/2 flex-col items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <h1 className="text-center font-header text-4xl leading-[4rem]">
+            Waktu Wicara,
+          </h1>
+          <h2 className="w-80 text-center font-light">
+            sang penjaga sunyi, saksi mata setiap jejak langkah insan menuju
+            aktualisasi diri. Setiap detik mengukir kisah, memberi ruang bagi
+            jiwa untuk mekar, berubah dan menemukan suara dalam keberanian yang
+            penuh keyakinan.
+          </h2>
+        </motion.div>
       </div>
     </motion.section>
   );
