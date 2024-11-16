@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -10,6 +10,10 @@ export default function MobileSection4() {
   });
 
   const yPosition = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const smoothYPosition = useSpring(yPosition, {
+    stiffness: 100,
+    damping: 20,
+  });
 
   const tersembunyiOpacity = useTransform(
     scrollYProgress,
@@ -28,7 +32,6 @@ export default function MobileSection4() {
     [0.6, 0.8, 1],
     [0, 1, 1],
   );
-
   const imageIdx = useTransform(scrollYProgress, [0, 1], [1, 8]);
   const [currentImageIdx, setCurrentImageIdx] = useState<number>(1);
 
@@ -91,7 +94,7 @@ export default function MobileSection4() {
         <motion.div
           className="absolute right-10 top-56 flex w-max flex-col items-start justify-center"
           style={{
-            y: useTransform(yPosition, (value) => `${value}vh`),
+            y: useTransform(smoothYPosition, (value) => `${value}vh`),
             opacity: tersembunyiOpacity,
           }}
         >
@@ -107,7 +110,7 @@ export default function MobileSection4() {
         <motion.div
           className="absolute right-10 top-56 flex w-max flex-col items-start justify-center"
           style={{
-            y: useTransform(yPosition, (value) => `${value + 100}vh`),
+            y: useTransform(smoothYPosition, (value) => `${value + 100}vh`),
             opacity: langkahOpacity,
           }}
         >
@@ -123,7 +126,7 @@ export default function MobileSection4() {
         <motion.div
           className="absolute right-10 top-56 flex w-max flex-col items-start justify-center"
           style={{
-            y: useTransform(yPosition, (value) => `${value + 200}vh`),
+            y: useTransform(smoothYPosition, (value) => `${value + 200}vh`),
             opacity: memanggilOpacity,
           }}
         >
