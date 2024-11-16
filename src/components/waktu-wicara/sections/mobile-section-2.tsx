@@ -68,7 +68,7 @@ export default function MobileSection2() {
         backgroundColor,
       }}
     >
-      <div className="sticky left-0 top-0 h-screen w-full overflow-clip">
+      <div className="sticky left-0 top-0 h-screen w-full flex items-center justify-center overflow-clip">
         <motion.div
           className="absolute left-0 top-0 aspect-video h-[160vh] opacity-50"
           style={{ opacity: paperOpacity }}
@@ -84,7 +84,7 @@ export default function MobileSection2() {
           />
         </motion.div>
         <motion.div
-          className="absolute left-1/2 top-0 aspect-video h-screen -translate-x-1/2 transform"
+          className="absolute top-0 aspect-video h-screen"
           style={{ opacity: redLineOpacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -143,7 +143,7 @@ export default function MobileSection2() {
           />
         </div>
         <motion.div
-          className="transfrom absolute left-1/2 top-[35%] flex w-max -translate-x-1/2 flex-col items-center justify-center"
+          className=" absolute top-[35%] flex w-max flex-col items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.75, ease: "easeInOut" }}
