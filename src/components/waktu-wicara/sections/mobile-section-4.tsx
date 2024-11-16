@@ -1,31 +1,35 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function MobileSection4() {
-  const { scrollYProgress } = useScroll();
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
 
-  const yPosition = useTransform(scrollYProgress, [0.3, 1], [0, -200]);
+  const yPosition = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   const tersembunyiOpacity = useTransform(
     scrollYProgress,
-    [0.3, 0.335, 0.35],
+    [0, 0.05, 0.1],
     [1, 0.5, 0],
   );
 
   const langkahOpacity = useTransform(
     scrollYProgress,
-    [0.35, 0.4, 0.65, 0.7],
+    [0.1, 0.5, 0.5, 0.6],
     [0, 1, 1, 0],
   );
 
   const memanggilOpacity = useTransform(
     scrollYProgress,
-    [0.7, 0.75, 1],
+    [0.6, 0.8, 1],
     [0, 1, 1],
   );
 
-  const imageIdx = useTransform(scrollYProgress, [0.3, 1], [1, 8]);
+  const imageIdx = useTransform(scrollYProgress, [0, 1], [1, 8]);
   const [currentImageIdx, setCurrentImageIdx] = useState<number>(1);
 
   useEffect(() => {
@@ -36,7 +40,10 @@ export default function MobileSection4() {
   }, [imageIdx]);
 
   return (
-    <section className="relative h-[900vh] bg-[#080808] text-white">
+    <motion.section
+      className="relative h-[900vh] bg-[#080808] text-white"
+      ref={sectionRef}
+    >
       <div className="sticky left-0 top-0 h-screen w-full overflow-clip">
         <div className="absolute -left-56 top-0 aspect-video h-screen bg-[#080808]">
           <Image
@@ -127,6 +134,6 @@ export default function MobileSection4() {
           </h2>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
