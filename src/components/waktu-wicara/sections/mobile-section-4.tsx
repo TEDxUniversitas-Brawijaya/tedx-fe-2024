@@ -25,18 +25,12 @@ export default function MobileSection4() {
     [0, 1, 1],
   );
 
-  const imageIdx = useTransform(
-    scrollYProgress,
-    [0.3, 1],
-    [1, 8],
-  );
+  const imageIdx = useTransform(scrollYProgress, [0.3, 1], [1, 8]);
   const [currentImageIdx, setCurrentImageIdx] = useState<number>(1);
 
   useEffect(() => {
     const unsubscribe = imageIdx.on("change", (latest) => {
-      setCurrentImageIdx(
-        Math.min(Math.floor(latest), 8),
-      );
+      setCurrentImageIdx(Math.min(Math.floor(latest), 8));
     });
     return () => unsubscribe();
   }, [imageIdx]);
@@ -63,18 +57,23 @@ export default function MobileSection4() {
           />
         </div>
 
-        <div className="absolute -bottom-8 -left-52 aspect-square w-[42rem]">
+        <motion.div
+          key={currentImageIdx} // Unique key for each image to trigger animation
+          className="absolute bottom-0 left-0 aspect-[1/2] w-56"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
           <Image
             src={`/img/hand-flower-${currentImageIdx}.png`}
             alt={`Hand Flower ${currentImageIdx}`}
             fill
             priority
           />
-        </div>
+        </motion.div>
 
-        <div
-          className="absolute left-0 top-0 h-screen w-screen"
-        >
+        <div className="absolute left-0 top-0 h-screen w-screen">
           <div className="h-screen w-screen bg-gradient-to-b from-black to-transparent to-25%" />
         </div>
 
