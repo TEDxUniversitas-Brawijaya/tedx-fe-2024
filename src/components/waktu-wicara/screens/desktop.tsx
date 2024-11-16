@@ -19,8 +19,8 @@ export default function WaktuWicaraPageDesktop() {
     setIsAnimating(true);
     maskControls.start({
       scale: 9,
-      x: "-90%",
-      y: "-200%",
+      x: "-80%",
+      y: "-190%",
       transition: {
         duration: 4.5,
         ease: [0.645, 0.045, 0.355, 1.0],
@@ -71,9 +71,27 @@ export default function WaktuWicaraPageDesktop() {
             animate={maskControls}
           >
             <Image
-              src={isAnimating ? "/img/mask-open.png" : "/img/mask-closed.png"}
+              src={"/img/mask-closed.png"}
               alt="Mask"
               draggable={false}
+              style={{
+                opacity: isAnimating ? 0 : 1,
+              }}
+              fill
+              priority
+            />
+          </motion.div>
+          <motion.div
+            className="absolute -bottom-40 -right-80 z-10 h-[200vh] w-[75%] origin-center"
+            animate={maskControls}
+          >
+            <Image
+              src={"/img/mask-open.png"}
+              alt="Mask"
+              draggable={false}
+              style={{
+                opacity: isAnimating ? 1 : 0,
+              }}
               fill
               priority
             />

@@ -1,30 +1,43 @@
 import { flowerImages } from "@/lib/static/waktu-wicara";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const DesktopSection4 = () => {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  const imageIndex = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, flowerImages.length - 1],
+  const springConfig = {
+    stiffness: 70,
+    damping: 25,
+    mass: 0.5,
+    restDelta: 0.01,
+    restSpeed: 0.01,
+  };
+
+  const imageIndex = useSpring(
+    useTransform(scrollYProgress, [0, 0.8], [0, flowerImages.length - 1]),
+    springConfig,
   );
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [previousImageIndex, setPreviousImageIndex] = useState(0);
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
     const unsubscribe = imageIndex.on("change", (latest) => {
-      setCurrentImageIndex(
-        Math.min(Math.floor(latest), flowerImages.length - 1),
-      );
+      const newIndex = Math.min(Math.floor(latest), flowerImages.length - 1);
+      if (newIndex !== currentImageIndex) {
+        setPreviousImageIndex(currentImageIndex);
+        setCurrentImageIndex(newIndex);
+        setKey((prev) => prev + 1);
+      }
     });
     return () => unsubscribe();
-  }, [imageIndex]);
+  }, [imageIndex, currentImageIndex]);
 
   const yPosition = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
@@ -47,25 +60,44 @@ const DesktopSection4 = () => {
   );
 
   return (
-    <section ref={containerRef} className="relative h-[900vh] w-full bg-black">
+    <section ref={containerRef} className="relative h-[880vh] w-full bg-black">
       <div className="sticky top-0 flex h-screen w-full flex-col items-center gap-5 text-center">
         {/* Main content */}
         <div className="absolute bottom-0 top-0 z-10 h-screen w-full">
-          {/* Image Container */}
-          <motion.div
-            className="absolute bottom-0 h-[90%] w-1/2 overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+          <div
+            className={`absolute bottom-0 left-40 h-full w-1/4 overflow-hidden`}
           >
-            <Image
-              src={flowerImages[currentImageIndex]}
-              alt={`Hand Flower ${currentImageIndex + 1}`}
-              draggable={false}
-              fill
-              priority
-            />
-          </motion.div>
+            <motion.div
+              key={`prev-${key}`}
+              className={`${previousImageIndex === 0 || previousImageIndex === 1 ? "h-[70%]" : "h-[85%]"} absolute bottom-0 w-full`}
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <Image
+                src={flowerImages[previousImageIndex]}
+                alt={`Hand Flower ${previousImageIndex + 1}`}
+                draggable={false}
+                fill
+                priority
+              />
+            </motion.div>
+            <motion.div
+              key={`current-${key}`}
+              className={`${currentImageIndex === 0 || currentImageIndex === 1 ? "h-[70%]" : "h-[85%]"} absolute bottom-0 w-full`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeIn" }}
+            >
+              <Image
+                src={flowerImages[currentImageIndex]}
+                alt={`Hand Flower ${currentImageIndex + 1}`}
+                draggable={false}
+                fill
+                priority
+              />
+            </motion.div>
+          </div>
 
           {/* Text Container */}
           <div className="relative h-screen overflow-hidden">
