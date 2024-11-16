@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import Footer from "../../shared/footer";
 import MobileSection1 from "../sections/mobile-section-1";
 import MobileSection2 from "../sections/mobile-section-2";
 import MobileSection3 from "../sections/mobile-section-3";
@@ -39,6 +40,7 @@ export default function WaktuWicaraPageMobile() {
             <MobileSection2 />
             <MobileSection3 />
             <MobileSection4 />
+            <Footer />
           </motion.div>
         )}
       </AnimatePresence>
