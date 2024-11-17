@@ -23,6 +23,10 @@ const config: Config = {
           },
           blue: {
             sky: "#5CA6B0",
+            dark: "#082427",
+          },
+          yellow: {
+            DEFAULT: "#EED14E",
           },
           yellow: {
             DEFAULT: "#EED14E",

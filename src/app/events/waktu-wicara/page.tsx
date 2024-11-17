@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import MediaQuerySwitcher from "@/components/shared/media-query-switcher";
 import WaktuWicaraPageDesktop from "@/components/waktu-wicara/screens/desktop";

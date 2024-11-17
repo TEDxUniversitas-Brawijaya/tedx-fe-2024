@@ -13,7 +13,7 @@ export default function VolunteerPageMobile() {
       </div>
       <div className="flex flex-col justify-center gap-10 px-5 py-20 md:px-20">
         <section className="space-y-5">
-          <h2 className="font-header z-10 mt-10 text-5xl font-black">
+          <h2 className="z-10 mt-10 font-header text-5xl font-black">
             Pencarian <br /> Volunteer
           </h2>
           <p>
@@ -29,7 +29,7 @@ export default function VolunteerPageMobile() {
         </section>
         <section className="space-y-5">
           <div>
-            <h3 className="font-header w-fit text-2xl font-black italic">
+            <h3 className="w-fit font-header text-2xl font-black italic">
               Executive Producer
             </h3>
             <p>
@@ -38,7 +38,7 @@ export default function VolunteerPageMobile() {
             </p>
           </div>
           <div>
-            <h3 className="font-header w-fit text-2xl font-black italic">
+            <h3 className="w-fit font-header text-2xl font-black italic">
               Event Manager
             </h3>
             <p>
@@ -49,7 +49,7 @@ export default function VolunteerPageMobile() {
             </p>
           </div>
           <div>
-            <h3 className="font-header w-fit text-2xl font-black italic">
+            <h3 className="w-fit font-header text-2xl font-black italic">
               Curator
             </h3>
             <p>
@@ -60,7 +60,7 @@ export default function VolunteerPageMobile() {
           </div>
           <div>
             {" "}
-            <h3 className="font-header w-fit text-2xl font-black italic">
+            <h3 className="w-fit font-header text-2xl font-black italic">
               Communication, Editorial, Marketing
             </h3>
             <p>
@@ -69,7 +69,7 @@ export default function VolunteerPageMobile() {
             </p>
           </div>
           <div>
-            <h3 className="font-header w-fit text-2xl font-black italic">
+            <h3 className="w-fit font-header text-2xl font-black italic">
               Design
             </h3>
             <p>
@@ -78,7 +78,7 @@ export default function VolunteerPageMobile() {
             </p>
           </div>
           <div>
-            <h3 className="font-header w-fit text-2xl font-black italic">
+            <h3 className="w-fit font-header text-2xl font-black italic">
               Video Production
             </h3>
             <p>
@@ -88,7 +88,7 @@ export default function VolunteerPageMobile() {
             </p>
           </div>
           <div>
-            <h3 className="font-header w-fit text-2xl font-black italic">
+            <h3 className="w-fit font-header text-2xl font-black italic">
               Website
             </h3>
             <p>
@@ -97,7 +97,7 @@ export default function VolunteerPageMobile() {
             </p>
           </div>
           <div>
-            <h3 className="font-header w-fit text-2xl font-black italic">
+            <h3 className="w-fit font-header text-2xl font-black italic">
               Sponsorship
             </h3>
             <p>
@@ -111,7 +111,7 @@ export default function VolunteerPageMobile() {
           <div className="relative size-32">
             <Image src={"/svg/x-tilted.svg"} alt="X" fill />
           </div>
-          <h2 className="font-header text-center text-4xl">
+          <h2 className="text-center font-header text-4xl">
             Tertarik untuk menjadi bagian dari perjalanan mencari{" "}
             <span className="font-black">&apos;Mantra Diri&apos;</span>?
           </h2>
