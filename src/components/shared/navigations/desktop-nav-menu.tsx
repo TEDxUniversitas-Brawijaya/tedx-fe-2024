@@ -61,14 +61,14 @@ export default function DesktopNavMenu() {
               onClick={() => {
                 if (href) setShowMenu(false);
               }}
-              className={`p-0 ${pathname === href && "text-base text-tedx-red"} ${!href && "focus:bg-none"}`}
+              className={`p-0 text-sm ${pathname === href && "text-tedx-red"} ${!href && "focus:bg-none"}`}
             >
               {href ? (
-                <Link href={href} className="size-full p-2">
+                <Link href={href} className="size-full px-2 py-1.5">
                   {label}
                 </Link>
               ) : (
-                <div className="p-2">{label}</div>
+                <div className="px-2 py-1.5">{label}</div>
               )}
             </DropdownMenuItem>
           ))}
