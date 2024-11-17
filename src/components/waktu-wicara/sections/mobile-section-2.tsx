@@ -68,7 +68,7 @@ export default function MobileSection2() {
         backgroundColor,
       }}
     >
-      <div className="sticky left-0 top-0 h-screen w-full flex items-center justify-center overflow-clip">
+      <div className="sticky left-0 top-0 flex h-screen w-full items-center justify-center overflow-clip">
         <motion.div
           className="absolute left-0 top-0 aspect-video h-[160vh] opacity-50"
           style={{ opacity: paperOpacity }}
@@ -116,7 +116,7 @@ export default function MobileSection2() {
           <Image src={"/img/person-walking.png"} alt="Person Walking" fill />
         </motion.div>
         <motion.div
-          className="absolute -right-96 top-72 aspect-[15/47] w-[52rem]"
+          className="absolute -right-96 top-72 aspect-[15/47] w-[52rem] blur-lg"
           style={{ opacity: person2Opacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -143,7 +143,7 @@ export default function MobileSection2() {
           />
         </div>
         <motion.div
-          className=" absolute top-[35%] flex w-max flex-col items-center justify-center"
+          className="absolute top-[35%] flex w-max flex-col items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.75, ease: "easeInOut" }}

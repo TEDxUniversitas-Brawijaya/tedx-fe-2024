@@ -105,6 +105,8 @@ const DesktopSection2 = () => {
               src="/img/person-walking-blur.png"
               alt="Person Walking"
               fill
+              objectFit="cover"
+              objectPosition="top"
             />
           </motion.div>
 
@@ -116,6 +118,8 @@ const DesktopSection2 = () => {
               src="/img/person-walking-blur.png"
               alt="Person Walking"
               fill
+              objectFit="cover"
+              objectPosition="top"
             />
           </motion.div>
 
