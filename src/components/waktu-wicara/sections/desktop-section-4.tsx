@@ -41,6 +41,8 @@ const DesktopSection4 = () => {
 
   const yPosition = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
+  const smoothYPosition = useSpring(yPosition, { stiffness: 100, damping: 20 });
+
   const tersembunyiOpacity = useTransform(
     scrollYProgress,
     [0, 0.3, 0.35],
@@ -104,7 +106,7 @@ const DesktopSection4 = () => {
             <motion.div
               className="absolute right-40 top-1/2 w-[40%] -translate-y-1/2 text-left"
               style={{
-                y: useTransform(yPosition, (latest) => `${-latest}vh`),
+                y: useTransform(smoothYPosition, (latest) => `${-latest}vh`),
                 opacity: tersembunyiOpacity,
               }}
             >
@@ -118,7 +120,10 @@ const DesktopSection4 = () => {
             <motion.div
               className="absolute right-40 top-1/2 w-[40%] -translate-y-1/2 text-left"
               style={{
-                y: useTransform(yPosition, (latest) => `${100 - latest}vh`),
+                y: useTransform(
+                  smoothYPosition,
+                  (latest) => `${100 - latest}vh`,
+                ),
                 opacity: langkahOpacity,
               }}
             >
@@ -132,7 +137,10 @@ const DesktopSection4 = () => {
             <motion.div
               className="absolute right-40 top-1/2 w-[40%] -translate-y-1/2 text-left"
               style={{
-                y: useTransform(yPosition, (latest) => `${200 - latest}vh`),
+                y: useTransform(
+                  smoothYPosition,
+                  (latest) => `${200 - latest}vh`,
+                ),
                 opacity: memanggilOpacity,
               }}
             >
