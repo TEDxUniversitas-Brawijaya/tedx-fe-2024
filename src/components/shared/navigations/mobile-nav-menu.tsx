@@ -1,52 +1,37 @@
 "use client";
 
+import { MenuIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import MenuIcon from "./icons/menu-icon";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import XIcon from "./icons/x-icon";
+import useMounted from "@/hooks/useMounted";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../accordion";
+import { eventMenus } from "@/lib/static/nav-menus";
 
-export default function Navbar() {
+export default function MobileNavMenu() {
   const pathname = usePathname();
+  const isMounted = useMounted();
 
   const [showMenu, setShowMenu] = useState(false);
 
+  if (!isMounted)
+    return (
+      <div className="block size-10 animate-pulse rounded-md bg-neutral-700 md:hidden" />
+    );
+
   return (
-    <div className="relative">
-      <nav className="fixed z-30 flex w-full items-center justify-between gap-5 bg-tedx-black px-5 py-3 text-tedx-white md:px-20">
-        <Link href={"/"}>
-          <div className="relative aspect-[15/4] w-36">
-            <Image src="/img/tedx-logo.png" alt="TEDxUB Logo" fill />
-          </div>
-        </Link>
+    <>
+      <button onClick={() => setShowMenu(true)} className="block md:hidden">
+        <MenuIcon className="size-10" />
+      </button>
 
-        <div className="hidden space-x-10 font-semibold md:block">
-          <Link
-            href={"/about-us"}
-            className={`underline-offset-4 hover:underline ${pathname === "/about-us" && "text-tedx-red"}`}
-          >
-            About Us
-          </Link>
-          <Link
-            href={"/events"}
-            className={`underline-offset-4 hover:underline ${pathname === "/events" && "text-tedx-red"}`}
-          >
-            Events
-          </Link>
-          <Link
-            href={"/merch"}
-            className={`underline-offset-4 hover:underline ${pathname === "/merch" && "text-tedx-red"}`}
-          >
-            Merch
-          </Link>
-        </div>
-
-        <button onClick={() => setShowMenu(true)} className="block md:hidden">
-          <MenuIcon className="size-10" />
-        </button>
-      </nav>
       <motion.div
         initial={{ top: "-150vh" }}
         animate={showMenu ? { top: "0", bottom: "0" } : { top: "-150vh" }}
@@ -82,13 +67,33 @@ export default function Navbar() {
             >
               About Us
             </Link>
-            <Link
-              onClick={() => setShowMenu(false)}
-              href={"/events"}
-              className={`underline-offset-4 hover:underline ${pathname === "/events" && "text-tedx-red"}`}
-            >
-              Events
-            </Link>
+
+            <Accordion type="single" collapsible className="w-28">
+              <AccordionItem value="events" className="border-none">
+                <AccordionTrigger className="justify-center gap-4 p-0 font-semibold">
+                  Events
+                </AccordionTrigger>
+                <AccordionContent className="flex flex-col items-center gap-3 overflow-visible whitespace-nowrap pb-0 pt-3 font-medium">
+                  {eventMenus.map(({ href, label }) => (
+                    <div
+                      key={label}
+                      onClick={() => {
+                        if (href) setShowMenu(false);
+                      }}
+                      className={` ${pathname === href && "text-base text-tedx-red"} ${!href && "focus:bg-none"}`}
+                    >
+                      {href ? (
+                        <Link href={href} className="hover:undeline">
+                          {label}
+                        </Link>
+                      ) : (
+                        <div className="text-neutral-500">{label}</div>
+                      )}
+                    </div>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
             <Link
               onClick={() => setShowMenu(false)}
               href={"/merch"}
@@ -105,6 +110,6 @@ export default function Navbar() {
           </div>
         </div>
       </motion.div>
-    </div>
+    </>
   );
 }

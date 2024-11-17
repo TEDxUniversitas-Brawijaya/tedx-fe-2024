@@ -1,4 +1,4 @@
-import Navbar from "@/components/shared/navbar";
+import Navbar from "@/components/shared/navigations/navbar";
 import { localFontVariables } from "@/lib/fonts";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
