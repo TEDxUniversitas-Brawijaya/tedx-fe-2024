@@ -5,7 +5,7 @@ export const eventMenus = [
   },
   {
     label: "Pre-Event",
-    href: null,
+    href: "/events/swara-aksara",
   },
   {
     label: "Propaganda 2",
