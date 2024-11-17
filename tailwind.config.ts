@@ -28,6 +28,9 @@ const config: Config = {
           yellow: {
             DEFAULT: "#EED14E",
           },
+          yellow: {
+            DEFAULT: "#EED14E",
+          },
         },
       },
       fontFamily: {
