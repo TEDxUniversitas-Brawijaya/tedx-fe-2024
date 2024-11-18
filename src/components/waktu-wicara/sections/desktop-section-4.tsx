@@ -57,7 +57,7 @@ const DesktopSection4 = () => {
 
   const memanggilOpacity = useTransform(
     scrollYProgress,
-    [0.6, 0.65, 1],
+    [0.55, 0.6, 1],
     [0, 1, 1],
   );
 

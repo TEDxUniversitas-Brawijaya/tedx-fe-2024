@@ -76,7 +76,7 @@ export default function MobileSection4() {
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <Image
-            src={`/img/hand-flower-${currentImageIdx}.png`}
+            src={`/img/hand-flower-${currentImageIdx}-mobile.png`}
             alt={`Hand Flower ${currentImageIdx}`}
             fill
             priority
