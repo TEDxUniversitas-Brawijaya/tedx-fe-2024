@@ -76,7 +76,7 @@ const DesktopSection2 = () => {
           <motion.div className="z-20 w-[60%] text-center text-white">
             <h2 className="font-header text-6xl font-bold">Waktu Wicara,</h2>
             <p className="mt-5">
-              sang penjaga sunyi, saksi mata setiap jejak langkah insan menuju
+              Sang penjaga sunyi, saksi mata setiap jejak langkah insan menuju
               aktualisasi diri. Setiap detik mengukir kisah, memberi ruang bagi
               jiwa untuk mekar, berubah dan menemukan suara dalam keberanian
               yang penuh keyakinan.

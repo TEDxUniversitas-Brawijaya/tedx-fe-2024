@@ -74,7 +74,7 @@ const DesktopSection4 = () => {
               className={`${previousImageIndex === 0 || previousImageIndex === 1 ? "h-[70%]" : "h-[85%]"} absolute bottom-0 w-full`}
               initial={{ opacity: 1 }}
               animate={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <Image
                 src={flowerImages[previousImageIndex]}
@@ -89,7 +89,7 @@ const DesktopSection4 = () => {
               className={`${currentImageIndex === 0 || currentImageIndex === 1 ? "h-[70%]" : "h-[85%]"} absolute bottom-0 w-full`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeIn" }}
+              transition={{ duration: 0.3, ease: "easeIn" }}
             >
               <Image
                 src={flowerImages[currentImageIndex]}
@@ -146,8 +146,8 @@ const DesktopSection4 = () => {
             >
               <h1 className="font-header text-6xl text-white">Memanggil</h1>
               <h2 className="mt-4 text-white">
-                Ada panggilan harlus dari dalam jiwa atau dari semesta,
-                menggugah hati untuk melangkah lebih jauh menjemput takdir
+                Ada panggilan halus dari dalam jiwa atau dari semesta, menggugah
+                hati untuk melangkah lebih jauh menjemput takdir
               </h2>
             </motion.div>
           </div>

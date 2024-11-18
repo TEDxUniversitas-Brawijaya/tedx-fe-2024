@@ -152,7 +152,7 @@ export default function MobileSection2() {
             Waktu Wicara,
           </h1>
           <h2 className="w-80 text-center font-light">
-            sang penjaga sunyi, saksi mata setiap jejak langkah insan menuju
+            Sang penjaga sunyi, saksi mata setiap jejak langkah insan menuju
             aktualisasi diri. Setiap detik mengukir kisah, memberi ruang bagi
             jiwa untuk mekar, berubah dan menemukan suara dalam keberanian yang
             penuh keyakinan.

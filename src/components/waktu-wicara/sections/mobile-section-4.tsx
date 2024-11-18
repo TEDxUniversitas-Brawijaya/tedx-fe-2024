@@ -132,7 +132,7 @@ export default function MobileSection4() {
         >
           <h1 className="font-header text-4xl leading-[4rem]">Memanggil</h1>
           <h2 className="w-56 text-justify font-light">
-            Ada panggilan harlus dari dalam jiwa atau dari semesta, menggugah
+            Ada panggilan halus dari dalam jiwa atau dari semesta, menggugah
             hati untuk melangkah lebih jauh menjemput takdir
           </h2>
         </motion.div>
