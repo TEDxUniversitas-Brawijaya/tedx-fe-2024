@@ -8,7 +8,7 @@ interface IDesktopSection1 {
 
 const DesktopSection1 = ({ handleExplore, isAnimating }: IDesktopSection1) => (
   <section>
-    <motion.div className="absolute bottom-[15%] left-[5%] z-10 font-header">
+    <motion.div className="absolute bottom-[10%] left-[5%] z-10 font-header">
       <h1 className="text-4xl">Propaganda 1</h1>
       <h2 className="text-6xl font-bold">Waktu Wicara</h2>
       <button
@@ -19,7 +19,7 @@ const DesktopSection1 = ({ handleExplore, isAnimating }: IDesktopSection1) => (
         Jelajah
       </button>
     </motion.div>
-    <motion.div className="absolute left-0 top-0 size-[400px]">
+    <motion.div className="absolute left-0 size-[400px] lg:-top-16 xl:top-0">
       <Image src="/img/flower-raflesia.png" alt="Paper Texture" fill priority />
     </motion.div>
 
