@@ -65,11 +65,31 @@ export default function DesktopSection1() {
         </motion.div>
       </div>
 
-      <div className="z-10">
-        <p className="text-xl text-tedx-red">
+      <div className="relative z-10 -mt-24">
+        <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl italic text-tedx-red">
           Swara berarti suara; Aksara berarti huruf
         </p>
-        <h2 className="font-header text-8xl font-bold">Swara Aksara</h2>
+        {/* curved text */}
+        <div className="w-[90vw] mx-auto">
+          <svg className="w-full" viewBox="0 0 1000 200">
+            <defs>
+              <path
+                id="curve"
+                d="M 100 30 Q 500 350 950 30"
+                fill="none"
+              />
+            </defs>
+            <text className="tracking-[.15em] font-header text-[72px] fill-current">
+              <textPath
+                href="#curve"
+                startOffset="50%"
+                textAnchor="middle"
+              >
+                Swara Aksara
+              </textPath>
+            </text>
+          </svg>
+        </div>
       </div>
       <p className="z-10 w-[70%]">
         Swara Aksara mencerminkan kekuatan bahasa sebagai alat untuk
