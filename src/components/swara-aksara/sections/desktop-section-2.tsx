@@ -49,7 +49,7 @@ export default function DesktopSection2() {
       <div className="absolute top-0 h-screen w-full">
         <Image src={"/img/paper-texture-5.png"} alt="Cloud" fill />
       </div>
-      <div className="absolute bottom-0 h-screen w-full">
+      <div className="z-20 absolute bottom-0 h-screen w-full">
         <Image src={"/img/paper-texture-5.png"} alt="Cloud" fill />
       </div>
       <div className="absolute left-36 top-[36rem] aspect-square w-96">
@@ -64,7 +64,7 @@ export default function DesktopSection2() {
       <div className="absolute bottom-[40rem] right-40 aspect-square w-96">
         <Image src={"/img/tarot-bg-blur.png"} alt="Cloud" fill />
       </div>
-      <div className="absolute bottom-0 h-[858px] w-[884px]">
+      <div className="z-10 absolute bottom-0 h-[858px] w-[884px]">
         <Image src={"/img/sketsa-orangg.png"} alt="Cloud" fill />
       </div>
       <motion.div
@@ -86,7 +86,7 @@ export default function DesktopSection2() {
         <Image src={"/img/speaker-card-2.png"} alt="Cloud" fill />
       </motion.div>
       <motion.div
-        className="absolute -right-28 bottom-[32rem] h-[452px] w-[470px]"
+        className="z-30 absolute -right-28 bottom-[32rem] h-[452px] w-[470px]"
         style={{
           x: springX, // Bind spring values to the x and y properties
           y: springY,
