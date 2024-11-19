@@ -9,7 +9,7 @@ export default function SwaraAksaraPageDesktop() {
       <DesktopSection1 />
       <div>
         <DesktopSection2 />
-        <div className="sticky z-50 flex items-center justify-center overflow-x-clip">
+        <div className="sticky z-20 flex items-center justify-center overflow-x-clip">
           <div className="absolute aspect-[4/1] h-fit w-[102.5vw]">
             <Image src={"/img/awan.png"} alt="Awan" fill />
           </div>
