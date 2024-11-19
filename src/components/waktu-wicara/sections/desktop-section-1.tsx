@@ -12,7 +12,7 @@ const DesktopSection1 = ({ handleExplore, isAnimating }: IDesktopSection1) => (
       <h1 className="text-4xl">Propaganda 1</h1>
       <h2 className="text-6xl font-bold">Waktu Wicara</h2>
       <button
-        className="mt-5 rounded-md bg-tedx-red px-7 py-3 text-base font-semibold text-white transition-all duration-150 hover:bg-tedx-red/80 disabled:opacity-50"
+        className="mt-5 rounded-md bg-tedx-red px-7 py-3 font-body text-base font-semibold text-white transition-all duration-150 hover:bg-tedx-red/80 disabled:opacity-50"
         onClick={handleExplore}
         disabled={isAnimating}
       >
