@@ -23,7 +23,7 @@ export default function DesktopSection3() {
       className="relative z-0 h-[400vh] bg-tedx-green text-center text-white"
       ref={sectionRef}
     >
-      <div className="sticky left-0 top-0 flex h-screen w-full flex-col items-center justify-center gap-10">
+      <div className="sticky left-0 top-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-x-clip">
         <div className="absolute -top-64 z-50 aspect-[4/1] h-fit w-[102.5vw]">
           <Image src={"/img/awan.png"} alt="Awan" fill />
         </div>
