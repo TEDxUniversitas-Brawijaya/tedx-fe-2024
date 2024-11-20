@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function MobileSection1({ onClick }: { onClick: () => void }) {
   return (
     <motion.section className="h-screen">
-      <div className="sticky top-0 left-0 flex h-screen w-full items-center justify-center">
+      <div className="sticky left-0 top-0 flex h-screen w-full items-center justify-center">
         <motion.div
           className="absolute -left-4 -top-4 size-[250px]"
           exit={{
