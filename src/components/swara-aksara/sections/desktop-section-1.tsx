@@ -40,7 +40,7 @@ export default function DesktopSection1() {
 
   return (
     <section
-      className="bg-tedx-grey-300 relative z-0 flex h-screen flex-col items-center justify-center gap-10 pt-20 text-center"
+      className="relative z-0 flex h-screen flex-col items-center justify-center gap-10 bg-tedx-grey-300 pt-20 text-center"
       onMouseMove={handleMouseMove}
     >
       <div className="absolute bottom-0 -z-10 aspect-[1920/616] w-full">
@@ -70,21 +70,13 @@ export default function DesktopSection1() {
           Swara berarti suara; Aksara berarti huruf
         </p>
         {/* curved text */}
-        <div className="w-[90vw] mx-auto">
+        <div className="mx-auto w-[90vw]">
           <svg className="w-full" viewBox="0 0 1000 200">
             <defs>
-              <path
-                id="curve"
-                d="M 100 30 Q 500 350 950 30"
-                fill="none"
-              />
+              <path id="curve" d="M 100 30 Q 500 350 950 30" fill="none" />
             </defs>
-            <text className="tracking-[.15em] font-header text-[72px] fill-current">
-              <textPath
-                href="#curve"
-                startOffset="50%"
-                textAnchor="middle"
-              >
+            <text className="fill-current font-header text-[72px] tracking-[.15em]">
+              <textPath href="#curve" startOffset="50%" textAnchor="middle">
                 Swara Aksara
               </textPath>
             </text>
