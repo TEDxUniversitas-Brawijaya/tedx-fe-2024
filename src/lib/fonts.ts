@@ -12,4 +12,10 @@ const bodyFont = localFont({
   weight: "100 200 300 400 500 600 700 800 900",
 });
 
-export const localFontVariables = `${headerFont.variable} ${bodyFont.variable}`;
+const javaFont = localFont({
+  src: "../app/fonts/CarakanJawa.woff2",
+  variable: "--font-carakan-jawa",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+
+export const localFontVariables = `${headerFont.variable} ${bodyFont.variable} ${javaFont.variable}`;

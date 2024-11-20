@@ -16,6 +16,7 @@ const config: Config = {
           black: "#171715",
           white: "#FFFFFF",
           grey: {
+            300: "#E8E9DE",
             DEFAULT: "#A1A1A1",
           },
           green: {
@@ -41,6 +42,13 @@ const config: Config = {
           "sans-serif",
         ],
         body: ["var(--font-aileron)", "Helvetica Neue", "Arial", "sans-serif"],
+        java: [
+          "var(--font-carakan-jawa)",
+          "var(--font-aileron)",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
       },
       borderRadius: {
         lg: "var(--radius)",
