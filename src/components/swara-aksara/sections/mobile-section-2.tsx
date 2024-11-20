@@ -161,15 +161,15 @@ export default function MobileSection2() {
         <div className="absolute bottom-28 left-1/2 h-[45dvh] w-full max-w-[600px] -translate-x-1/2">
           <Image src="/img/person-ball.png" alt="Person Ball" fill />
         </div>
-        <div className="relative z-10 h-full w-full overflow-x-clip">
+        <div className="relative z-10 h-full w-full">
           <div className="absolute -bottom-24 -left-[18%] aspect-[270/250] h-[230px] w-1/2">
             <Image src="/img/cloud-outline.png" alt="Cloud" fill />
           </div>
           <div className="absolute -bottom-16 aspect-[270/250] h-[230px] w-1/2 translate-x-1/2">
             <Image src="/img/cloud-outline.png" alt="Cloud" fill />
           </div>
-          <div className="absolute -bottom-24 -right-[18%] aspect-[270/250] h-[230px] w-1/2">
-            <Image src="/img/cloud-outline.png" alt="Cloud" fill />
+          <div className="absolute -bottom-24 -right-0 aspect-[270/250] h-[230px] w-1/3">
+            <Image src="/img/cloud-outline-half.png" alt="Cloud" fill />
           </div>
         </div>
       </div>

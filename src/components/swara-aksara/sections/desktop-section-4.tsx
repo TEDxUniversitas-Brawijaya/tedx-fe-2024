@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { faqs } from "@/lib/static/aksara-swara";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useRef, useState } from "react";
 import SwiperType from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
+import { faqDatas } from "@/lib/static/aksara-swara";
 
 export default function DesktopSection4() {
   const swiperRef = useRef<SwiperType | null>(null);
@@ -61,7 +61,7 @@ export default function DesktopSection4() {
                 />
               </div>
             </SwiperSlide>
-            {faqs.map((faq) => {
+            {faqDatas.map((faq) => {
               return (
                 <SwiperSlide
                   className="z-0 aspect-[400/485] w-52 xl:w-32"

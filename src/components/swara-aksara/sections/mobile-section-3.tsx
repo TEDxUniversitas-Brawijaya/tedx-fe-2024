@@ -1,10 +1,10 @@
-import { faqData } from "@/lib/static/faq-datas";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef, useState } from "react";
 import ArrowIcon from "@/components/shared/icons/arrow-icon";
 import Image from "next/image";
 import SwiperType from "swiper";
+import { faqDatas } from "@/lib/static/aksara-swara";
 
 export default function MobileSection3() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -147,7 +147,7 @@ export default function MobileSection3() {
               <Image src="/img/faq-front.png" alt="Faq Front" fill />
             </div>
           </SwiperSlide>
-          {faqData.map((dx, idx) => (
+          {faqDatas.map((dx, idx) => (
             <SwiperSlide key={idx * 101}>
               <div className="relative mx-auto aspect-[356/432] h-[80%] max-h-[432px] w-[80%] max-w-[356px]">
                 <div className="absolute left-0 top-0 z-10 h-full w-full space-y-14 px-10 py-16 text-center">

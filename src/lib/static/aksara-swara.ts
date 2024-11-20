@@ -1,4 +1,4 @@
-export const faqs = [
+export const faqDatas = [
   {
     question: "Apakah kegiatan ini terbuka untuk umum?",
     answer:
