@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useScroll, useSpring, useTransform, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function MobileSection2() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -89,7 +90,7 @@ export default function MobileSection2() {
   }
 
   return (
-    <section className="relative bg-tedx-grey-300">
+    <section id="section-2-mobile" className="relative bg-tedx-grey-300">
       <div ref={containerRef} className="relative z-0 h-[700vh]">
         <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden px-5 pt-20">
           <p className="font-java z-10 text-4xl">ꦥꦶꦠꦸꦠꦸꦂ</p>
@@ -101,9 +102,17 @@ export default function MobileSection2() {
             Inilah salah satu pemberhentian dalam mencari Mantra Diri, ikuti
             terus prosesnya dengan mengunjungi link ini!
           </p>
-          <button className="z-10 rounded-md bg-tedx-red px-4 py-2 text-white transition-colors duration-150 hover:bg-tedx-red/80">
-            Temukan Dirimu
-          </button>
+          <Link
+            href={
+              "https://bit.ly/PendaftaranSwaraAksaraTEDxUniversitasBrawijaya"
+            }
+            target="_blank"
+            className="z-20"
+          >
+            <button className="rounded-md bg-tedx-red px-4 py-2 font-bold text-white transition-colors duration-150 hover:bg-tedx-red/80">
+              Temukan Dirimu
+            </button>
+          </Link>
 
           {/* Speaker Cards */}
           {speakerCardsConfig.map((card, index) => (

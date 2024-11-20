@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion, useSpring } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Link as Scroll } from "react-scroll";
 
 export default function DesktopSection1() {
   const [targetPosition, setTargetPosition] = useState({ x: 0, y: 0 });
@@ -92,9 +93,17 @@ export default function DesktopSection1() {
         akan ada penampilan menarik lainnya yang ikut memeriahkan acara Swara
         Aksara.
       </p>
-      <button className="z-10 rounded-md bg-tedx-red px-4 py-2 text-white transition-colors duration-150 hover:bg-tedx-red/80">
-        Jelajahi
-      </button>
+      <Scroll
+        to="section-2-desktop"
+        smooth={true}
+        duration={1000}
+        className="z-30"
+        offset={150}
+      >
+        <button className="rounded-md bg-tedx-red px-4 py-2 text-white transition-colors duration-150 hover:bg-tedx-red/80">
+          Jelajahi
+        </button>
+      </Scroll>
     </section>
   );
 }

@@ -41,6 +41,7 @@ export default function DesktopSection2() {
 
   return (
     <section
+      id="section-2-desktop"
       className="relative z-0 flex h-[200vh] flex-col items-center justify-center gap-10 overflow-x-hidden overflow-y-hidden bg-tedx-grey-300 pt-20 text-center"
       onMouseMove={handleMouseMove}
     >
@@ -50,7 +51,7 @@ export default function DesktopSection2() {
       <div className="absolute top-0 z-10 h-screen w-full">
         <Image src={"/img/paper-texture-5.png"} alt="Cloud" fill />
       </div>
-      <div className="absolute bottom-0 z-20 h-screen w-full">
+      <div className="absolute bottom-0 z-10 h-screen w-full">
         <Image src={"/img/paper-texture-5.png"} alt="Cloud" fill />
       </div>
       <div className="absolute left-36 top-[36rem] aspect-square w-96">
@@ -116,7 +117,7 @@ export default function DesktopSection2() {
             }
             target="_blank"
           >
-            <button className="z-30 rounded-md bg-tedx-red px-4 py-2 font-bold text-white transition-colors duration-150 hover:bg-tedx-red/80">
+            <button className="z-40 rounded-md bg-tedx-red px-4 py-2 font-bold text-white transition-colors duration-150 hover:bg-tedx-red/80">
               Temukan Dirimu
             </button>
           </Link>
