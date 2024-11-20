@@ -100,7 +100,7 @@ export default function DesktopSection2() {
         <div className="flex flex-col items-center justify-center space-y-5">
           <div className="space-y-6">
             <h4 className="font-java text-4xl">ꦥꦶꦠꦸꦠꦸꦂ</h4>
-            <h3 className="font-header text-4xl">(Piturur)</h3>
+            <h3 className="font-header text-4xl">(Pitutur)</h3>
           </div>
           <h1 className="w-[70%] font-header text-6xl leading-none">
             DAFTAR DAN TEMUKAN VERSI BARU DIRIMU!
