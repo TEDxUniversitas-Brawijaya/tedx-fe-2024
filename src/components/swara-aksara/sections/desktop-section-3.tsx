@@ -28,10 +28,10 @@ export default function DesktopSection3() {
           <Image src={"/img/awan.png"} alt="Awan" fill />
         </div>
         <div className="sticky left-0 top-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-clip">
-          <div className="absolute top-0 h-screen w-full opacity-50">
+          <div className="absolute top-0 z-20 h-screen w-full opacity-50">
             <Image src={"/img/paper-texture-5.png"} alt="Paper Texture" fill />
           </div>
-          <div className="absolute -top-72 h-[593px] w-[711px]">
+          <div className="absolute -top-72 z-10 h-[593px] w-[711px]">
             <Image src={"/img/sun-2.png"} alt="Cloud" fill />
           </div>
           <motion.div
