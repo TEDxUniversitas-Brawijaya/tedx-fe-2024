@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { faqs } from "@/lib/static/aksara-swara";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useRef } from "react";
 import swiper from "swiper";
 import "swiper/css";
 import { Navigation, Pagination } from "swiper/modules";
-import { faqs } from "../../../lib/static/aksara-swara";
 
 export default function DesktopSection4() {
   const swiperRef = useRef<swiper | null>(null);
@@ -26,12 +26,22 @@ export default function DesktopSection4() {
             }}
             modules={[Pagination, Navigation]}
             navigation={true}
-            className="mySwiper w-[1264px]"
+            className="mySwiper w-[832px] xl:w-[1264px]"
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
+            breakpoints={{
+              1024: {
+                slidesPerView: 2,
+                spaceBetween: 32,
+              },
+              1280: {
+                slidesPerView: 3,
+                spaceBetween: 32,
+              },
+            }}
           >
-            <SwiperSlide className="">
+            <SwiperSlide>
               <div className="h-[485px] w-[400px]">
                 <Image
                   src={"/img/faq-card-cover.png"}

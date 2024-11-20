@@ -24,7 +24,7 @@ export default function DesktopSection3() {
       ref={sectionRef}
     >
       <div className="sticky left-0 top-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-x-clip">
-        <div className="absolute -top-64 z-50 aspect-[4/1] h-fit w-[102.5vw]">
+        <div className="absolute -top-40 z-50 aspect-[6.3/1] h-80">
           <Image src={"/img/awan.png"} alt="Awan" fill />
         </div>
         <div className="sticky left-0 top-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-clip">
@@ -64,12 +64,12 @@ export default function DesktopSection3() {
               23 November 2024 13.00 WIB
             </p>
           </div>
-          <div className="absolute top-[22rem] w-[35%]">
+          <div className="absolute top-[22rem] w-[60vw]">
             <a
               href="https://g.co/kgs/JVvzGCx"
-              className="font-header text-[6rem] leading-none hover:underline"
+              className="text-pretty font-header text-[6rem] leading-none hover:underline"
             >
-              Catat tanggal & waktunya
+              Catat tanggal <br /> & waktunya
             </a>
           </div>
         </div>
