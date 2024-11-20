@@ -40,7 +40,7 @@ export default function DesktopSection1() {
 
   return (
     <section
-      className="bg-tedx-grey-300 relative z-0 flex h-screen flex-col items-center justify-center gap-10 pt-20 text-center"
+      className="relative z-0 flex h-screen flex-col items-center justify-center gap-10 bg-tedx-grey-300 pt-20 text-center"
       onMouseMove={handleMouseMove}
     >
       <div className="absolute bottom-0 -z-10 aspect-[1920/616] w-full">
