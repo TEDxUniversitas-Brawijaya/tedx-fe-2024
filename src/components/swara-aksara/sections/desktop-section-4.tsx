@@ -84,13 +84,15 @@ export default function DesktopSection4() {
           </Swiper>
           <div className="flex w-full flex-row items-center justify-center gap-4 text-tedx-black">
             <button
-              className={`flex h-10 w-16 items-center justify-center rounded-lg transition-all duration-300 ${isBeginning ? "cursor-not-allowed bg-neutral-500 text-neutral-600" : "cursor-pointer bg-tedx-yellow hover:bg-yellow-500"}`}
+              disabled={isBeginning}
+              className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 hover:bg-yellow-500 disabled:cursor-not-allowed disabled:bg-neutral-500 disabled:text-neutral-600 disabled:hover:bg-neutral-500`}
               onClick={() => swiperRef.current?.slidePrev()}
             >
               <ChevronLeftIcon size={24} />
             </button>
             <button
-              className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 ${isEnd ? "cursor-not-allowed bg-neutral-500 text-neutral-600" : "cursor-pointer bg-tedx-yellow hover:bg-yellow-500"}`}
+              disabled={isEnd}
+              className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 hover:bg-yellow-500 disabled:cursor-not-allowed disabled:bg-neutral-500 disabled:text-neutral-600 disabled:hover:bg-neutral-500`}
               onClick={() => swiperRef.current?.slideNext()}
             >
               <ChevronRightIcon size={24} />

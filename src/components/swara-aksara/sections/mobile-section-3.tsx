@@ -164,14 +164,14 @@ export default function MobileSection3() {
         <div className="absolute -bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2">
           <button
             onClick={handlePrevClick}
-            className={`flex h-10 w-16 items-center justify-center rounded-lg transition-all duration-300 ${isBeginning ? "cursor-not-allowed bg-neutral-500 text-neutral-600" : "cursor-pointer bg-tedx-yellow hover:bg-yellow-500"}`}
+            className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 hover:bg-yellow-500 disabled:cursor-not-allowed disabled:bg-neutral-500 disabled:text-neutral-600 disabled:hover:bg-neutral-500`}
             disabled={isBeginning}
           >
             <ArrowIcon />
           </button>
           <button
             onClick={handleNextClick}
-            className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 ${isEnd ? "cursor-not-allowed bg-neutral-500 text-neutral-600" : "cursor-pointer bg-tedx-yellow hover:bg-yellow-500"}`}
+            className={`flex h-10 w-16 cursor-pointer items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 hover:bg-yellow-500 disabled:cursor-not-allowed disabled:bg-neutral-500 disabled:text-neutral-600 disabled:hover:bg-neutral-500`}
             disabled={isEnd}
           >
             <ArrowIcon className="scale-x-[-1] transform" />
