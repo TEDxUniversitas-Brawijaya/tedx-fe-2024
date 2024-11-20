@@ -1,14 +1,14 @@
-import "swiper/css";
 import { faqData } from "@/lib/static/faq-datas";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef, useState } from "react";
 import ArrowIcon from "@/components/shared/icons/arrow-icon";
 import Image from "next/image";
+import SwiperType from "swiper";
 
 export default function MobileSection3() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
@@ -164,14 +164,14 @@ export default function MobileSection3() {
         <div className="absolute -bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2">
           <button
             onClick={handlePrevClick}
-            className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 ${isBeginning ? "cursor-not-allowed blur-[2px]" : "cursor-pointer hover:bg-yellow-500"}`}
+            className={`flex h-10 w-16 items-center justify-center rounded-lg transition-all duration-300 ${isBeginning ? "cursor-not-allowed bg-neutral-500 text-neutral-600" : "cursor-pointer bg-tedx-yellow hover:bg-yellow-500"}`}
             disabled={isBeginning}
           >
             <ArrowIcon />
           </button>
           <button
             onClick={handleNextClick}
-            className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 ${isEnd ? "cursor-not-allowed blur-[2px]" : "cursor-pointer hover:bg-yellow-500"}`}
+            className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 ${isEnd ? "cursor-not-allowed bg-neutral-500 text-neutral-600" : "cursor-pointer bg-tedx-yellow hover:bg-yellow-500"}`}
             disabled={isEnd}
           >
             <ArrowIcon className="scale-x-[-1] transform" />

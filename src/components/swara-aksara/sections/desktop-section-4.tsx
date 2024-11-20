@@ -3,13 +3,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { faqs } from "@/lib/static/aksara-swara";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { useRef } from "react";
-import swiper from "swiper";
-import "swiper/css";
+import { useRef, useState } from "react";
+import SwiperType from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
 
 export default function DesktopSection4() {
-  const swiperRef = useRef<swiper | null>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSlideChange = () => {
+    if (swiperRef.current) {
+      setIsBeginning(swiperRef.current.isBeginning);
+      setIsEnd(swiperRef.current.isEnd);
+    }
+  };
 
   return (
     <section className="relative z-0 bg-tedx-green text-center text-white">
@@ -29,7 +37,10 @@ export default function DesktopSection4() {
             className="mySwiper w-full"
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
+              setIsBeginning(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
             }}
+            onSlideChange={handleSlideChange}
             breakpoints={{
               1024: {
                 slidesPerView: 3,
@@ -71,15 +82,15 @@ export default function DesktopSection4() {
               );
             })}
           </Swiper>
-          <div className="flex w-full flex-row items-center justify-center gap-4">
+          <div className="flex w-full flex-row items-center justify-center gap-4 text-tedx-black">
             <button
-              className="rounded-lg bg-[#E4CA48] px-6 py-2 text-black"
+              className={`flex h-10 w-16 items-center justify-center rounded-lg transition-all duration-300 ${isBeginning ? "cursor-not-allowed bg-neutral-500 text-neutral-600" : "cursor-pointer bg-tedx-yellow hover:bg-yellow-500"}`}
               onClick={() => swiperRef.current?.slidePrev()}
             >
               <ChevronLeftIcon size={24} />
             </button>
             <button
-              className="rounded-lg bg-[#E4CA48] px-6 py-2 text-black"
+              className={`flex h-10 w-16 items-center justify-center rounded-lg bg-tedx-yellow transition-all duration-300 ${isEnd ? "cursor-not-allowed bg-neutral-500 text-neutral-600" : "cursor-pointer bg-tedx-yellow hover:bg-yellow-500"}`}
               onClick={() => swiperRef.current?.slideNext()}
             >
               <ChevronRightIcon size={24} />

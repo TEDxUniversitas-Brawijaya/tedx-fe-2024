@@ -42,6 +42,13 @@ const config: Config = {
           "sans-serif",
         ],
         body: ["var(--font-aileron)", "Helvetica Neue", "Arial", "sans-serif"],
+        java: [
+          "var(--font-carakan-jawa)",
+          "var(--font-aileron)",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
       },
       borderRadius: {
         lg: "var(--radius)",

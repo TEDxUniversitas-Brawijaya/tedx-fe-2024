@@ -1,5 +1,6 @@
 import { motion, useSpring } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function DesktopSection2() {
@@ -43,10 +44,10 @@ export default function DesktopSection2() {
       className="relative z-0 flex h-[200vh] flex-col items-center justify-center gap-10 overflow-x-hidden overflow-y-hidden bg-tedx-grey-300 pt-20 text-center"
       onMouseMove={handleMouseMove}
     >
-      <div className="absolute top-0 -z-10 aspect-[1920/616] w-full rotate-180">
+      <div className="absolute top-0 -z-10 aspect-[1920/616] w-full -translate-y-1 rotate-180">
         <Image src={"/img/cloud-grey.png"} alt="Cloud" fill />
       </div>
-      <div className="absolute top-0 -z-10 h-screen w-full">
+      <div className="absolute top-0 z-10 h-screen w-full">
         <Image src={"/img/paper-texture-5.png"} alt="Cloud" fill />
       </div>
       <div className="absolute bottom-0 z-20 h-screen w-full">
@@ -64,7 +65,7 @@ export default function DesktopSection2() {
       <div className="absolute bottom-[10rem] right-40 aspect-square w-72">
         <Image src={"/img/tarot-bg-blur.png"} alt="Cloud" fill />
       </div>
-      <div className="absolute -bottom-[5%] z-10 aspect-square w-1/2 2xl:-bottom-[10%]">
+      <div className="absolute bottom-[3%] z-10 aspect-square w-[40%] 2xl:bottom-0">
         <Image src={"/img/sketsa-orangg.png"} alt="Cloud" fill />
       </div>
       <motion.div
@@ -94,24 +95,31 @@ export default function DesktopSection2() {
       >
         <Image src={"/img/speaker-card-3.png"} alt="Cloud" fill />
       </motion.div>
-      <div className="absolute top-[18rem] z-30 flex flex-col items-center justify-center gap-10 2xl:top-[32rem]">
-        <div className="flex flex-col items-center justify-center">
-          <div>
-            <h4 className="text-4xl">ꦥꦶꦠꦸꦠꦸꦂ</h4>
+      <div className="absolute top-[18rem] z-30 flex flex-col items-center justify-center gap-5 2xl:top-[32rem]">
+        <div className="flex flex-col items-center justify-center space-y-5">
+          <div className="space-y-6">
+            <h4 className="font-java text-4xl">ꦥꦶꦠꦸꦠꦸꦂ</h4>
             <h3 className="font-header text-4xl">(Piturur)</h3>
           </div>
           <h1 className="w-[70%] font-header text-6xl leading-none">
             DAFTAR DAN TEMUKAN VERSI BARU DIRIMU!
           </h1>
         </div>
-        <div className="flex flex-col items-center justify-center gap-8">
-          <p className="w-[55%] text-xl">
+        <div className="flex flex-col items-center justify-center gap-5">
+          <p className="w-[55%] text-lg">
             Inilah salah satu pemberhentian dalam mencari Mantra Diri, ikuti
             terus prosesnya dengan mengunjungi link ini!
           </p>
-          <button className="z-30 rounded-md bg-tedx-red px-4 py-2 font-bold text-white transition-colors duration-150 hover:bg-tedx-red/80">
-            Temukan Dirimu
-          </button>
+          <Link
+            href={
+              "https://bit.ly/PendaftaranSwaraAksaraTEDxUniversitasBrawijaya"
+            }
+            target="_blank"
+          >
+            <button className="z-30 rounded-md bg-tedx-red px-4 py-2 font-bold text-white transition-colors duration-150 hover:bg-tedx-red/80">
+              Temukan Dirimu
+            </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -15,7 +15,7 @@ export default function DesktopSection3() {
   const card2Y = useTransform(scrollYProgress, [0.2, 0.6], ["1200", "0"]);
   const smoothCard2Y = useSpring(card2Y, { stiffness: 100, damping: 20 });
 
-  const card3Y = useTransform(scrollYProgress, [0.5, 0.9], ["600", "-100"]);
+  const card3Y = useTransform(scrollYProgress, [0.5, 0.8], ["600", "-100"]);
   const smoothCard3Y = useSpring(card3Y, { stiffness: 100, damping: 20 });
 
   return (
