@@ -95,7 +95,7 @@ export default function HomePageMobile() {
         </div>
 
         <motion.div
-          className={`fixed bottom-20 left-5 z-40 space-y-5 text-2xl font-bold text-tedx-white`}
+          className={`fixed bottom-20 left-5 z-[25] space-y-5 text-2xl font-bold text-tedx-white`}
           style={{ opacity: opacityText }}
         >
           <h2
