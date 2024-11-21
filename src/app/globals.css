@@ -16,4 +16,7 @@
   &::-webkit-scrollbar-thumb:horizontal {
     display: none;
   }
+  :root {
+    --radius: 0.5rem;
+  }
 }

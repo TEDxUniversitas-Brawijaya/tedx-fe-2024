@@ -47,7 +47,7 @@ export default function DesktopSection2() {
         />
 
         <div className="relative w-2/5 space-y-5 text-center text-lg">
-          <h2 className="font-header pt-10 text-6xl font-bold">
+          <h2 className="pt-10 font-header text-6xl font-bold">
             Mengenal TEDx
           </h2>
           <motion.p className="absolute" style={{ opacity: opacityText1 }}>
