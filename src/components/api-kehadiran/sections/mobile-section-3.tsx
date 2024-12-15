@@ -15,10 +15,10 @@ export default function MobileSection3() {
           />
         </div>
 
-        <div className="absolute flex flex-col text-center items-center justify-center gap-11 text-white w-[24rem]">
+        <div className="absolute flex w-[24rem] flex-col items-center justify-center gap-11 text-center text-white">
           <div className="flex w-[22rem] flex-col items-center justify-center gap-6">
             <h1 className="font-header text-2xl">
-              "Langkah Kecil Adalah Kunci Untuk Menemukan Terang"
+              &quot;Langkah Kecil Adalah Kunci Untuk Menemukan Terang&quot;
             </h1>
             <div className="h-[12rem] w-full bg-white" />
           </div>
