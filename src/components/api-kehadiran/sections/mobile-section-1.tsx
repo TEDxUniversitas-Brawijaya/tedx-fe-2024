@@ -1,38 +1,7 @@
-import { motion, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function MobileSection1() {
-  const [targetPosition, setTargetPosition] = useState({ x: 0, y: 0 });
-
-  const springX = useSpring(0, { stiffness: 100, damping: 20 });
-  const springY = useSpring(0, { stiffness: 100, damping: 20 });
-
-  useEffect(() => {
-    const getRandomPosition = () => {
-      const maxMovement = 30;
-      const randomAngle = Math.random() * 2 * Math.PI;
-      const randomDistance = Math.random() * maxMovement;
-
-      return {
-        x: Math.cos(randomAngle) * randomDistance,
-        y: Math.sin(randomAngle) * randomDistance,
-      };
-    };
-
-    const movementInterval = setInterval(() => {
-      const newPosition = getRandomPosition();
-      setTargetPosition(newPosition);
-    }, 1500);
-
-    return () => clearInterval(movementInterval);
-  }, []);
-
-  useEffect(() => {
-    springX.set(targetPosition.x);
-    springY.set(targetPosition.y);
-  }, [targetPosition, springX, springY]);
-
   return (
     <section className="relative z-0 min-h-screen overflow-hidden bg-[#0E0E0E]">
       <div className="sticky left-0 top-0 flex h-screen w-full items-center justify-center">
@@ -45,16 +14,24 @@ export default function MobileSection1() {
           />
         </div>
 
-        <div className="text-white text-center">
+        <div className="text-center text-white">
           <h2 className="">Propaganda 2</h2>
           <h1 className="font-header text-5xl">Api Kehadiran</h1>
         </div>
 
         <motion.div
           className="absolute aspect-[0.74/1] w-[150%]"
-          style={{
-            x: springX,
-            y: springY,
+          initial={{ y: 0 }}
+          animate={{ y: -20 }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "mirror",
+            duration: 1.75,
+            ease: "easeInOut",
+            bounce: 0.5,
+            stiffness: 100,
+            mass: 1,
+            delay: 0.5,
           }}
         >
           <Image
