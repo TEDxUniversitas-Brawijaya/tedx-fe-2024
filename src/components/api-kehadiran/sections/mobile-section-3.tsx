@@ -15,8 +15,8 @@ export default function MobileSection3() {
           />
         </div>
 
-        <div className="absolute flex w-[24rem] flex-col items-center justify-center gap-11 text-center text-white">
-          <div className="flex w-[22rem] flex-col items-center justify-center gap-6">
+        <div className="absolute flex p-4 max-w-[24rem] flex-col items-center justify-center gap-11 text-center text-white">
+          <div className="flex max-w-[22rem] flex-col items-center justify-center gap-6">
             <h1 className="font-header text-2xl">
               &quot;Langkah Kecil Adalah Kunci Untuk Menemukan Terang&quot;
             </h1>
