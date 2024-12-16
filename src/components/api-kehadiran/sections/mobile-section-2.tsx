@@ -23,7 +23,7 @@ export default function MobileSection2() {
 
   const horizontalMovement = useTransform(
     scrollYProgress,
-    [0.5, 1],
+    [0.5, 0.9],
     ["0vh", "-1000vh"],
   );
   const smoothHorizontalMovement = useSpring(horizontalMovement, {
