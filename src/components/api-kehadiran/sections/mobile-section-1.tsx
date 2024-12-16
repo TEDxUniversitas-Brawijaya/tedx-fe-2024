@@ -45,8 +45,8 @@ export default function MobileSection1() {
           />
         </div>
 
-        <div className="text-white">
-          <h2 className="text-center">Propaganda 2</h2>
+        <div className="text-white text-center">
+          <h2 className="">Propaganda 2</h2>
           <h1 className="font-header text-5xl">Api Kehadiran</h1>
         </div>
 
