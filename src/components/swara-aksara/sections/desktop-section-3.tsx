@@ -31,7 +31,7 @@ export default function DesktopSection3() {
           <div className="absolute top-0 z-20 h-screen w-full opacity-35">
             <Image src={"/img/paper-texture-5.png"} alt="Paper Texture" fill />
           </div>
-          <div className="absolute top-0 z-10 aspect-[711/593] w-[520px] h-[40%]">
+          <div className="absolute top-0 z-10 aspect-[711/593] h-[40%] w-[520px]">
             <Image src={"/img/sun-2.png"} alt="Cloud" fill />
           </div>
           <motion.div
