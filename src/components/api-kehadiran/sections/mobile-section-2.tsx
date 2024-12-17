@@ -92,7 +92,7 @@ export default function MobileSection2() {
 
         <div className="absolute aspect-video h-[130%] opacity-25">
           <Image
-            src={"/img/paper-texture-6.png"}
+            src={"/img/paper-texture-6-mobile.png"}
             alt="Paper Texture"
             fill
             priority
@@ -151,7 +151,7 @@ export default function MobileSection2() {
             x: smoothHorizontalMovement,
           }}
         >
-          <Image src="/img/candle-fire.png" alt="Flame" fill priority />
+          <Image src="/img/candle-fire-mobile.png" alt="Flame" fill priority />
         </motion.div>
 
         <motion.div
@@ -196,7 +196,12 @@ export default function MobileSection2() {
             x: smoothHorizontalMovement,
           }}
         >
-          <Image src="/img/terperangkap-card.png" alt="Terperangkap Card" fill priority />
+          <Image
+            src="/img/terperangkap-card.png"
+            alt="Terperangkap Card"
+            fill
+            priority
+          />
         </motion.div>
 
         <motion.div
@@ -205,7 +210,12 @@ export default function MobileSection2() {
             x: smoothHorizontalMovement,
           }}
         >
-          <Image src="/img/bergejolak-card.png" alt="Bergejolak Card" fill priority />
+          <Image
+            src="/img/bergejolak-card.png"
+            alt="Bergejolak Card"
+            fill
+            priority
+          />
         </motion.div>
 
         <div className="absolute bottom-0 h-[35%] w-full bg-gradient-to-t from-[#0E0E0E] from-5% to-transparent to-80%" />

@@ -7,7 +7,7 @@ export default function MobileSection1() {
       <div className="sticky left-0 top-0 flex h-screen w-full items-center justify-center">
         <div className="absolute aspect-video h-[130%] opacity-25">
           <Image
-            src={"/img/paper-texture-6.png"}
+            src={"/img/paper-texture-6-mobile.png"}
             alt="Paper Texture"
             fill
             priority

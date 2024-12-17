@@ -8,14 +8,14 @@ export default function MobileSection3() {
 
         <div className="absolute aspect-video h-[130%] opacity-25">
           <Image
-            src={"/img/paper-texture-6.png"}
+            src={"/img/paper-texture-6-mobile.png"}
             alt="Paper Texture"
             fill
             priority
           />
         </div>
 
-        <div className="absolute flex p-4 max-w-[24rem] flex-col items-center justify-center gap-11 text-center text-white">
+        <div className="absolute flex max-w-[24rem] flex-col items-center justify-center gap-11 p-4 text-center text-white">
           <div className="flex max-w-[22rem] flex-col items-center justify-center gap-6">
             <h1 className="font-header text-2xl">
               &quot;Langkah Kecil Adalah Kunci Untuk Menemukan Terang&quot;
