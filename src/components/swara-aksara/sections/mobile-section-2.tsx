@@ -93,7 +93,7 @@ export default function MobileSection2() {
     <section id="section-2-mobile" className="relative bg-tedx-grey-300">
       <div ref={containerRef} className="relative z-0 h-[700vh]">
         <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden px-5 pt-20">
-          <p className="font-java z-10 text-4xl">ꦥꦶꦠꦸꦠꦸꦂ</p>
+          <p className="z-10 font-java text-4xl">ꦥꦶꦠꦸꦠꦸꦂ</p>
           <p className="z-10 text-center font-header text-2xl">(Pitutur)</p>
           <h2 className="z-10 text-center font-header text-4xl leading-[1.2em]">
             DAFTAR DAN TEMUKAN VERSI BARU DIRIMU!
