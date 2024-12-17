@@ -9,7 +9,7 @@ export const eventMenus = [
   },
   {
     label: "Propaganda 2",
-    href: null,
+    href: "/events/api-kehadiran",
   },
   {
     label: "Propaganda 3",

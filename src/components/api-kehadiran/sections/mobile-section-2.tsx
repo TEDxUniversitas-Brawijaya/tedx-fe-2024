@@ -201,6 +201,7 @@ export default function MobileSection2() {
             alt="Terperangkap Card"
             fill
             priority
+            className="-rotate-12"
           />
         </motion.div>
 

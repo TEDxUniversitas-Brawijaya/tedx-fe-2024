@@ -31,11 +31,57 @@ export default function MobileSection1() {
             bounce: 0.5,
             stiffness: 100,
             mass: 1,
-            delay: 0.5,
+            delay: 0,
           }}
         >
           <Image
-            src="/img/flame-fragments-mobile.png"
+            src="/img/flame-fragments-mobile-1.png"
+            alt="Flame Fragments"
+            fill
+            priority
+          />
+        </motion.div>
+
+        <motion.div
+          className="absolute aspect-[0.74/1] w-[150%]"
+          initial={{ y: 0 }}
+          animate={{ y: -20 }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "mirror",
+            duration: 1.75,
+            ease: "easeInOut",
+            bounce: 0.5,
+            stiffness: 100,
+            mass: 1,
+            delay: 0.3,
+          }}
+        >
+          <Image
+            src="/img/flame-fragments-mobile-2.png"
+            alt="Flame Fragments"
+            fill
+            priority
+          />
+        </motion.div>
+
+        <motion.div
+          className="absolute aspect-[0.74/1] w-[145%]"
+          initial={{ y: 0, x: 20 }}
+          animate={{ y: -20 }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "mirror",
+            duration: 1.75,
+            ease: "easeInOut",
+            bounce: 0.5,
+            stiffness: 100,
+            mass: 1,
+            delay: 0.6,
+          }}
+        >
+          <Image
+            src="/img/flame-fragments-mobile-3.png"
             alt="Flame Fragments"
             fill
             priority
