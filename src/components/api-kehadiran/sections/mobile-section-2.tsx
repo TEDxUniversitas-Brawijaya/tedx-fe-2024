@@ -1,6 +1,6 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function MobileSection2() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -8,6 +8,26 @@ export default function MobileSection2() {
     target: sectionRef,
     offset: ["start start", "end end"],
   });
+
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const firstTextOpacity = useTransform(scrollYProgress, [0.2, 0.25], [1, 0]);
   const smoothFirstTextOpacity = useSpring(firstTextOpacity, {
@@ -24,7 +44,7 @@ export default function MobileSection2() {
   const horizontalMovement = useTransform(
     scrollYProgress,
     [0.5, 0.9],
-    ["0vh", "-1000vh"],
+    [0, -windowSize.width * 3],
   );
   const smoothHorizontalMovement = useSpring(horizontalMovement, {
     stiffness: 100,
@@ -99,124 +119,125 @@ export default function MobileSection2() {
           />
         </div>
 
+        {/* horizontal scroll section */}
         <motion.div
-          className="absolute left-4 top-52"
-          style={{
-            opacity: smoothFirstTextOpacity,
-          }}
+          className="relative flex h-screen w-full flex-shrink-0 overflow-visible"
+          style={{ x: smoothHorizontalMovement }}
         >
-          <p className="w-64 text-justify text-white">
-            Simbol untuk tetap sadar akan nilai diri dan perjalanan hidup.
-            Kesulitan menjadi bagian dari proses, untuk mempertahankan motivasi
-            diri seseorang harus hadir dalam perjuangan, menerima setiap
-            tantangan sebagai bagian dari perjalanan menuju aktualisasi diri.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="absolute left-4 top-52"
-          style={{
-            opacity: smoothSecondTextOpacity,
-            x: smoothHorizontalMovement,
-          }}
-        >
-          <p className="w-64 text-justify text-white">
-            Dengan melewati sebuah perjalanan panjang penuh dengan rintangan,
-            pada akhirnya, Api Kehadiran menggambarkan kekuatan batin untuk
-            terus berusaha dan menemukan makna dalam setiap langkah, sekecil apa
-            pun itu, sehingga tujuan atau aktualisasi diri tetap dalam
-            jangkauan.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-[0rem] flex aspect-square w-[24rem] origin-bottom"
-          style={{
-            scale: smoothFireScale,
-            x: smoothHorizontalMovement,
-          }}
-        >
-          <Image
-            src="/img/candle-fire-bg.png"
-            alt="Flame Background"
-            fill
-            priority
-          />
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-[7rem] aspect-[0.69/1] w-[6rem] origin-bottom"
-          style={{
-            scale: smoothFireScale,
-            x: smoothHorizontalMovement,
-          }}
-        >
-          <Image src="/img/candle-fire-mobile.png" alt="Flame" fill priority />
-        </motion.div>
-
-        <motion.div
-          className="absolute -bottom-[2rem] aspect-[213/184] w-[15rem]"
-          style={{
-            opacity: smoothCandleOpacity,
-            x: smoothHorizontalMovement,
-          }}
-        >
-          <Image src="/img/candle.png" alt="Candle" fill priority />
-        </motion.div>
-
-        <motion.div
-          className="absolute -right-[35%] bottom-[10rem] aspect-[29/23] w-[100%]"
-          style={{
-            opacity: smoothHandOpacity,
-            rotate: smoothHandRotate,
-            x: smoothHandXMovement,
-            y: smoothHandYMovement,
-          }}
-        >
-          <Image
-            src="/img/hand-with-fire.png"
-            alt="Hand with Fire"
-            fill
-            priority
-          />
-        </motion.div>
-
-        <motion.div
-          className="absolute -right-[24rem] top-32 aspect-[1.36/1] w-[24rem]"
-          style={{
-            x: smoothHorizontalMovement,
-          }}
-        >
-          <Image src="/img/menjaga-card.png" alt="Menjaga Card" fill priority />
-        </motion.div>
-
-        <motion.div
-          className="absolute -right-[40rem] bottom-16 aspect-square w-[24rem]"
-          style={{
-            x: smoothHorizontalMovement,
-          }}
-        >
-          <Image
-            src="/img/terperangkap-card.png"
-            alt="Terperangkap Card"
-            fill
-            priority
-            className="-rotate-12"
-          />
-        </motion.div>
-
-        <motion.div
-          className="absolute -right-[60rem] top-32 aspect-[1.36/1] w-[24rem]"
-          style={{
-            x: smoothHorizontalMovement,
-          }}
-        >
-          <Image
-            src="/img/bergejolak-card.png"
-            alt="Bergejolak Card"
-            fill
-            priority
-          />
+          <div className="flex h-screen w-full flex-shrink-0 justify-center">
+            <motion.div
+              className="absolute left-4 top-52"
+              style={{
+                opacity: smoothFirstTextOpacity,
+              }}
+            >
+              <p className="w-64 text-justify text-white">
+                Simbol untuk tetap sadar akan nilai diri dan perjalanan hidup.
+                Kesulitan menjadi bagian dari proses, untuk mempertahankan
+                motivasi diri seseorang harus hadir dalam perjuangan, menerima
+                setiap tantangan sebagai bagian dari perjalanan menuju
+                aktualisasi diri.
+              </p>
+            </motion.div>
+            <motion.div
+              className="absolute left-4 top-52"
+              style={{
+                opacity: smoothSecondTextOpacity,
+              }}
+            >
+              <p className="w-64 text-justify text-white">
+                Dengan melewati sebuah perjalanan panjang penuh dengan
+                rintangan, pada akhirnya, Api Kehadiran menggambarkan kekuatan
+                batin untuk terus berusaha dan menemukan makna dalam setiap
+                langkah, sekecil apa pun itu, sehingga tujuan atau aktualisasi
+                diri tetap dalam jangkauan.
+              </p>
+            </motion.div>
+            <motion.div
+              className="absolute bottom-[0rem] flex aspect-square w-[24rem] origin-bottom"
+              style={{
+                scale: smoothFireScale,
+              }}
+            >
+              <Image
+                src="/img/candle-fire-bg.png"
+                alt="Flame Background"
+                fill
+                priority
+              />
+            </motion.div>
+            <motion.div
+              className="absolute bottom-[7rem] aspect-[0.69/1] w-[6rem] origin-bottom"
+              style={{
+                scale: smoothFireScale,
+              }}
+            >
+              <Image
+                src="/img/candle-fire-mobile.png"
+                alt="Flame"
+                fill
+                priority
+              />
+            </motion.div>
+            <motion.div
+              className="absolute -bottom-[2rem] aspect-[213/184] w-[15rem]"
+              style={{
+                opacity: smoothCandleOpacity,
+              }}
+            >
+              <Image src="/img/candle.png" alt="Candle" fill priority />
+            </motion.div>
+            <motion.div
+              className="absolute -right-[35%] bottom-[10rem] aspect-[29/23] w-[100%]"
+              style={{
+                opacity: smoothHandOpacity,
+                rotate: smoothHandRotate,
+                x: smoothHandXMovement,
+                y: smoothHandYMovement,
+              }}
+            >
+              <Image
+                src="/img/hand-with-fire.png"
+                alt="Hand with Fire"
+                fill
+                priority
+              />
+            </motion.div>
+          </div>
+          <div className="flex h-screen w-full flex-shrink-0 justify-center">
+            <motion.div
+              className="absolute top-32 aspect-[1.36/1] w-[24rem]"
+              style={{}}
+            >
+              <Image
+                src="/img/menjaga-card.png"
+                alt="Menjaga Card"
+                fill
+                priority
+              />
+            </motion.div>
+          </div>
+          <div className="flex h-screen w-full flex-shrink-0 justify-center">
+            <motion.div className="absolute bottom-16 aspect-square w-[24rem]">
+              <Image
+                src="/img/terperangkap-card.png"
+                alt="Terperangkap Card"
+                fill
+                priority
+                className="-rotate-12"
+              />
+            </motion.div>
+          </div>
+          <div className="flex h-screen w-full flex-shrink-0 justify-center">
+            <motion.div className="absolute top-32 aspect-[1.36/1] w-[24rem]">
+              <Image
+                src="/img/bergejolak-card.png"
+                alt="Bergejolak Card"
+                fill
+                priority
+              />
+            </motion.div>
+          </div>
         </motion.div>
 
         <div className="absolute bottom-0 h-[35%] w-full bg-gradient-to-t from-[#0E0E0E] from-5% to-transparent to-80%" />

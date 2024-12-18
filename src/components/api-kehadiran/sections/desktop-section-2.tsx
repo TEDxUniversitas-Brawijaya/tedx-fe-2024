@@ -221,11 +221,28 @@ const DesktopSection2 = () => {
                 scale: candleFireScale,
                 transformOrigin: "center bottom",
               }}
-              className="absolute bottom-[154px] right-[68px] aspect-[148/203] h-[203px] w-[148px]"
+              className="absolute bottom-[154px] right-[68px] aspect-[148/203] h-[203px] w-[148px] z-10"
             >
               <Image
                 src="/img/candle-fire.png"
                 alt="Candle Fire"
+                draggable={false}
+                fill
+                priority
+              />
+            </motion.div>
+
+            <motion.div
+              style={{
+                scale: candleFireScale,
+                transformOrigin: "center bottom",
+              }}
+              className="absolute bottom-[130px] -right-10 aspect-square w-[360px] rounded-full blur-lg"
+            >
+              <Image
+                src="/img/candle-fire-bg-desktop.png"
+                alt="Candle Fire Background"
+                className="object-cover"
                 draggable={false}
                 fill
                 priority
@@ -247,7 +264,7 @@ const DesktopSection2 = () => {
             style={{
               right: cardsHorizontalPosition,
             }}
-            className="absolute flex translate-y-1/2 items-center gap-20"
+            className="absolute flex translate-y-1/2 items-center gap-32"
           >
             {frameCardData.map((card, idx) => (
               <motion.div
