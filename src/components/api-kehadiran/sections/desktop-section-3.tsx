@@ -3,7 +3,6 @@ import { useInView } from "framer-motion";
 import Image from "next/image";
 
 export const DesktopSection3 = () => {
-
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, {
@@ -14,7 +13,7 @@ export const DesktopSection3 = () => {
   useEffect(() => {
     if (videoRef.current) {
       if (isInView) {
-        videoRef.current.play().catch(error => {
+        videoRef.current.play().catch((error) => {
           console.error("Video play failed:", error);
         });
       } else {
@@ -22,7 +21,6 @@ export const DesktopSection3 = () => {
       }
     }
   }, [isInView]);
-
 
   return (
     <section
@@ -47,10 +45,10 @@ export const DesktopSection3 = () => {
         />
       </div>
 
-      <h2 className="max-w-[70%] font-header text-6xl">
+      <h2 className="max-w-[80%] font-header text-6xl">
         “Langkah Kecil Adalah Kunci <br /> Untuk Menemukan Terang”
       </h2>
-      <div className="aspect-video w-2/3 z-20">
+      <div className="z-20 aspect-video w-full">
         <video
           ref={videoRef}
           className="h-full w-full"
@@ -64,7 +62,7 @@ export const DesktopSection3 = () => {
             type="video/mp4"
           />
           <span className="text-center text-xl font-semibold">
-            Broswer tidak dapat menampilkan video
+            Browser tidak dapat menampilkan video
           </span>
         </video>
       </div>

@@ -6,7 +6,6 @@ import {
   useMotionValue,
   useMotionTemplate,
   animate,
-  Variants,
 } from "framer-motion";
 import FrameCard from "../card/FrameCard";
 import Image from "next/image";
@@ -18,14 +17,14 @@ const DesktopSection2 = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [windowSize, setWindowSize] = useState({
     width: 0,
-    height: typeof window !== 'undefined' ? window.innerHeight : 0
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
 
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       });
     };
 
@@ -67,12 +66,20 @@ const DesktopSection2 = () => {
     useTransform(
       scrollYProgress,
       [0.3, 0.5],
-      [-windowSize.width * 2, -windowSize.width * 0.98]
+      [-windowSize.width * 2, -windowSize.width * 0.98],
     ),
     {
       stiffness: 100,
-      damping: 20
-    }
+      damping: 20,
+    },
+  );
+
+  const secondTextHorizontalPosition = useSpring(
+    useTransform(scrollYProgress, [0.3, 0.5], [0, -400]),
+    {
+      stiffness: 100,
+      damping: 20,
+    },
   );
 
   const triggerGradientAnimation = (progress: number) => {
@@ -100,10 +107,17 @@ const DesktopSection2 = () => {
     { stiffness: 100, damping: 20 },
   );
 
-  const handY = useSpring(useTransform(scrollYProgress, [0, 0.2], [windowSize.height * 0.05, windowSize.height * 0.3]), {
-    stiffness: 100,
-    damping: 20,
-  });
+  const handY = useSpring(
+    useTransform(
+      scrollYProgress,
+      [0, 0.2],
+      [windowSize.height * 0.05, windowSize.height * 0.3],
+    ),
+    {
+      stiffness: 100,
+      damping: 20,
+    },
+  );
 
   const handOpacity = useSpring(
     useTransform(scrollYProgress, [0.18, 0.2], [1, 0]),
@@ -111,7 +125,15 @@ const DesktopSection2 = () => {
   );
 
   const candleX = useSpring(
-    useTransform(scrollYProgress, [0.24, 0.4], [0.65 * windowSize.width, 0.35 * windowSize.width]),
+    useTransform(
+      scrollYProgress,
+      [0.24, 0.4, 0.5],
+      [
+        0.65 * windowSize.width,
+        0.35 * windowSize.width,
+        0.15 * windowSize.width,
+      ],
+    ),
     { stiffness: 100, damping: 20 },
   );
 
@@ -122,16 +144,15 @@ const DesktopSection2 = () => {
 
   const firstTextOpacity = useTransform(
     scrollYProgress,
-    [0, 0.25],
-    [1, 0],
+    [0, 0.2, 0.22, 0.25],
+    [1, 1, 0, 0],
   );
 
   const secondTextOpacity = useTransform(
     scrollYProgress,
-    [0.25, 0.3],
-    [0, 1],
+    [0, 0.25, 0.28],
+    [0, 0, 1],
   );
-
 
   return (
     <section ref={sectionRef} className="relative h-[1000vh] w-full">
@@ -150,7 +171,7 @@ const DesktopSection2 = () => {
         >
           <motion.p
             style={{ opacity: firstTextOpacity }}
-            className="absolute left-10 top-48 w-[500px] text-justify text-white"
+            className="absolute left-20 top-48 w-[500px] text-justify text-white"
           >
             Simbol untuk tetap sadar akan nilai diri dan perjalanan hidup.
             Kesulitan menjadi bagian dari proses, untuk mempertahankan motivasi
@@ -159,8 +180,11 @@ const DesktopSection2 = () => {
           </motion.p>
 
           <motion.p
-            style={{ opacity: secondTextOpacity }}
-            className="absolute bottom-24 left-10 w-[500px] text-justify text-white"
+            style={{
+              opacity: secondTextOpacity,
+              x: secondTextHorizontalPosition,
+            }}
+            className="absolute bottom-24 left-20 w-[500px] text-justify text-white"
           >
             Dengan melewati sebuah perjalanan panjang penuh dengan rintangan,
             pada akhirnya, Api Kehadiran menggambarkan kekuatan batin untuk
@@ -192,7 +216,6 @@ const DesktopSection2 = () => {
             }}
             className="absolute bottom-0"
           >
-
             <motion.div
               style={{
                 scale: candleFireScale,
