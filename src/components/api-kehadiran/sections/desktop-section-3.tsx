@@ -48,7 +48,7 @@ export const DesktopSection3 = () => {
       <h2 className="max-w-[80%] font-header text-6xl">
         “Langkah Kecil Adalah Kunci <br /> Untuk Menemukan Terang”
       </h2>
-      <div className="z-20 aspect-video w-full">
+      <div className="z-20 aspect-video w-2/3">
         <video
           ref={videoRef}
           className="h-full w-full"
