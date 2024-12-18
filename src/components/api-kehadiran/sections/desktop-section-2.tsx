@@ -6,21 +6,33 @@ import {
   useMotionValue,
   useMotionTemplate,
   animate,
+  Variants,
 } from "framer-motion";
 import FrameCard from "../card/FrameCard";
 import Image from "next/image";
 import React, { useRef, useEffect, useState } from "react";
+import { frameCardData } from "@/lib/static/api-kehadiran";
 
 const DesktopSection2 = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: typeof window !== 'undefined' ? window.innerHeight : 0
+  });
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    const handleResize = () => setWindowWidth(window.innerWidth);
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -40,18 +52,35 @@ const DesktopSection2 = () => {
         )
     `;
 
-  const horizontalScroll = useTransform(
+  const horizontalScrollTransform = useTransform(
     scrollYProgress,
     [0.5, 0.9],
-    [0, -windowWidth * 2.5],
+    [0, -windowSize.width * 1.1],
+  );
+
+  const horizontalScroll = useSpring(horizontalScrollTransform, {
+    stiffness: 100,
+    damping: 20,
+  });
+
+  const cardsHorizontalPosition = useSpring(
+    useTransform(
+      scrollYProgress,
+      [0.3, 0.5],
+      [-windowSize.width * 2, -windowSize.width * 0.98]
+    ),
+    {
+      stiffness: 100,
+      damping: 20
+    }
   );
 
   const triggerGradientAnimation = (progress: number) => {
     if (progress < 0.4) {
-      animate(primaryColor, "19 16 18", { duration: 1 });
-      animate(secondaryColor, "19 16 18", { duration: 1 });
+      animate(primaryColor, "14 14 14", { duration: 1 });
+      animate(secondaryColor, "14 14 14", { duration: 1 });
     } else if (progress >= 0.4) {
-      animate(primaryColor, "19 16 18", { duration: 1 });
+      animate(primaryColor, "14 14 14", { duration: 1 });
       animate(secondaryColor, "84 13 0", { duration: 1 });
     }
   };
@@ -71,7 +100,7 @@ const DesktopSection2 = () => {
     { stiffness: 100, damping: 20 },
   );
 
-  const handY = useSpring(useTransform(scrollYProgress, [0, 0.2], [0, 320]), {
+  const handY = useSpring(useTransform(scrollYProgress, [0, 0.2], [windowSize.height * 0.05, windowSize.height * 0.3]), {
     stiffness: 100,
     damping: 20,
   });
@@ -82,38 +111,33 @@ const DesktopSection2 = () => {
   );
 
   const candleX = useSpring(
-    useTransform(scrollYProgress, [0.24, 0.4], [0, -0.3 * windowWidth]),
+    useTransform(scrollYProgress, [0.24, 0.4], [0.65 * windowSize.width, 0.35 * windowSize.width]),
     { stiffness: 100, damping: 20 },
   );
 
   const candleFireScale = useSpring(
-    useTransform(scrollYProgress, [0.24, 0.4], [1, 1.6]),
+    useTransform(scrollYProgress, [0.2, 0.24, 0.4], [0, 0.3, 1.6]),
     { stiffness: 100, damping: 20 },
   );
 
   const firstTextOpacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.24],
-    [1, 1, 0],
+    [0, 0.25],
+    [1, 0],
   );
 
   const secondTextOpacity = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.24],
-    [0, 0, 1],
+    [0.25, 0.3],
+    [0, 1],
   );
 
-  const candleFireOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.24],
-    [0, 0, 1],
-  );
 
   return (
-    <section ref={sectionRef} className="relative h-[2500vh] w-full">
+    <section ref={sectionRef} className="relative h-[1000vh] w-full">
       <motion.div
         ref={containerRef}
-        className="sticky left-0 top-0 h-screen w-full overflow-hidden"
+        className="sticky left-0 top-0 h-[100dvh] w-full overflow-hidden"
         style={{
           background,
         }}
@@ -151,7 +175,7 @@ const DesktopSection2 = () => {
               translateY: handY,
               opacity: handOpacity,
             }}
-            className="absolute -right-8 aspect-[783/621] h-[600px] w-[520px] translate-y-1/3"
+            className="absolute -right-8 aspect-[783/621] h-2/3 w-1/3"
           >
             <Image
               src="/img/hand-match-desktop.png"
@@ -166,15 +190,15 @@ const DesktopSection2 = () => {
             style={{
               x: candleX,
             }}
-            className="absolute bottom-0 left-[calc(100vw-32%)]"
+            className="absolute bottom-0"
           >
+
             <motion.div
               style={{
-                opacity: candleFireOpacity,
                 scale: candleFireScale,
                 transformOrigin: "center bottom",
               }}
-              className="absolute bottom-[154px] right-16 aspect-[148/203] h-[203px] w-[148px]"
+              className="absolute bottom-[154px] right-[68px] aspect-[148/203] h-[203px] w-[148px]"
             >
               <Image
                 src="/img/candle-fire.png"
@@ -196,26 +220,39 @@ const DesktopSection2 = () => {
             </div>
           </motion.div>
 
-          <div className="absolute -right-[140%] flex translate-y-1/2 items-center gap-20">
-            <FrameCard
-              title="Menjaga"
-              content="Ditengah perjalanan hidup yang berwarna ada kalanya kehilangan arah. Terkadang semuanya terasa berat, api semangat mulai meredup. Membuat kita bertanya-tanya tentang makna dan arah dari setiap usaha yang telah dilakukan. Seolah terperangkap dalam kegalapan keraguan."
-              rotation="5.35deg"
-            />
-            <FrameCard
-              title="Terperangkap"
-              content="Kehidupan bukan hanya keteguhan individu, melainkan tentang bagaimana kita bersandar pada orang lain. Seperti halnya api yang kecil dapat tumbuh besar bergabung dengan api lainnya. Jangan pernah ragu berbagi api. Kita lebih kuat bersama."
-              rotation="-6.79deg"
-            />
-            <FrameCard
-              title="Bergejolak"
-              content="Ketekunan bukanlah tentang kekuatan yang besar, melainkan tentang keberanian untuk terus melangkah meski dalam kesulitan. tetaplah hadir, tetaplah bertahan. Memilih untuk tidak menyerah, meskipun hanya ada sedikit cahaya yang tersisa. tetapi Api Kehadiran akan tetap ada, tumbuh, dan menyala lebih terang."
-              rotation="2.94deg"
-            />
-          </div>
+          <motion.div
+            style={{
+              right: cardsHorizontalPosition,
+            }}
+            className="absolute flex translate-y-1/2 items-center gap-20"
+          >
+            {frameCardData.map((card, idx) => (
+              <motion.div
+                key={card.title}
+                initial={{ y: 0 }}
+                animate={{ y: -20 }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                  duration: 1.75,
+                  ease: "easeInOut",
+                  bounce: 0.5,
+                  stiffness: 100,
+                  mass: 1,
+                  delay: idx * 0.5,
+                }}
+              >
+                <FrameCard
+                  title={card.title}
+                  content={card.content}
+                  rotation={card.rotation}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
         {/* Background Texture */}
-        <div className="absolute left-0 top-0 z-10 h-screen w-full opacity-[0.15]">
+        <div className="absolute left-0 top-0 z-10 h-[100dvh] w-full opacity-[0.15]">
           <Image
             src="/img/paper-texture-4.png"
             alt="Paper Texture"
