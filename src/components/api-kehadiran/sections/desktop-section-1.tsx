@@ -82,9 +82,9 @@ const DesktopSection1 = () => {
         />
       </motion.div>
 
-      <div className="absolute left-0 top-0 h-screen w-full opacity-70">
+      <div className="absolute left-0 top-0 h-screen w-full opacity-[0.15]">
         <Image
-          src="/img/paper-texture-6.png"
+          src="/img/paper-texture-4.png"
           alt="Paper Texture"
           draggable={false}
           fill
