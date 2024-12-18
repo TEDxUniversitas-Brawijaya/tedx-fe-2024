@@ -1,0 +1,28 @@
+name: Deploy Production TedX FE
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_VPS_IP }}
+          username: ${{ secrets.PROD_VPS_USER }}
+          password: ${{ secrets.PROD_VPS_PASSWORD }}
+          script: |
+            cd tedx-fe-2024
+            git pull origin main
+
+            docker compose up -d --build
+            docker builder prune -f # Delete all build cache
+            docker image prune -af # Delete all images that are not being used
+            docker network prune -f # Delete all networks not used by at least one container
