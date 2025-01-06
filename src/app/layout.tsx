@@ -1,6 +1,4 @@
-import Navbar from "@/components/shared/navigations/navbar";
 import { localFontVariables } from "@/lib/fonts";
-import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -17,11 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className={`${localFontVariables} antialiased`}>
-        <Analytics />
-        <Navbar />
-        {children}
-      </body>
+      <body className={`${localFontVariables} antialiased`}>{children}</body>
     </html>
   );
 }

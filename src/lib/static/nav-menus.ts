@@ -13,7 +13,7 @@ export const eventMenus = [
   },
   {
     label: "Propaganda 3",
-    href: null,
+    href: "/events/merengkuh-karsa",
   },
   {
     label: "Main Event",
