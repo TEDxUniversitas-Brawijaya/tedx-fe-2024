@@ -32,7 +32,7 @@ export default function MobileSection1() {
   );
   const fourthTextOpacity = useTransform(
     scrollYProgress,
-    [0.65, 0.75, 1],
+    [0.65, 0.75, 0.9],
     [0, 1, 1],
   );
 
