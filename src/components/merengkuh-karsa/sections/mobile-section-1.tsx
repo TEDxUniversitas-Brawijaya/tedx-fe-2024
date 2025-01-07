@@ -15,7 +15,7 @@ export default function MobileSection1() {
     damping: 20,
   });
 
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 0.25]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 0.35]);
 
   const firstTextOpacity = useTransform(
     scrollYProgress,
