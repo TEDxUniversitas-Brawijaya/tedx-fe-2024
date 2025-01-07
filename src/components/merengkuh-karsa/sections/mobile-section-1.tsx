@@ -15,6 +15,8 @@ export default function MobileSection1() {
     damping: 20,
   });
 
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.15], [0, 0.25]);
+
   const firstTextOpacity = useTransform(
     scrollYProgress,
     [0, 0.15, 0.25],
@@ -51,6 +53,13 @@ export default function MobileSection1() {
         </motion.div>
 
         <div className="absolute bottom-0 h-5/6 w-full bg-gradient-to-t from-[#000000] to-transparent" />
+
+        <motion.div
+          className="absolute h-full w-full bg-black"
+          style={{
+            opacity: bgOpacity,
+          }}
+        />
 
         <motion.div
           style={{ opacity: firstTextOpacity }}
