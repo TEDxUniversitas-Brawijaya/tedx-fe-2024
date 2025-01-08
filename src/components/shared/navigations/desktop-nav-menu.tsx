@@ -75,7 +75,7 @@ export default function DesktopNavMenu() {
         </DropdownMenuContent>
       </DropdownMenu>
       <Link
-        href={"/merch"}
+        href={"/store/merch"}
         className={`underline-offset-4 hover:underline ${pathname === "/merch" && "text-tedx-red"}`}
       >
         Merch
