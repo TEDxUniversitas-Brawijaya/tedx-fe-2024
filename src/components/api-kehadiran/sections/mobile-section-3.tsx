@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 export default function MobileSection3() {
-
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, {
@@ -14,7 +13,7 @@ export default function MobileSection3() {
   useEffect(() => {
     if (videoRef.current) {
       if (isInView) {
-        videoRef.current.play().catch(error => {
+        videoRef.current.play().catch((error) => {
           console.error("Video play failed:", error);
         });
       } else {
@@ -45,7 +44,7 @@ export default function MobileSection3() {
             <h1 className="font-header text-2xl">
               &quot;Langkah Kecil Adalah Kunci Untuk Menemukan Terang&quot;
             </h1>
-            <div className="h-fit w-full mx-auto">
+            <div className="mx-auto h-fit w-full">
               <video
                 ref={videoRef}
                 className="w-full"
