@@ -63,12 +63,17 @@ export default function DesktopSection1() {
     return () => unsubscribe();
   }, [scrollYProgress]);
 
+  const backgroundScale = useSpring(
+    useTransform(scrollYProgress, [0.2, 0.4, 0.5], [1, 1.05, 1.1]),
+    { stiffness: 100, damping: 20 },
+  );
+
   return (
     <section
       ref={sectionRef}
       className="relative h-[300vh] w-full bg-[#0E0E0E]"
     >
-      <motion.div className="sticky left-0 top-0 flex h-screen w-full items-center justify-center">
+      <motion.div className="sticky left-0 top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         <motion.div
           className="absolute left-1/2 top-1/2 z-20 w-[80%] -translate-x-1/2 -translate-y-1/2 space-y-2 text-center"
           style={{ opacity: firstTextOpacity }}
@@ -102,7 +107,10 @@ export default function DesktopSection1() {
             background,
           }}
         />
-        <div className="absolute bottom-0 left-0 z-[5] h-[calc(100dvh-62px)] w-full">
+        <motion.div
+          className="absolute bottom-0 left-0 z-[5] h-[calc(100dvh-62px)] w-full"
+          style={{ scale: backgroundScale }}
+        >
           <Image
             src="/img/maze-bg-desktop.png"
             alt="Maze Background"
@@ -111,7 +119,7 @@ export default function DesktopSection1() {
             fill
             priority
           />
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
