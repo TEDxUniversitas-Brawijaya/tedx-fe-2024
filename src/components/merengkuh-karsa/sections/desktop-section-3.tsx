@@ -6,8 +6,8 @@ export default function DesktopSection3() {
       <div className="absolute top-0 -mt-20 h-32 w-full bg-gradient-to-t from-[#0E0E0E] via-[#100E10] to-[#100E10]"></div>
       <div className="z-10 -mt-44 w-[70%] space-y-4 text-center">
         <p className="text-2xl text-white">
-          Perjalanan menuju Mantra Diri masih berlanjut, Teruslah menyelami
-          makna dengan Karsa yang di Rengkuh.
+          Perjalanan menuju Mantra Diri masih berlanjut, teruslah menyelami
+          makna dengan karsa yang direngkuh.
         </p>
         <button className="rounded-md bg-tedx-red px-7 py-3 font-body text-base font-semibold text-white transition-all duration-150 hover:bg-tedx-red/80 disabled:opacity-50">
           Daftarkan Dirimu

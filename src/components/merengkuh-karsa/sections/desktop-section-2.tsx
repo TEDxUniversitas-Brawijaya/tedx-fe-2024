@@ -14,7 +14,7 @@ const DesktopSection2 = () => {
   );
 
   const text =
-    "Semangat yang membara, membakar gelapnya keraguan, menyalakan api dalam jiwa, dengan berani menyelami kedalaman diri untuk meretas batasan asa.";
+    "Sabda semesta berbisik dalam keheningan jiwa, menuntun setiap insan menyelami hakikat diri hingga menemukan puncak penciptaan dirinya yang abadi.";
   const words = text.split(" ");
 
   const totalChars = text.length;
@@ -33,7 +33,7 @@ const DesktopSection2 = () => {
       >
         <div className="border- absolute top-0 h-32 w-full bg-gradient-to-b from-[#0E0E0E] via-[#100E10] to-[#100E10]"></div>
         <div className="absolute left-20 top-1/2 z-10 -translate-y-1/2 space-y-2 text-white">
-          <h2 className="font-header text-5xl font-semibold">Membara</h2>
+          <h2 className="font-header text-5xl font-semibold">Mantra Djiwa </h2>
           <p className="w-[40%] text-lg">
             {words.map((word, wordIndex) => (
               <span key={wordIndex} className="inline-block whitespace-nowrap">
