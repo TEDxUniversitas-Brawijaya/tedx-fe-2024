@@ -24,9 +24,9 @@ export default function DesktopSection1() {
   const background = useMotionTemplate`
     linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, ${topOpacity}) 0%,
-      rgba(0, 0, 0, ${bottomOpacity}) 100%
+      rgba(14, 14, 14, 0) 0%,
+      rgba(14, 14, 14, ${topOpacity}) 0%,
+      rgba(14, 14, 14, ${bottomOpacity}) 100%
     )
   `;
 

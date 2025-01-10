@@ -63,7 +63,7 @@ export default function MobileSection1() {
           />
         </motion.div>
 
-        <div className="absolute bottom-0 h-5/6 w-full bg-gradient-to-t from-[#000000] to-transparent" />
+        <div className="absolute bottom-0 h-5/6 w-full bg-gradient-to-t from-[#0E0E0E] to-transparent" />
 
         <motion.div
           className="absolute h-full w-full bg-black"

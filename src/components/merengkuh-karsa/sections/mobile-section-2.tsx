@@ -41,7 +41,7 @@ export default function MobileSection2() {
           priority
           className="absolute aspect-video h-full bg-red-200 object-cover"
         />
-        <div className="absolute top-0 h-1/6 w-full bg-gradient-to-b from-[#000000] to-[#0E0E0E]" />
+        <div className="absolute top-0 h-24 w-full bg-gradient-to-b from-[#0A0A0A] to-[#100D10]" />
 
         <div className="absolute flex flex-col items-center justify-center gap-28">
           <div className="w-56 space-y-5 text-center">
@@ -78,7 +78,7 @@ export default function MobileSection2() {
             style={{
               y: smoothBoxY,
             }}
-            className="h-44 w-72 bg-white drop-shadow-[0px_4px_70px_rgba(255,0,0,0.5)]"
+            className="mb-20 h-44 w-72 bg-white drop-shadow-[0px_4px_50px_rgba(255,0,0,0.5)]"
           />
         </div>
       </div>
