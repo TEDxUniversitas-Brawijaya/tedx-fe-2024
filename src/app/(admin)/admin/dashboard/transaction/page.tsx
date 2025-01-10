@@ -17,7 +17,7 @@ import {
 } from "@/components/shared/table";
 import { CheckIcon } from "lucide-react";
 
-export default function AdminDashboardRefundPage() {
+export default function AdminDashboardTransactionPage() {
   return (
     <main className="space-y-3">
       <div>
@@ -34,10 +34,11 @@ export default function AdminDashboardRefundPage() {
             <TableHead>Email</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Nama</TableHead>
-            <TableHead>Alasan</TableHead>
+            <TableHead>No. Telepon</TableHead>
+            <TableHead>Instansi</TableHead>
+            <TableHead>Jenis</TableHead>
             <TableHead>Jumlah</TableHead>
-            <TableHead>Metode Pembayaran</TableHead>
-            <TableHead>No. Rekening</TableHead>
+            <TableHead>Total Harga</TableHead>
             <TableHead>Approval</TableHead>
           </TableRow>
         </TableHeader>
@@ -47,14 +48,14 @@ export default function AdminDashboardRefundPage() {
               <TableCell className="font-medium">PRO0213</TableCell>
               <TableCell>example@mail.com</TableCell>
               <TableCell>
-                <ApprovalStatusChip status="pending" />
+                <ApprovalStatusChip status="approved" />
               </TableCell>
               <TableCell>Johan Sutardjo</TableCell>
-              <TableCell>Pergantian tanggal acara</TableCell>
-              <TableCell>4</TableCell>
-              <TableCell>GoPay</TableCell>
               <TableCell>081377471625</TableCell>
-
+              <TableCell>Universitas Brawijaya</TableCell>
+              <TableCell>Presale Propaganda 3</TableCell>
+              <TableCell>5</TableCell>
+              <TableCell>Rp 130.000</TableCell>
               <TableCell className="flex gap-1">
                 <ProofImageModal />
                 <Button
@@ -72,7 +73,7 @@ export default function AdminDashboardRefundPage() {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={10}>
+            <TableCell colSpan={11}>
               <div className="flex items-center justify-end">
                 <TablePagination
                   current_page={1}

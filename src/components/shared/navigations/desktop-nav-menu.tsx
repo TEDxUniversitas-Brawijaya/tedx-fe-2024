@@ -1,7 +1,6 @@
 "use client";
 
 import useMounted from "@/hooks/useMounted";
-import { eventMenus } from "@/lib/static/nav-menus";
 import { ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../dropdown-menu";
+import { eventMenus } from "@/lib/static/nav-menus";
 
 export default function DesktopNavMenu() {
   const pathname = usePathname();
