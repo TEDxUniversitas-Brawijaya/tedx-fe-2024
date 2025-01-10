@@ -1,6 +1,5 @@
 import { motion, useSpring } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function DesktopSection2() {
@@ -111,16 +110,13 @@ export default function DesktopSection2() {
             Inilah salah satu pemberhentian dalam mencari Mantra Diri, ikuti
             terus prosesnya dengan mengunjungi link ini!
           </p>
-          <Link
-            href={
-              "https://bit.ly/PendaftaranSwaraAksaraTEDxUniversitasBrawijaya"
-            }
-            target="_blank"
+
+          <button
+            disabled
+            className="z-40 rounded-md bg-tedx-red px-4 py-2 font-bold text-white transition-colors duration-150 hover:bg-tedx-red/80 disabled:bg-tedx-red/80"
           >
-            <button className="z-40 rounded-md bg-tedx-red px-4 py-2 font-bold text-white transition-colors duration-150 hover:bg-tedx-red/80">
-              Temukan Dirimu
-            </button>
-          </Link>
+            Temukan Dirimu
+          </button>
         </div>
       </div>
     </section>
