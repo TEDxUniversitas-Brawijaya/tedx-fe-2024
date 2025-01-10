@@ -39,12 +39,12 @@ export default function MobileSection2() {
           width={1920}
           height={1080}
           priority
-          className="absolute bg-red-200 aspect-video h-full object-cover"
+          className="absolute aspect-video h-full bg-red-200 object-cover"
         />
         <div className="absolute top-0 h-1/6 w-full bg-gradient-to-b from-[#000000] to-[#0E0E0E]" />
 
         <div className="absolute flex flex-col items-center justify-center gap-28">
-          <div className="w-56 text-center">
+          <div className="w-56 space-y-5 text-center">
             <h1 className="font-header text-4xl font-bold text-white">
               Membara
             </h1>
