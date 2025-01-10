@@ -26,7 +26,7 @@ const DesktopSection2 = () => {
   );
 
   return (
-    <section className="relative h-[400vh] w-full bg-[#0E0E0E]">
+    <section className="relative h-[500vh] w-full bg-[#0E0E0E]">
       <motion.div
         className="sticky left-0 top-0 h-screen w-full overflow-hidden"
         style={{ opacity: sectionOpacity }}
