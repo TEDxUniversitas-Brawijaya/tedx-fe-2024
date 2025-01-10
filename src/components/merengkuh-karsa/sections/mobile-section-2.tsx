@@ -78,8 +78,14 @@ export default function MobileSection2() {
             style={{
               y: smoothBoxY,
             }}
-            className="mb-20 h-44 w-72 bg-white drop-shadow-[0px_4px_50px_rgba(255,0,0,0.5)]"
-          />
+            className="realative mb-20 h-44 w-72 bg-white drop-shadow-[0px_4px_50px_rgba(255,0,0,0.5)]"
+          >
+            <Image
+              src={"/img/coming-soon-main-event.jpg"}
+              alt="Coming Soon"
+              fill
+            />
+          </motion.div>
         </div>
       </div>
     </section>
