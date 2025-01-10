@@ -42,11 +42,22 @@ export default function MobileSection1() {
     <section className="relative h-[400vh]" ref={sectionRef}>
       <div className="sticky left-0 top-0 z-0 flex h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden bg-[#0E0E0E] px-5 pt-20 text-center">
         <motion.div
-          className="absolute bottom-0 aspect-[1.21/1] h-full origin-center"
+          className="absolute bottom-0 block aspect-[1.21/1] h-full origin-center sm:hidden"
           style={{ scale: smoothBgScale }}
         >
           <Image
             src={"/img/bg-propa-3-section-1-mobile.png"}
+            alt="Background propaganda 3 section 1 mobile"
+            fill
+          />
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-0 mt-10 hidden h-[calc(50dvh-62px)] w-full origin-center sm:block"
+          style={{ scale: smoothBgScale }}
+        >
+          <Image
+            src={"/img/maze-bg-desktop.png"}
             alt="Background propaganda 3 section 1 mobile"
             fill
           />
