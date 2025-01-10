@@ -2,7 +2,8 @@ import Image from "next/image";
 
 export default function DesktopSection3() {
   return (
-    <section className="relative flex h-screen w-full items-center justify-center bg-black">
+    <section className="relative flex h-screen w-full items-center justify-center bg-[#0E0E0E]">
+      <div className="absolute top-0 h-32 w-full bg-gradient-to-t from-[#0E0E0E] via-[#100E10] to-[#100E10]"></div>
       <div className="z-10 mt-14 w-[70%] space-y-4 text-center">
         <p className="text-2xl text-white">
           Perjalanan menuju Mantra Diri masih berlanjut, Teruslah menyelami

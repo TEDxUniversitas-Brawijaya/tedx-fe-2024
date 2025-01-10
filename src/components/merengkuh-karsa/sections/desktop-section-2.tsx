@@ -26,11 +26,12 @@ const DesktopSection2 = () => {
   );
 
   return (
-    <section className="relative h-[400vh] w-full bg-black">
+    <section className="relative h-[400vh] w-full bg-[#0E0E0E]">
       <motion.div
         className="sticky left-0 top-0 h-screen w-full overflow-hidden"
         style={{ opacity: sectionOpacity }}
       >
+        <div className="border- absolute top-0 h-32 w-full bg-gradient-to-b from-[#0E0E0E] via-[#100E10] to-[#100E10]"></div>
         <div className="absolute left-10 top-1/2 z-10 -translate-y-1/2 space-y-2 text-white">
           <h2 className="font-header text-5xl font-semibold">Membara</h2>
           <p className="w-[45%] text-lg">
@@ -65,7 +66,7 @@ const DesktopSection2 = () => {
           }}
           className="absolute right-10 top-1/4 z-10 aspect-video h-auto w-[45%] -translate-x-1/2 bg-white drop-shadow-[0px_4px_70px_rgba(255,0,0,0.5)]"
         />
-        <div className="absolute bottom-0 left-0 h-[calc(100dvh-62px)] w-full opacity-60">
+        <div className="absolute bottom-0 left-0 -z-10 h-[calc(100dvh-62px)] w-full opacity-60">
           <Image
             src="https://res.cloudinary.com/dcvnwpyd9/image/upload/v1736337572/tedxuniversitasbrawijaya2025/heartbeat-with-b6mbg_ncltji.gif"
             alt="Heart Rate Background"
