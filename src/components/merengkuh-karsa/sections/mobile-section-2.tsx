@@ -15,19 +15,14 @@ export default function MobileSection2() {
     offset: ["start start", "end end"],
   });
 
-  const boxY = useTransform(scrollYProgress, [0.75, 0.9], ["400vh", "0vh"]);
+  const boxY = useTransform(scrollYProgress, [0.5, 0.9], ["400vh", "0vh"]);
   const smoothBoxY = useSpring(boxY, {
     damping: 20,
     stiffness: 100,
   });
 
   const description: string[] = [
-    "Semangat yang membara,",
-    "membakar gelapnya",
-    "keraguan, menyalakan api",
-    "dalam jiwa, dengan berani",
-    "menyelami kedalaman diri",
-    "untuk meretas batasan asa.",
+    "Sabda semesta berbisik dalam keheningan jiwa, menuntun setiap insan menyelami hakikat diri hingga menemukan puncak penciptaan dirinya yang abadi.",
   ];
 
   return (
@@ -44,11 +39,11 @@ export default function MobileSection2() {
         <div className="absolute top-0 h-24 w-full bg-gradient-to-b from-[#0A0A0A] to-[#100D10]" />
 
         <div className="absolute flex flex-col items-center justify-center gap-28">
-          <div className="w-56 space-y-5 text-center">
+          <div className="flex w-full flex-col items-center space-y-5 p-5 text-center">
             <h1 className="font-header text-4xl font-bold text-white">
-              Membara
+              Mantra Djiwa
             </h1>
-            <motion.p className="text-lg font-semibold text-[#BEBEBE]">
+            <motion.p className="w-4/5 text-lg font-semibold text-[#BEBEBE]">
               {description.map((sentence, sentenceIdx) => {
                 return (
                   <Fragment key={sentence}>

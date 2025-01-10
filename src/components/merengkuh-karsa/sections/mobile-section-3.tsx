@@ -18,8 +18,8 @@ export default function MobileSection3() {
 
         <div className="absolute mb-14 flex w-[70%] flex-col items-center justify-center gap-y-9 text-center">
           <p className="w-80 text-lg font-semibold text-white">
-            Perjalanan menuju Mantra Diri masih berlanjut, Teruslah menyelami
-            makna dengan Karsa yang di Rengkuh.
+            Perjalanan menuju Mantra Diri masih berlanjut, teruslah menyelami
+            makna dengan karsa yang direngkuh.
           </p>
           <button className="rounded-md bg-tedx-red px-7 py-3 font-body text-base font-semibold text-white transition-all duration-150 hover:bg-tedx-red/80 disabled:opacity-50">
             Daftarkan Dirimu
