@@ -1,11 +1,18 @@
 import { localFontVariables } from "@/lib/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
+import { keywords } from "@/lib/static/metadata";
 
 export const metadata: Metadata = {
-  title: "TEDxUniversitasBrawijaya 2024",
+  title: "TEDxUniversitasBrawijaya 2025",
   description:
     "TEDxUniversitasBrawijaya merupakan sebuah event yang diinisiasi oleh kumpulan mahasiswa Universitas Brawijaya yang diselenggarakan secara independen dengan lisensi dari TED",
+  keywords,
+  openGraph: {
+    title: "TEDxUniversitasBrawijaya 2025",
+    description:
+      "TEDxUniversitasBrawijaya merupakan sebuah event yang diinisiasi oleh kumpulan mahasiswa Universitas Brawijaya yang diselenggarakan secara independen dengan lisensi dari TED",
+  },
 };
 
 export default function RootLayout({
