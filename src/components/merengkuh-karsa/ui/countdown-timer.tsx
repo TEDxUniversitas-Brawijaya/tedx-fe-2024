@@ -12,7 +12,7 @@ export default function CountdownTimer() {
 
   if (!mounted)
     return (
-      <h3 className="font-header text-9xl font-bold text-tedx-red">
+      <h3 className="font-header text-5xl lg:text-9xl font-bold text-tedx-red">
         --:--:--:--
       </h3>
     );
