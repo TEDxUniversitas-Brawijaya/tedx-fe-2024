@@ -22,7 +22,11 @@ export default function MobileSection2() {
   });
 
   const description: string[] = [
-    "Sabda semesta berbisik dalam keheningan jiwa, menuntun setiap insan menyelami hakikat diri hingga menemukan puncak penciptaan dirinya yang abadi.",
+    "Sabda semesta berbisik dalam ",
+    "keheningan jiwa, menuntun setiap",
+    "insan menyelami hakikat diri",
+    "hingga menemukan puncak",
+    "penciptaan dirinya yang abadi.",
   ];
 
   return (
@@ -43,7 +47,7 @@ export default function MobileSection2() {
             <h1 className="font-header text-4xl font-bold text-white">
               Mantra Djiwa
             </h1>
-            <motion.p className="w-4/5 text-lg font-semibold text-[#BEBEBE]">
+            <motion.p className="text-lg font-semibold text-[#BEBEBE]">
               {description.map((sentence, sentenceIdx) => {
                 return (
                   <Fragment key={sentence}>
@@ -73,11 +77,12 @@ export default function MobileSection2() {
             style={{
               y: smoothBoxY,
             }}
-            className="realative mb-20 h-44 w-72 bg-white drop-shadow-[0px_4px_50px_rgba(255,0,0,0.5)]"
+            className="relative mb-20 h-44 w-72 md:h-52 md:w-96 bg-white drop-shadow-[0px_4px_50px_rgba(255,0,0,0.5)]"
           >
             <Image
               src={"/img/coming-soon-main-event.jpg"}
               alt="Coming Soon"
+              className="object-cover"
               fill
             />
           </motion.div>
