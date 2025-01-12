@@ -20,7 +20,7 @@ services:
       NODE_ENV: production
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.tedx-fe.rule=Host(`tedxuniversitasbrawijaya.org`)"
+      - "traefik.http.routers.tedx-fe.rule=Host(`tedxuniversitasbrawijaya.org` || `www.tedxuniversitasbrawijaya.org`)"
       - "traefik.http.routers.tedx-fe.entrypoints=web"
     networks:
       - traefik
