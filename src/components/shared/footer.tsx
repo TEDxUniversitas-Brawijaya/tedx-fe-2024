@@ -14,7 +14,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs text-neutral-500">
-              © 2024. TEDxUniversitasBrawijaya
+              © 2025. TEDxUniversitasBrawijaya
               <br />
               An independently organized TED-like event under license from TED.
             </p>
