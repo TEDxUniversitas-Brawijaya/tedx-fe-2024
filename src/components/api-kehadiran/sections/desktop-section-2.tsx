@@ -221,7 +221,7 @@ const DesktopSection2 = () => {
                 scale: candleFireScale,
                 transformOrigin: "center bottom",
               }}
-              className="absolute bottom-[154px] right-[68px] aspect-[148/203] h-[203px] w-[148px] z-10"
+              className="absolute bottom-[154px] right-[68px] z-10 aspect-[148/203] h-[203px] w-[148px]"
             >
               <Image
                 src="/img/candle-fire.png"
@@ -237,7 +237,7 @@ const DesktopSection2 = () => {
                 scale: candleFireScale,
                 transformOrigin: "center bottom",
               }}
-              className="absolute bottom-[130px] -right-10 aspect-square w-[360px] rounded-full blur-lg"
+              className="absolute -right-10 bottom-[130px] aspect-square w-[360px] rounded-full blur-lg"
             >
               <Image
                 src="/img/candle-fire-bg-desktop.png"

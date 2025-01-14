@@ -43,7 +43,7 @@ export default function DesktopNavMenu() {
       </Link>
       <DropdownMenu open={showMenu} onOpenChange={setShowMenu}>
         <DropdownMenuTrigger>
-          <button
+          <div
             className={`flex items-center gap-1 underline-offset-4 hover:underline`}
           >
             <p>Events</p>
@@ -51,7 +51,7 @@ export default function DesktopNavMenu() {
               size={17}
               className={`transition-all duration-300 ${showMenu && "rotate-180"}`}
             />
-          </button>
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {eventMenus.map(({ href, label }) => (
