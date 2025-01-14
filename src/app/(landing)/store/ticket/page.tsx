@@ -1,3 +1,5 @@
+import ComingSoonPage from "@/components/shared/coming-soon";
+
 export default function TicketPage() {
-  return <main>TicketPage</main>;
+  return <ComingSoonPage />;
 }
