@@ -16,12 +16,20 @@ jobs:
         run: npm install -g pnpm@latest
 
       - name: Install Vercel CLI
-        run: npm install -g vercel@latest
+        run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: Set Environment Variables
+        run: |
+          echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
+          echo "MEASUREMENT_ID=${{ secrets.MEASUREMENT_ID }}" >> .env
+
       - name: Build Project Artifacts
+        env:
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
