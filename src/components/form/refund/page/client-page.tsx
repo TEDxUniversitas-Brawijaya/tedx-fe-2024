@@ -26,7 +26,7 @@ const ClientFormRefundPage = () => {
       <>
         <DialogHeader className="mb-6 md:mb-10">
           <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
-            Pengajuan Behasil
+            Pengajuan Berhasil
           </DialogTitle>
         </DialogHeader>
         <DotLottieReact

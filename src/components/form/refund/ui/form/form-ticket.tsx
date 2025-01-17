@@ -23,6 +23,7 @@ import { refundSchema } from "./models/form-schema";
 import { FileIcon } from "lucide-react";
 import { Separator } from "@/components/shared/separator";
 import { Button } from "@/components/shared/button";
+import { FileInput } from "@/components/shared/file-input";
 
 interface IFormTicketBundle {
   onSubmit: (data: IRootRefund) => void;
@@ -128,20 +129,9 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
             <FormItem className="col-span-4 space-y-2 lg:col-span-1">
               <FormLabel className="text-white">Bukti Pembayaran</FormLabel>
               <FormControl>
-                <div className="relative">
-                  <Input
-                    type="file"
-                    className="cursor-pointer pl-24 file:hidden"
-                    {...field}
-                  />
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pb-0 pl-2 pt-[0.1rem] text-[#7E7E7E] md:pb-[0.1rem] md:pt-0">
-                    <FileIcon className="mr-2 h-4 w-4" />
-                    <p className="text-base leading-[1rem] md:text-sm">
-                      Upload
-                    </p>
-                    <Separator orientation="vertical" className="ml-2" />
-                  </div>
-                </div>
+                <FormControl>
+                  <FileInput {...field} placeholder="Bukti Pembayaran" />
+                </FormControl>
               </FormControl>
               <FormMessage />
             </FormItem>
