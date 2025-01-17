@@ -1,9 +1,9 @@
-interface IDetailItem {
+interface IDialogDetailItem {
   label: string;
   value: string;
 }
 
-const DetailItem = ({ label, value }: IDetailItem) => {
+const DialogDetailItem = ({ label, value }: IDialogDetailItem) => {
   return (
     <div>
       <p className="text-lg">{label}</p>
@@ -12,4 +12,4 @@ const DetailItem = ({ label, value }: IDetailItem) => {
   );
 };
 
-export default DetailItem;
+export default DialogDetailItem;

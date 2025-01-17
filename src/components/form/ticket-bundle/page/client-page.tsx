@@ -13,10 +13,10 @@ import { useDialogReducer } from "@/hooks/useDialogReducer";
 import CreamDialogBackground from "@/components/shared/cream-dialog-background";
 import DialogDetailItem from "@/components/shared/dialog-detail-item";
 import Footer from "@/components/shared/footer";
-import FormTicket from "../ui/form/form-ticket";
+import FormTicketBundle from "../ui/form/form-ticket";
 import Image from "next/image";
 
-const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
+const ClientFormTicketBundlePage = ({ type }: { type: TicketTypeEnum }) => {
   const { dialogState, openDialog, closeDialog } =
     useDialogReducer<IRootTicket>();
 
@@ -156,13 +156,13 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
             bawah, dan nyalakan cahaya baru dalam perjalananmu.
           </p>
           <p className="text-center text-tedx-red/80">
-            Note : kamu memilih regular ( Ticket main event atau ticket 1 day
+            Note : kamu memilih bundling 3 ( Ticket main event & ticket 1 day
             propa 3 )
           </p>
         </div>
 
         <div className="relative z-10 mx-auto mt-14 max-w-[466px]">
-          <FormTicket
+          <FormTicketBundle
             type={type}
             onSubmit={handleSubmit}
             onCancel={() => window.history.back()}
@@ -213,4 +213,4 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
   );
 };
 
-export default ClientFormTicketPage;
+export default ClientFormTicketBundlePage;
