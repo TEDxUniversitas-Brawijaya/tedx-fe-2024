@@ -15,10 +15,13 @@ import DialogDetailItem from "@/components/shared/dialog-detail-item";
 import Footer from "@/components/shared/footer";
 import FormTicket from "../ui/form/form-ticket";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
   const { dialogState, openDialog, closeDialog } =
     useDialogReducer<IRootTicket>();
+
+  const router = useRouter();
 
   const handleSubmit = (data: IRootTicket) => {
     openDialog("create", data);
@@ -135,7 +138,7 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
           type="button"
           variant={"outlineRed"}
           className="w-full"
-          onClick={closeDialog}
+          onClick={() => router.push("/store/ticket")}
         >
           Kembali
         </Button>

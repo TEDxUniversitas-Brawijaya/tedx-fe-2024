@@ -1,3 +1,5 @@
+import ClientFormRefundPage from "@/components/form/refund/page/client-page";
+
 export default function FormRefund() {
-  return <div>FormRefund</div>;
+  return <ClientFormRefundPage />;
 }
