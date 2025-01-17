@@ -7,7 +7,7 @@ import { DialogType } from "@/types/general-types";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { FileIcon } from "lucide-react";
 import { Input } from "@/components/shared/input";
-import { IRootTicket } from "@/types/ticket-types";
+import { IRootTicket, TicketTypeEnum } from "@/types/ticket-types";
 import { Separator } from "@/components/shared/separator";
 import { useDialogReducer } from "@/hooks/useDialogReducer";
 import CreamDialogBackground from "@/components/shared/cream-dialog-background";
@@ -16,7 +16,7 @@ import Footer from "@/components/shared/footer";
 import FormTicket from "../ui/form/form-ticket";
 import Image from "next/image";
 
-const ClientFormTicketPage = () => {
+const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
   const { dialogState, openDialog, closeDialog } =
     useDialogReducer<IRootTicket>();
 
@@ -153,14 +153,14 @@ const ClientFormTicketPage = () => {
             bawah, dan nyalakan cahaya baru dalam perjalananmu.
           </p>
           <p className="text-center text-tedx-red/80">
-            Note : kamu memilih bundling 3 ( Ticket main event & ticket 1 day
+            Note : kamu memilih regular ( Ticket main event atau ticket 1 day
             propa 3 )
           </p>
         </div>
 
         <div className="relative z-10 mx-auto mt-14 max-w-[466px]">
           <FormTicket
-            type="propa-3"
+            type={type}
             onSubmit={handleSubmit}
             onCancel={() => window.history.back()}
           />
