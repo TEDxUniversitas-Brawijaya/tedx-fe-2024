@@ -30,12 +30,12 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
   const dialogContent: Partial<Record<DialogType, JSX.Element>> = {
     create: (
       <>
-        <DialogHeader className="mb-14">
-          <DialogTitle className="text-center font-header text-5xl font-light">
+        <DialogHeader className="mb-10 md:mb-14">
+          <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
             Detail Pembelian
           </DialogTitle>
         </DialogHeader>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <DialogDetailItem
             label="Nama Lengkap"
             value={dialogState.data?.full_name ?? "-"}
@@ -62,13 +62,14 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
           />
         </div>
         <Separator className="my-6 bg-[#7E7E7E]/40" />
+        <DialogDetailItem label="Total" value="Rp 100.000,00-" />
         <ActionFooter
           primaryText="Bayar Sekarang"
           secondaryText="Kembali"
           primaryProps={{
             type: "button",
             onClick: () => {
-              openDialog("payment");
+              openDialog("payment", dialogState.data!);
             },
           }}
           secondaryProps={{
@@ -81,8 +82,8 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
     ),
     payment: (
       <>
-        <DialogHeader className="mb-14">
-          <DialogTitle className="text-center font-header text-5xl font-light">
+        <DialogHeader className="mb-10 md:mb-14">
+          <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
             Bukti Pembayaran
           </DialogTitle>
         </DialogHeader>
@@ -111,7 +112,9 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
             },
           }}
           secondaryProps={{
-            onClick: closeDialog,
+            onClick: () => {
+              openDialog("create", dialogState.data!);
+            },
             type: "button",
           }}
           primaryClassName="text-black"
@@ -120,8 +123,8 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
     ),
     success: (
       <>
-        <DialogHeader className="mb-10">
-          <DialogTitle className="text-center font-header text-5xl font-light">
+        <DialogHeader className="mb-6 md:mb-10">
+          <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
             Pembayaran Behasil
           </DialogTitle>
         </DialogHeader>
@@ -148,9 +151,9 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
 
   return (
     <main>
-      <section className="relative min-h-screen w-full overflow-hidden bg-tedx-black py-[120px]">
-        <div className="relative z-10 mx-auto w-[60%] space-y-10">
-          <h1 className="text-center font-header text-6xl text-white">
+      <section className="relative min-h-screen w-full overflow-hidden bg-tedx-black pb-16 pt-[120px] md:py-[120px]">
+        <div className="relative z-10 mx-auto w-[80%] space-y-10 md:w-[60%]">
+          <h1 className="text-center font-header text-5xl text-white md:text-6xl">
             Form Registrasi
           </h1>
           <p className="text-center text-white/50">
@@ -164,7 +167,7 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
           </p>
         </div>
 
-        <div className="relative z-10 mx-auto mt-14 max-w-[466px]">
+        <div className="relative z-10 mx-auto mt-14 max-w-[320px] md:max-w-[466px]">
           <FormTicket
             type={type}
             onSubmit={handleSubmit}

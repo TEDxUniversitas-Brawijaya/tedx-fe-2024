@@ -24,8 +24,8 @@ const ClientFormRefundPage = () => {
   const dialogContent: Partial<Record<DialogType, JSX.Element>> = {
     success: (
       <>
-        <DialogHeader className="mb-10">
-          <DialogTitle className="text-center font-header text-5xl font-light">
+        <DialogHeader className="mb-6 md:mb-10">
+          <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
             Pengajuan Behasil
           </DialogTitle>
         </DialogHeader>
@@ -51,8 +51,8 @@ const ClientFormRefundPage = () => {
 
   return (
     <main>
-      <section className="relative min-h-screen w-full overflow-hidden bg-tedx-black py-[120px]">
-        <div className="relative z-10 mx-auto w-[60%] space-y-10">
+      <section className="relative min-h-screen w-full overflow-hidden bg-tedx-black pb-16 pt-[120px] md:py-[120px]">
+        <div className="relative z-10 mx-auto w-[80%] space-y-10 md:w-[60%]">
           <h1 className="text-center font-header text-6xl text-white">
             Form Refund
           </h1>
@@ -62,11 +62,8 @@ const ClientFormRefundPage = () => {
           </p>
         </div>
 
-        <div className="relative z-10 mx-auto mt-14 max-w-[860px]">
-          <FormTicketBundle
-            onSubmit={handleSubmit}
-            onCancel={() => window.history.back()}
-          />
+        <div className="relative z-10 mx-auto mt-14 max-w-[320px] md:max-w-[580px] lg:max-w-[860px]">
+          <FormTicketBundle onSubmit={handleSubmit} />
         </div>
 
         {/* Background Images */}

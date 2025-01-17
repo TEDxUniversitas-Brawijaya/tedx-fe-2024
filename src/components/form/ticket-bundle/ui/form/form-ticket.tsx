@@ -111,7 +111,7 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
             control={form.control}
             name="amount"
             render={({ field }) => (
-              <FormItem className="space-y-2">
+              <FormItem className="col-span-2 space-y-2 md:col-span-1">
                 <FormLabel className="text-white">Jumlah Tiket</FormLabel>
                 <Select
                   onValueChange={(value) => field.onChange(Number(value))}
@@ -143,7 +143,7 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
             control={form.control}
             name="merch_size"
             render={({ field }) => (
-              <FormItem className="space-y-2">
+              <FormItem className="col-span-2 space-y-2 md:col-span-1">
                 <div className="flex items-center justify-between">
                   <FormLabel className="text-white">Ukuran Merch</FormLabel>
                   <TooltipProvider>

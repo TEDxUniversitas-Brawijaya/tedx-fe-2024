@@ -18,8 +18,8 @@ const TicketCard = ({
   redirectUrl,
 }: ITicketCard) => {
   return (
-    <Link href={redirectUrl}>
-      <div className="flex h-[440px] w-[480px] flex-col justify-between rounded-[32px] bg-[#1D1A1B] px-12 py-10 text-white">
+    <Link href={redirectUrl} replace>
+      <div className="flex h-[380px] w-full flex-col justify-between rounded-[32px] bg-[#1D1A1B] px-12 py-10 text-white md:h-[340px] md:w-[360px] lg:h-[440px] lg:w-[480px]">
         <div className="flex items-center justify-between">
           <p>
             {startDate}-{endDate}
@@ -29,7 +29,7 @@ const TicketCard = ({
           )}
         </div>
         <div className="space-y-4">
-          <h3 className="text-[72px] italic">{title}</h3>
+          <h3 className="text-5xl italic lg:text-[72px]">{title}</h3>
           <p className="text-white/40">{description}</p>
         </div>
       </div>

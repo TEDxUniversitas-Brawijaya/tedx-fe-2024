@@ -47,21 +47,23 @@ const Section1 = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[200dvh] w-full px-[120px] pt-[62px]"
+      className="relative w-full px-10 pt-[62px] md:px-[80px] lg:h-[200dvh] lg:px-[120px]"
     >
       <div className="sticky left-0 top-[120px] z-10 mt-[calc(100dvh-400px)]">
-        <div className="mb-6 flex items-center gap-4">
-          <p className="text-xl text-white">Tiket bisa dibeli dalam</p>
+        <div className="mb-2 flex items-center gap-4 md:mb-4 lg:mb-6">
+          <p className="text-base text-white lg:text-xl">
+            Tiket bisa dibeli dalam
+          </p>
           <CountdownTimer
-            targetDate={new Date(2025, 0, 20, 12, 0, 0)}
-            className="text-xl text-white"
+            targetDate={new Date(2025, 0, 22, 12, 0, 0)}
+            className="text-base text-white lg:text-xl"
           />
         </div>
-        <h1 className="relative z-20 h-fit text-[120px] font-bold leading-[1] text-white">
+        <h1 className="relative z-20 h-fit text-5xl font-bold leading-[1] text-white md:text-8xl lg:text-[120px]">
           INFORMASI <br /> TICKETING
         </h1>
 
-        <div className="relative z-20 mt-20 w-1/2 space-y-8 text-justify text-white/70">
+        <div className="relative z-20 mt-8 w-full space-y-8 text-justify text-white/70 md:mt-12 lg:mt-20 lg:w-1/2">
           <p>
             Selamat datang di puncak perjalanan mencari Mantra Diri bersama
             TEDxUniversitasBrawijaya. Di titik ini kamu berkesempatan untuk
@@ -79,7 +81,7 @@ const Section1 = () => {
       </div>
 
       <motion.div
-        className="absolute right-[240px] top-1/2 z-[5] aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2"
+        className="absolute right-[240px] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
         style={{
           y: photo1Y,
           rotate: photo1Rotation,
@@ -95,7 +97,7 @@ const Section1 = () => {
       </motion.div>
 
       <motion.div
-        className="absolute right-[120px] top-1/2 z-[5] aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2"
+        className="absolute right-[120px] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
         style={{
           y: photo2Y,
           rotate: photo2Rotation,
@@ -111,7 +113,7 @@ const Section1 = () => {
       </motion.div>
 
       <motion.div
-        className="absolute right-[200px] top-1/2 z-[5] aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2"
+        className="absolute right-[200px] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
         style={{
           y: photo3Y,
           rotate: photo3Rotation,

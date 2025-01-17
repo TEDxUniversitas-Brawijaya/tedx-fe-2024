@@ -20,24 +20,17 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { refundSchema } from "./models/form-schema";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/shared/tooltip";
-import { FileIcon, InfoIcon } from "lucide-react";
+import { FileIcon } from "lucide-react";
 import { Separator } from "@/components/shared/separator";
 import { Button } from "@/components/shared/button";
 
 interface IFormTicketBundle {
   onSubmit: (data: IRootRefund) => void;
-  onCancel: () => void;
 }
 
 type FormSchema = z.infer<typeof refundSchema>;
 
-const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
+const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(refundSchema),
   });
@@ -61,7 +54,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="full_name"
           render={({ field }) => (
-            <FormItem className="col-span-2 space-y-2">
+            <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Nama Lengkap</FormLabel>
               <FormControl>
                 <Input placeholder="Nama Lengkap" {...field} />
@@ -74,7 +67,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="order_number"
           render={({ field }) => (
-            <FormItem className="col-span-2 space-y-2">
+            <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Nomer Order</FormLabel>
               <FormControl>
                 <Input placeholder="Nama Lengkap" {...field} />
@@ -87,7 +80,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem className="col-span-2 space-y-2">
+            <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Email</FormLabel>
               <FormControl>
                 <Input type="email" placeholder="Email" {...field} />
@@ -100,7 +93,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="amount"
           render={({ field }) => (
-            <FormItem className="space-y-2">
+            <FormItem className="col-span-4 space-y-2 md:col-span-2 lg:col-span-1">
               <FormLabel className="text-white">Jumlah Tiket</FormLabel>
               <Select
                 onValueChange={(value) => field.onChange(Number(value))}
@@ -132,7 +125,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="payment_url"
           render={({ field }) => (
-            <FormItem className="space-y-2">
+            <FormItem className="col-span-4 space-y-2 lg:col-span-1">
               <FormLabel className="text-white">Bukti Pembayaran</FormLabel>
               <FormControl>
                 <div className="relative">
@@ -158,7 +151,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="type"
           render={({ field }) => (
-            <FormItem className="col-span-2 space-y-2">
+            <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Event</FormLabel>
               <Select onValueChange={field.onChange}>
                 <FormControl>
@@ -179,7 +172,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="payment_method"
           render={({ field }) => (
-            <FormItem className="col-span-2 space-y-2">
+            <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Metode Pembayaran</FormLabel>
               <FormControl>
                 <Input placeholder="Metode Pembayaran" {...field} />
@@ -192,7 +185,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="reason"
           render={({ field }) => (
-            <FormItem className="col-span-2 space-y-2">
+            <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Alasan Pembatalan</FormLabel>
               <FormControl>
                 <Input placeholder="Alasan Pembatalan" {...field} />
@@ -205,7 +198,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
           control={form.control}
           name="bank_number"
           render={({ field }) => (
-            <FormItem className="col-span-2 space-y-2">
+            <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Nomor Rekening</FormLabel>
               <FormControl>
                 <Input placeholder="Nomor Rekening" {...field} />
@@ -214,7 +207,7 @@ const FormTicketBundle = ({ onSubmit, onCancel }: IFormTicketBundle) => {
             </FormItem>
           )}
         />
-        <Button type="submit" variant="defaultRed" className="col-span-4">
+        <Button type="submit" variant="defaultRed" className="col-span-4 mt-6">
           Ajukan
         </Button>
       </form>
