@@ -19,7 +19,7 @@ const TicketCard = ({
 }: ITicketCard) => {
   return (
     <Link href={redirectUrl} replace>
-      <div className="flex h-[380px] w-full flex-col justify-between rounded-[32px] bg-[#1D1A1B] px-12 py-10 text-white md:h-[340px] md:w-[360px] lg:h-[440px] lg:w-[480px]">
+      <div className="flex h-[380px] w-full flex-col justify-between rounded-[32px] bg-[#1D1A1B] px-6 md:px-12 py-10 text-white md:h-[340px] md:w-[360px] lg:h-[440px] lg:w-[480px]">
         <div className="flex items-center justify-between">
           <p>
             {startDate}-{endDate}
