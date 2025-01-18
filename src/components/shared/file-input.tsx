@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { forwardRef, useRef, useState } from "react";
 import { Input } from "@/components/shared/input";
@@ -15,11 +15,10 @@ interface FileInputProps
   > {
   onChange?: (url: string) => void;
   value?: string;
-  error?: boolean;
 }
 
 const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, onChange, disabled, error, value, ...props }, ref) => {
+  ({ className, onChange, disabled, value, ...props }, ref) => {
     const [isUploading, setIsUploading] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -69,6 +68,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
           onChange={handleFileChange}
           disabled={disabled || isUploading}
           className={cn("cursor-pointer pl-24 file:hidden", className)}
+          value={value}
           ref={mergedRef}
           {...props}
         />

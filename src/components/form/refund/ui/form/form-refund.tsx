@@ -6,9 +6,8 @@ import {
   FormLabel,
   FormMessage,
 } from "../../../../shared/form";
-import { ActionFooter } from "@/components/shared/action-footer";
 import { Input } from "@/components/shared/input";
-import { IRootRefund, IRootTicket, TicketTypeEnum } from "@/types/ticket-types";
+import { IRootRefund } from "@/types/ticket-types";
 import {
   Select,
   SelectContent,
@@ -20,8 +19,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { refundSchema } from "./models/form-schema";
-import { FileIcon } from "lucide-react";
-import { Separator } from "@/components/shared/separator";
 import { Button } from "@/components/shared/button";
 import { FileInput } from "@/components/shared/file-input";
 
@@ -71,7 +68,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Nomer Order</FormLabel>
               <FormControl>
-                <Input placeholder="Nama Lengkap" {...field} />
+                <Input placeholder="Nomor Order" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -178,7 +175,24 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Alasan Pembatalan</FormLabel>
               <FormControl>
-                <Input placeholder="Alasan Pembatalan" {...field} />
+                <Select onValueChange={field.onChange}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Alasan Pembatalan" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="multiple-payment">
+                      Pembayaran ganda atau lebih
+                    </SelectItem>
+                    <SelectItem value="event-cancelation">
+                      Pembatalan acara
+                    </SelectItem>
+                    <SelectItem value="event-resechedule">
+                      Pergantian tanggal acara
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -1,9 +1,7 @@
-import { useCallback } from "react";
+import { MutableRefObject, useCallback } from "react";
 
-export const useMergeRefs = <T extends any>(
-  ...refs: Array<
-    React.MutableRefObject<T> | React.LegacyRef<T> | null | undefined
-  >
+export const useMergeRefs = <T,>(
+  ...refs: Array<MutableRefObject<T> | React.LegacyRef<T> | null | undefined>
 ): React.RefCallback<T> => {
   return useCallback((value) => {
     refs.forEach((ref) => {

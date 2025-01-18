@@ -4,11 +4,10 @@ import { Button } from "@/components/shared/button";
 import { Dialog, DialogHeader, DialogTitle } from "@/components/shared/dialog";
 import { DialogType } from "@/types/general-types";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { IRootRefund } from "@/types/ticket-types";
 import { useDialogReducer } from "@/hooks/useDialogReducer";
 import CreamDialogBackground from "@/components/shared/cream-dialog-background";
 import Footer from "@/components/shared/footer";
-import FormTicketBundle from "../ui/form/form-ticket";
+import FormTicketBundle from "../ui/form/form-refund";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
