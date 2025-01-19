@@ -1,5 +1,9 @@
-import ComingSoonPage from "@/components/shared/coming-soon";
+import Section2 from "@/components/store/merch/sections/section-2";
 
 export default function MerchPage() {
-  return <ComingSoonPage />;
+  return (
+    <main>
+      <Section2 />
+    </main>
+  );
 }
