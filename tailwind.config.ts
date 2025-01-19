@@ -49,6 +49,12 @@ const config: Config = {
           "Arial",
           "sans-serif",
         ],
+        strong: [
+          "var(--font-strong-concrete-bold)",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
       },
       borderRadius: {
         lg: "var(--radius)",
