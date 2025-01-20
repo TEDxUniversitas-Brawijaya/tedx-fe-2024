@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/shared/toaster";
 import Navbar from "@/components/shared/navigations/navbar";
 
 export default function LandingLayout({
@@ -8,6 +9,7 @@ export default function LandingLayout({
   return (
     <>
       <Navbar />
+      <Toaster />
       {children}
     </>
   );

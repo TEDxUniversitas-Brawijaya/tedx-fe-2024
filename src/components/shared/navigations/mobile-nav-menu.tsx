@@ -14,6 +14,7 @@ import {
   AccordionTrigger,
 } from "../accordion";
 import { eventMenus } from "@/lib/static/nav-menus";
+import { Button } from "../button";
 
 export default function MobileNavMenu() {
   const pathname = usePathname();
@@ -94,6 +95,7 @@ export default function MobileNavMenu() {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+
             <Link
               onClick={() => setShowMenu(false)}
               href={"/merch"}
@@ -101,6 +103,11 @@ export default function MobileNavMenu() {
             >
               Merch
             </Link>
+            <Button className="bg-tedx-red text-xl font-semibold hover:text-tedx-red/80">
+              <Link onClick={() => setShowMenu(false)} href={"/store/ticket"}>
+                Grab Ticket
+              </Link>
+            </Button>
           </div>
 
           <div className="absolute -bottom-20 -left-0 flex w-full justify-center">

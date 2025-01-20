@@ -1,5 +1,10 @@
-function FormTicketBundlePage() {
-  return <div>FormTicketBundlePage</div>;
-}
+import ClientFormTicketBundlePage from "@/components/form/ticket-bundle/page/client-page";
+import { TicketTypeEnum } from "@/types/ticket-types";
 
-export default FormTicketBundlePage;
+export default async function FormTicketPage({
+  searchParams,
+}: {
+  searchParams: { type: TicketTypeEnum };
+}) {
+  return <ClientFormTicketBundlePage type={searchParams.type} />;
+}
