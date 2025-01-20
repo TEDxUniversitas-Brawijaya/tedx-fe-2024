@@ -4,7 +4,11 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
 
-  if (request.nextUrl.pathname.startsWith("/admin") && !token) {
+  const isPathRestricted =
+    request.nextUrl.pathname.startsWith("/admin") ||
+    request.nextUrl.pathname.startsWith("/form");
+
+  if (isPathRestricted && !token) {
     const url = request.nextUrl.clone();
     url.pathname = "/";
     return NextResponse.redirect(url);
