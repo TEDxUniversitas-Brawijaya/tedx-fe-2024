@@ -47,7 +47,7 @@ const Section1 = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full px-10 pt-[62px] md:px-[80px] lg:h-[200dvh] lg:px-[120px]"
+      className="relative w-full px-5 pt-[62px] md:px-[80px] lg:h-[200dvh] lg:px-20"
     >
       <div className="sticky left-0 top-[120px] z-10 mt-[calc(100dvh-400px)]">
         <div className="mb-2 flex items-center gap-4 md:mb-4 lg:mb-6">
@@ -81,7 +81,7 @@ const Section1 = () => {
       </div>
 
       <motion.div
-        className="absolute right-[240px] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
+        className="absolute right-[7%] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
         style={{
           y: photo1Y,
           rotate: photo1Rotation,
@@ -97,7 +97,7 @@ const Section1 = () => {
       </motion.div>
 
       <motion.div
-        className="absolute right-[120px] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
+        className="absolute right-[12%] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
         style={{
           y: photo2Y,
           rotate: photo2Rotation,
@@ -113,7 +113,7 @@ const Section1 = () => {
       </motion.div>
 
       <motion.div
-        className="absolute right-[200px] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
+        className="absolute right-[8%] top-1/2 z-[5] hidden aspect-[418/287] h-[287px] w-[400px] -translate-y-1/2 lg:block"
         style={{
           y: photo3Y,
           rotate: photo3Rotation,

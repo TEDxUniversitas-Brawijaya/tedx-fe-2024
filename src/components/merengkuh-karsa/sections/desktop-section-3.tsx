@@ -13,7 +13,7 @@ export default function DesktopSection3() {
         <div className="flex flex-col items-center text-xl">
           <p>Babak ini akan dimulai dalam</p>
           <CountdownTimer
-            targetDate={new Date(2025, 0, 20, 12, 0, 0)}
+            targetDate={new Date(2025, 0, 22, 12, 0, 0)}
             className="font-header text-9xl font-bold text-tedx-red"
           />
           <p className="max-w-[600px]">

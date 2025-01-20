@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "../dropdown-menu";
 import { eventMenus } from "@/lib/static/nav-menus";
+import { Button } from "../button";
 
 export default function DesktopNavMenu() {
   const pathname = usePathname();
@@ -74,18 +75,16 @@ export default function DesktopNavMenu() {
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
-      <Link
-        href={"/store/ticket"}
-        className={`underline-offset-4 hover:underline ${pathname === "/ticket" && "text-tedx-red"}`}
-      >
-        Ticket
-      </Link>
+
       <Link
         href={"/store/merch"}
         className={`underline-offset-4 hover:underline ${pathname === "/merch" && "text-tedx-red"}`}
       >
         Merch
       </Link>
+      <Button className="bg-tedx-red font-semibold hover:bg-tedx-red/80">
+        <Link href={"/store/ticket"}>Grab Ticket</Link>
+      </Button>
     </div>
   );
 }
