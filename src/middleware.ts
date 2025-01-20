@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
   }
 
   // Handle ticket form route
-  if (pathname.startsWith("/form/ticket")) {
+  if (pathname.startsWith("/form")) {
     const ticketType = searchParams.get("type");
 
     if (!ticketType || !isValidTicketType(ticketType)) {
