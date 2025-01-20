@@ -7,7 +7,7 @@ export default function CountdownTimer() {
   const mounted = useMounted();
 
   const { days, hours, minutes, seconds } = useCountdown(
-    new Date(2025, 0, 20, 12, 0, 0),
+    new Date(2025, 0, 22, 12, 0, 0),
   );
 
   if (!mounted)
