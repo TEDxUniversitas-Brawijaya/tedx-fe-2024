@@ -4,9 +4,15 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/shared/tabs";
+import { getAllTicketInfo } from "@/repository/actions/ticket-service";
 import TicketCard from "../ui/card/ticket-card";
 
-const Section2 = () => {
+const Section2 = async () => {
+  const data = await getAllTicketInfo();
+
+  // TODO remove this upon integration
+  console.log(data);
+
   return (
     <section className="relative z-10 mt-[100px] w-full pb-[140px]">
       <h2 className="text-center font-header text-4xl text-white md:text-5xl lg:text-6xl">

@@ -5,3 +5,16 @@ export interface DialogState<T> {
   type: DialogType;
   data: T | null;
 }
+
+export interface IResponsePagination {
+  prev: number;
+  current: number;
+  next: number;
+  totalPage: number;
+  totalData: number;
+}
+
+export interface IRootResponse {
+  message: string;
+  pagination?: IResponsePagination;
+}

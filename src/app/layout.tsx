@@ -3,6 +3,7 @@ import { keywords } from "@/lib/static/metadata";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import QueryClientWrapper from "@/components/shared/query-client-wrapper";
 
 export const metadata: Metadata = {
   title: "TEDxUniversitasBrawijaya 2025",
@@ -24,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className={`${localFontVariables} antialiased`}>{children}</body>
+      <body className={`${localFontVariables} antialiased`}>
+        <QueryClientWrapper>{children}</QueryClientWrapper>
+      </body>
       <GoogleAnalytics gaId={process.env.MEASUREMENT_ID || ""} />
     </html>
   );

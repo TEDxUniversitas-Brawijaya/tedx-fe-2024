@@ -1,4 +1,11 @@
+import { IRootResponse } from "./general-types";
+
 export type TicketTypeEnum = "propa-3" | "main-event";
+export type TicketPriceTypeEnum =
+  | "early-bird"
+  | "presale1"
+  | "presale2"
+  | "normal-price";
 
 export interface IRootTicket {
   type: TicketTypeEnum;
@@ -19,4 +26,24 @@ export interface IRootRefund {
   reason: string;
   bank_number: string;
   amount: number;
+}
+
+export interface ITicketResponseDetail {
+  id: number;
+  name: string;
+  type: TicketPriceTypeEnum;
+  startDate: string;
+  endDate: string;
+  stock: number;
+  description: string;
+  isExpired: boolean;
+  price: number;
+}
+
+export interface ITicketResponse extends IRootResponse {
+  ticketInformations: {
+    mainEvent: ITicketResponseDetail[];
+    propaganda3: ITicketResponseDetail[];
+    ticketBundling1: ITicketResponseDetail[];
+  };
 }
