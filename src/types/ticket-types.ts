@@ -28,7 +28,7 @@ export interface IRootRefund {
   amount: number;
 }
 
-export interface ITicketResponseDetail {
+export interface ITicketInfoDetail {
   id: number;
   name: string;
   type: TicketPriceTypeEnum;
@@ -40,10 +40,37 @@ export interface ITicketResponseDetail {
   price: number;
 }
 
-export interface ITicketResponse extends IRootResponse {
+export interface IGetTicketInfoResponse extends IRootResponse {
   ticketInformations: {
-    mainEvent: ITicketResponseDetail[];
-    propaganda3: ITicketResponseDetail[];
-    ticketBundling1: ITicketResponseDetail[];
+    mainEvent: ITicketInfoDetail[];
+    propaganda3: ITicketInfoDetail[];
+    ticketBundling1: ITicketInfoDetail[];
   };
+}
+
+export interface ITicketDetail {
+  id: number;
+  orderID: string;
+  name: string;
+  email: string;
+  number: string;
+  isCheckedIn: boolean;
+  event: string;
+  type: string;
+}
+
+export interface IGetTicketResponse extends IRootResponse {
+  tickets: ITicketDetail[];
+}
+
+export interface ICreateTicketPayload {
+  name: string;
+  email: string;
+  phone: string;
+  quantity: number;
+  institution: string;
+  paymentProof: string;
+  orderType: string;
+  ticketType?: string;
+  ticketEvent: string;
 }

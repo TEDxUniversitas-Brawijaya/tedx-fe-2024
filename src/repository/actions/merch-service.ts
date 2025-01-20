@@ -2,32 +2,23 @@
 
 import { IRootResponse } from "@/types/general-types";
 import {
-  ICreateTicketPayload,
-  IGetTicketInfoResponse,
-  IGetTicketResponse,
-} from "@/types/ticket-types";
+  ICreateMerchOrderPayload,
+  IGetMerchOrdersResponse,
+} from "@/types/merch-types";
 import { BASE_URL } from "../api";
 
-const url = new URL(BASE_URL + "/tickets/informations");
+const url = new URL(BASE_URL + "/merch");
 
-export async function getAllTicketInfo(): Promise<IGetTicketInfoResponse> {
-  const res = await fetch(url);
-
-  const data = await res.json();
-
-  return data;
-}
-
-export async function getAllTickets(
+export async function getAllMerchs(
   page = 1,
-  status?: string,
+  type?: string,
   keyword?: string,
   limit = 10,
-): Promise<IGetTicketResponse> {
+): Promise<IGetMerchOrdersResponse> {
   url.searchParams.append("page", page.toString());
   url.searchParams.append("limit", limit.toString());
 
-  if (status) url.searchParams.append("status", status);
+  if (type) url.searchParams.append("type", type);
   if (keyword) url.searchParams.append("keyword", keyword);
 
   const res = await fetch(url.toString());
@@ -37,8 +28,8 @@ export async function getAllTickets(
   return data;
 }
 
-export async function createTicket(
-  payload: ICreateTicketPayload,
+export async function createMerchOrder(
+  payload: ICreateMerchOrderPayload,
 ): Promise<IRootResponse> {
   const res = await fetch(url.toString(), {
     method: "POST",
