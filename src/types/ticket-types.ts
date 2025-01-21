@@ -57,6 +57,7 @@ export interface ITicketDetail {
   isCheckedIn: boolean;
   event: string;
   type: string;
+  price: number;
 }
 
 export interface IGetTicketResponse extends IRootResponse {

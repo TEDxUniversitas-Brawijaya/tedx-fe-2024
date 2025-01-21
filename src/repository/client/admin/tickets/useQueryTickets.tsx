@@ -1,8 +1,8 @@
 import useUrlQuery from "@/hooks/useUrlQuery";
-import { getAllOrders } from "@/repository/actions/order-service";
+import { getAllTickets } from "@/repository/actions/ticket-service";
 import { useQuery } from "@tanstack/react-query";
 
-export default function useQueryTransactions() {
+export default function useQueryTickets() {
   const { urlQuery, setUrlQuery, debouncedQuery, isInitialized } =
     useUrlQuery();
 
@@ -28,20 +28,20 @@ export default function useQueryTransactions() {
   const handleStatusChange = (status: string | undefined) => {
     setUrlQuery((prev) => ({
       ...prev,
-      status: status === "all" ? undefined : status,
+      status: status === "" ? undefined : status,
       page: 1,
     }));
   };
 
   const res = useQuery({
     queryKey: [
-      "get-admin-transactions",
+      "get-admin-tickets",
       isInitialized ? debouncedQuery.page : urlQuery.page,
       isInitialized ? debouncedQuery.keyword : urlQuery.keyword,
       isInitialized ? debouncedQuery.status : urlQuery.status,
     ],
     queryFn: () =>
-      getAllOrders(
+      getAllTickets(
         isInitialized ? debouncedQuery.page : urlQuery.page,
         isInitialized ? debouncedQuery.status : urlQuery.status,
         isInitialized ? debouncedQuery.keyword : urlQuery.keyword,

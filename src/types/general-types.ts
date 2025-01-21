@@ -23,5 +23,4 @@ export interface IGeneralFilter {
   keyword?: string;
   page: number;
   status?: string;
-  limit?: number;
 }

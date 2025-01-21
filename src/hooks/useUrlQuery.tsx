@@ -13,11 +13,10 @@ function useUrlQuery() {
   const [urlQuery, setUrlQuery] = useState<IGeneralFilter>({
     keyword: searchParams.get("search") || undefined,
     page: Math.max(1, Number.parseInt(searchParams.get("page") || "1")),
-    limit: Number.parseInt(searchParams.get("page") || "10"),
     status: searchParams.get("status") || undefined,
   });
 
-  const debouncedQuery = useDebounce(urlQuery, 700);
+  const debouncedQuery = useDebounce(urlQuery, 500);
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {

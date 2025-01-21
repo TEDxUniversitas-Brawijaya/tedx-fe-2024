@@ -13,46 +13,52 @@ export default function TablePagination({
   current_page,
   total_page,
   onPageChange,
+  total_data,
 }: ITablePanigation) {
   return (
-    <div className="flex items-center gap-1">
-      <Button
-        disabled={!previous_page || previous_page === current_page}
-        onClick={() => onPageChange((p) => ({ ...p, page: 1 }))}
-        size={"icon"}
-        variant={"outline"}
-      >
-        <ChevronsLeftIcon size={20} />
-      </Button>
-      <Button
-        disabled={!previous_page || previous_page === current_page}
-        onClick={() =>
-          onPageChange((p) => ({ ...p, page: previous_page ?? 1 }))
-        }
-        size={"icon"}
-        variant={"outline"}
-      >
-        <ChevronLeftIcon size={20} />
-      </Button>
-      <div className="px-5">
-        {current_page} / {total_page}
+    <div className="flex items-center justify-between">
+      <p className="text-base">
+        Total <span className="font-semibold">{total_data}</span> Data
+      </p>
+      <div className="flex items-center gap-1">
+        <Button
+          disabled={!previous_page || previous_page === current_page}
+          onClick={() => onPageChange((p) => ({ ...p, page: 1 }))}
+          size={"icon"}
+          variant={"outline"}
+        >
+          <ChevronsLeftIcon size={20} />
+        </Button>
+        <Button
+          disabled={!previous_page || previous_page === current_page}
+          onClick={() =>
+            onPageChange((p) => ({ ...p, page: previous_page ?? 1 }))
+          }
+          size={"icon"}
+          variant={"outline"}
+        >
+          <ChevronLeftIcon size={20} />
+        </Button>
+        <div className="px-5">
+          {current_page} / {total_page}
+        </div>
+        <Button
+          disabled={!next_page || next_page === current_page}
+          onClick={() => onPageChange((p) => ({ ...p, page: next_page ?? 1 }))}
+          size={"icon"}
+          variant={"outline"}
+        >
+          <ChevronRightIcon size={20} />
+        </Button>
+        <Button
+          disabled={!next_page || next_page === current_page}
+          onClick={() => onPageChange((p) => ({ ...p, page: total_page }))}
+          size={"icon"}
+          variant={"outline"}
+        >
+          <ChevronsRightIcon size={20} />
+        </Button>
       </div>
-      <Button
-        disabled={!next_page || next_page === current_page}
-        onClick={() => onPageChange((p) => ({ ...p, page: next_page ?? 1 }))}
-        size={"icon"}
-        variant={"outline"}
-      >
-        <ChevronRightIcon size={20} />
-      </Button>
-      <Button
-        disabled={!next_page || next_page === current_page}
-        onClick={() => onPageChange((p) => ({ ...p, page: total_page }))}
-        size={"icon"}
-        variant={"outline"}
-      >
-        <ChevronsRightIcon size={20} />
-      </Button>
     </div>
   );
 }

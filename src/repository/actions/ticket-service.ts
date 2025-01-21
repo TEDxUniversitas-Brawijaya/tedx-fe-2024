@@ -24,6 +24,8 @@ export async function getAllTickets(
   keyword?: string,
   limit = 10,
 ): Promise<IGetTicketResponse> {
+  const url = new URL(BASE_URL + "/tickets");
+
   url.searchParams.append("page", page.toString());
   url.searchParams.append("limit", limit.toString());
 

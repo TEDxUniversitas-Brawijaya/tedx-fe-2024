@@ -15,7 +15,7 @@ export default function ApprovalStatusChip({
       color = "bg-emerald-100 text-emerald-600";
       break;
     case "rejected":
-      formattedStatus = "Declined";
+      formattedStatus = "Rejected";
       color = "bg-rose-100 text-rose-600";
       break;
   }
