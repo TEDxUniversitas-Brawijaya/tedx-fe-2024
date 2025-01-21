@@ -18,7 +18,11 @@ export default function Section1() {
 
   return (
     <section className="relative h-[250vh]" ref={sectionRef}>
-      <div className="sticky left-0 top-0 z-0 flex h-screen w-full items-center justify-center overflow-hidden bg-[#000000] text-center">
+      <div className="sticky left-0 top-0 z-0 flex h-screen w-full items-center justify-center overflow-hidden bg-[#1C1C1C] text-center">
+        <div className="absolute bottom-0 aspect-video h-full opacity-50 mix-blend-lighten">
+          <Image src={"/img/paper-texture-5.png"} alt="Paper Text 5" fill />
+        </div>
+
         <motion.div
           className="absolute top-0 flex h-[250vh] w-full items-center justify-center"
           style={{ y: useTransform(smoothFirstY, (value) => `${value}vh`) }}
@@ -72,12 +76,12 @@ export default function Section1() {
           />
         </motion.div>
 
-        <div className="absolute flex h-[15.5rem] w-[105%] items-center justify-center overflow-clip">
+        <div className="absolute h-screen w-[105%] items-center justify-center">
           <video
             muted
             loop
             autoPlay
-            className="absolute h-screen w-full object-cover"
+            className="clip-video absolute h-full w-full object-cover"
           >
             <source
               src="https://res.cloudinary.com/dcvnwpyd9/video/upload/v1737275062/tedxuniversitasbrawijaya2025/tedx_propa_3_3_3_dfs4ne.mp4"
@@ -85,16 +89,24 @@ export default function Section1() {
             />
             Your browser does not support the video tag.
           </video>
-          {/* <h2 className="leading-none font-strong text-[22rem] font-bold bg-[#000000] text-white mix-blend-darken">
-            TEDXUB
-          </h2> */}
-          <div className="absolute bottom-0 h-full w-full bg-[#000000] bg-opacity-100 mix-blend-darken">
-            <Image src="/svg/tedxub-nowrap.svg" alt="TEDXUB" fill />
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 aspect-video h-full opacity-50 mix-blend-lighten">
-          <Image src={"/img/paper-texture-5.png"} alt="Paper Text 5" fill />
+          <svg className="absolute h-full w-full">
+            <defs>
+              <clipPath id="clip">
+                <text
+                  x="50%"
+                  y="50%"
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  fontSize="24vw"
+                  fontWeight="bold"
+                  fill="white"
+                  className="font-strong"
+                >
+                  TEDXUB
+                </text>
+              </clipPath>
+            </defs>
+          </svg>
         </div>
 
         <motion.div
