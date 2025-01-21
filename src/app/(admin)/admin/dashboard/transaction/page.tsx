@@ -4,8 +4,8 @@ import ApprovalStatusChip from "@/components/admin/shared/approval-status-chip";
 import TablePagination from "@/components/admin/shared/pagination";
 import ProofImageModal from "@/components/admin/shared/proof-image-modal";
 import SearchBar from "@/components/admin/shared/search-bar";
-import { Button } from "@/components/shared/button";
-import XIcon from "@/components/shared/icons/x-icon";
+import AcceptTransactionModal from "@/components/admin/transaction/accept-transaction-modal";
+import RejectTransactionModal from "@/components/admin/transaction/reject-transaction-modal";
 import {
   Table,
   TableBody,
@@ -15,15 +15,37 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/shared/table";
-import { CheckIcon } from "lucide-react";
+import { formatToRupiah } from "@/lib/helpers/formatToRupiah";
+import useQueryTransactions from "@/repository/client/admin/transactions/useQueryTransactions";
 
 export default function AdminDashboardTransactionPage() {
+  const { res, handleOnSearchChange, handleResetSearch } =
+    useQueryTransactions();
+
+  const { data, error, isLoading } = res;
+
+  if (isLoading) {
+    return (
+      <div className="h-[86vh] w-full animate-pulse rounded-lg bg-neutral-300"></div>
+    );
+  }
+
+  if (!data || error) {
+    return (
+      <div className="rounded-lg bg-rose-100 p-5 font-medium text-rose-600">
+        {error?.message}
+      </div>
+    );
+  }
+
+  const { orders, pagination } = data;
+
   return (
     <main className="space-y-3">
       <div>
         <SearchBar
-          onChange={() => {}}
-          onResetSearch={() => {}}
+          onChange={handleOnSearchChange}
+          onResetSearch={handleResetSearch}
           placeholder="Cari Data Transaksi"
         />
       </div>
@@ -43,44 +65,69 @@ export default function AdminDashboardTransactionPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {[...Array(10)].map((_, index) => (
-            <TableRow key={index}>
-              <TableCell className="font-medium">PRO0213</TableCell>
-              <TableCell>example@mail.com</TableCell>
-              <TableCell>
-                <ApprovalStatusChip status="approved" />
-              </TableCell>
-              <TableCell>Johan Sutardjo</TableCell>
-              <TableCell>081377471625</TableCell>
-              <TableCell>Universitas Brawijaya</TableCell>
-              <TableCell>Presale Propaganda 3</TableCell>
-              <TableCell>5</TableCell>
-              <TableCell>Rp 130.000</TableCell>
-              <TableCell className="flex gap-1">
-                <ProofImageModal />
-                <Button
-                  size={"icon"}
-                  className="bg-emerald-600 hover:bg-emerald-700"
-                >
-                  <CheckIcon />
-                </Button>
-                <Button size={"icon"} className="bg-rose-600 hover:bg-rose-700">
-                  <XIcon />
-                </Button>
+          {orders?.length === 0 && (
+            <TableRow>
+              <TableCell colSpan={11} className="italic text-neutral-400">
+                <div className="flex w-full justify-center">Tidak ada data</div>
               </TableCell>
             </TableRow>
-          ))}
+          )}
+
+          {orders?.map(
+            (
+              {
+                id,
+                email,
+                institution,
+                name,
+                phone,
+                quantity,
+                status,
+                totalPrice,
+                type,
+                paymentProof,
+              },
+              index,
+            ) => (
+              <TableRow key={index}>
+                <TableCell className="line-clamp-1 max-w-[100px] -translate-y-3 font-medium">
+                  {id}
+                </TableCell>
+                <TableCell>{email}</TableCell>
+                <TableCell>
+                  <ApprovalStatusChip status={status} />
+                </TableCell>
+                <TableCell className="min-w-[150px]">{name}</TableCell>
+                <TableCell>{phone}</TableCell>
+                <TableCell>{institution}</TableCell>
+                <TableCell className="capitalize">
+                  {type.replaceAll("-", " ")}
+                </TableCell>
+                <TableCell>{quantity}</TableCell>
+                <TableCell>{formatToRupiah(totalPrice)}</TableCell>
+                <TableCell className="flex gap-1">
+                  <ProofImageModal url={paymentProof} name={name} type={type} />
+                  {status === "pending" && (
+                    <>
+                      <AcceptTransactionModal id={id} email={email} />
+                      <RejectTransactionModal id={id} email={email} />
+                    </>
+                  )}
+                </TableCell>
+              </TableRow>
+            ),
+          )}
         </TableBody>
         <TableFooter>
           <TableRow>
             <TableCell colSpan={11}>
               <div className="flex items-center justify-end">
                 <TablePagination
-                  current_page={1}
-                  next_page={2}
-                  previous_page={null}
-                  total_data={10}
-                  total_page={5}
+                  current_page={pagination?.current || 1}
+                  next_page={pagination?.next}
+                  previous_page={pagination?.prev}
+                  total_data={pagination?.totalData || 0}
+                  total_page={pagination?.totalPage || 0}
                   onPageChange={() => {}}
                 />
               </div>

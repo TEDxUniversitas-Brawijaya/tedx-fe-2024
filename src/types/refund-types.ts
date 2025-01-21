@@ -11,7 +11,7 @@ export interface ITicketRefundDetail {
   paymentProof: string;
   paymentMethod: string;
   paymentNumber: string;
-  status: string;
+  status: "pending" | "accepted" | "rejected";
   createdAt: string;
   updatedAt: string;
 }

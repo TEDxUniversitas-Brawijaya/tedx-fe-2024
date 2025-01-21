@@ -1,7 +1,7 @@
 export default function ApprovalStatusChip({
   status,
 }: {
-  status: "pending" | "approved" | "declined";
+  status: "pending" | "accepted" | "rejected";
 }) {
   let formattedStatus = "";
   let color = "bg-amber-100/55 text-amber-600";
@@ -10,11 +10,11 @@ export default function ApprovalStatusChip({
     case "pending":
       formattedStatus = "Pending";
       break;
-    case "approved":
-      formattedStatus = "Approved";
+    case "accepted":
+      formattedStatus = "Accepted";
       color = "bg-emerald-100 text-emerald-600";
       break;
-    case "declined":
+    case "rejected":
       formattedStatus = "Declined";
       color = "bg-rose-100 text-rose-600";
       break;

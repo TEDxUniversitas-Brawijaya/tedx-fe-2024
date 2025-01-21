@@ -8,14 +8,14 @@ const isValidTicketType = (type: string | null): type is TicketTypeEnum => {
 };
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get("token")?.value;
+  // const token = request.cookies.get("token")?.value;
   const { pathname, searchParams } = new URL(request.url);
 
-  if (pathname.startsWith("/admin") && !token) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/";
-    return NextResponse.redirect(url);
-  }
+  // if (pathname.startsWith("/admin") && !token) {
+  //   const url = request.nextUrl.clone();
+  //   url.pathname = "/";
+  //   return NextResponse.redirect(url);
+  // }
 
   // Handle ticket form route
   if (pathname.startsWith("/form")) {

@@ -15,16 +15,37 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/shared/table";
+import useQueryRefunds from "@/repository/client/admin/refunds/useQueryRefunds";
 import { CheckIcon } from "lucide-react";
 
 export default function AdminDashboardRefundPage() {
+  const { res, handleOnSearchChange, handleResetSearch } = useQueryRefunds();
+
+  const { data, error, isLoading } = res;
+
+  if (isLoading) {
+    return (
+      <div className="h-[86vh] w-full animate-pulse rounded-lg bg-neutral-300"></div>
+    );
+  }
+
+  if (!data || error) {
+    return (
+      <div className="rounded-lg bg-rose-100 p-5 font-medium text-rose-600">
+        {error?.message}
+      </div>
+    );
+  }
+
+  const { ticketRefunds, pagination } = data;
+
   return (
     <main className="space-y-3">
       <div>
         <SearchBar
-          onChange={() => {}}
-          onResetSearch={() => {}}
-          placeholder="Cari Data Transaksi"
+          onChange={handleOnSearchChange}
+          onResetSearch={handleResetSearch}
+          placeholder="Cari Data Pengajuan"
         />
       </div>
       <Table>
@@ -42,44 +63,74 @@ export default function AdminDashboardRefundPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {[...Array(10)].map((_, index) => (
-            <TableRow key={index}>
-              <TableCell className="font-medium">PRO0213</TableCell>
-              <TableCell>example@mail.com</TableCell>
-              <TableCell>
-                <ApprovalStatusChip status="pending" />
-              </TableCell>
-              <TableCell>Johan Sutardjo</TableCell>
-              <TableCell>Pergantian tanggal acara</TableCell>
-              <TableCell>4</TableCell>
-              <TableCell>GoPay</TableCell>
-              <TableCell>081377471625</TableCell>
-
-              <TableCell className="flex gap-1">
-                <ProofImageModal />
-                <Button
-                  size={"icon"}
-                  className="bg-emerald-600 hover:bg-emerald-700"
-                >
-                  <CheckIcon />
-                </Button>
-                <Button size={"icon"} className="bg-rose-600 hover:bg-rose-700">
-                  <XIcon />
-                </Button>
+          {ticketRefunds?.length === 0 && (
+            <TableRow>
+              <TableCell colSpan={11} className="italic text-neutral-400">
+                <div className="flex w-full justify-center">Tidak ada data</div>
               </TableCell>
             </TableRow>
-          ))}
+          )}
+          {ticketRefunds?.map(
+            (
+              {
+                id,
+                requesterEmail,
+                status,
+                requesterName,
+                cancellationReason,
+                refundedTickets,
+                paymentMethod,
+                paymentNumber,
+                paymentProof,
+                event,
+              },
+              index,
+            ) => (
+              <TableRow key={index}>
+                <TableCell className="font-medium">{id}</TableCell>
+                <TableCell>{requesterEmail}</TableCell>
+                <TableCell>
+                  <ApprovalStatusChip status={status} />
+                </TableCell>
+                <TableCell>{requesterName}</TableCell>
+                <TableCell>{cancellationReason}</TableCell>
+                <TableCell>{refundedTickets}</TableCell>
+                <TableCell>{paymentMethod}</TableCell>
+                <TableCell>{paymentNumber}</TableCell>
+
+                <TableCell className="flex gap-1">
+                  <ProofImageModal
+                    url={paymentProof}
+                    name={requesterName}
+                    type={event}
+                  />
+                  <Button
+                    size={"icon"}
+                    className="bg-emerald-600 hover:bg-emerald-700"
+                  >
+                    <CheckIcon />
+                  </Button>
+                  <Button
+                    size={"icon"}
+                    className="bg-rose-600 hover:bg-rose-700"
+                  >
+                    <XIcon />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ),
+          )}
         </TableBody>
         <TableFooter>
           <TableRow>
             <TableCell colSpan={10}>
               <div className="flex items-center justify-end">
                 <TablePagination
-                  current_page={1}
-                  next_page={2}
-                  previous_page={null}
-                  total_data={10}
-                  total_page={5}
+                  current_page={pagination?.current || 1}
+                  next_page={pagination?.next}
+                  previous_page={pagination?.prev}
+                  total_data={pagination?.totalData || 0}
+                  total_page={pagination?.totalPage || 0}
                   onPageChange={() => {}}
                 />
               </div>

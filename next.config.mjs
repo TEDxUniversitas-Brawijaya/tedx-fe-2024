@@ -4,10 +4,14 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-      }
+      },
+      {
+        protocol: "https",
+        hostname: "help.xendit.co",
+      },
     ],
   },
-  output: "standalone"
+  output: "standalone",
 };
 
 export default nextConfig;
