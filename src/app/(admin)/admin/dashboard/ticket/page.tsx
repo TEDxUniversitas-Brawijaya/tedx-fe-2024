@@ -59,7 +59,7 @@ export default function AdminDashboardTicketPage() {
                 <TablePagination
                   current_page={1}
                   next_page={2}
-                  previous_page={null}
+                  previous_page={undefined}
                   total_data={10}
                   total_page={5}
                   onPageChange={() => {}}

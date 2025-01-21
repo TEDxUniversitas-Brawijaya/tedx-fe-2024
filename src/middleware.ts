@@ -1,21 +1,35 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { TicketTypeEnum } from "./types/ticket-types";
+import { getToken } from "next-auth/jwt";
 
 const isValidTicketType = (type: string | null): type is TicketTypeEnum => {
   const validTypes: TicketTypeEnum[] = ["propa-3", "main-event"];
   return type !== null && validTypes.includes(type as TicketTypeEnum);
 };
 
-export function middleware(request: NextRequest) {
-  // const token = request.cookies.get("token")?.value;
+export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = new URL(request.url);
 
-  // if (pathname.startsWith("/admin") && !token) {
-  //   const url = request.nextUrl.clone();
-  //   url.pathname = "/";
-  //   return NextResponse.redirect(url);
-  // }
+  // Check if the user is authenticated
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+  });
+
+  // Redirect authenticated users from `/auth` routes
+  if (pathname.startsWith("/auth") && token) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/admin/dashboard/transaction";
+    return NextResponse.redirect(url);
+  }
+
+  // Restrict access to `/admin` routes for unauthenticated users
+  if (pathname.startsWith("/admin") && !token) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/login";
+    return NextResponse.redirect(url);
+  }
 
   // Handle ticket form route
   if (pathname.startsWith("/form")) {
