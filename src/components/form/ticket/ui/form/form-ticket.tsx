@@ -8,7 +8,11 @@ import {
 } from "../../../../shared/form";
 import { ActionFooter } from "@/components/shared/action-footer";
 import { Input } from "@/components/shared/input";
-import { IRootTicket, TicketTypeEnum } from "@/types/ticket-types";
+import {
+  ICreateTicketPayload,
+  IRootTicket,
+  TicketEventEnum,
+} from "@/types/ticket-types";
 import {
   Select,
   SelectContent,
@@ -22,8 +26,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 interface IFormTicket {
-  type: TicketTypeEnum;
-  onSubmit: (data: IRootTicket) => void;
+  type: TicketEventEnum;
+  onSubmit: (data: ICreateTicketPayload) => void;
   onCancel: () => void;
 }
 
@@ -37,7 +41,10 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
   function handleSubmit(data: z.infer<typeof ticketSchema>) {
     const payload = {
       ...data,
-      type: type,
+      // TODO: CHANGE ONCE TICKET IS READY
+      orderType: "ticket-regular",
+      ticketType: "normal-price",
+      ticketEvent: type,
     };
 
     console.log(JSON.stringify(payload));
@@ -49,7 +56,7 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
         <FormField
           control={form.control}
-          name="full_name"
+          name="name"
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Nama Lengkap</FormLabel>
@@ -75,7 +82,7 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
         />
         <FormField
           control={form.control}
-          name="phone_number"
+          name="phone"
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Nomor Telepon</FormLabel>
@@ -101,7 +108,7 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
         />
         <FormField
           control={form.control}
-          name="amount"
+          name="quantity"
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Jumlah Tiket</FormLabel>

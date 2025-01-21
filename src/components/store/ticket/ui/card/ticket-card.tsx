@@ -29,7 +29,7 @@ const TicketCard = ({
           )}
         </div>
         <div className="space-y-4">
-          <h3 className="text-5xl italic lg:text-[72px]">{title}</h3>
+          <h3 className="text-5xl italic lg:text-[64px]">{title}</h3>
           <p className="text-white/40">{description}</p>
         </div>
       </div>

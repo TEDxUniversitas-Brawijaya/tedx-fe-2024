@@ -6,12 +6,14 @@ import {
 } from "@/components/shared/tabs";
 import { getAllTicketInfo } from "@/repository/actions/ticket-service";
 import TicketCard from "../ui/card/ticket-card";
+import { useTickets } from "@/hooks/use-ticket";
+import { formatResponseDate } from "@/lib/date";
+import { IGetTicketInfoResponse } from "@/types/ticket-types";
 
-const Section2 = async () => {
-  const data = await getAllTicketInfo();
+const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
+  const { ticketInformations } = data;
 
-  // TODO remove this upon integration
-  console.log(data);
+  const { regularTickets, bundlingTickets } = useTickets(ticketInformations);
 
   return (
     <section className="relative z-10 mt-[100px] w-full pb-[140px]">
@@ -26,44 +28,97 @@ const Section2 = async () => {
           <TabsTrigger value="regular">Regular</TabsTrigger>
           <TabsTrigger value="bundling">Bundling</TabsTrigger>
         </TabsList>
+
+        {/* Regular Tickets */}
         <TabsContent value="regular">
-          <div className="flex flex-col gap-4 md:flex-row">
-            <TicketCard
-              startDate="Jan 15, 2024"
-              endDate="Feb 13, 2024"
-              amount={5}
-              title="Propa 3"
-              description="Rengkuh Karsa dalam dirimu, membakar keraguan, dan terus melangkah menuju perjalanan penuh makna."
-              redirectUrl="/form/ticket?type=propa-3"
-            />
-            <TicketCard
-              startDate="Jan 15, 2024"
-              endDate="Feb 13, 2024"
-              amount={5}
-              title="Main Event"
-              description="Rengkuh Karsa dalam dirimu, membakar keraguan, dan terus melangkah menuju perjalanan penuh makna."
-              redirectUrl="/form/ticket?type=main-event"
-            />
+          <div className="flex flex-wrap justify-center gap-4">
+            {regularTickets.mainEventTicket ||
+            Object.values(regularTickets.propagandaDays).some(
+              (ticket) => ticket,
+            ) ? (
+              <>
+                {regularTickets.mainEventTicket && (
+                  <TicketCard
+                    startDate={formatResponseDate(
+                      regularTickets.mainEventTicket.startDate,
+                    )}
+                    endDate={formatResponseDate(
+                      regularTickets.mainEventTicket.endDate,
+                    )}
+                    amount={regularTickets.mainEventTicket.stock}
+                    title="Main Event"
+                    description={regularTickets.mainEventTicket.description}
+                    redirectUrl="/form/ticket?event=main-event"
+                  />
+                )}
+                {Object.entries(regularTickets.propagandaDays).map(
+                  ([day, ticket]) =>
+                    ticket && (
+                      <TicketCard
+                        key={ticket.id}
+                        startDate={formatResponseDate(ticket.startDate)}
+                        endDate={formatResponseDate(ticket.endDate)}
+                        amount={ticket.stock}
+                        title={`Propaganda 3 Day ${day.slice(-1)}`}
+                        description={ticket.description}
+                        redirectUrl={`/form/ticket?event=propa-3-day${day.slice(-1)}`}
+                      />
+                    ),
+                )}
+              </>
+            ) : (
+              <p className="text-center text-lg text-white">
+                Tidak ada tiket regular yang tersedia saat ini
+              </p>
+            )}
           </div>
         </TabsContent>
+
+        {/* Bundling Tickets */}
         <TabsContent value="bundling">
-          <div className="flex flex-col gap-4 md:flex-row">
-            <TicketCard
-              startDate="Jan 15, 2024"
-              endDate="Feb 13, 2024"
-              amount={10}
-              title="Propa 3"
-              description="Rengkuh Karsa dalam dirimu, membakar keraguan, dan terus melangkah menuju perjalanan penuh makna."
-              redirectUrl="/form/ticket-bundle?type=propa-3"
-            />
-            <TicketCard
-              startDate="Jan 15, 2024"
-              endDate="Feb 13, 2024"
-              amount={11}
-              title="Main Event"
-              description="Rengkuh Karsa dalam dirimu, membakar keraguan, dan terus melangkah menuju perjalanan penuh makna."
-              redirectUrl="/form/ticket?type=main-event"
-            />
+          <div className="flex flex-wrap justify-center gap-4">
+            {bundlingTickets.mainEvent ||
+            Object.values(bundlingTickets.propagandaDays).some(
+              (ticket) => ticket,
+            ) ? (
+              <>
+                {bundlingTickets.mainEvent && (
+                  <TicketCard
+                    startDate={formatResponseDate(
+                      bundlingTickets.mainEvent.startDate,
+                    )}
+                    endDate={formatResponseDate(
+                      bundlingTickets.mainEvent.endDate,
+                    )}
+                    amount={bundlingTickets.mainEvent.stock}
+                    title="Main Event Bundle"
+                    description={`${bundlingTickets.mainEvent.description} (Bundle Package)`}
+                    redirectUrl="/form/ticket-bundle?type=main-event"
+                  />
+                )}
+                {Object.entries(bundlingTickets.propagandaDays).map(
+                  ([day, ticket]) =>
+                    ticket && (
+                      <TicketCard
+                        key={ticket.id}
+                        startDate={formatResponseDate(ticket.startDate)}
+                        endDate={formatResponseDate(ticket.endDate)}
+                        amount={ticket.stock}
+                        title={`Propaganda 3 Day ${day.slice(-1)}`}
+                        description={`${ticket.description} (Bundle Package)`}
+                        // TODO: CHANGE BUNDLE TO DYNAMIC
+                        redirectUrl={`/form/ticket-bundle?event=propa-3-day${day.slice(
+                          -1,
+                        )}&bundle=1`}
+                      />
+                    ),
+                )}
+              </>
+            ) : (
+              <p className="text-center text-lg text-white">
+                Tidak ada bundling regular yang tersedia saat ini
+              </p>
+            )}
           </div>
         </TabsContent>
       </Tabs>
