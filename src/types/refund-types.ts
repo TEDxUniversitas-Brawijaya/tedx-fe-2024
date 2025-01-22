@@ -38,5 +38,6 @@ export interface ICreateTicketRefundResponse extends IRootResponse {
 
 export interface IUpdateTicketRefundPayload {
   status: string;
-  rejectedReason: string;
+  rejectedReason?: string;
+  proofFileLink?: string;
 }

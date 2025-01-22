@@ -36,7 +36,7 @@ export default function RejectTransactionModal({
           <DialogDescription>
             Apakah kamu yakin untuk menolak transaksi ini? Aksi ini bersifat
             permanen dan konfirmasi penolakan akan langsung dikirimkan ke{" "}
-            {email}
+            <span className="font-semibold">{email}</span>
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="mt-5">

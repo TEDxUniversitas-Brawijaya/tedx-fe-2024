@@ -8,11 +8,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/shared/dialog";
-import useUpdateTransaction from "@/repository/client/admin/transactions/useUpdateTransaction";
+import useUpdateRefund from "@/repository/client/admin/refunds/useUpdateRefund";
 import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 
-export default function AcceptTransactionModal({
+export default function AcceptRefundModal({
   id,
   email,
 }: {
@@ -21,7 +21,7 @@ export default function AcceptTransactionModal({
 }) {
   const [open, setOpen] = useState(false);
 
-  const { isPending, onSubmit } = useUpdateTransaction(id, setOpen);
+  const { isPending, onSubmit } = useUpdateRefund(id, setOpen);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -32,10 +32,10 @@ export default function AcceptTransactionModal({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Terima Transaksi?</DialogTitle>
+          <DialogTitle>Terima Pengajuan Refund?</DialogTitle>
           <DialogDescription>
-            Apakah kamu yakin untuk melanjutkan transaksi ini? Aksi ini bersifat
-            permanen dan tiket akan langsung dikirimkan ke{" "}
+            Apakah kamu yakin untuk menerima pengajuan ini? Aksi ini bersifat
+            permanen dan konfirmasi penerimaan akan langsung dikirimkan ke{" "}
             <span className="font-semibold">{email}</span>
           </DialogDescription>
         </DialogHeader>

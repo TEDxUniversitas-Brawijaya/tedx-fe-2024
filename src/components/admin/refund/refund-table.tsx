@@ -11,10 +11,10 @@ import { IGeneralFilter } from "@/types/general-types";
 import { IGetTicketRefundsResponse } from "@/types/refund-types";
 import { UseQueryResult } from "@tanstack/react-query";
 import ApprovalStatusChip from "../shared/approval-status-chip";
-import ProofImageModal from "../shared/proof-image-modal";
-import { Button } from "@/components/shared/button";
-import { CheckIcon, XIcon } from "lucide-react";
 import TablePagination from "../shared/pagination";
+import ProofImageModal from "../shared/proof-image-modal";
+import AcceptRefundModal from "./accept-refund-modal";
+import RejectRefundModal from "./reject-refund-modal";
 
 export default function RefundTable({
   result,
@@ -98,15 +98,12 @@ export default function RefundTable({
                   name={requesterName}
                   type={event}
                 />
-                <Button
-                  size={"icon"}
-                  className="bg-emerald-600 hover:bg-emerald-700"
-                >
-                  <CheckIcon />
-                </Button>
-                <Button size={"icon"} className="bg-rose-600 hover:bg-rose-700">
-                  <XIcon />
-                </Button>
+                {status === "pending" && (
+                  <>
+                    <AcceptRefundModal id={id} email={requesterEmail} />
+                    <RejectRefundModal id={id} email={requesterEmail} />
+                  </>
+                )}
               </TableCell>
             </TableRow>
           ),

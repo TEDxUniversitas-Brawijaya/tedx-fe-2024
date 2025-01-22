@@ -8,11 +8,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/shared/dialog";
-import useUpdateTransaction from "@/repository/client/admin/transactions/useUpdateTransaction";
-import { CheckIcon } from "lucide-react";
+import useUpdateRefund from "@/repository/client/admin/refunds/useUpdateRefund";
+import { XIcon } from "lucide-react";
 import { useState } from "react";
 
-export default function AcceptTransactionModal({
+export default function RejectRefundModal({
   id,
   email,
 }: {
@@ -21,21 +21,21 @@ export default function AcceptTransactionModal({
 }) {
   const [open, setOpen] = useState(false);
 
-  const { isPending, onSubmit } = useUpdateTransaction(id, setOpen);
+  const { isPending, onSubmit } = useUpdateRefund(id, setOpen);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <Button size={"icon"} className="bg-emerald-600 hover:bg-emerald-700">
-          <CheckIcon />
+        <Button size={"icon"} className="bg-rose-600 hover:bg-rose-700">
+          <XIcon />
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Terima Transaksi?</DialogTitle>
+          <DialogTitle>Tolak Pengajuan Refund?</DialogTitle>
           <DialogDescription>
-            Apakah kamu yakin untuk melanjutkan transaksi ini? Aksi ini bersifat
-            permanen dan tiket akan langsung dikirimkan ke{" "}
+            Apakah kamu yakin untuk menolak pengajuan ini? Aksi ini bersifat
+            permanen dan konfirmasi penolakan akan langsung dikirimkan ke{" "}
             <span className="font-semibold">{email}</span>
           </DialogDescription>
         </DialogHeader>
@@ -49,7 +49,7 @@ export default function AcceptTransactionModal({
           </Button>
           <Button
             disabled={isPending}
-            onClick={() => onSubmit({ status: "accepted" })}
+            onClick={() => onSubmit({ status: "rejected" })}
           >
             Lanjut
           </Button>

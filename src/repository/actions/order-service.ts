@@ -1,7 +1,7 @@
 "use server";
 
 import { IGetOrdersResponse, IUpdateOrderPayload } from "@/types/order-types";
-import { BASE_URL } from "../api";
+import { API_KEY, BASE_URL } from "../api";
 import { IRootResponse } from "@/types/general-types";
 
 const endpoint = BASE_URL + "/orders";
@@ -20,9 +20,11 @@ export async function getAllOrders(
   if (status) url.searchParams.append("status", status);
   if (keyword) url.searchParams.append("keyword", keyword);
 
-  // console.log("fetching for " + keyword);
-
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), {
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+    },
+  });
 
   const data = await res.json();
 
@@ -37,13 +39,12 @@ export async function updateOrder(
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      "TEDXUB25-API-KEY": `${API_KEY}`,
     },
     body: JSON.stringify(payload),
   });
 
   const data = await res.json();
-
-  console.log(data, id, `${endpoint}/${id}`, payload, "patch clear");
 
   return data;
 }
