@@ -19,7 +19,7 @@ interface FileInputProps
 }
 
 const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, onChange, disabled, ...props }, ref) => {
+  ({ className, onChange, value: _value, disabled, ...props }, ref) => {
     const [isUploading, setIsUploading] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 

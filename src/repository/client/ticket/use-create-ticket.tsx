@@ -21,12 +21,6 @@ export const useCreateTicket = () => {
         throw new Error("An unexpected error occurred");
       }
     },
-    onSuccess: (data) => {
-      toast({
-        title: "Success",
-        description: data.message || "Tiket berhasil dibeli",
-      });
-    },
     onError: (error: Error) => {
       toast({
         variant: "destructive",

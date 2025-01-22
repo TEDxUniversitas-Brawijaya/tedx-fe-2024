@@ -121,15 +121,15 @@ const FormTicketBundle = ({ onSubmit, isLoading }: IFormTicketBundle) => {
         <FormField
           control={form.control}
           name="paymentProof"
-          render={({ field: { onChange, ...field } }) => (
+          render={({ field: { value, onChange, ...field } }) => (
             <FormItem className="col-span-4 space-y-2 lg:col-span-1">
               <FormLabel className="text-white">Bukti Pembayaran</FormLabel>
               <FormControl>
                 <FormControl>
-                  <FileInput 
-                  {...field} 
-                  onChange={onChange}
-                  placeholder="Bukti Pembayaran" 
+                  <FileInput
+                    {...field}
+                    onChange={onChange}
+                    placeholder="Bukti Pembayaran"
                   />
                 </FormControl>
               </FormControl>

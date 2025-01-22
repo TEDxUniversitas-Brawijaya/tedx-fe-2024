@@ -11,7 +11,8 @@ export async function uploadFile(formData: FormData): Promise<IUploadResponse> {
   });
 
   if (!res.ok) {
-    throw new Error("Upload failed");
+    const response = await res.json();
+    throw new Error(response.message);
   }
 
   const data: IUploadResponse = await res.json();

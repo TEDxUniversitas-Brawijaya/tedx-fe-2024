@@ -46,6 +46,9 @@ export async function createTicket(
 ): Promise<IRootResponse> {
   const res = await fetch(ticketUrl.toString(), {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
   });
 

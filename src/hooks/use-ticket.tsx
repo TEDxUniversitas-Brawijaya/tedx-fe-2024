@@ -1,9 +1,14 @@
 import { useMemo } from "react";
-import { ITicketInformation } from "@/types/ticket-types";
+import {
+  ITicketInformation,
+  ITicketInfoDetail,
+  IBundlingTicket,
+  IBundlingTickets,
+} from "@/types/ticket-types";
 
 export const useTickets = (ticketInfo: ITicketInformation) => {
   return useMemo(() => {
-    const filterValidTickets = (tickets: any[]) =>
+    const filterValidTickets = (tickets: ITicketInfoDetail[]) =>
       tickets.filter((ticket) => !ticket.isExpired);
 
     const regularTickets = {
@@ -24,31 +29,48 @@ export const useTickets = (ticketInfo: ITicketInformation) => {
       },
     };
 
-    const bundlingTickets = {
-      mainEvent:
-        filterValidTickets(
-          ticketInfo.ticketBundling1.filter((t) => t.type === "Early Bird"),
-        )[0] || null,
-      propagandaDays: {
+    const createBundlingTickets = (
+      bundlingTickets: ITicketInfoDetail[],
+      bundleNumber: number,
+    ): IBundlingTicket | null => {
+      if (!bundlingTickets) return null;
+
+      const propagandaDays = {
         day1:
           filterValidTickets(
-            ticketInfo.ticketBundling1.filter(
+            bundlingTickets.filter(
               (t) => t.name.includes("Day 1") && t.type === "Early Bird",
             ),
           )[0] || null,
         day2:
           filterValidTickets(
-            ticketInfo.ticketBundling1.filter(
+            bundlingTickets.filter(
               (t) => t.name.includes("Day 2") && t.type === "Early Bird",
             ),
           )[0] || null,
         day3:
           filterValidTickets(
-            ticketInfo.ticketBundling1.filter(
+            bundlingTickets.filter(
               (t) => t.name.includes("Day 3") && t.type === "Early Bird",
             ),
           )[0] || null,
-      },
+      };
+
+      const hasValidTickets = Object.values(propagandaDays).some(
+        (ticket) => ticket !== null,
+      );
+      if (!hasValidTickets) return null;
+
+      return {
+        propagandaDays,
+        bundleNumber,
+      };
+    };
+
+    const bundlingTickets: IBundlingTickets = {
+      bundle1: createBundlingTickets(ticketInfo.ticketBundling1, 1),
+      bundle2: createBundlingTickets(ticketInfo.ticketBundling2, 2),
+      bundle3: createBundlingTickets(ticketInfo.ticketBundling3, 3),
     };
 
     return {

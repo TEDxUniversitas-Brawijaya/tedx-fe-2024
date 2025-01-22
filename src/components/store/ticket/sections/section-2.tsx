@@ -7,12 +7,35 @@ import {
 import TicketCard from "../ui/card/ticket-card";
 import { useTickets } from "@/hooks/use-ticket";
 import { formatResponseDate } from "@/lib/date";
-import { IGetTicketInfoResponse } from "@/types/ticket-types";
+import { IBundlingTicket, IGetTicketInfoResponse } from "@/types/ticket-types";
 
 const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
   const { ticketInformations } = data;
 
   const { regularTickets, bundlingTickets } = useTickets(ticketInformations);
+
+  const renderBundlingTickets = (bundle: IBundlingTicket | null) => {
+    if (!bundle) return null;
+
+    return (
+      <>
+        {Object.entries(bundle.propagandaDays).map(
+          ([day, ticket]) =>
+            ticket && (
+              <TicketCard
+                key={ticket.id}
+                startDate={formatResponseDate(ticket.startDate)}
+                endDate={formatResponseDate(ticket.endDate)}
+                amount={ticket.stock}
+                title={ticket.name}
+                description={ticket.description}
+                redirectUrl={`/form/ticket-bundle?event=propa-3-day${day.slice(-1)}&bundle=${bundle.bundleNumber}`}
+              />
+            ),
+        )}
+      </>
+    );
+  };
 
   return (
     <section className="relative z-10 mt-[100px] w-full pb-[140px]">
@@ -76,42 +99,13 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
         {/* Bundling Tickets */}
         <TabsContent value="bundling">
           <div className="flex flex-wrap justify-center gap-4">
-            {bundlingTickets.mainEvent ||
-            Object.values(bundlingTickets.propagandaDays).some(
-              (ticket) => ticket,
+            {Object.values(bundlingTickets).some(
+              (bundle) => bundle !== null,
             ) ? (
               <>
-                {bundlingTickets.mainEvent && (
-                  <TicketCard
-                    startDate={formatResponseDate(
-                      bundlingTickets.mainEvent.startDate,
-                    )}
-                    endDate={formatResponseDate(
-                      bundlingTickets.mainEvent.endDate,
-                    )}
-                    amount={bundlingTickets.mainEvent.stock}
-                    title="Main Event Bundle"
-                    description={`${bundlingTickets.mainEvent.description}`}
-                    redirectUrl="/form/ticket-bundle?event=main-event"
-                  />
-                )}
-                {Object.entries(bundlingTickets.propagandaDays).map(
-                  ([day, ticket]) =>
-                    ticket && (
-                      <TicketCard
-                        key={ticket.id}
-                        startDate={formatResponseDate(ticket.startDate)}
-                        endDate={formatResponseDate(ticket.endDate)}
-                        amount={ticket.stock}
-                        title={`Propaganda 3 Day ${day.slice(-1)}`}
-                        description={`${ticket.description}`}
-                        // TODO: CHANGE BUNDLE TO DYNAMIC
-                        redirectUrl={`/form/ticket-bundle?event=propa-3-day${day.slice(
-                          -1,
-                        )}&bundle=1`}
-                      />
-                    ),
-                )}
+                {renderBundlingTickets(bundlingTickets.bundle1)}
+                {renderBundlingTickets(bundlingTickets.bundle2)}
+                {renderBundlingTickets(bundlingTickets.bundle3)}
               </>
             ) : (
               <p className="text-center text-lg text-white">

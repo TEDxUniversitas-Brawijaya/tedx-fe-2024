@@ -9,33 +9,18 @@ export type TicketOrderTypeEnum =
   | "ticket-regular"
   | "ticket-bundling1-day1"
   | "ticket-bundling1-day2"
-  | "ticket-bundling1-day3";
+  | "ticket-bundling1-day3"
+  | "ticket-bundling2-day1"
+  | "ticket-bundling2-day2"
+  | "ticket-bundling2-day3"
+  | "ticket-bundling3-day1"
+  | "ticket-bundling3-day2"
+  | "ticket-bundling3-day3";
 export type TicketPriceTypeEnum =
   | "early-bird"
   | "presale1"
   | "presale2"
   | "normal-price";
-
-export interface IRootTicket {
-  type: TicketEventEnum;
-  full_name: string;
-  email: string;
-  phone_number: string;
-  institution: string;
-  amount: number;
-}
-
-export interface IRootRefund {
-  type: TicketEventEnum;
-  full_name: string;
-  order_number: string;
-  email: string;
-  payment_url: string;
-  payment_method: string;
-  reason: string;
-  bank_number: string;
-  amount: number;
-}
 
 export interface ITicketInfoDetail {
   id: number;
@@ -53,6 +38,8 @@ export interface ITicketInformation {
   mainEvent: ITicketInfoDetail[];
   propaganda3: ITicketInfoDetail[];
   ticketBundling1: ITicketInfoDetail[];
+  ticketBundling2: ITicketInfoDetail[];
+  ticketBundling3: ITicketInfoDetail[];
 }
 
 export interface IGetTicketInfoResponse extends IRootResponse {
@@ -85,4 +72,19 @@ export interface ICreateTicketPayload {
   ticketType?: string;
   ticketEvent: string;
   merchSize?: string;
+}
+
+export interface IBundlingTicket {
+  propagandaDays: {
+    day1: ITicketInfoDetail | null;
+    day2: ITicketInfoDetail | null;
+    day3: ITicketInfoDetail | null;
+  };
+  bundleNumber: number;
+}
+
+export interface IBundlingTickets {
+  bundle1: IBundlingTicket | null;
+  bundle2: IBundlingTicket | null;
+  bundle3: IBundlingTicket | null;
 }
