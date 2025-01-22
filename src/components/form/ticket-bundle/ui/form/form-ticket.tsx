@@ -58,7 +58,10 @@ const FormTicketBundle = ({
   function handleSubmit(data: z.infer<typeof ticketBundleSchema>) {
     const payload = {
       ...data,
-      orderType: formtTicketProperties(ticket.name, { preserveNumbers: true }),
+      orderType: formtTicketProperties(ticket.name, {
+        preserveNumbers: true,
+        separator: "-",
+      }),
       ticketEvent: event,
     };
 
@@ -88,7 +91,7 @@ const FormTicketBundle = ({
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="Email" {...field} />
+                <Input placeholder="Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

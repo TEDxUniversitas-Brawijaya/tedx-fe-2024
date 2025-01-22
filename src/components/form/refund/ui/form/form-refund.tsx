@@ -151,13 +151,13 @@ const FormTicketBundle = ({ onSubmit, isLoading }: IFormTicketBundle) => {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="main-event">Main Event</SelectItem>
-                  <SelectItem value="propa-3-day1">
+                  <SelectItem value="propa3-day1">
                     Propaganda 3 Day 1
                   </SelectItem>
-                  <SelectItem value="propa-3-day2">
+                  <SelectItem value="propa3-day2">
                     Propaganda 3 Day 2
                   </SelectItem>
-                  <SelectItem value="propa-3-day3">
+                  <SelectItem value="propa3-day3">
                     Propaganda 3 Day 3
                   </SelectItem>
                 </SelectContent>

@@ -1,11 +1,14 @@
 "use server";
 
 import { IUploadResponse } from "@/types/upload-type";
-import { BASE_URL } from "../api";
+import { API_KEY, BASE_URL } from "../api";
 
 const url = new URL(BASE_URL + "/uploads");
 export async function uploadFile(formData: FormData): Promise<IUploadResponse> {
   const res = await fetch(url.toString(), {
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+    },
     method: "POST",
     body: formData,
   });

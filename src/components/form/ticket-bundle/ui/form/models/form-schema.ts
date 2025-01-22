@@ -19,7 +19,9 @@ const validateMerchSizes = (value: string, amount: number) => {
 
 const baseSchema = {
   name: z.string({ required_error: "Nama lengkap harus dilengkapi" }),
-  email: z.string({ required_error: "Email harus dilengkapi" }).email(),
+  email: z
+    .string({ required_error: "Email harus dilengkapi" })
+    .email("Format email tidak valid"),
   phone: z
     .string({ required_error: "Nomor telepon harus dilengkapi" })
     .regex(/^\+62[1-9]\d{8,11}$/, {

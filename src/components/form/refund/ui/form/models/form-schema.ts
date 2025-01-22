@@ -1,12 +1,9 @@
 import { z } from "zod";
 
 export const refundSchema = z.object({
-  event: z.enum(
-    ["propa-3-day1", "propa-3-day2", "propa-3-day2", "main-event"],
-    {
-      required_error: "Event harus dipilih",
-    },
-  ),
+  event: z.enum(["propa3-day1", "propa3-day2", "propa3-day3", "main-event"], {
+    required_error: "Event harus dipilih",
+  }),
   requesterName: z.string({ required_error: "Nama lengkap harus dilengkapi" }),
   orderNumber: z.string({ required_error: "Nomer order harus dilengkapi" }),
   requesterEmail: z

@@ -43,7 +43,7 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
         Dapatkan Tiket
       </h2>
       <Tabs
-        defaultValue="regular"
+        defaultValue="bundling"
         className="mt-10 flex w-full flex-col items-center gap-6 px-10 md:px-[80px] lg:px-[120px]"
       >
         <TabsList>
@@ -89,8 +89,8 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
                 )}
               </>
             ) : (
-              <p className="text-center text-lg text-white">
-                Tidak ada tiket regular yang tersedia saat ini
+              <p className="mt-10 text-center text-lg italic text-white/40">
+                Tidak ada tiket regular yang tersedia saat ini.
               </p>
             )}
           </div>
@@ -108,8 +108,8 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
                 {renderBundlingTickets(bundlingTickets.bundle3)}
               </>
             ) : (
-              <p className="text-center text-lg text-white">
-                Tidak ada bundling regular yang tersedia saat ini
+              <p className="mt-10 text-center text-lg italic text-white/40">
+                Tidak ada bundling regular yang tersedia saat ini.
               </p>
             )}
           </div>
