@@ -6,12 +6,19 @@ import {
   IGetTicketInfoResponse,
   IGetTicketResponse,
 } from "@/types/ticket-types";
-import { BASE_URL } from "../api";
+import { API_KEY, BASE_URL } from "../api";
 
 const url = new URL(BASE_URL + "/tickets/informations");
 
+const ticketUrl = new URL(BASE_URL + "/tickets");
+
 export async function getAllTicketInfo(): Promise<IGetTicketInfoResponse> {
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+    },
+    cache: "no-store",
+  });
 
   const data = await res.json();
 
@@ -30,7 +37,11 @@ export async function getAllTickets(
   if (status) url.searchParams.append("status", status);
   if (keyword) url.searchParams.append("keyword", keyword);
 
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), {
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+    },
+  });
 
   const data = await res.json();
 
@@ -40,10 +51,20 @@ export async function getAllTickets(
 export async function createTicket(
   payload: ICreateTicketPayload,
 ): Promise<IRootResponse> {
-  const res = await fetch(url.toString(), {
+  const res = await fetch(ticketUrl.toString(), {
     method: "POST",
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
   });
+
+  if (!res.ok) {
+    const response = await res.json();
+    console.log(response);
+    throw new Error(response.message);
+  }
 
   const data = await res.json();
 

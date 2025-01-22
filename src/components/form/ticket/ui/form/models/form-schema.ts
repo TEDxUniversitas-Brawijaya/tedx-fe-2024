@@ -1,9 +1,16 @@
 import { z } from "zod";
 
 export const ticketSchema = z.object({
-  full_name: z.string().min(3, "Nama lengkap harus dilengkapi"),
-  email: z.string().email().min(3, "Email harus dilengkapi"),
-  phone_number: z.string().min(4, "Nomor telepon harus dilengkapi"),
-  institution: z.string().min(1, "Asal Institusi harus dilengkapi"),
-  amount: z.number().min(1, "Jumlah tiket harus dilengkapi").max(10),
+  name: z.string({ required_error: "Nama lengkap harus dilengkapi" }),
+  email: z.string({ required_error: "Email harus dilengkapi" }).email(),
+  phone: z
+    .string({ required_error: "Nomor telepon harus dilengkapi" })
+    .regex(/^\+62[1-9]\d{8,11}$/, {
+      message:
+        "Nomor telepon harus dimulai dengan +62 dan memiliki panjang 10-13 digit",
+    }),
+  institution: z.string({ required_error: "Asal Institusi harus dilengkapi" }),
+  quantity: z
+    .number({ required_error: "Jumlah tiket harus dilengkapi" })
+    .max(10),
 });

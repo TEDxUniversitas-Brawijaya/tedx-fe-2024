@@ -17,23 +17,44 @@ const validateMerchSizes = (value: string, amount: number) => {
   );
 };
 
-const formSchema = z.object({
-  full_name: z.string().min(3, "Nama lengkap harus dilengkapi"),
+const baseSchema = {
+  name: z.string({ required_error: "Nama lengkap harus dilengkapi" }),
   email: z
-    .string()
-    .email("Format email tidak valid")
-    .min(3, "Email harus dilengkapi"),
-  phone_number: z.string().min(4, "Nomor telepon harus dilengkapi"),
-  institution: z.string().min(1, "Asal Institusi harus dilengkapi"),
-  amount: z.number().min(1, "Jumlah tiket harus dilengkapi").max(10),
-  merch_size: z.string().min(1, "Ukuran merch harus dilengkapi"),
-});
+    .string({ required_error: "Email harus dilengkapi" })
+    .email("Format email tidak valid"),
+  phone: z
+    .string({ required_error: "Nomor telepon harus dilengkapi" })
+    .regex(/^\+62[1-9]\d{8,11}$/, {
+      message:
+        "Nomor telepon harus dimulai dengan +62 dan memiliki panjang 10-13 digit",
+    }),
+  institution: z.string({ required_error: "Asal Institusi harus dilengkapi" }),
+  quantity: z
+    .number({ required_error: "Jumlah tiket harus dilengkapi" })
+    .max(10),
+};
 
-export const ticketBundleSchema = formSchema.refine(
-  (data) => validateMerchSizes(data.merch_size, data.amount),
-  {
-    message:
-      "Masukkan ukuran yang valid (S/M/L/XL) dipisahkan dengan koma sesuai jumlah tiket",
-    path: ["merch_size"],
-  },
-);
+export const createTicketBundleSchema = (isMerchAvailable: boolean) => {
+  const schema = isMerchAvailable
+    ? {
+        ...baseSchema,
+        merchSize: z.string().min(1, "Ukuran merch harus dilengkapi"),
+      }
+    : {
+        ...baseSchema,
+        merchSize: z.string().optional(),
+      };
+
+  const formSchema = z.object(schema);
+
+  return isMerchAvailable
+    ? formSchema.refine(
+        (data) => validateMerchSizes(data.merchSize!, data.quantity),
+        {
+          message:
+            "Masukkan ukuran yang valid (S/M/L/XL) dipisahkan dengan koma sesuai jumlah tiket",
+          path: ["merchSize"],
+        },
+      )
+    : formSchema;
+};

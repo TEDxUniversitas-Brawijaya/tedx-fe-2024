@@ -5,9 +5,11 @@ import { Button } from "@/components/shared/button";
 import { Dialog, DialogHeader, DialogTitle } from "@/components/shared/dialog";
 import { DialogType } from "@/types/general-types";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { FileIcon } from "lucide-react";
-import { Input } from "@/components/shared/input";
-import { IRootTicket, TicketTypeEnum } from "@/types/ticket-types";
+import {
+  ICreateTicketPayload,
+  ITicketInfoDetail,
+  TicketEventEnum,
+} from "@/types/ticket-types";
 import { Separator } from "@/components/shared/separator";
 import { useDialogReducer } from "@/hooks/useDialogReducer";
 import CreamDialogBackground from "@/components/shared/cream-dialog-background";
@@ -16,15 +18,47 @@ import Footer from "@/components/shared/footer";
 import FormTicket from "../ui/form/form-ticket";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { FileInput } from "@/components/shared/file-input";
+import { useState } from "react";
+import { useCreateTicket } from "@/repository/client/ticket/use-create-ticket";
+import { getTicketNotes } from "@/lib/ticket";
+import { formatToRupiah } from "@/lib/utils";
 
-const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
+interface IClientFormTicketPage {
+  event: TicketEventEnum;
+  ticket: ITicketInfoDetail;
+}
+
+const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
   const { dialogState, openDialog, closeDialog } =
-    useDialogReducer<IRootTicket>();
+    useDialogReducer<ICreateTicketPayload>();
+  const [paymentProofUrl, setPaymentProofUrl] = useState<string>();
 
   const router = useRouter();
 
-  const handleSubmit = (data: IRootTicket) => {
+  const handleSubmit = (data: ICreateTicketPayload) => {
     openDialog("create", data);
+  };
+
+  const handleFileUpload = (url: string | undefined) => {
+    setPaymentProofUrl(url);
+  };
+
+  const { mutateAsync: createTicket, isPending } = useCreateTicket();
+
+  const handlePaymentSubmit = async () => {
+    if (dialogState.data) {
+      const payloadWithProof = {
+        ...dialogState.data,
+        paymentProof: paymentProofUrl,
+      };
+
+      await createTicket(payloadWithProof, {
+        onSuccess: () => {
+          openDialog("success");
+        },
+      });
+    }
   };
 
   const dialogContent: Partial<Record<DialogType, JSX.Element>> = {
@@ -38,7 +72,7 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <DialogDetailItem
             label="Nama Lengkap"
-            value={dialogState.data?.full_name ?? "-"}
+            value={dialogState.data?.name ?? "-"}
           />
           <DialogDetailItem
             label="Asal Institusi"
@@ -50,19 +84,19 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
           />
           <DialogDetailItem
             label="Tipe Tiket"
-            value={dialogState.data?.type ?? "-"}
+            value={dialogState.data?.orderType ?? "-"}
           />
           <DialogDetailItem
             label="Nomor Telepon"
-            value={dialogState.data?.phone_number ?? "-"}
+            value={dialogState.data?.phone ?? "-"}
           />
           <DialogDetailItem
             label="Jumlah Tiket"
-            value={String(dialogState.data?.amount) ?? "-"}
+            value={String(dialogState.data?.quantity) ?? "-"}
           />
         </div>
         <Separator className="my-6 bg-[#7E7E7E]/40" />
-        <DialogDetailItem label="Total" value="Rp 100.000,00-" />
+        <DialogDetailItem label="Total" value={formatToRupiah(ticket.price)} />
         <ActionFooter
           primaryText="Bayar Sekarang"
           secondaryText="Kembali"
@@ -94,22 +128,14 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
           height={200}
           className="mx-auto mb-14"
         />
-        <div className="relative">
-          <Input type="file" className="cursor-pointer pl-24 file:hidden" />
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pb-0 pl-2 pt-[0.1rem] text-[#7E7E7E] md:pb-[0.1rem] md:pt-0">
-            <FileIcon className="mr-2 h-4 w-4" />
-            <p className="text-base leading-[1rem] md:text-sm">Upload</p>
-            <Separator orientation="vertical" className="ml-2" />
-          </div>
-        </div>
+        <FileInput onChange={handleFileUpload} />
         <ActionFooter
           primaryText="Upload Bukti Pembayaran"
           secondaryText="Kembali"
           primaryProps={{
             type: "button",
-            onClick: () => {
-              openDialog("success");
-            },
+            onClick: handlePaymentSubmit,
+            disabled: isPending || !paymentProofUrl,
           }}
           secondaryProps={{
             onClick: () => {
@@ -162,14 +188,14 @@ const ClientFormTicketPage = ({ type }: { type: TicketTypeEnum }) => {
             bawah, dan nyalakan cahaya baru dalam perjalananmu.
           </p>
           <p className="text-center text-tedx-red/80">
-            Note : kamu memilih regular ( Ticket main event atau ticket 1 day
-            propa 3 )
+            {getTicketNotes("Main Event")}
           </p>
         </div>
 
         <div className="relative z-10 mx-auto mt-14 max-w-[320px] md:max-w-[466px]">
           <FormTicket
-            type={type}
+            event={event}
+            ticket={ticket}
             onSubmit={handleSubmit}
             onCancel={() => window.history.back()}
           />

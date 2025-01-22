@@ -7,7 +7,6 @@ import {
   FormMessage,
 } from "../../../../shared/form";
 import { Input } from "@/components/shared/input";
-import { IRootRefund } from "@/types/ticket-types";
 import {
   Select,
   SelectContent,
@@ -21,14 +20,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { refundSchema } from "./models/form-schema";
 import { Button } from "@/components/shared/button";
 import { FileInput } from "@/components/shared/file-input";
+import { ICreateTicketRefundPayload } from "@/types/refund-types";
 
 interface IFormTicketBundle {
-  onSubmit: (data: IRootRefund) => void;
+  onSubmit: (data: ICreateTicketRefundPayload) => void;
+  isLoading: boolean;
 }
 
 type FormSchema = z.infer<typeof refundSchema>;
 
-const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
+const FormTicketBundle = ({ onSubmit, isLoading }: IFormTicketBundle) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(refundSchema),
   });
@@ -37,8 +38,6 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
     const payload = {
       ...data,
     };
-
-    console.log(JSON.stringify(payload));
     onSubmit(payload);
   }
 
@@ -50,7 +49,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
       >
         <FormField
           control={form.control}
-          name="full_name"
+          name="requesterName"
           render={({ field }) => (
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Nama Lengkap</FormLabel>
@@ -63,7 +62,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="order_number"
+          name="orderNumber"
           render={({ field }) => (
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Nomer Order</FormLabel>
@@ -76,7 +75,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="email"
+          name="requesterEmail"
           render={({ field }) => (
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Email</FormLabel>
@@ -89,7 +88,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="amount"
+          name="refundedTickets"
           render={({ field }) => (
             <FormItem className="col-span-4 space-y-2 md:col-span-2 lg:col-span-1">
               <FormLabel className="text-white">Jumlah Tiket</FormLabel>
@@ -121,13 +120,17 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="payment_url"
-          render={({ field }) => (
+          name="paymentProof"
+          render={({ field: { value, onChange, ...field } }) => (
             <FormItem className="col-span-4 space-y-2 lg:col-span-1">
               <FormLabel className="text-white">Bukti Pembayaran</FormLabel>
               <FormControl>
                 <FormControl>
-                  <FileInput {...field} placeholder="Bukti Pembayaran" />
+                  <FileInput
+                    {...field}
+                    onChange={onChange}
+                    placeholder="Bukti Pembayaran"
+                  />
                 </FormControl>
               </FormControl>
               <FormMessage />
@@ -136,7 +139,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="type"
+          name="event"
           render={({ field }) => (
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Event</FormLabel>
@@ -147,8 +150,16 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="propa-3">Propaganda 3</SelectItem>
                   <SelectItem value="main-event">Main Event</SelectItem>
+                  <SelectItem value="propa3-day1">
+                    Propaganda 3 Day 1
+                  </SelectItem>
+                  <SelectItem value="propa3-day2">
+                    Propaganda 3 Day 2
+                  </SelectItem>
+                  <SelectItem value="propa3-day3">
+                    Propaganda 3 Day 3
+                  </SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -157,7 +168,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="payment_method"
+          name="paymentMethod"
           render={({ field }) => (
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Metode Pembayaran</FormLabel>
@@ -170,7 +181,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="reason"
+          name="cancellationReason"
           render={({ field }) => (
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Alasan Pembatalan</FormLabel>
@@ -182,13 +193,13 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="multiple-payment">
+                    <SelectItem value="Pembayaran ganda atau lebih">
                       Pembayaran ganda atau lebih
                     </SelectItem>
-                    <SelectItem value="event-cancelation">
+                    <SelectItem value="Pembatalan acara">
                       Pembatalan acara
                     </SelectItem>
-                    <SelectItem value="event-resechedule">
+                    <SelectItem value="Pergantian tanggal acara">
                       Pergantian tanggal acara
                     </SelectItem>
                   </SelectContent>
@@ -200,7 +211,7 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="bank_number"
+          name="paymentNumber"
           render={({ field }) => (
             <FormItem className="col-span-4 space-y-2 md:col-span-2">
               <FormLabel className="text-white">Nomor Rekening</FormLabel>
@@ -211,7 +222,12 @@ const FormTicketBundle = ({ onSubmit }: IFormTicketBundle) => {
             </FormItem>
           )}
         />
-        <Button type="submit" variant="defaultRed" className="col-span-4 mt-6">
+        <Button
+          type="submit"
+          variant="defaultRed"
+          className="col-span-4 mt-6"
+          disabled={isLoading}
+        >
           Ajukan
         </Button>
       </form>

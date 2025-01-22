@@ -1,13 +1,16 @@
 import Footer from "@/components/shared/footer";
 import Section1 from "../sections/section-1";
 import Section2 from "../sections/section-2";
+import { getAllTicketInfo } from "@/repository/actions/ticket-service";
 
-const ClientTicketPage = () => {
+const ClientTicketPage = async () => {
+  const data = await getAllTicketInfo();
+
   return (
     <main>
       <div className="relative">
         <Section1 />
-        <Section2 />
+        <Section2 data={data} />
         <div className="absolute bottom-0 left-0 top-0 h-full min-h-screen w-full bg-gradient-to-b from-[#610017] via-[#131012] via-80% to-[#131012]" />
       </div>
       <Footer />

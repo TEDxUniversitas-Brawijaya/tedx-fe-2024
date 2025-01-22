@@ -5,7 +5,7 @@ import {
   ICreateMerchOrderPayload,
   IGetMerchOrdersResponse,
 } from "@/types/merch-types";
-import { BASE_URL } from "../api";
+import { API_KEY, BASE_URL } from "../api";
 
 const url = new URL(BASE_URL + "/merch");
 
@@ -21,7 +21,11 @@ export async function getAllMerchs(
   if (type) url.searchParams.append("type", type);
   if (keyword) url.searchParams.append("keyword", keyword);
 
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), {
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+    },
+  });
 
   const data = await res.json();
 
@@ -33,6 +37,9 @@ export async function createMerchOrder(
 ): Promise<IRootResponse> {
   const res = await fetch(url.toString(), {
     method: "POST",
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+    },
     body: JSON.stringify(payload),
   });
 

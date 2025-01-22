@@ -7,18 +7,19 @@ import { Separator } from "@/components/shared/separator";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useMergeRefs } from "@/hooks/useMergeRefs";
+import { uploadFile } from "@/repository/actions/upload-service";
 
 interface FileInputProps
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     "value" | "onChange"
   > {
-  onChange?: (url: string) => void;
+  onChange?: (url: string | undefined) => void;
   value?: string;
 }
 
 const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, onChange, disabled, value, ...props }, ref) => {
+  ({ className, onChange, value: _value, disabled, ...props }, ref) => {
     const [isUploading, setIsUploading] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -31,23 +32,18 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       }
     };
 
-    const simulateUpload = async (file: File): Promise<string> => {
-      // Uncomment for simulating failed API call
-      // throw Error('upload failed')
-
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      return `https://placeholder-url.com/${file.name}`;
-    };
-
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (!file) return;
 
       setIsUploading(true);
 
+      const formData = new FormData();
+      formData.append("file", file);
+
       try {
-        const url = await simulateUpload(file);
-        onChange?.(url);
+        const response = await uploadFile(formData);
+        onChange?.(response.url);
       } catch (error) {
         console.error("Upload failed:", error);
         resetFileInput();
@@ -67,8 +63,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
           type="file"
           onChange={handleFileChange}
           disabled={disabled || isUploading}
-          className={cn("cursor-pointer pl-24 file:hidden", className)}
-          value={value}
+          className={cn("cursor-pointer pl-[100px] file:hidden", className)}
           ref={mergedRef}
           {...props}
         />

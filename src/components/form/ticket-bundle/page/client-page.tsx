@@ -5,26 +5,67 @@ import { Button } from "@/components/shared/button";
 import { Dialog, DialogHeader, DialogTitle } from "@/components/shared/dialog";
 import { DialogType } from "@/types/general-types";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { FileIcon } from "lucide-react";
-import { Input } from "@/components/shared/input";
-import { IRootTicket, TicketTypeEnum } from "@/types/ticket-types";
+import {
+  ICreateTicketPayload,
+  ITicketInfoDetail,
+  TicketEventEnum,
+} from "@/types/ticket-types";
+import { FileInput } from "@/components/shared/file-input";
+import { getTicketNotes } from "@/lib/ticket";
 import { Separator } from "@/components/shared/separator";
+import { useCreateTicket } from "@/repository/client/ticket/use-create-ticket";
 import { useDialogReducer } from "@/hooks/useDialogReducer";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import CreamDialogBackground from "@/components/shared/cream-dialog-background";
 import DialogDetailItem from "@/components/shared/dialog-detail-item";
 import Footer from "@/components/shared/footer";
 import FormTicketBundle from "../ui/form/form-ticket";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { formatToRupiah } from "@/lib/utils";
 
-const ClientFormTicketBundlePage = ({ type }: { type: TicketTypeEnum }) => {
+interface IClientFormTicketBundlePage {
+  event: TicketEventEnum;
+  ticket: ITicketInfoDetail;
+  isMerchAvailable: boolean;
+}
+
+const ClientFormTicketBundlePage = ({
+  event,
+  ticket,
+  isMerchAvailable,
+}: IClientFormTicketBundlePage) => {
   const { dialogState, openDialog, closeDialog } =
-    useDialogReducer<IRootTicket>();
+    useDialogReducer<ICreateTicketPayload>();
+  const [paymentProofUrl, setPaymentProofUrl] = useState<string>();
 
   const router = useRouter();
 
-  const handleSubmit = (data: IRootTicket) => {
+  const handleSubmit = (data: ICreateTicketPayload) => {
     openDialog("create", data);
+  };
+
+  const handleFileUpload = (url: string | undefined) => {
+    setPaymentProofUrl(url);
+  };
+
+  const { mutateAsync: createTicket, isPending } = useCreateTicket();
+
+  const handlePaymentSubmit = async () => {
+    if (dialogState.data) {
+      const { merchSize, ...rest } = dialogState.data;
+      const payloadWithProof = {
+        ...rest,
+        ...(merchSize && { merchSize }), // Only include merch_size if it exists
+        paymentProof: paymentProofUrl,
+      };
+
+      await createTicket(payloadWithProof, {
+        onSuccess: () => {
+          openDialog("success");
+        },
+      });
+    }
   };
 
   const dialogContent: Partial<Record<DialogType, JSX.Element>> = {
@@ -38,7 +79,7 @@ const ClientFormTicketBundlePage = ({ type }: { type: TicketTypeEnum }) => {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <DialogDetailItem
             label="Nama Lengkap"
-            value={dialogState.data?.full_name ?? "-"}
+            value={dialogState.data?.name ?? "-"}
           />
           <DialogDetailItem
             label="Asal Institusi"
@@ -47,22 +88,23 @@ const ClientFormTicketBundlePage = ({ type }: { type: TicketTypeEnum }) => {
           <DialogDetailItem
             label="Email"
             value={dialogState.data?.email ?? "-"}
+            capitalize={false}
           />
           <DialogDetailItem
             label="Tipe Tiket"
-            value={dialogState.data?.type ?? "-"}
+            value={dialogState.data?.ticketEvent ?? "-"}
           />
           <DialogDetailItem
             label="Nomor Telepon"
-            value={dialogState.data?.phone_number ?? "-"}
+            value={dialogState.data?.phone ?? "-"}
           />
           <DialogDetailItem
             label="Jumlah Tiket"
-            value={String(dialogState.data?.amount) ?? "-"}
+            value={String(dialogState.data?.quantity) ?? "-"}
           />
         </div>
         <Separator className="my-6 bg-[#7E7E7E]/40" />
-        <DialogDetailItem label="Total" value="Rp 100.000,00-" />
+        <DialogDetailItem label="Total" value={formatToRupiah(ticket.price)} />
         <ActionFooter
           primaryText="Bayar Sekarang"
           secondaryText="Kembali"
@@ -82,9 +124,17 @@ const ClientFormTicketBundlePage = ({ type }: { type: TicketTypeEnum }) => {
     ),
     payment: (
       <>
-        <DialogHeader className="mb-10 md:mb-14">
-          <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
-            Bukti Pembayaran
+        <DialogHeader className="mb-5">
+          <DialogTitle className="text-center">
+            <Image
+              src={"/img/qris.png"}
+              alt="Qr Code"
+              width={200}
+              height={200}
+              className="mx-auto mb-5"
+            />
+            <h3 className="font-semibold">TEDXUNIVERSITAS BRAWIJAYA, LKWKWR</h3>
+            <p className="text-base font-normal">NMID : ID1025371978905</p>
           </DialogTitle>
         </DialogHeader>
         <Image
@@ -92,24 +142,16 @@ const ClientFormTicketBundlePage = ({ type }: { type: TicketTypeEnum }) => {
           alt="Qr Code"
           width={200}
           height={200}
-          className="mx-auto mb-14"
+          className="mx-auto mb-10"
         />
-        <div className="relative">
-          <Input type="file" className="cursor-pointer pl-24 file:hidden" />
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pb-0 pl-2 pt-[0.1rem] text-[#7E7E7E] md:pb-[0.1rem] md:pt-0">
-            <FileIcon className="mr-2 h-4 w-4" />
-            <p className="text-base leading-[1rem] md:text-sm">Upload</p>
-            <Separator orientation="vertical" className="ml-2" />
-          </div>
-        </div>
+        <FileInput onChange={handleFileUpload} />
         <ActionFooter
           primaryText="Upload Bukti Pembayaran"
           secondaryText="Kembali"
           primaryProps={{
             type: "button",
-            onClick: () => {
-              openDialog("success");
-            },
+            onClick: handlePaymentSubmit,
+            disabled: isPending || !paymentProofUrl,
           }}
           secondaryProps={{
             onClick: () => {
@@ -123,19 +165,19 @@ const ClientFormTicketBundlePage = ({ type }: { type: TicketTypeEnum }) => {
     ),
     success: (
       <>
-        <DialogHeader className="mb-6 md:mb-10">
+        <DialogHeader className="mb-6 md:mb-5">
           <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
             Pembayaran Behasil
           </DialogTitle>
         </DialogHeader>
         <DotLottieReact
           src="/lottie/success.lottie"
-          className="mx-auto mb-10 size-[240px]"
+          className="mx-auto mb-5 size-[200px]"
           autoplay
         />
         <p className="mb-8 text-center text-tedx-black/90">
-          Terima kasih sudah bertransaksi dengan kami. Periksa tiketmu sekarang
-          pada email yang terdaftar.
+          Terima kasih sudah bertransaksi dengan kami. Transaksimu akan segera
+          kami proses dan akan dikirimkan melalui email.
         </p>
         <Button
           type="button"
@@ -162,14 +204,15 @@ const ClientFormTicketBundlePage = ({ type }: { type: TicketTypeEnum }) => {
             bawah, dan nyalakan cahaya baru dalam perjalananmu.
           </p>
           <p className="text-center text-tedx-red/80">
-            Note : kamu memilih bundling 3 ( Ticket main event & ticket 1 day
-            propa 3 )
+            {getTicketNotes("Ticket Bundling 1 Day 3")}
           </p>
         </div>
 
         <div className="relative z-10 mx-auto mt-14 max-w-[320px] md:max-w-[466px]">
           <FormTicketBundle
-            type={type}
+            event={event}
+            ticket={ticket}
+            isMerchAvailable={isMerchAvailable}
             onSubmit={handleSubmit}
             onCancel={() => window.history.back()}
           />
