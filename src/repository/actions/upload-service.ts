@@ -1,6 +1,6 @@
 "use server";
 
-import { IUploadResponse } from "@/types/upload-type";
+import { IUploadResponse } from "@/types/upload-types";
 import { API_KEY, BASE_URL } from "../api";
 
 const url = new URL(BASE_URL + "/uploads");

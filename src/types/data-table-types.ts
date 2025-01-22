@@ -8,8 +8,8 @@ export interface ITablePanigation extends IPagination {
 }
 
 export interface IPagination {
-  previous_page: number | null;
-  next_page: number | null;
+  previous_page?: number;
+  next_page?: number;
   current_page: number;
   total_data: number;
   total_page: number;

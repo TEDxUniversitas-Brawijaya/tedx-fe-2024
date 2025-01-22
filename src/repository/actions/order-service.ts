@@ -4,7 +4,7 @@ import { IGetOrdersResponse, IUpdateOrderPayload } from "@/types/order-types";
 import { API_KEY, BASE_URL } from "../api";
 import { IRootResponse } from "@/types/general-types";
 
-const url = new URL(BASE_URL + "/orders");
+const endpoint = BASE_URL + "/orders";
 
 export async function getAllOrders(
   page = 1,
@@ -12,6 +12,8 @@ export async function getAllOrders(
   keyword?: string,
   limit = 10,
 ): Promise<IGetOrdersResponse> {
+  const url = new URL(endpoint);
+
   url.searchParams.append("page", page.toString());
   url.searchParams.append("limit", limit.toString());
 
@@ -33,9 +35,10 @@ export async function updateOrder(
   id: string,
   payload: IUpdateOrderPayload,
 ): Promise<IRootResponse> {
-  const res = await fetch(`${url.toString()}/${id}`, {
+  const res = await fetch(`${endpoint}/${id}`, {
     method: "PATCH",
     headers: {
+      "Content-Type": "application/json",
       "TEDXUB25-API-KEY": `${API_KEY}`,
     },
     body: JSON.stringify(payload),

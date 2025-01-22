@@ -1,5 +1,7 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { TicketTypeEnum } from "./types/ticket-types";
+import { getToken } from "next-auth/jwt";
 import { TicketEventEnum } from "./types/ticket-types";
 
 const isValidTicketEvent = (type: string | null): type is TicketEventEnum => {
@@ -17,13 +19,26 @@ const isValidBundle = (type: string | null) => {
   return type !== null && validBundle.includes(type);
 };
 
-export function middleware(request: NextRequest) {
-  const token = request.cookies.get("token")?.value;
+export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = new URL(request.url);
 
+  // Check if the user is authenticated
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+  });
+
+  // Redirect authenticated users from `/auth` routes
+  if (pathname.startsWith("/auth") && token) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/admin/dashboard/transaction";
+    return NextResponse.redirect(url);
+  }
+
+  // Restrict access to `/admin` routes for unauthenticated users
   if (pathname.startsWith("/admin") && !token) {
     const url = request.nextUrl.clone();
-    url.pathname = "/";
+    url.pathname = "/auth/login";
     return NextResponse.redirect(url);
   }
 

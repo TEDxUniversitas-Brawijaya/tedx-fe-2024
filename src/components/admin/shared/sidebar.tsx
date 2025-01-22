@@ -2,6 +2,7 @@
 
 import { adminNavMenus } from "@/lib/static/nav-menus";
 import { LogOutIcon } from "lucide-react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -30,7 +31,10 @@ export default function Sidebar() {
               </Link>
             ))}
           </div>
-          <button className="flex items-center justify-center gap-2 rounded-lg py-2 text-sm font-semibold text-tedx-red transition-all duration-150 hover:bg-tedx-red hover:text-white">
+          <button
+            onClick={() => signOut()}
+            className="flex items-center justify-center gap-2 rounded-lg py-2 text-sm font-semibold text-tedx-red transition-all duration-150 hover:bg-tedx-red hover:text-white"
+          >
             <LogOutIcon className="size-5" />
             <span>Log out</span>
           </button>

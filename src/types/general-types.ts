@@ -18,3 +18,9 @@ export interface IRootResponse {
   message: string;
   pagination?: IResponsePagination;
 }
+
+export interface IGeneralFilter {
+  keyword?: string;
+  page: number;
+  status?: string;
+}

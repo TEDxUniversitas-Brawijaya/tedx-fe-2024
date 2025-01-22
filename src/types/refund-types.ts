@@ -11,7 +11,7 @@ export interface ITicketRefundDetail {
   paymentProof: string;
   paymentMethod: string;
   paymentNumber: string;
-  status: string;
+  status: "pending" | "accepted" | "rejected";
   createdAt: string;
   updatedAt: string;
 }
@@ -38,5 +38,6 @@ export interface ICreateTicketRefundResponse extends IRootResponse {
 
 export interface IUpdateTicketRefundPayload {
   status: string;
-  rejectedReason: string;
+  rejectedReason?: string;
+  proofFileLink?: string;
 }
