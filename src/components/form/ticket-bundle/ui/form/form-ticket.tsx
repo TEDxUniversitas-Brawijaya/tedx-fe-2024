@@ -10,7 +10,6 @@ import { ActionFooter } from "@/components/shared/action-footer";
 import { Input } from "@/components/shared/input";
 import {
   ICreateTicketPayload,
-  IRootTicket,
   ITicketInfoDetail,
   TicketEventEnum,
 } from "@/types/ticket-types";
@@ -63,7 +62,6 @@ const FormTicketBundle = ({
       ticketEvent: event,
     };
 
-    console.log(JSON.stringify(payload));
     onSubmit(payload);
   }
 

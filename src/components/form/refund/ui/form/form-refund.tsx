@@ -7,7 +7,6 @@ import {
   FormMessage,
 } from "../../../../shared/form";
 import { Input } from "@/components/shared/input";
-import { IRootRefund } from "@/types/ticket-types";
 import {
   Select,
   SelectContent,
@@ -39,8 +38,6 @@ const FormTicketBundle = ({ onSubmit, isLoading }: IFormTicketBundle) => {
     const payload = {
       ...data,
     };
-
-    console.log(JSON.stringify(payload));
     onSubmit(payload);
   }
 
@@ -124,12 +121,16 @@ const FormTicketBundle = ({ onSubmit, isLoading }: IFormTicketBundle) => {
         <FormField
           control={form.control}
           name="paymentProof"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem className="col-span-4 space-y-2 lg:col-span-1">
               <FormLabel className="text-white">Bukti Pembayaran</FormLabel>
               <FormControl>
                 <FormControl>
-                  <FileInput {...field} placeholder="Bukti Pembayaran" />
+                  <FileInput 
+                  {...field} 
+                  onChange={onChange}
+                  placeholder="Bukti Pembayaran" 
+                  />
                 </FormControl>
               </FormControl>
               <FormMessage />

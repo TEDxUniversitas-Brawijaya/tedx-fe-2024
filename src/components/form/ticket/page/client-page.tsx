@@ -7,7 +7,6 @@ import { DialogType } from "@/types/general-types";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import {
   ICreateTicketPayload,
-  IRootTicket,
   ITicketInfoDetail,
   TicketEventEnum,
 } from "@/types/ticket-types";

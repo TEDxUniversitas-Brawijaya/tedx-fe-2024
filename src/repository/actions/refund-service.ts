@@ -38,6 +38,11 @@ export async function createTicketRefund(
     body: JSON.stringify(payload),
   });
 
+  if (!res.ok) {
+    const response = await res.json();
+    throw new Error(response.message);
+  }
+
   const data = await res.json();
 
   return data;

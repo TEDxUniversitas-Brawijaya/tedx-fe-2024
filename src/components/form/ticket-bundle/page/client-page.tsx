@@ -65,8 +65,6 @@ const ClientFormTicketBundlePage = ({
           openDialog("success");
         },
       });
-
-      console.log(payloadWithProof);
     }
   };
 

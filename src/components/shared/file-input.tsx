@@ -19,7 +19,7 @@ interface FileInputProps
 }
 
 const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, onChange, disabled, value, ...props }, ref) => {
+  ({ className, onChange, disabled, ...props }, ref) => {
     const [isUploading, setIsUploading] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -64,7 +64,6 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
           onChange={handleFileChange}
           disabled={disabled || isUploading}
           className={cn("cursor-pointer pl-[100px] file:hidden", className)}
-          value={value}
           ref={mergedRef}
           {...props}
         />

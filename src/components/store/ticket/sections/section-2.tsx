@@ -4,7 +4,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/shared/tabs";
-import { getAllTicketInfo } from "@/repository/actions/ticket-service";
 import TicketCard from "../ui/card/ticket-card";
 import { useTickets } from "@/hooks/use-ticket";
 import { formatResponseDate } from "@/lib/date";
@@ -92,8 +91,8 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
                     )}
                     amount={bundlingTickets.mainEvent.stock}
                     title="Main Event Bundle"
-                    description={`${bundlingTickets.mainEvent.description} (Bundle Package)`}
-                    redirectUrl="/form/ticket-bundle?type=main-event"
+                    description={`${bundlingTickets.mainEvent.description}`}
+                    redirectUrl="/form/ticket-bundle?event=main-event"
                   />
                 )}
                 {Object.entries(bundlingTickets.propagandaDays).map(
@@ -105,7 +104,7 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
                         endDate={formatResponseDate(ticket.endDate)}
                         amount={ticket.stock}
                         title={`Propaganda 3 Day ${day.slice(-1)}`}
-                        description={`${ticket.description} (Bundle Package)`}
+                        description={`${ticket.description}`}
                         // TODO: CHANGE BUNDLE TO DYNAMIC
                         redirectUrl={`/form/ticket-bundle?event=propa-3-day${day.slice(
                           -1,
