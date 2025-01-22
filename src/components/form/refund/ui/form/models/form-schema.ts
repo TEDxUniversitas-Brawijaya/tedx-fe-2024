@@ -1,17 +1,34 @@
 import { z } from "zod";
 
 export const refundSchema = z.object({
-  type: z.enum(["propa-3", "main-event"]),
-  full_name: z.string().min(3, "Nama lengkap harus dilengkapi"),
-  order_number: z.string().min(1, "Nomor order harus dilengkapi"),
-  email: z.string().email().min(3, "Email harus dilengkapi"),
-  payment_url: z.string().url().min(1, "Bukti pembayaran harus dilengkapi"),
-  payment_method: z.string().min(1, "Metode pembayaran harus dilengkapi"),
-  reason: z.enum([
-    "multiple-payment",
-    "event-cancelation",
-    "event-resechedule",
-  ]),
-  bank_number: z.string().min(1, "Nomor Rekening harus dilengkapi"),
-  amount: z.number().min(1, "Jumlah tiket harus dilengkapi").max(10),
+  event: z.enum(["propa3-day1", "propa3-day2", "propa3-day3", "main-event"], {
+    required_error: "Event harus dipilih",
+  }),
+  requesterName: z.string({ required_error: "Nama lengkap harus dilengkapi" }),
+  orderNumber: z.string({ required_error: "Nomer order harus dilengkapi" }),
+  requesterEmail: z
+    .string({ required_error: "Email harus dilengkapi" })
+    .email(),
+  paymentProof: z
+    .string({ required_error: "Bukti pembayaran harus dilengkapi" })
+    .url(),
+  paymentMethod: z.string({
+    required_error: "Metode pembayran harus dilengkapi",
+  }),
+  cancellationReason: z.enum(
+    [
+      "Pembayaran ganda atau lebih",
+      "Pembatalan acara",
+      "Pergantian tanggal acara",
+    ],
+    {
+      required_error: "Alasan pembatalan harus dipilih",
+    },
+  ),
+  paymentNumber: z.string({
+    required_error: "Nomor rekening harus dilengkapi",
+  }),
+  refundedTickets: z
+    .number({ required_error: "Jumlah tiket harus dipilih" })
+    .max(10),
 });

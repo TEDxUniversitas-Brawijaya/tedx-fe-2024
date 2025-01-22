@@ -10,14 +10,23 @@ import Footer from "@/components/shared/footer";
 import FormTicketBundle from "../ui/form/form-refund";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useCreateTicketRefund } from "@/repository/client/refund/use-create-refund";
+import { ICreateTicketRefundPayload } from "@/types/refund-types";
 
 const ClientFormRefundPage = () => {
   const { dialogState, openDialog, closeDialog } = useDialogReducer();
 
   const router = useRouter();
 
-  const handleSubmit = () => {
-    openDialog("success");
+  const { mutateAsync: createTicketRefund, isPending } =
+    useCreateTicketRefund();
+
+  const handleSubmit = async (data: ICreateTicketRefundPayload) => {
+    await createTicketRefund(data, {
+      onSuccess: () => {
+        openDialog("success");
+      },
+    });
   };
 
   const dialogContent: Partial<Record<DialogType, JSX.Element>> = {
@@ -62,7 +71,7 @@ const ClientFormRefundPage = () => {
         </div>
 
         <div className="relative z-10 mx-auto mt-14 max-w-[320px] md:max-w-[580px] lg:max-w-[860px]">
-          <FormTicketBundle onSubmit={handleSubmit} />
+          <FormTicketBundle onSubmit={handleSubmit} isLoading={isPending} />
         </div>
 
         {/* Background Images */}

@@ -10,6 +10,8 @@ import { API_KEY, BASE_URL } from "../api";
 
 const url = new URL(BASE_URL + "/tickets/informations");
 
+const ticketUrl = new URL(BASE_URL + "/tickets");
+
 export async function getAllTicketInfo(): Promise<IGetTicketInfoResponse> {
   const res = await fetch(url, {
     headers: {
@@ -51,7 +53,7 @@ export async function getAllTickets(
 export async function createTicket(
   payload: ICreateTicketPayload,
 ): Promise<IRootResponse> {
-  const res = await fetch(url.toString(), {
+  const res = await fetch(ticketUrl.toString(), {
     method: "POST",
     headers: {
       "TEDXUB25-API-KEY": `${API_KEY}`,
@@ -59,6 +61,12 @@ export async function createTicket(
     },
     body: JSON.stringify(payload),
   });
+
+  if (!res.ok) {
+    const response = await res.json();
+    console.log(response);
+    throw new Error(response.message);
+  }
 
   const data = await res.json();
 

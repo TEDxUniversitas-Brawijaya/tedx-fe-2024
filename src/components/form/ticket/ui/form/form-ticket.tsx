@@ -8,7 +8,11 @@ import {
 } from "../../../../shared/form";
 import { ActionFooter } from "@/components/shared/action-footer";
 import { Input } from "@/components/shared/input";
-import { IRootTicket, TicketTypeEnum } from "@/types/ticket-types";
+import {
+  ICreateTicketPayload,
+  ITicketInfoDetail,
+  TicketEventEnum,
+} from "@/types/ticket-types";
 import {
   Select,
   SelectContent,
@@ -20,16 +24,18 @@ import { ticketSchema } from "./models/form-schema";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { formtTicketProperties } from "@/lib/ticket";
 
 interface IFormTicket {
-  type: TicketTypeEnum;
-  onSubmit: (data: IRootTicket) => void;
+  event: TicketEventEnum;
+  ticket: ITicketInfoDetail;
+  onSubmit: (data: ICreateTicketPayload) => void;
   onCancel: () => void;
 }
 
 type FormSchema = z.infer<typeof ticketSchema>;
 
-const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
+const FormTicket = ({ event, ticket, onSubmit, onCancel }: IFormTicket) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(ticketSchema),
   });
@@ -37,10 +43,11 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
   function handleSubmit(data: z.infer<typeof ticketSchema>) {
     const payload = {
       ...data,
-      type: type,
+      orderType: "ticket-regular",
+      ticketType: formtTicketProperties(ticket.type, { preserveNumbers: true }),
+      ticketEvent: event,
     };
 
-    console.log(JSON.stringify(payload));
     onSubmit(payload);
   }
 
@@ -49,7 +56,7 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
         <FormField
           control={form.control}
-          name="full_name"
+          name="name"
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Nama Lengkap</FormLabel>
@@ -75,7 +82,7 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
         />
         <FormField
           control={form.control}
-          name="phone_number"
+          name="phone"
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Nomor Telepon</FormLabel>
@@ -101,7 +108,7 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
         />
         <FormField
           control={form.control}
-          name="amount"
+          name="quantity"
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Jumlah Tiket</FormLabel>

@@ -8,7 +8,11 @@ import {
 } from "../../../../shared/form";
 import { ActionFooter } from "@/components/shared/action-footer";
 import { Input } from "@/components/shared/input";
-import { IRootTicket, TicketTypeEnum } from "@/types/ticket-types";
+import {
+  ICreateTicketPayload,
+  ITicketInfoDetail,
+  TicketEventEnum,
+} from "@/types/ticket-types";
 import {
   Select,
   SelectContent,
@@ -19,7 +23,6 @@ import {
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ticketBundleSchema } from "./models/form-schema";
 import {
   Tooltip,
   TooltipContent,
@@ -27,16 +30,26 @@ import {
   TooltipTrigger,
 } from "@/components/shared/tooltip";
 import { InfoIcon } from "lucide-react";
+import { createTicketBundleSchema } from "./models/form-schema";
+import { formtTicketProperties } from "@/lib/ticket";
 
 interface IFormTicketBundle {
-  type: TicketTypeEnum;
-  onSubmit: (data: IRootTicket) => void;
+  event: TicketEventEnum;
+  ticket: ITicketInfoDetail;
+  isMerchAvailable: boolean;
+  onSubmit: (data: ICreateTicketPayload) => void;
   onCancel: () => void;
 }
 
-type FormSchema = z.infer<typeof ticketBundleSchema>;
+const FormTicketBundle = ({
+  ticket,
+  isMerchAvailable,
+  onSubmit,
+  onCancel,
+}: IFormTicketBundle) => {
+  const ticketBundleSchema = createTicketBundleSchema(isMerchAvailable);
+  type FormSchema = z.infer<typeof ticketBundleSchema>;
 
-const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(ticketBundleSchema),
   });
@@ -44,10 +57,14 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
   function handleSubmit(data: z.infer<typeof ticketBundleSchema>) {
     const payload = {
       ...data,
-      type: type,
+      orderType: formtTicketProperties(ticket.name, {
+        preserveNumbers: true,
+        separator: "-",
+      }),
+      // TODO make this dynamic later
+      ticketType: "early-bird",
     };
 
-    console.log(JSON.stringify(payload));
     onSubmit(payload);
   }
 
@@ -56,7 +73,7 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
         <FormField
           control={form.control}
-          name="full_name"
+          name="name"
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Nama Lengkap</FormLabel>
@@ -74,7 +91,7 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="Email" {...field} />
+                <Input placeholder="Email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -82,7 +99,7 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
         />
         <FormField
           control={form.control}
-          name="phone_number"
+          name="phone"
           render={({ field }) => (
             <FormItem className="space-y-2">
               <FormLabel className="text-white">Nomor Telepon</FormLabel>
@@ -109,9 +126,11 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
         <div className="grid grid-cols-2 gap-4">
           <FormField
             control={form.control}
-            name="amount"
+            name="quantity"
             render={({ field }) => (
-              <FormItem className="col-span-2 space-y-2 md:col-span-1">
+              <FormItem
+                className={`${isMerchAvailable ? "col-span-2 md:col-span-1" : "col-span-2"} space-y-2`}
+              >
                 <FormLabel className="text-white">Jumlah Tiket</FormLabel>
                 <Select
                   onValueChange={(value) => field.onChange(Number(value))}
@@ -141,9 +160,11 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
           />
           <FormField
             control={form.control}
-            name="merch_size"
+            name="merchSize"
             render={({ field }) => (
-              <FormItem className="col-span-2 space-y-2 md:col-span-1">
+              <FormItem
+                className={`${isMerchAvailable ? "block" : "hidden"} col-span-2 space-y-2 md:col-span-1`}
+              >
                 <div className="flex items-center justify-between">
                   <FormLabel className="text-white">Ukuran Merch</FormLabel>
                   <TooltipProvider>
@@ -165,7 +186,7 @@ const FormTicketBundle = ({ type, onSubmit, onCancel }: IFormTicketBundle) => {
                 </div>
                 <FormControl>
                   <Input
-                    placeholder={`Contoh: ${Array(form.watch("amount") || 1)
+                    placeholder={`Contoh: ${Array(form.watch("quantity") || 1)
                       .fill("M")
                       .join(",")}`}
                     {...field}

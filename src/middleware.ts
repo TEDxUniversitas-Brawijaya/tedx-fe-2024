@@ -2,10 +2,21 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { TicketTypeEnum } from "./types/ticket-types";
 import { getToken } from "next-auth/jwt";
+import { TicketEventEnum } from "./types/ticket-types";
 
-const isValidTicketType = (type: string | null): type is TicketTypeEnum => {
-  const validTypes: TicketTypeEnum[] = ["propa-3", "main-event"];
-  return type !== null && validTypes.includes(type as TicketTypeEnum);
+const isValidTicketEvent = (type: string | null): type is TicketEventEnum => {
+  const validTypes: TicketEventEnum[] = [
+    "propa-3-day1",
+    "propa-3-day2",
+    "propa-3-day3",
+    "main-event",
+  ];
+  return type !== null && validTypes.includes(type as TicketEventEnum);
+};
+
+const isValidBundle = (type: string | null) => {
+  const validBundle = ["1", "2", "3"];
+  return type !== null && validBundle.includes(type);
 };
 
 export async function middleware(request: NextRequest) {
@@ -32,10 +43,10 @@ export async function middleware(request: NextRequest) {
   }
 
   // Handle ticket form route
-  if (pathname.startsWith("/form")) {
-    const ticketType = searchParams.get("type");
+  if (pathname.startsWith("/form/ticket")) {
+    const ticketType = searchParams.get("event");
 
-    if (!ticketType || !isValidTicketType(ticketType)) {
+    if (!ticketType || !isValidTicketEvent(ticketType)) {
       const notFoundUrl = new URL("/not-found", request.url);
 
       // keep the url same
@@ -46,6 +57,24 @@ export async function middleware(request: NextRequest) {
           }),
         },
       });
+    }
+
+    // Handle bundle specific form route
+    if (pathname.startsWith("/form/ticket-bundle")) {
+      const ticketBundle = searchParams.get("bundle");
+
+      if (!ticketBundle || !isValidBundle(ticketBundle)) {
+        const notFoundUrl = new URL("/not-found", request.url);
+
+        // keep the url same
+        return NextResponse.rewrite(notFoundUrl, {
+          request: {
+            headers: new Headers({
+              "x-middleware-rewrite": request.url,
+            }),
+          },
+        });
+      }
     }
   }
 
