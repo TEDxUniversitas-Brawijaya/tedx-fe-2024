@@ -1,7 +1,6 @@
+import { getToken } from "next-auth/jwt";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { TicketTypeEnum } from "./types/ticket-types";
-import { getToken } from "next-auth/jwt";
 import { TicketEventEnum } from "./types/ticket-types";
 
 const isValidTicketEvent = (type: string | null): type is TicketEventEnum => {

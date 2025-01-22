@@ -6,8 +6,9 @@ import { Button } from "@/components/shared/button";
 import useQueryTickets from "@/repository/client/admin/tickets/useQueryTickets";
 import { useQueryClient } from "@tanstack/react-query";
 import { RotateCcwIcon } from "lucide-react";
+import { Suspense } from "react";
 
-export default function AdminDashboardTicketPage() {
+function AdminDashboardTicket() {
   const { res, handleOnSearchChange, handleResetSearch, setUrlQuery } =
     useQueryTickets();
 
@@ -33,5 +34,13 @@ export default function AdminDashboardTicketPage() {
       </div>
       <TicketTable result={res} onPageChange={setUrlQuery} />
     </main>
+  );
+}
+
+export default function AdminDashboardTicketPage() {
+  return (
+    <Suspense>
+      <AdminDashboardTicket />;
+    </Suspense>
   );
 }

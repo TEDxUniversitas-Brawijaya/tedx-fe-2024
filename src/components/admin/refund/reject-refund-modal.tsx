@@ -8,9 +8,26 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/shared/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/shared/form";
+import { Input } from "@/components/shared/input";
 import useUpdateRefund from "@/repository/client/admin/refunds/useUpdateRefund";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+const formSchema = z.object({
+  rejectedReason: z.string().min(1, {
+    message: "Alasan penolakan harus diisi",
+  }),
+});
 
 export default function RejectRefundModal({
   id,
@@ -19,9 +36,23 @@ export default function RejectRefundModal({
   id: string;
   email: string;
 }) {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      rejectedReason: "",
+    },
+  });
+
   const [open, setOpen] = useState(false);
 
   const { isPending, onSubmit } = useUpdateRefund(id, setOpen);
+
+  function onReject(values: z.infer<typeof formSchema>) {
+    onSubmit({
+      status: "rejected",
+      rejectedReason: values.rejectedReason,
+    });
+  }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -39,21 +70,34 @@ export default function RejectRefundModal({
             <span className="font-semibold">{email}</span>
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className="mt-5">
-          <Button
-            disabled={isPending}
-            variant={"outline"}
-            onClick={() => setOpen(false)}
-          >
-            Batal
-          </Button>
-          <Button
-            disabled={isPending}
-            onClick={() => onSubmit({ status: "rejected" })}
-          >
-            Lanjut
-          </Button>
-        </DialogFooter>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onReject)}>
+            <FormField
+              control={form.control}
+              name="rejectedReason"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="Masukkan alasan penolakan" {...field} />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="mt-5 flex justify-end gap-2">
+              <Button
+                type="button"
+                disabled={isPending}
+                variant={"outline"}
+                onClick={() => setOpen(false)}
+              >
+                Batal
+              </Button>
+              <Button disabled={isPending}>Lanjut</Button>
+            </div>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );

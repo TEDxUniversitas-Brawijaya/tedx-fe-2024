@@ -3,8 +3,9 @@
 import RefundTable from "@/components/admin/refund/refund-table";
 import SearchBar from "@/components/admin/shared/search-bar";
 import useQueryRefunds from "@/repository/client/admin/refunds/useQueryRefunds";
+import { Suspense } from "react";
 
-export default function AdminDashboardRefundPage() {
+function AdminDashboardRefund() {
   const { res, handleOnSearchChange, handleResetSearch, setUrlQuery } =
     useQueryRefunds();
 
@@ -19,5 +20,13 @@ export default function AdminDashboardRefundPage() {
       </div>
       <RefundTable result={res} onPageChange={setUrlQuery} />
     </main>
+  );
+}
+
+export default function AdminDashboardRefundPage() {
+  return (
+    <Suspense>
+      <AdminDashboardRefund />
+    </Suspense>
   );
 }

@@ -3,6 +3,12 @@ import TablePagination from "@/components/admin/shared/pagination";
 import ProofImageModal from "@/components/admin/shared/proof-image-modal";
 import AcceptTransactionModal from "@/components/admin/transaction/accept-transaction-modal";
 import RejectTransactionModal from "@/components/admin/transaction/reject-transaction-modal";
+import { Button } from "@/components/shared/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/shared/dialog";
 import {
   Table,
   TableBody,
@@ -15,6 +21,8 @@ import {
 import { formatToRupiah } from "@/lib/helpers/formatToRupiah";
 import { IGetOrdersResponse } from "@/types/order-types";
 import { UseQueryResult } from "@tanstack/react-query";
+import { EyeIcon } from "lucide-react";
+import TransactionDetailModal from "./transaction-detail-modal";
 
 export default function TransactionTable({
   result,
@@ -50,7 +58,7 @@ export default function TransactionTable({
           <TableHead>No. Telepon</TableHead>
           <TableHead>Instansi</TableHead>
           <TableHead>Jenis</TableHead>
-          <TableHead>Jumlah</TableHead>
+          <TableHead>Detail</TableHead>
           <TableHead>Total Harga</TableHead>
           <TableHead>Approval</TableHead>
         </TableRow>
@@ -72,7 +80,6 @@ export default function TransactionTable({
               institution,
               name,
               phone,
-              quantity,
               status,
               totalPrice,
               type,
@@ -94,7 +101,9 @@ export default function TransactionTable({
               <TableCell className="capitalize">
                 {type.replaceAll("-", " ")}
               </TableCell>
-              <TableCell>{quantity}</TableCell>
+              <TableCell>
+                <TransactionDetailModal id={id} />
+              </TableCell>
               <TableCell>{formatToRupiah(totalPrice)}</TableCell>
               <TableCell className="flex gap-1">
                 <ProofImageModal url={paymentProof} name={name} type={type} />

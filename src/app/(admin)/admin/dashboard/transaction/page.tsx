@@ -12,8 +12,9 @@ import {
   SelectValue,
 } from "@/components/shared/select";
 import useQueryTransactions from "@/repository/client/admin/transactions/useQueryTransactions";
+import { Suspense } from "react";
 
-export default function AdminDashboardTransactionPage() {
+function AdminDashboardTransaction() {
   const { res, handleOnSearchChange, handleResetSearch, handleStatusChange } =
     useQueryTransactions();
 
@@ -42,5 +43,13 @@ export default function AdminDashboardTransactionPage() {
       </div>
       <TransactionTable result={res} />
     </main>
+  );
+}
+
+export default function AdminDashboardTransactionPage() {
+  return (
+    <Suspense>
+      <AdminDashboardTransaction />;
+    </Suspense>
   );
 }

@@ -1,6 +1,10 @@
 "use server";
 
-import { IGetOrdersResponse, IUpdateOrderPayload } from "@/types/order-types";
+import {
+  IGetOrderDetailResponse,
+  IGetOrdersResponse,
+  IUpdateOrderPayload,
+} from "@/types/order-types";
 import { API_KEY, BASE_URL } from "../api";
 import { IRootResponse } from "@/types/general-types";
 
@@ -42,6 +46,20 @@ export async function updateOrder(
       "TEDXUB25-API-KEY": `${API_KEY}`,
     },
     body: JSON.stringify(payload),
+  });
+
+  const data = await res.json();
+
+  return data;
+}
+
+export async function getOrderById(
+  id: string,
+): Promise<IGetOrderDetailResponse> {
+  const res = await fetch(`${endpoint}/${id}`, {
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+    },
   });
 
   const data = await res.json();

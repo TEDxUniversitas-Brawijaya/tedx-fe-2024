@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/shared/button";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function AuthErrorPage() {
+function AuthError() {
   const params = useSearchParams();
   const router = useRouter();
 
@@ -33,5 +34,13 @@ export default function AuthErrorPage() {
         </Button>
       </div>
     </main>
+  );
+}
+
+export default function AuthErrorPage() {
+  return (
+    <Suspense>
+      <AuthError />
+    </Suspense>
   );
 }

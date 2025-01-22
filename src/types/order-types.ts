@@ -1,4 +1,5 @@
 import { IRootResponse } from "./general-types";
+import { ITicketDetail } from "./ticket-types";
 
 export interface IOrderDetail {
   id: string;
@@ -11,6 +12,7 @@ export interface IOrderDetail {
   quantity: number;
   totalPrice: number;
   paymentProof: string;
+  tickets?: Omit<ITicketDetail, "name">[];
 }
 
 export interface IGetOrdersResponse extends IRootResponse {
@@ -19,4 +21,8 @@ export interface IGetOrdersResponse extends IRootResponse {
 
 export interface IUpdateOrderPayload {
   status: "pending" | "accepted" | "rejected";
+}
+
+export interface IGetOrderDetailResponse extends IRootResponse {
+  orders: IOrderDetail;
 }
