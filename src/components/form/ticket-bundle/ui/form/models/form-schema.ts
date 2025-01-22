@@ -36,22 +36,22 @@ export const createTicketBundleSchema = (isMerchAvailable: boolean) => {
   const schema = isMerchAvailable
     ? {
         ...baseSchema,
-        merch_size: z.string().min(1, "Ukuran merch harus dilengkapi"),
+        merchSize: z.string().min(1, "Ukuran merch harus dilengkapi"),
       }
     : {
         ...baseSchema,
-        merch_size: z.string().optional(),
+        merchSize: z.string().optional(),
       };
 
   const formSchema = z.object(schema);
 
   return isMerchAvailable
     ? formSchema.refine(
-        (data) => validateMerchSizes(data.merch_size!, data.quantity),
+        (data) => validateMerchSizes(data.merchSize!, data.quantity),
         {
           message:
             "Masukkan ukuran yang valid (S/M/L/XL) dipisahkan dengan koma sesuai jumlah tiket",
-          path: ["merch_size"],
+          path: ["merchSize"],
         },
       )
     : formSchema;

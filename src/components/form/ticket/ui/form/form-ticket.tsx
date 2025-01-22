@@ -11,6 +11,7 @@ import { Input } from "@/components/shared/input";
 import {
   ICreateTicketPayload,
   IRootTicket,
+  ITicketInfoDetail,
   TicketEventEnum,
 } from "@/types/ticket-types";
 import {
@@ -24,16 +25,18 @@ import { ticketSchema } from "./models/form-schema";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { formtTicketProperties } from "@/lib/ticket";
 
 interface IFormTicket {
-  type: TicketEventEnum;
+  event: TicketEventEnum;
+  ticket: ITicketInfoDetail;
   onSubmit: (data: ICreateTicketPayload) => void;
   onCancel: () => void;
 }
 
 type FormSchema = z.infer<typeof ticketSchema>;
 
-const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
+const FormTicket = ({ event, ticket, onSubmit, onCancel }: IFormTicket) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(ticketSchema),
   });
@@ -41,10 +44,9 @@ const FormTicket = ({ type, onSubmit, onCancel }: IFormTicket) => {
   function handleSubmit(data: z.infer<typeof ticketSchema>) {
     const payload = {
       ...data,
-      // TODO: CHANGE ONCE TICKET IS READY
       orderType: "ticket-regular",
-      ticketType: "normal-price",
-      ticketEvent: type,
+      ticketType: formtTicketProperties(ticket.type, { preserveNumbers: true }),
+      ticketEvent: event,
     };
 
     console.log(JSON.stringify(payload));

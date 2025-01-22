@@ -10,35 +10,32 @@ export default async function FormTicketPage({
 }) {
   const data = await getAllTicketInfo();
 
-  // TODO: UNCOMMENT ONCE ATLEAST ONE TICKET IS ACTIVE (sorry tpi saya cape bikin dummy data)
-  // const getTicketsByEvent = (eventType: TicketEventEnum) => {
-  //   switch (eventType) {
-  //     case 'main-event':
-  //       return data.ticketInformations.mainEvent;
-  //     case 'propa-3-day1':
-  //       return data.ticketInformations.propaganda3;
-  //     case 'propa-3-day2':
-  //       return data.ticketInformations.propaganda3;
-  //     case 'propa-3-day3':
-  //       return data.ticketInformations.propaganda3;
-  //     default:
-  //       return [];
-  //   }
-  // };
+  const getTicketsByEvent = (eventType: TicketEventEnum) => {
+    switch (eventType) {
+      case "main-event":
+        return data.ticketInformations.mainEvent;
+      case "propa-3-day1":
+        return data.ticketInformations.propaganda3;
+      case "propa-3-day2":
+        return data.ticketInformations.propaganda3;
+      case "propa-3-day3":
+        return data.ticketInformations.propaganda3;
+      default:
+        return [];
+    }
+  };
 
-  // const eventTickets = getTicketsByEvent(searchParams.event)
-  //   .filter(ticket => !ticket.isExpired);
+  const eventTickets = getTicketsByEvent(searchParams.event).filter(
+    (ticket) => !ticket.isExpired,
+  );
 
-  // const activeTicket = eventTickets.length > 0 ? eventTickets[0] : undefined;
+  const activeTicket = eventTickets.length > 0 ? eventTickets[0] : undefined;
 
-  // if (!activeTicket) {
-  //   notFound();
-  // }
+  if (!activeTicket) {
+    notFound();
+  }
 
   return (
-    <ClientFormTicketPage
-      event={searchParams.event}
-      // ticket={activeTicket}
-    />
+    <ClientFormTicketPage event={searchParams.event} ticket={activeTicket} />
   );
 }

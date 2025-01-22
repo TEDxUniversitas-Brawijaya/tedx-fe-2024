@@ -23,13 +23,14 @@ import { FileInput } from "@/components/shared/file-input";
 import { useState } from "react";
 import { useCreateTicket } from "@/repository/client/ticket/use-create-ticket";
 import { getTicketNotes } from "@/lib/ticket";
+import { formatToRupiah } from "@/lib/utils";
 
 interface IClientFormTicketPage {
   event: TicketEventEnum;
-  // ticket: ITicketInfoDetail;
+  ticket: ITicketInfoDetail;
 }
 
-const ClientFormTicketPage = ({ event }: IClientFormTicketPage) => {
+const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
   const { dialogState, openDialog, closeDialog } =
     useDialogReducer<ICreateTicketPayload>();
   const [paymentProofUrl, setPaymentProofUrl] = useState<string>();
@@ -96,7 +97,7 @@ const ClientFormTicketPage = ({ event }: IClientFormTicketPage) => {
           />
         </div>
         <Separator className="my-6 bg-[#7E7E7E]/40" />
-        <DialogDetailItem label="Total" value="Rp 100.000,00-" />
+        <DialogDetailItem label="Total" value={formatToRupiah(ticket.price)} />
         <ActionFooter
           primaryText="Bayar Sekarang"
           secondaryText="Kembali"
@@ -194,7 +195,8 @@ const ClientFormTicketPage = ({ event }: IClientFormTicketPage) => {
 
         <div className="relative z-10 mx-auto mt-14 max-w-[320px] md:max-w-[466px]">
           <FormTicket
-            type={event}
+            event={event}
+            ticket={ticket}
             onSubmit={handleSubmit}
             onCancel={() => window.history.back()}
           />

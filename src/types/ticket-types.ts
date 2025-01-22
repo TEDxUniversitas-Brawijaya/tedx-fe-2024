@@ -84,4 +84,5 @@ export interface ICreateTicketPayload {
   orderType: string;
   ticketType?: string;
   ticketEvent: string;
+  merchSize?: string;
 }

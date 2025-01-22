@@ -4,7 +4,7 @@ import { ITicketInformation } from "@/types/ticket-types";
 export const useTickets = (ticketInfo: ITicketInformation) => {
   return useMemo(() => {
     const filterValidTickets = (tickets: any[]) =>
-      tickets.filter((ticket) => ticket.isExpired);
+      tickets.filter((ticket) => !ticket.isExpired);
 
     const regularTickets = {
       mainEventTicket: filterValidTickets(ticketInfo.mainEvent)[0] || null,

@@ -10,8 +10,12 @@ import { BASE_URL } from "../api";
 
 const url = new URL(BASE_URL + "/tickets/informations");
 
+const ticketUrl = new URL(BASE_URL + "/tickets");
+
 export async function getAllTicketInfo(): Promise<IGetTicketInfoResponse> {
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
 
   const data = await res.json();
 
@@ -40,10 +44,15 @@ export async function getAllTickets(
 export async function createTicket(
   payload: ICreateTicketPayload,
 ): Promise<IRootResponse> {
-  const res = await fetch(url.toString(), {
+  const res = await fetch(ticketUrl.toString(), {
     method: "POST",
     body: JSON.stringify(payload),
   });
+
+  if (!res.ok) {
+    const response = await res.json();
+    throw new Error(response.message);
+  }
 
   const data = await res.json();
 

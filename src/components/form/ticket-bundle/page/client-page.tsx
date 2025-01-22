@@ -5,33 +5,34 @@ import { Button } from "@/components/shared/button";
 import { Dialog, DialogHeader, DialogTitle } from "@/components/shared/dialog";
 import { DialogType } from "@/types/general-types";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { FileIcon } from "lucide-react";
-import { Input } from "@/components/shared/input";
 import {
   ICreateTicketPayload,
-  IRootTicket,
+  ITicketInfoDetail,
   TicketEventEnum,
 } from "@/types/ticket-types";
+import { FileInput } from "@/components/shared/file-input";
+import { getTicketNotes } from "@/lib/ticket";
 import { Separator } from "@/components/shared/separator";
+import { useCreateTicket } from "@/repository/client/ticket/use-create-ticket";
 import { useDialogReducer } from "@/hooks/useDialogReducer";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import CreamDialogBackground from "@/components/shared/cream-dialog-background";
 import DialogDetailItem from "@/components/shared/dialog-detail-item";
 import Footer from "@/components/shared/footer";
 import FormTicketBundle from "../ui/form/form-ticket";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { useCreateTicket } from "@/repository/client/ticket/use-create-ticket";
-import { FileInput } from "@/components/shared/file-input";
-import { getTicketNotes } from "@/lib/ticket";
+import { formatToRupiah } from "@/lib/utils";
 
 interface IClientFormTicketBundlePage {
   event: TicketEventEnum;
+  ticket: ITicketInfoDetail;
   isMerchAvailable: boolean;
 }
 
 const ClientFormTicketBundlePage = ({
   event,
+  ticket,
   isMerchAvailable,
 }: IClientFormTicketBundlePage) => {
   const { dialogState, openDialog, closeDialog } =
@@ -52,8 +53,10 @@ const ClientFormTicketBundlePage = ({
 
   const handlePaymentSubmit = async () => {
     if (dialogState.data) {
+      const { merchSize, ...rest } = dialogState.data;
       const payloadWithProof = {
-        ...dialogState.data,
+        ...rest,
+        ...(merchSize && { merchSize }), // Only include merch_size if it exists
         paymentProof: paymentProofUrl,
       };
 
@@ -62,6 +65,8 @@ const ClientFormTicketBundlePage = ({
           openDialog("success");
         },
       });
+
+      console.log(payloadWithProof);
     }
   };
 
@@ -85,6 +90,7 @@ const ClientFormTicketBundlePage = ({
           <DialogDetailItem
             label="Email"
             value={dialogState.data?.email ?? "-"}
+            capitalize={false}
           />
           <DialogDetailItem
             label="Tipe Tiket"
@@ -100,7 +106,7 @@ const ClientFormTicketBundlePage = ({
           />
         </div>
         <Separator className="my-6 bg-[#7E7E7E]/40" />
-        <DialogDetailItem label="Total" value="Rp 100.000,00-" />
+        <DialogDetailItem label="Total" value={formatToRupiah(ticket.price)} />
         <ActionFooter
           primaryText="Bayar Sekarang"
           secondaryText="Kembali"
@@ -198,7 +204,8 @@ const ClientFormTicketBundlePage = ({
 
         <div className="relative z-10 mx-auto mt-14 max-w-[320px] md:max-w-[466px]">
           <FormTicketBundle
-            type={event}
+            event={event}
+            ticket={ticket}
             isMerchAvailable={isMerchAvailable}
             onSubmit={handleSubmit}
             onCancel={() => window.history.back()}

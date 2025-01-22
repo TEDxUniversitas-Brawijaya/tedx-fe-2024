@@ -44,10 +44,6 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       try {
         const response = await uploadFile(formData);
         onChange?.(response.url);
-        toast({
-          title: "Success",
-          description: response.message,
-        });
       } catch (error) {
         console.error("Upload failed:", error);
         resetFileInput();

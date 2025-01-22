@@ -11,6 +11,7 @@ import { Input } from "@/components/shared/input";
 import {
   ICreateTicketPayload,
   IRootTicket,
+  ITicketInfoDetail,
   TicketEventEnum,
 } from "@/types/ticket-types";
 import {
@@ -31,16 +32,19 @@ import {
 } from "@/components/shared/tooltip";
 import { InfoIcon } from "lucide-react";
 import { createTicketBundleSchema } from "./models/form-schema";
+import { formtTicketProperties } from "@/lib/ticket";
 
 interface IFormTicketBundle {
-  type: TicketEventEnum;
+  event: TicketEventEnum;
+  ticket: ITicketInfoDetail;
   isMerchAvailable: boolean;
   onSubmit: (data: ICreateTicketPayload) => void;
   onCancel: () => void;
 }
 
 const FormTicketBundle = ({
-  type,
+  event,
+  ticket,
   isMerchAvailable,
   onSubmit,
   onCancel,
@@ -55,9 +59,8 @@ const FormTicketBundle = ({
   function handleSubmit(data: z.infer<typeof ticketBundleSchema>) {
     const payload = {
       ...data,
-      // TODO: CHANGE ONCE TICKET IS READY
-      orderType: "ticket-bundling1-day1",
-      ticketEvent: type,
+      orderType: formtTicketProperties(ticket.name, { preserveNumbers: true }),
+      ticketEvent: event,
     };
 
     console.log(JSON.stringify(payload));
@@ -156,7 +159,7 @@ const FormTicketBundle = ({
           />
           <FormField
             control={form.control}
-            name="merch_size"
+            name="merchSize"
             render={({ field }) => (
               <FormItem
                 className={`${isMerchAvailable ? "block" : "hidden"} col-span-2 space-y-2 md:col-span-1`}
