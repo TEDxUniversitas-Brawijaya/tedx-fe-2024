@@ -25,6 +25,13 @@ jobs:
         run: |
           echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
           echo "MEASUREMENT_ID=${{ secrets.MEASUREMENT_ID }}" >> .env
+          echo "NEXT_PUBLIC_API_BASE_URL=${{ secrets.NEXT_PUBLIC_API_BASE_URL }}" >> .env
+          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
+          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
+          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
+          echo "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}" >> .env
+          echo "ADMIN_EMAILS=${{ secrets.ADMIN_EMAILS }}" >> .env
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
 
       - name: Build Project Artifacts
         env:
