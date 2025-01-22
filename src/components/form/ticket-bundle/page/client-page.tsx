@@ -124,9 +124,17 @@ const ClientFormTicketBundlePage = ({
     ),
     payment: (
       <>
-        <DialogHeader className="mb-10 md:mb-14">
-          <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
-            Bukti Pembayaran
+        <DialogHeader className="mb-5">
+          <DialogTitle className="text-center">
+            <Image
+              src={"/img/qris.png"}
+              alt="Qr Code"
+              width={200}
+              height={200}
+              className="mx-auto mb-5"
+            />
+            <h3 className="font-semibold">TEDXUNIVERSITAS BRAWIJAYA, LKWKWR</h3>
+            <p className="text-base font-normal">NMID : ID1025371978905</p>
           </DialogTitle>
         </DialogHeader>
         <Image
@@ -134,7 +142,7 @@ const ClientFormTicketBundlePage = ({
           alt="Qr Code"
           width={200}
           height={200}
-          className="mx-auto mb-14"
+          className="mx-auto mb-10"
         />
         <FileInput onChange={handleFileUpload} />
         <ActionFooter
@@ -157,19 +165,19 @@ const ClientFormTicketBundlePage = ({
     ),
     success: (
       <>
-        <DialogHeader className="mb-6 md:mb-10">
+        <DialogHeader className="mb-6 md:mb-5">
           <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
             Pembayaran Behasil
           </DialogTitle>
         </DialogHeader>
         <DotLottieReact
           src="/lottie/success.lottie"
-          className="mx-auto mb-10 size-[240px]"
+          className="mx-auto mb-5 size-[200px]"
           autoplay
         />
         <p className="mb-8 text-center text-tedx-black/90">
-          Terima kasih sudah bertransaksi dengan kami. Periksa tiketmu sekarang
-          pada email yang terdaftar.
+          Terima kasih sudah bertransaksi dengan kami. Transaksimu akan segera
+          kami proses dan akan dikirimkan melalui email.
         </p>
         <Button
           type="button"

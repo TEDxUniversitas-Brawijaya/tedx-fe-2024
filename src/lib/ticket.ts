@@ -58,7 +58,8 @@ export const formtTicketProperties = (
     formatted = formatted.replace(/(\d+)\s+(?=\w)|(\w)\s+(?=\d+)/g, "$1$2");
   }
 
-  return formatted.replace(/\s/g, separator);
+  // TODO refactor this with a better logic
+  return formatted.replace(/\s/g, separator).replace("day", "-day");
 };
 
 export const getActiveTicketBundle = (

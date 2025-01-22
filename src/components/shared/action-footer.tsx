@@ -19,7 +19,7 @@ export function ActionFooter({
   secondaryClassName,
 }: ActionFooterProps) {
   return (
-    <div className="mt-6 flex w-full justify-end space-x-2">
+    <div className="flex w-full justify-end space-x-2 pt-6">
       <Button
         variant="outlineRed"
         className={cn("flex-1 text-white", primaryClassName)}

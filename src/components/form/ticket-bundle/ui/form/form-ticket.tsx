@@ -42,7 +42,6 @@ interface IFormTicketBundle {
 }
 
 const FormTicketBundle = ({
-  event,
   ticket,
   isMerchAvailable,
   onSubmit,
@@ -62,7 +61,8 @@ const FormTicketBundle = ({
         preserveNumbers: true,
         separator: "-",
       }),
-      ticketEvent: event,
+      // TODO make this dynamic later
+      ticketType: "early-bird",
     };
 
     onSubmit(payload);

@@ -70,7 +70,7 @@ export interface ICreateTicketPayload {
   paymentProof?: string;
   orderType: string;
   ticketType?: string;
-  ticketEvent: string;
+  ticketEvent?: string;
   merchSize?: string;
 }
 
