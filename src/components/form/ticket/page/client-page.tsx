@@ -71,7 +71,7 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
         </DialogHeader>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <DialogDetailItem
-            label="Nama Lengkap"
+            label="Nama Lengkap ASU"
             value={dialogState.data?.name ?? "-"}
           />
           <DialogDetailItem
@@ -96,7 +96,10 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
           />
         </div>
         <Separator className="my-6 bg-[#7E7E7E]/40" />
-        <DialogDetailItem label="Total" value={formatToRupiah(ticket.price)} />
+        <DialogDetailItem
+          label="Total"
+          value={formatToRupiah(ticket.price * dialogState.data?.quantity!)}
+        />
         <ActionFooter
           primaryText="Bayar Sekarang"
           secondaryText="Kembali"

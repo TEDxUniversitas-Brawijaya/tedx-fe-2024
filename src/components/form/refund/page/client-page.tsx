@@ -49,7 +49,7 @@ const ClientFormRefundPage = () => {
           type="button"
           variant={"outlineRed"}
           className="w-full"
-          onClick={() => router.push("/")}
+          onClick={() => router.push("/store/ticket")}
         >
           Kembali
         </Button>

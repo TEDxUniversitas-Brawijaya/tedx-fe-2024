@@ -55,7 +55,7 @@ const Section1 = () => {
             Tiket bisa dibeli dalam
           </p>
           <CountdownTimer
-            targetDate={new Date(2025, 0, 22, 12, 0, 0)}
+            targetDate={new Date(2025, 1, 22, 12, 0, 0)}
             className="text-base text-white lg:text-xl"
           />
         </div>

@@ -36,6 +36,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       const file = e.target.files?.[0];
       if (!file) return;
 
+      onChange?.(undefined);
       setIsUploading(true);
 
       const formData = new FormData();
