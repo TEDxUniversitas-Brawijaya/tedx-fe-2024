@@ -1,5 +1,5 @@
-import ComingSoonPage from "@/components/shared/coming-soon";
+import ClientTicketPage from "@/components/store/ticket/page/client-page";
 
 export default function TicketPage() {
-  return <ComingSoonPage />;
+  return <ClientTicketPage />;
 }

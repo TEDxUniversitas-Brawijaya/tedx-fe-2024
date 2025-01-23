@@ -77,7 +77,7 @@ export default function MobileSection2() {
             style={{
               y: smoothBoxY,
             }}
-            className="relative mb-20 h-44 w-72 md:h-52 md:w-96 bg-white drop-shadow-[0px_4px_50px_rgba(255,0,0,0.5)]"
+            className="relative mb-20 h-44 w-72 bg-white drop-shadow-[0px_4px_50px_rgba(255,0,0,0.5)] md:h-52 md:w-96"
           >
             <Image
               src={"/img/coming-soon-main-event.jpg"}

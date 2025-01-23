@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CountdownTimer from "../ui/countdown-timer";
+import CountdownTimer from "../../shared/countdown-timer";
 
 export default function DesktopSection3() {
   return (
@@ -12,7 +12,10 @@ export default function DesktopSection3() {
         </p>
         <div className="flex flex-col items-center text-xl">
           <p>Babak ini akan dimulai dalam</p>
-          <CountdownTimer />
+          <CountdownTimer
+            targetDate={new Date(2025, 0, 22, 12, 0, 0)}
+            className="font-header text-9xl font-bold text-tedx-red"
+          />
           <p className="max-w-[600px]">
             Pantau terus linimasa kami untuk mengetahui informasi lebih lanjut
             tentang Propaganda 3!
