@@ -37,7 +37,7 @@ const ClientFormTicketBundlePage = ({
 }: IClientFormTicketBundlePage) => {
   const { dialogState, openDialog, closeDialog } =
     useDialogReducer<ICreateTicketPayload>();
-  const [paymentProofUrl, setPaymentProofUrl] = useState<string>();
+  const [paymentProofUrl, setPaymentProofUrl] = useState<string | undefined>();
 
   const router = useRouter();
 
@@ -104,7 +104,12 @@ const ClientFormTicketBundlePage = ({
           />
         </div>
         <Separator className="my-6 bg-[#7E7E7E]/40" />
-        <DialogDetailItem label="Total" value={formatToRupiah(ticket.price)} />
+        <DialogDetailItem
+          label="Total"
+          value={formatToRupiah(
+            ticket.price * (dialogState.data?.quantity ?? 1),
+          )}
+        />
         <ActionFooter
           primaryText="Bayar Sekarang"
           secondaryText="Kembali"
@@ -204,7 +209,7 @@ const ClientFormTicketBundlePage = ({
             bawah, dan nyalakan cahaya baru dalam perjalananmu.
           </p>
           <p className="text-center text-tedx-red/80">
-            {getTicketNotes("Ticket Bundling 1 Day 3")}
+            {getTicketNotes(ticket.name)}
           </p>
         </div>
 

@@ -29,6 +29,7 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
                 amount={ticket.stock}
                 title={ticket.name}
                 description={ticket.description}
+                price={ticket.price}
                 redirectUrl={`/form/ticket-bundle?event=propa-3-day${day.slice(-1)}&bundle=${bundle.bundleNumber}`}
               />
             ),
@@ -70,6 +71,7 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
                     amount={regularTickets.mainEventTicket.stock}
                     title="Main Event"
                     description={regularTickets.mainEventTicket.description}
+                    price={regularTickets.mainEventTicket.price}
                     redirectUrl="/form/ticket?event=main-event"
                   />
                 )}
@@ -83,6 +85,7 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
                         amount={ticket.stock}
                         title={`Propaganda 3 Day ${day.slice(-1)}`}
                         description={ticket.description}
+                        price={ticket.price}
                         redirectUrl={`/form/ticket?event=propa-3-day${day.slice(-1)}`}
                       />
                     ),

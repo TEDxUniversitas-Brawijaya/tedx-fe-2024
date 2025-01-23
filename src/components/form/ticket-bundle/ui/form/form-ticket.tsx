@@ -68,6 +68,11 @@ const FormTicketBundle = ({
     onSubmit(payload);
   }
 
+  const quantityOptions = Array.from(
+    { length: Math.min(10, ticket.stock) },
+    (_, i) => i + 1,
+  );
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
@@ -142,16 +147,11 @@ const FormTicketBundle = ({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="1">1</SelectItem>
-                    <SelectItem value="2">2</SelectItem>
-                    <SelectItem value="3">3</SelectItem>
-                    <SelectItem value="4">4</SelectItem>
-                    <SelectItem value="5">5</SelectItem>
-                    <SelectItem value="6">6</SelectItem>
-                    <SelectItem value="7">7</SelectItem>
-                    <SelectItem value="8">8</SelectItem>
-                    <SelectItem value="9">9</SelectItem>
-                    <SelectItem value="10">10</SelectItem>
+                    {quantityOptions.map((quantity) => (
+                      <SelectItem key={quantity} value={quantity.toString()}>
+                        {quantity}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
