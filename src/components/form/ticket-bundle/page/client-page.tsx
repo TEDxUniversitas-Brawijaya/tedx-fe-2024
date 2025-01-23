@@ -116,7 +116,9 @@ const ClientFormTicketBundlePage = ({
           primaryProps={{
             type: "button",
             onClick: () => {
-              openDialog("payment", dialogState.data!);
+              if (dialogState.data) {
+                openDialog("payment", dialogState.data!);
+              }
             },
           }}
           secondaryProps={{
@@ -160,7 +162,9 @@ const ClientFormTicketBundlePage = ({
           }}
           secondaryProps={{
             onClick: () => {
-              openDialog("create", dialogState.data!);
+              if (dialogState.data) {
+                openDialog("create", dialogState.data);
+              }
             },
             type: "button",
           }}
