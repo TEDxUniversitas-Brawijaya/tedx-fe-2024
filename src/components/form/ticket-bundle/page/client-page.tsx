@@ -92,7 +92,7 @@ const ClientFormTicketBundlePage = ({
           />
           <DialogDetailItem
             label="Tipe Tiket"
-            value={dialogState.data?.ticketEvent ?? "-"}
+            value={ticket.type}
           />
           <DialogDetailItem
             label="Nomor Telepon"
@@ -140,7 +140,7 @@ const ClientFormTicketBundlePage = ({
               height={200}
               className="mx-auto mb-5"
             />
-            <h3 className="font-semibold">TEDXUNIVERSITAS BRAWIJAYA, LKWKWR</h3>
+            <h3 className="font-semibold">TEDXUNIVERSITAS BRAWIJAYA, LWKWR</h3>
             <p className="text-base font-normal">NMID : ID1025371978905</p>
           </DialogTitle>
         </DialogHeader>

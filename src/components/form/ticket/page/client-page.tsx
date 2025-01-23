@@ -84,7 +84,7 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
           />
           <DialogDetailItem
             label="Tipe Tiket"
-            value={dialogState.data?.orderType ?? "-"}
+            value={ticket.type}
           />
           <DialogDetailItem
             label="Nomor Telepon"
@@ -118,18 +118,19 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
     ),
     payment: (
       <>
-        <DialogHeader className="mb-10 md:mb-14">
-          <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
-            Bukti Pembayaran
+        <DialogHeader className="mb-5">
+          <DialogTitle className="text-center">
+            <Image
+              src={"/img/qris.png"}
+              alt="Qr Code"
+              width={200}
+              height={200}
+              className="mx-auto mb-5"
+            />
+            <h3 className="font-semibold">TEDXUNIVERSITAS BRAWIJAYA, LWKWR</h3>
+            <p className="text-base font-normal">NMID : ID1025371978905</p>
           </DialogTitle>
         </DialogHeader>
-        <Image
-          src={"/img/qr-code.png"}
-          alt="Qr Code"
-          width={200}
-          height={200}
-          className="mx-auto mb-14"
-        />
         <FileInput onChange={handleFileUpload} />
         <ActionFooter
           primaryText="Upload Bukti Pembayaran"
