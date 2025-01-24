@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { Navigation } from "swiper/modules";
+import { merchsData } from "../../../../lib/static/merchs";
 import { cn } from "../../../../lib/utils";
 
 export default function Section2() {
@@ -23,7 +24,7 @@ export default function Section2() {
           CATEGORY
         </h2>
 
-        <div className="absolute right-[5%] top-20 ">
+        <div className="absolute right-[5%] top-20">
           <video
             muted
             loop
@@ -36,7 +37,7 @@ export default function Section2() {
             />
             Your browser does not support the video tag.
           </video>
-          <svg className="w-full h-full">
+          <svg className="h-full w-full">
             <defs>
               <clipPath id="clip-2">
                 <text
@@ -62,7 +63,7 @@ export default function Section2() {
           modules={[Navigation]}
           className="absolute w-full"
         >
-          {MERCHS.map((merch, idx) => {
+          {Object.keys(merchsData).map((merch, idx) => {
             return (
               <SwiperSlide key={idx} className="absolute aspect-square h-full">
                 {(prop) => {
@@ -82,8 +83,8 @@ export default function Section2() {
                             className={cn("flex items-center justify-center")}
                           >
                             <Image
-                              src={merch.img}
-                              alt={merch.label}
+                              src={`/img/merch-${merch}.png`}
+                              alt={merch}
                               width={300}
                               height={300}
                               objectFit="cover"
@@ -101,7 +102,7 @@ export default function Section2() {
                             duration: 0.5,
                           }}
                           className={cn(
-                            "absolute text-nowrap font-body text-3xl font-black sm:text-4xl md:text-5xl lg:text-7xl",
+                            "absolute text-nowrap font-body text-3xl font-black uppercase sm:text-4xl md:text-5xl lg:text-7xl",
                             prop.isActive
                               ? "bg-[#3C3C3C]/50 p-2 text-white backdrop-blur-md transition-colors duration-500 ease-in-out hover:bg-[#C72F2F]/50"
                               : "text-[#757575]/25",
@@ -111,7 +112,7 @@ export default function Section2() {
                               "invisible",
                           )}
                         >
-                          {merch.label}
+                          {merch}
                         </motion.h2>
                       </motion.div>
                     </AnimatePresence>
@@ -136,15 +137,12 @@ export default function Section2() {
             }}
             className="flex items-center space-x-32 px-16 py-2"
           >
-            {MERCHS.map((merch) => {
+            {Object.keys(merchsData).map((merch) => {
               return (
-                <div
-                  key={`${merch.label}-1`}
-                  className="flex items-center space-x-4"
-                >
+                <div key={merch} className="flex items-center space-x-4">
                   <ArrowRightIcon size={48} className="text-white" />
-                  <span className="text-nowrap font-body text-4xl font-light tracking-[0.4rem] text-white">
-                    {merch.label}
+                  <span className="text-nowrap font-body text-4xl font-light uppercase tracking-[0.4rem] text-white">
+                    {merch}
                   </span>
                 </div>
               );
@@ -159,15 +157,15 @@ export default function Section2() {
             }}
             className="flex items-center space-x-32 px-16 py-2"
           >
-            {MERCHS.map((merch) => {
+            {Object.keys(merchsData).map((merch) => {
               return (
                 <div
-                  key={`${merch.label}-1`}
+                  key={merch}
                   className="flex items-center space-x-4"
                 >
                   <ArrowRightIcon size={48} className="text-white" />
-                  <span className="text-nowrap font-body text-4xl font-light tracking-[0.4rem] text-white">
-                    {merch.label}
+                  <span className="text-nowrap font-body text-4xl font-light tracking-[0.4rem] text-white uppercase">
+                    {merch}
                   </span>
                 </div>
               );
@@ -204,26 +202,3 @@ const RightArrow = () => {
     </button>
   );
 };
-
-const MERCHS = [
-  {
-    label: "T-SHIRT",
-    img: "/img/merch-tshirt.png",
-  },
-  {
-    label: "WORKSHIRT",
-    img: "/img/merch-workshirt.png",
-  },
-  {
-    label: "STICKERS",
-    img: "/img/merch-sticker.png",
-  },
-  {
-    label: "BAGS",
-    img: "/img/merch-bag.png",
-  },
-  {
-    label: "HATS",
-    img: "/img/merch-hat.png",
-  },
-];
