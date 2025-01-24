@@ -1,20 +1,13 @@
 "use client";
 
+import { merchsData } from "@/lib/static/merchs";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
-
-// Import Swiper React components
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
 import { Navigation } from "swiper/modules";
-import { merchsData } from "../../../../lib/static/merchs";
-import { cn } from "../../../../lib/utils";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 export default function Section2() {
   return (
@@ -159,12 +152,9 @@ export default function Section2() {
           >
             {Object.keys(merchsData).map((merch) => {
               return (
-                <div
-                  key={merch}
-                  className="flex items-center space-x-4"
-                >
+                <div key={merch} className="flex items-center space-x-4">
                   <ArrowRightIcon size={48} className="text-white" />
-                  <span className="text-nowrap font-body text-4xl font-light tracking-[0.4rem] text-white uppercase">
+                  <span className="text-nowrap font-body text-4xl font-light uppercase tracking-[0.4rem] text-white">
                     {merch}
                   </span>
                 </div>
