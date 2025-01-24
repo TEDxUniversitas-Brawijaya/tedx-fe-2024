@@ -1,58 +1,34 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import { Navigation } from "swiper/modules";
+import { cn } from "../../../../lib/utils";
 
 export default function Section2() {
-  const [merchs, setMerchs] = useState(MERCHS);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const handlePrev = () => {
-    setMerchs((prev) => [
-      {
-        ...prev[prev.length - 1],
-      },
-      ...prev.slice(0, prev.length - 1),
-    ]);
-
-    setIsAnimating(true);
-
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 500);
-  };
-
-  const handleNext = () => {
-    setMerchs((prev) => [
-      ...prev.slice(1),
-      {
-        ...prev[0],
-      },
-    ]);
-
-    setIsAnimating(true);
-
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 500);
-  };
-
   return (
     <section className="relative h-full">
       <div className="sticky left-0 top-0 z-0 flex h-screen w-full items-center justify-center overflow-hidden bg-[#F2F2F2] text-center">
-        <h2 className="absolute left-32 top-32 text-5xl font-semibold text-[#1A1A1A]">
+        <h2 className="absolute left-[10%] top-32 text-3xl font-semibold text-[#1A1A1A] sm:text-4xl md:text-5xl">
           CATEGORY
         </h2>
 
-        <div className="absolute right-32 top-20 flex items-center justify-center">
+        <div className="absolute right-[5%] top-20 ">
           <video
             muted
             loop
             autoPlay
-            className="absolute inset-0 object-cover w-full h-full"
+            className="clip-video-2 absolute h-full w-full object-cover"
           >
             <source
               src="https://res.cloudinary.com/dcvnwpyd9/video/upload/v1737275062/tedxuniversitasbrawijaya2025/tedx_propa_3_3_3_dfs4ne.mp4"
@@ -60,85 +36,94 @@ export default function Section2() {
             />
             Your browser does not support the video tag.
           </video>
-          <h2 className="font-strong text-5xl font-bold bg-[#F2F2F2] mix-blend-screen">
-            TED
-            <br />
-            XUB
-          </h2>
+          <svg className="w-full h-full">
+            <defs>
+              <clipPath id="clip-2">
+                <text
+                  x="50%"
+                  y="50%"
+                  dominantBaseline="start"
+                  textAnchor="middle"
+                  fontWeight="bold"
+                  fill="white"
+                  className="font-strong text-[2rem] sm:text-[3rem] md:text-[4rem]"
+                >
+                  TEDXUB
+                </text>
+              </clipPath>
+            </defs>
+          </svg>
         </div>
 
-        {/* Products */}
-        <div className="absolute flex w-full flex-row items-center justify-center gap-16">
-          {merchs.map((merch, idx) => (
-            <motion.div
-              key={merch.label}
-              layout
-              transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-              className={cn(
-                "absolute",
-                idx === 0 && "-left-[100%] scale-0 opacity-0",
-                idx === 1 && "right-[60%] scale-0 opacity-0",
-                idx === 2 && "scale-50 opacity-100",
-                idx === 3 && "left-[60%] scale-0 opacity-0",
-                idx === 4 && "-right-[100%] scale-0 opacity-0",
-              )}
-            >
-              <Image
-                src={merch.img}
-                alt={merch.label}
-                width={merch.width}
-                height={merch.height}
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Text */}
-        <div className="relative flex w-[300vw] flex-row items-center justify-around">
-          {merchs.map((merch, idx) => (
-            <motion.div
-              key={merch.label}
-              layout
-              transition={{
-                type: "tween",
-                ease: "easeInOut",
-                duration: 0.5,
-              }}
-              className={cn(
-                "absolute mx-auto flex-shrink-0 text-[#757575]/25",
-                idx === 0 && "-left-[100%]",
-                idx === 1 && "right-[85%]",
-                idx === 2 &&
-                  "bg-[#3C3C3C]/50 p-2 text-white backdrop-blur-md transition-colors duration-500 ease-in-out hover:bg-[#C72F2F]/50",
-                idx === 3 && "left-[85%]",
-                idx === 4 && "-right-[100%]",
-              )}
-            >
-              <motion.h2
-                layout
-                className={cn("text-nowrap font-body text-8xl font-black")}
-              >
-                {merch.label}
-              </motion.h2>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Buttons */}
-        <button
-          disabled={isAnimating}
-          onClick={() => handlePrev()}
-          className="absolute left-32 z-50"
+        <Swiper
+          slidesPerView={3}
+          loop={true}
+          centeredSlides={true}
+          modules={[Navigation]}
+          className="absolute w-full"
         >
-          <ArrowLeftIcon size={48} />
-        </button>
-        <button
-          disabled={isAnimating}
-          onClick={() => handleNext()}
-          className="absolute right-32 z-50"
-        >
-          <ArrowRightIcon size={48} />
-        </button>
+          {MERCHS.map((merch, idx) => {
+            return (
+              <SwiperSlide key={idx} className="absolute aspect-square h-full">
+                {(prop) => {
+                  return (
+                    <AnimatePresence mode="wait">
+                      <motion.div className="relative flex h-full items-center justify-center">
+                        {prop.isActive && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{
+                              type: "tween",
+                              ease: "easeInOut",
+                              duration: 0.75,
+                            }}
+                            className={cn("flex items-center justify-center")}
+                          >
+                            <Image
+                              src={merch.img}
+                              alt={merch.label}
+                              width={300}
+                              height={300}
+                              objectFit="cover"
+                            />
+                          </motion.div>
+                        )}
+                        <motion.h2
+                          layout
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.8 }}
+                          transition={{
+                            type: "tween",
+                            ease: "easeInOut",
+                            duration: 0.5,
+                          }}
+                          className={cn(
+                            "absolute text-nowrap font-body text-3xl font-black sm:text-4xl md:text-5xl lg:text-7xl",
+                            prop.isActive
+                              ? "bg-[#3C3C3C]/50 p-2 text-white backdrop-blur-md transition-colors duration-500 ease-in-out hover:bg-[#C72F2F]/50"
+                              : "text-[#757575]/25",
+                            prop.isNext && "-right-[15%]",
+                            prop.isPrev && "-left-[15%]",
+                            !(prop.isActive || prop.isNext || prop.isPrev) &&
+                              "invisible",
+                          )}
+                        >
+                          {merch.label}
+                        </motion.h2>
+                      </motion.div>
+                    </AnimatePresence>
+                  );
+                }}
+              </SwiperSlide>
+            );
+          })}
+
+          <LeftArrow />
+          <RightArrow />
+        </Swiper>
 
         {/* Marquee */}
         <div className="bg-gradient absolute bottom-8 flex w-full justify-end bg-gradient-to-br from-[#0E0E0E] to-[#292929]">
@@ -194,35 +179,51 @@ export default function Section2() {
   );
 }
 
+const LeftArrow = () => {
+  const swiper = useSwiper();
+
+  return (
+    <button
+      onClick={() => swiper.slideNext()}
+      className="absolute left-4 top-1/2 z-50 hidden -translate-y-1/2 sm:block"
+    >
+      <ArrowLeftIcon size={48} />
+    </button>
+  );
+};
+
+const RightArrow = () => {
+  const swiper = useSwiper();
+
+  return (
+    <button
+      onClick={() => swiper.slidePrev()}
+      className="absolute right-4 top-1/2 z-50 hidden -translate-y-1/2 sm:block"
+    >
+      <ArrowRightIcon size={48} />
+    </button>
+  );
+};
+
 const MERCHS = [
   {
     label: "T-SHIRT",
     img: "/img/merch-tshirt.png",
-    width: 581,
-    height: 501,
   },
   {
     label: "WORKSHIRT",
     img: "/img/merch-workshirt.png",
-    width: 479,
-    height: 554,
   },
   {
     label: "STICKERS",
     img: "/img/merch-sticker.png",
-    width: 446,
-    height: 594,
   },
   {
     label: "BAGS",
     img: "/img/merch-bag.png",
-    width: 764,
-    height: 764,
   },
   {
     label: "HATS",
     img: "/img/merch-hat.png",
-    width: 763,
-    height: 576,
   },
 ];
