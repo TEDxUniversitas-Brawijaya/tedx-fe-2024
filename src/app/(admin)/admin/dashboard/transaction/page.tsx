@@ -49,7 +49,7 @@ function AdminDashboardTransaction() {
 export default function AdminDashboardTransactionPage() {
   return (
     <Suspense>
-      <AdminDashboardTransaction />;
+      <AdminDashboardTransaction />
     </Suspense>
   );
 }
