@@ -53,6 +53,13 @@ export default function TicketTable({
         </TableRow>
       </TableHeader>
       <TableBody>
+        {tickets?.length === 0 && (
+          <TableRow>
+            <TableCell colSpan={11} className="italic text-neutral-400">
+              <div className="flex w-full justify-center">Tidak ada data</div>
+            </TableCell>
+          </TableRow>
+        )}
         {tickets?.map(
           (
             { number, orderID, name, event, email, isCheckedIn, type, price },

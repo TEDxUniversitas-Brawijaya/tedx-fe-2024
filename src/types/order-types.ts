@@ -24,5 +24,5 @@ export interface IUpdateOrderPayload {
 }
 
 export interface IGetOrderDetailResponse extends IRootResponse {
-  orders: IOrderDetail;
+  order: IOrderDetail;
 }

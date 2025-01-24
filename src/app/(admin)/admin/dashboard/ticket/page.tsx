@@ -40,7 +40,7 @@ function AdminDashboardTicket() {
 export default function AdminDashboardTicketPage() {
   return (
     <Suspense>
-      <AdminDashboardTicket />;
+      <AdminDashboardTicket />
     </Suspense>
   );
 }
