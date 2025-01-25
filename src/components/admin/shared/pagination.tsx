@@ -15,6 +15,7 @@ export default function TablePagination({
   onPageChange,
   total_data,
 }: ITablePanigation) {
+  console.log(next_page);
   return (
     <div className="flex items-center justify-between">
       <p className="text-base">
