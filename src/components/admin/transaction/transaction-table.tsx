@@ -3,12 +3,6 @@ import TablePagination from "@/components/admin/shared/pagination";
 import ProofImageModal from "@/components/admin/shared/proof-image-modal";
 import AcceptTransactionModal from "@/components/admin/transaction/accept-transaction-modal";
 import RejectTransactionModal from "@/components/admin/transaction/reject-transaction-modal";
-import { Button } from "@/components/shared/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/shared/dialog";
 import {
   Table,
   TableBody,
@@ -21,13 +15,15 @@ import {
 import { formatToRupiah } from "@/lib/helpers/formatToRupiah";
 import { IGetOrdersResponse } from "@/types/order-types";
 import { UseQueryResult } from "@tanstack/react-query";
-import { EyeIcon } from "lucide-react";
 import TransactionDetailModal from "./transaction-detail-modal";
+import { IGeneralFilter } from "@/types/general-types";
 
 export default function TransactionTable({
   result,
+  onPageChange,
 }: {
   result: UseQueryResult<IGetOrdersResponse, Error>;
+  onPageChange: React.Dispatch<React.SetStateAction<IGeneralFilter>>;
 }) {
   const { data, error, isLoading } = result;
 
@@ -127,7 +123,7 @@ export default function TransactionTable({
               previous_page={pagination?.prev}
               total_data={pagination?.totalData || 0}
               total_page={pagination?.totalPage || 0}
-              onPageChange={() => {}}
+              onPageChange={onPageChange}
             />
           </TableCell>
         </TableRow>

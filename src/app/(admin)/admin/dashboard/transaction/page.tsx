@@ -15,8 +15,13 @@ import useQueryTransactions from "@/repository/client/admin/transactions/useQuer
 import { Suspense } from "react";
 
 function AdminDashboardTransaction() {
-  const { res, handleOnSearchChange, handleResetSearch, handleStatusChange } =
-    useQueryTransactions();
+  const {
+    res,
+    handleOnSearchChange,
+    handleResetSearch,
+    handleStatusChange,
+    setUrlQuery,
+  } = useQueryTransactions();
 
   return (
     <main className="space-y-3">
@@ -41,7 +46,7 @@ function AdminDashboardTransaction() {
           </SelectContent>
         </Select>
       </div>
-      <TransactionTable result={res} />
+      <TransactionTable result={res} onPageChange={setUrlQuery} />
     </main>
   );
 }
