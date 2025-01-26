@@ -90,10 +90,7 @@ const ClientFormTicketBundlePage = ({
             value={dialogState.data?.email ?? "-"}
             capitalize={false}
           />
-          <DialogDetailItem
-            label="Tipe Tiket"
-            value={ticket.type}
-          />
+          <DialogDetailItem label="Tipe Tiket" value={ticket.type} />
           <DialogDetailItem
             label="Nomor Telepon"
             value={dialogState.data?.phone ?? "-"}
@@ -176,7 +173,7 @@ const ClientFormTicketBundlePage = ({
       <>
         <DialogHeader className="mb-6 md:mb-5">
           <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
-            Pembayaran Behasil
+            Pembayaran Berhasil
           </DialogTitle>
         </DialogHeader>
         <DotLottieReact
