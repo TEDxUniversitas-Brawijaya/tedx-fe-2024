@@ -125,6 +125,7 @@ export default function Section3({
 function ProductCard({
   name,
   price,
+  image,
 }: {
   name: string;
   price: number;
@@ -132,7 +133,9 @@ function ProductCard({
 }) {
   return (
     <div className="space-y-6">
-      <div className="h-[323px] w-full bg-red-200" />
+      <div className="relative h-[323px] w-full bg-red-200">
+        <Image src={image} fill alt={name} objectFit="cover" />
+      </div>
       <div className="flex flex-row items-start justify-between">
         <div className="flex flex-col">
           <span className="text-3xl font-bold text-black">{name}</span>

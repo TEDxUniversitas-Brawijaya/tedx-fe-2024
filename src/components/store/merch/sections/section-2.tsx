@@ -13,7 +13,7 @@ export default function Section2() {
   return (
     <section className="relative h-full">
       <div className="sticky left-0 top-0 z-0 flex h-screen w-full items-center justify-center overflow-hidden bg-[#F2F2F2] text-center">
-        <h2 className="absolute left-[10%] top-32 text-3xl font-semibold text-[#1A1A1A] sm:text-4xl md:text-5xl">
+        <h2 className="absolute left-[10%] top-24 translate-y-2 text-3xl font-semibold text-[#1A1A1A] sm:text-4xl md:text-5xl">
           CATEGORY
         </h2>
 
