@@ -23,7 +23,6 @@ const TicketCard = ({
   return (
     <Link
       href={amount > 0 ? redirectUrl : "#"}
-      replace
       className={`group relative ${amount > 0 ? "" : "pointer-events-none cursor-not-allowed opacity-50"}`}
     >
       <div className="absolute left-0 top-0 z-20 h-[380px] w-[320px] rounded-[32px] bg-gradient-to-tr from-tedx-red/50 from-10% to-[#1D1A1B] opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:h-[340px] md:w-[360px] lg:h-[440px] lg:w-[480px]" />

@@ -4,10 +4,10 @@ import { DialogContent } from "./dialog";
 const CreamDialogBackground = ({ children }: { children: React.ReactNode }) => {
   return (
     <DialogContent
-      className="h-fit min-h-[400px] max-w-[90%] overflow-hidden rounded-xl bg-[#D6D6D6] md:max-h-[80dvh] md:max-w-fit"
+      className="flex h-fit min-h-[400px] max-w-[90%] items-center justify-center overflow-hidden rounded-xl bg-[#D6D6D6] md:max-h-[90dvh] md:min-h-0 md:max-w-fit"
       closeButton={false}
     >
-      <div className="relative z-10 overflow-y-auto">{children}</div>
+      <div className="relative z-10 overflow-auto">{children}</div>
       <div className="absolute left-0 top-0 opacity-80">
         <Image
           src="/img/plain-x-logo.png"

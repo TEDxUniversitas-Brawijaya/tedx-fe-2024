@@ -23,6 +23,7 @@ import { useState } from "react";
 import { useCreateTicket } from "@/repository/client/ticket/use-create-ticket";
 import { getTicketNotes } from "@/lib/ticket";
 import { formatToRupiah } from "@/lib/utils";
+import { getDiscount } from "@/lib/helpers/getDiscount";
 
 interface IClientFormTicketPage {
   event: TicketEventEnum;
@@ -61,6 +62,13 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
     }
   };
 
+  const discount = getDiscount(
+    ticket.price,
+    dialogState.data?.quantity ?? 1,
+    dialogState.data?.ticketEvent || "",
+    dialogState.data?.ticketType || "",
+  );
+
   const dialogContent: Partial<Record<DialogType, JSX.Element>> = {
     create: (
       <>
@@ -80,12 +88,10 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
           />
           <DialogDetailItem
             label="Email"
+            capitalize={false}
             value={dialogState.data?.email ?? "-"}
           />
-          <DialogDetailItem
-            label="Tipe Tiket"
-            value={ticket.type}
-          />
+          <DialogDetailItem label="Tipe Tiket" value={ticket.type} />
           <DialogDetailItem
             label="Nomor Telepon"
             value={dialogState.data?.phone ?? "-"}
@@ -96,7 +102,17 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
           />
         </div>
         <Separator className="my-6 bg-[#7E7E7E]/40" />
-        <DialogDetailItem label="Total" value={formatToRupiah(ticket.price * (dialogState.data?.quantity ?? 1))} />
+        <div className="space-y-4">
+          {discount.label && (
+            <DialogDetailItem label="Diskon" value={discount.label} />
+          )}
+          <DialogDetailItem
+            label="Total"
+            value={formatToRupiah(
+              discount.priceAfter * (dialogState.data?.quantity || 1),
+            )}
+          />
+        </div>
         <ActionFooter
           primaryText="Bayar Sekarang"
           secondaryText="Kembali"
@@ -131,6 +147,13 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
             <p className="text-base font-normal">NMID : ID1025371978905</p>
           </DialogTitle>
         </DialogHeader>
+        <Image
+          src={"/img/qr-code.png"}
+          alt="Qr Code"
+          width={200}
+          height={200}
+          className="mx-auto mb-10"
+        />
         <FileInput onChange={handleFileUpload} />
         <ActionFooter
           primaryText="Upload Bukti Pembayaran"
@@ -142,7 +165,7 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
           }}
           secondaryProps={{
             onClick: () => {
-              if(dialogState.data) {
+              if (dialogState.data) {
                 openDialog("create", dialogState.data);
               }
             },
@@ -156,7 +179,7 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
       <>
         <DialogHeader className="mb-6 md:mb-10">
           <DialogTitle className="text-center font-header text-4xl font-light md:text-5xl">
-            Pembayaran Behasil
+            Pembayaran Berhasil
           </DialogTitle>
         </DialogHeader>
         <DotLottieReact
@@ -165,8 +188,8 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
           autoplay
         />
         <p className="mb-8 text-center text-tedx-black/90">
-          Terima kasih sudah bertransaksi dengan kami. Periksa tiketmu sekarang
-          pada email yang terdaftar.
+          Terima kasih sudah bertransaksi dengan kami. Transaksimu akan segera
+          kami proses dan akan dikirimkan melalui email.
         </p>
         <Button
           type="button"
@@ -193,7 +216,7 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
             bawah, dan nyalakan cahaya baru dalam perjalananmu.
           </p>
           <p className="text-center text-tedx-red/80">
-            {getTicketNotes("Main Event")}
+            {getTicketNotes(ticket.name)}
           </p>
         </div>
 

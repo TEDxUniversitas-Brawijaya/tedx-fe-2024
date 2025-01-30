@@ -38,13 +38,17 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
     );
   };
 
+  const hasBundlingActive = Object.values(
+    bundlingTickets.bundle1?.propagandaDays ?? {},
+  ).some((day) => !day?.isExpired);
+
   return (
     <section className="relative z-10 mt-[100px] w-full pb-[140px]">
       <h2 className="text-center font-header text-4xl text-white md:text-5xl lg:text-6xl">
         Dapatkan Tiket
       </h2>
       <Tabs
-        defaultValue="bundling"
+        defaultValue={hasBundlingActive ? "bundling" : "regular"}
         className="mt-10 flex w-full flex-col items-center gap-6 px-10 md:px-[80px] lg:px-[120px]"
       >
         <TabsList>
@@ -60,21 +64,6 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
               (ticket) => ticket,
             ) ? (
               <>
-                {regularTickets.mainEventTicket && (
-                  <TicketCard
-                    startDate={formatResponseDate(
-                      regularTickets.mainEventTicket.startDate,
-                    )}
-                    endDate={formatResponseDate(
-                      regularTickets.mainEventTicket.endDate,
-                    )}
-                    amount={regularTickets.mainEventTicket.stock}
-                    title="Main Event"
-                    description={regularTickets.mainEventTicket.description}
-                    price={regularTickets.mainEventTicket.price}
-                    redirectUrl="/form/ticket?event=main-event"
-                  />
-                )}
                 {Object.entries(regularTickets.propagandaDays).map(
                   ([day, ticket]) =>
                     ticket && (
@@ -89,6 +78,21 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
                         redirectUrl={`/form/ticket?event=propa-3-day${day.slice(-1)}`}
                       />
                     ),
+                )}
+                {regularTickets.mainEventTicket && (
+                  <TicketCard
+                    startDate={formatResponseDate(
+                      regularTickets.mainEventTicket.startDate,
+                    )}
+                    endDate={formatResponseDate(
+                      regularTickets.mainEventTicket.endDate,
+                    )}
+                    amount={regularTickets.mainEventTicket.stock}
+                    title="Main Event"
+                    description={regularTickets.mainEventTicket.description}
+                    price={regularTickets.mainEventTicket.price}
+                    redirectUrl="/form/ticket?event=main-event"
+                  />
                 )}
               </>
             ) : (
@@ -112,7 +116,7 @@ const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
               </>
             ) : (
               <p className="mt-10 text-center text-lg italic text-white/40">
-                Tidak ada bundling regular yang tersedia saat ini.
+                Tidak ada bundling yang tersedia saat ini.
               </p>
             )}
           </div>
