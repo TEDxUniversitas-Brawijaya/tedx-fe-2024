@@ -15,11 +15,17 @@ export default async function FormTicketPage({
       case "main-event":
         return data.ticketInformations.mainEvent;
       case "propa-3-day1":
-        return data.ticketInformations.propaganda3;
+        return data.ticketInformations.propaganda3.filter(({ name }) =>
+          name.includes("Day 1"),
+        );
       case "propa-3-day2":
-        return data.ticketInformations.propaganda3;
+        return data.ticketInformations.propaganda3.filter(({ name }) =>
+          name.includes("Day 2"),
+        );
       case "propa-3-day3":
-        return data.ticketInformations.propaganda3;
+        return data.ticketInformations.propaganda3.filter(({ name }) =>
+          name.includes("Day 3"),
+        );
       default:
         return [];
     }

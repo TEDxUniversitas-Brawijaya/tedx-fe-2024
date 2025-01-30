@@ -6,13 +6,13 @@ export const getTicketNotes = (name: string) => {
       return "Note : kamu memilih tipe regular ( Ticket main event )";
 
     case "Propaganda 3 Day 1":
-      return "Note : kamu memilih tipe regular ( Ticket day 1 propaganda 3 )";
+      return "Note : kamu memilih tipe regular ( Ticket Propaganda 3 Day 1 )";
 
     case "Propaganda 3 Day 2":
-      return "Note : kamu memilih tipe regular ( Ticket day 1 propaganda 3 )";
+      return "Note : kamu memilih tipe regular ( Ticket Propaganda 3 Day 2 )";
 
     case "Propaganda 3 Day 3":
-      return "Note : kamu memilih tipe regular ( Ticket day 1 propaganda 3 )";
+      return "Note : kamu memilih tipe regular ( Ticket Propaganda 3 Day 3 )";
 
     case "Ticket Bundling 1 Day 1":
       return "Note : kamu memilih tipe bundling ( Ticket main event & day 1 propaganda 3 )";

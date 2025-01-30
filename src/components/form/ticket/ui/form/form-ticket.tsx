@@ -45,7 +45,7 @@ const FormTicket = ({ event, ticket, onSubmit, onCancel }: IFormTicket) => {
       ...data,
       orderType: "ticket-regular",
       ticketType: formtTicketProperties(ticket.type, { preserveNumbers: true }),
-      ticketEvent: event,
+      ticketEvent: event.replace("propa-3", "propa3"),
     };
 
     onSubmit(payload);
