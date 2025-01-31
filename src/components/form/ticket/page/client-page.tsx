@@ -24,6 +24,7 @@ import { useCreateTicket } from "@/repository/client/ticket/use-create-ticket";
 import { getTicketNotes } from "@/lib/ticket";
 import { formatToRupiah } from "@/lib/utils";
 import { getDiscount } from "@/lib/helpers/getDiscount";
+import useQueryTicketDiscounts from "@/repository/client/ticket/use-query-ticket-discounts";
 
 interface IClientFormTicketPage {
   event: TicketEventEnum;
@@ -62,11 +63,14 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
     }
   };
 
+  const { data } = useQueryTicketDiscounts();
+
   const discount = getDiscount(
     ticket.price,
     dialogState.data?.quantity ?? 1,
     dialogState.data?.ticketEvent || "",
     dialogState.data?.ticketType || "",
+    data?.orderDiscounts || [],
   );
 
   const dialogContent: Partial<Record<DialogType, JSX.Element>> = {
@@ -104,13 +108,14 @@ const ClientFormTicketPage = ({ event, ticket }: IClientFormTicketPage) => {
         <Separator className="my-6 bg-[#7E7E7E]/40" />
         <div className="space-y-4">
           {discount.label && (
-            <DialogDetailItem label="Diskon" value={discount.label} />
+            <div>
+              <DialogDetailItem label="Diskon" value={discount.label} />
+              <p className="text-xs italic text-tedx-red">{discount.notes}</p>
+            </div>
           )}
           <DialogDetailItem
             label="Total"
-            value={formatToRupiah(
-              discount.priceAfter * (dialogState.data?.quantity || 1),
-            )}
+            value={formatToRupiah(discount.priceAfter)}
           />
         </div>
         <ActionFooter

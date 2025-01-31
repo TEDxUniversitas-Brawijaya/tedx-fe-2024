@@ -2,6 +2,7 @@
 
 import {
   IGetOrderDetailResponse,
+  IGetOrderDiscountsResponse,
   IGetOrdersResponse,
   IUpdateOrderPayload,
 } from "@/types/order-types";
@@ -57,6 +58,18 @@ export async function getOrderById(
   id: string,
 ): Promise<IGetOrderDetailResponse> {
   const res = await fetch(`${endpoint}/${id}`, {
+    headers: {
+      "TEDXUB25-API-KEY": `${API_KEY}`,
+    },
+  });
+
+  const data = await res.json();
+
+  return data;
+}
+
+export async function getAllTicketDiscounts(): Promise<IGetOrderDiscountsResponse> {
+  const res = await fetch(endpoint + "/discounts", {
     headers: {
       "TEDXUB25-API-KEY": `${API_KEY}`,
     },
