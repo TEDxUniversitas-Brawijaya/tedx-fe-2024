@@ -15,6 +15,12 @@ export interface IOrderDetail {
   tickets?: Omit<ITicketDetail, "name">[];
 }
 
+export interface IOrderDiscount {
+  id: number;
+  type: "ticket-2-feb" | "ticket-valentine";
+  stock: number;
+}
+
 export interface IGetOrdersResponse extends IRootResponse {
   orders: IOrderDetail[];
 }
@@ -25,4 +31,8 @@ export interface IUpdateOrderPayload {
 
 export interface IGetOrderDetailResponse extends IRootResponse {
   order: IOrderDetail;
+}
+
+export interface IGetOrderDiscountsResponse extends IRootResponse {
+  orderDiscounts: IOrderDiscount[];
 }
