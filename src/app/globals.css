@@ -20,3 +20,11 @@
     --radius: 0.5rem;
   }
 }
+
+.clip-video {
+  clip-path: url(#clip);
+}
+
+.clip-video-2 {
+  clip-path: url(#clip-2);
+}
