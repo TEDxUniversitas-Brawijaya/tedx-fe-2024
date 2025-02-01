@@ -19,7 +19,7 @@ export default function Section1() {
   return (
     <section className="relative h-[250vh]" ref={sectionRef}>
       <div className="sticky left-0 top-0 z-0 flex h-screen w-full items-center justify-center overflow-hidden bg-[#1C1C1C] text-center">
-        <div className="absolute bottom-0 aspect-video h-full opacity-50 mix-blend-lighten">
+        <div className="absolute bottom-0 aspect-video h-full w-full opacity-30 mix-blend-lighten">
           <Image src={"/img/paper-texture-5.png"} alt="Paper Text 5" fill />
         </div>
 
@@ -28,25 +28,11 @@ export default function Section1() {
           style={{ y: useTransform(smoothFirstY, (value) => `${value}vh`) }}
         >
           <Image
-            src={"/img/dummy-merch-hero-section.png"}
-            alt="Back 2"
-            width={324}
-            height={225}
-            className="absolute top-[18%] ml-[66rem]"
-          />
-          <Image
-            src={"/img/dummy-merch-hero-section.png"}
+            src={"/img/merch-mockup-8.png"}
             alt="Back 5"
             width={324}
             height={225}
             className="absolute top-[68%] ml-[66rem]"
-          />
-          <Image
-            src={"/img/dummy-merch-hero-section.png"}
-            alt="Back 6"
-            width={324}
-            height={225}
-            className="absolute top-[84%] ml-[80rem]"
           />
         </motion.div>
         <motion.div
@@ -54,25 +40,11 @@ export default function Section1() {
           style={{ y: useTransform(smoothSecondY, (value) => `${value}vh`) }}
         >
           <Image
-            src={"/img/dummy-merch-hero-section.png"}
-            alt="Back 1"
-            width={434}
-            height={301}
-            className="absolute top-[30%] mr-[86rem]"
-          />
-          <Image
-            src={"/img/dummy-merch-hero-section.png"}
+            src={"/img/merch-mockup-4.png"}
             alt="Back 3"
             width={324}
             height={225}
             className="absolute top-[34%] ml-[80rem]"
-          />
-          <Image
-            src={"/img/dummy-merch-hero-section.png"}
-            alt="Back 4"
-            width={434}
-            height={301}
-            className="absolute top-[80%] mr-[86rem]"
           />
         </motion.div>
 
@@ -114,21 +86,21 @@ export default function Section1() {
           style={{ y: useTransform(smoothFirstY, (value) => `${value}vh`) }}
         >
           <Image
-            src={"/img/dummy-merch-hero-section.png"}
+            src={"/img/merch-mockup-1.png"}
             alt="Front 1"
             width={361}
             height={240}
             className="absolute top-[2%] ml-96"
           />
           <Image
-            src={"/img/dummy-merch-hero-section.png"}
+            src={"/img/merch-mockup-3.png"}
             alt="Front 3"
             width={434}
             height={301}
             className="absolute top-[22%] mr-[0rem]"
           />
           <Image
-            src={"/img/dummy-merch-hero-section.png"}
+            src={"/img/merch-mockup-5.png"}
             alt="Front 4"
             width={361}
             height={240}
@@ -140,21 +112,21 @@ export default function Section1() {
           style={{ y: useTransform(smoothSecondY, (value) => `${value}vh`) }}
         >
           <Image
-            src={"/img/dummy-merch-hero-section.png"}
+            src={"/img/merch-mockup-2.png"}
             alt="Front 2"
             width={347}
             height={221}
             className="absolute top-[6%] mr-[64rem]"
           />
           <Image
-            src={"/img/dummy-merch-hero-section.png"}
+            src={"/img/merch-mockup-6.png"}
             alt="Front 5"
             width={347}
             height={221}
             className="absolute top-[56%] mr-[64rem]"
           />
           <Image
-            src={"/img/dummy-merch-hero-section.png"}
+            src={"/img/merch-mockup-7.png"}
             alt="Front 6"
             width={434}
             height={301}

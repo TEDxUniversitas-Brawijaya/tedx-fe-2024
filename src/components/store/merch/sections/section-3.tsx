@@ -9,6 +9,7 @@ import {
 import { MerchFilter, merchsData } from "@/lib/static/merchs";
 import { ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -29,27 +30,31 @@ export default function Section3({
           <Image src="/img/catalog-logo.png" alt="Catalog Logo" fill />
         </div>
         <div className="hidden w-full space-y-10 lg:block">
-          <div className="space-y-2">
+          <div className="">
             {Object.keys(merchsData).map((key) => {
+              const isTypeActive = filter === key;
+
               return (
                 <div
                   key={key}
-                  className="flex cursor-pointer flex-row items-center justify-between border-b-2 border-[#CACACA]/35 py-2"
+                  className={`flex cursor-pointer flex-row items-center justify-between border-b-2 border-[#CACACA]/35 py-2 transition-all duration-150 hover:bg-neutral-100 ${isTypeActive ? "text-tedx-black" : "text-neutral-400"}`}
                   onClick={() => {
                     router.push(`?filter=${key}`, {
                       scroll: false,
                     });
                   }}
                 >
-                  <span className="text-xl uppercase text-black">{key}</span>
-                  <span className="text-2xl font-semibold leading-none text-[#FF1818]">
+                  <span className="text-xl uppercase">{key}</span>
+                  <span
+                    className={`text-2xl font-semibold leading-none ${isTypeActive ? "text-[#FF1818]" : "text-[#FF1818]/50"}`}
+                  >
                     {merchsData[key as MerchFilter].length}
                   </span>
                 </div>
               );
             })}
           </div>
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <h3 className="text-2xl font-bold text-black">BUNDLING</h3>
             <div className="space-y-2">
               <div className="flex flex-row items-center justify-between border-b-2 border-[#CACACA]/35 py-2">
@@ -68,7 +73,7 @@ export default function Section3({
                 <span className="text-xl text-black">BUNDLING 5</span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="block lg:hidden">
           <DropdownMenu open={showMenu} onOpenChange={setShowMenu}>
@@ -132,8 +137,11 @@ function ProductCard({
   image: string;
 }) {
   return (
-    <div className="space-y-6">
-      <div className="relative h-[323px] w-full bg-red-200">
+    <Link
+      href={`/form/merch?item=${name.toLowerCase().replaceAll(" ", "-")}`}
+      className="space-y-6 border-[1.5px] border-transparent p-5 transition-all duration-150 hover:border-neutral-300"
+    >
+      <div className="relative h-[323px] w-full bg-neutral-200">
         <Image src={image} fill alt={name} objectFit="cover" />
       </div>
       <div className="flex flex-row items-start justify-between">
@@ -147,10 +155,10 @@ function ProductCard({
           </span>
         </div>
         <div className="flex flex-row items-center space-x-2">
-          <div className="size-8 rounded-full bg-[#D9D9D9]" />
-          <div className="size-8 rounded-full bg-[#020202]" />
+          <div className="size-6 rounded-full bg-[#D9D9D9]" />
+          <div className="size-6 rounded-full bg-[#020202]" />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

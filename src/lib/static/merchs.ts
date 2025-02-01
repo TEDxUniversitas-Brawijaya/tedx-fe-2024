@@ -47,14 +47,14 @@ export const merchsData = {
   ],
   bags: [
     {
-      name: "Bag 1",
+      name: "Totebag 1",
       price: 50000,
-      image: "/img/dummy-merch-hero-section.png",
+      image: "/img/merch-totebag-1.png",
     },
     {
-      name: "Bag 2",
+      name: "Totebag 2",
       price: 50000,
-      image: "/img/dummy-merch-hero-section.png",
+      image: "/img/merch-totebag-2.png",
     },
   ],
   hats: [

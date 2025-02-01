@@ -9,13 +9,17 @@ export default function MerchPage({
 }: {
   searchParams: { filter?: MerchFilter };
 }) {
-  const merchs = merchsData[filter];
+  const isValidFilter = Object.keys(merchsData).includes(filter);
+
+  const selectedFilter = isValidFilter ? filter : "t-shirt";
+
+  const merchs = merchsData[selectedFilter];
 
   return (
     <main>
       <Section1 />
       <Section2 />
-      <Section3 merchs={merchs} filter={filter} />
+      <Section3 merchs={merchs} filter={selectedFilter} />
       <Footer />
     </main>
   );
