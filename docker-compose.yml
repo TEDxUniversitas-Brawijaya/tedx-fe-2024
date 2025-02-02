@@ -1,9 +1,11 @@
 services:
   reverse-proxy:
+    container_name: tedx-fe-proxy
     image: traefik:v3.1
     command:
-      - "--providers.docker"
+      - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=traefik"
       - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
@@ -13,16 +15,18 @@ services:
       - traefik
 
   tedx-fe:
+    container_name: tedx-fe
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       NODE_ENV: production
-      NODE_TLS_REJECT_UNAUTHORIZED: 0
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.tedx-fe.rule=Host(`tedxuniversitasbrawijaya.org`) || Host(`www.tedxuniversitasbrawijaya.org`)"
+      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.tedx-fe.rule=Host(`tedxuniversitasbrawijaya.org`) || Host(`www.tedxuniversitasbrawijaya.org`) || Host(`localhost`)"
       - "traefik.http.routers.tedx-fe.entrypoints=web"
+      - "traefik.http.services.tedx-fe.loadbalancer.server.port=3000"
     networks:
       - traefik
     restart: always
