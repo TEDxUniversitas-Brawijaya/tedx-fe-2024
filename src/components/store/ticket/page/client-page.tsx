@@ -1,11 +1,9 @@
 import Footer from "@/components/shared/footer";
+import { IGetTicketInfoResponse } from "@/types/ticket-types";
 import Section1 from "../sections/section-1";
 import Section2 from "../sections/section-2";
-import { getAllTicketInfo } from "@/repository/actions/ticket-service";
 
-const ClientTicketPage = async () => {
-  const data = await getAllTicketInfo();
-
+const ClientTicketPage = ({ data }: { data: IGetTicketInfoResponse }) => {
   return (
     <main>
       <div className="relative">

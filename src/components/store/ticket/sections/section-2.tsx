@@ -10,9 +10,9 @@ import { formatResponseDate } from "@/lib/date";
 import { IBundlingTicket, IGetTicketInfoResponse } from "@/types/ticket-types";
 
 const Section2 = ({ data }: { data: IGetTicketInfoResponse }) => {
-  const { ticketInformations } = data;
-
-  const { regularTickets, bundlingTickets } = useTickets(ticketInformations);
+  const { regularTickets, bundlingTickets } = useTickets(
+    data?.ticketInformations,
+  );
 
   const renderBundlingTickets = (bundle: IBundlingTicket | null) => {
     if (!bundle) return null;
