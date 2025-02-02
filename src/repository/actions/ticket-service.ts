@@ -1,30 +1,25 @@
-"use server";
-
 import { IRootResponse } from "@/types/general-types";
 import {
   ICreateTicketPayload,
   IGetTicketInfoResponse,
   IGetTicketResponse,
 } from "@/types/ticket-types";
-import { API_KEY, BASE_URL, fetchWithTimeout } from "../api";
+import { API_KEY, BASE_URL } from "../api";
 
 const url = new URL(BASE_URL + "/tickets/informations");
 
 const ticketUrl = new URL(BASE_URL + "/tickets");
 
 export async function getAllTicketInfo(): Promise<IGetTicketInfoResponse> {
-  const res = await fetchWithTimeout(url.toString(), {
+  const res = await fetch(url, {
     headers: {
       "TEDXUB25-API-KEY": `${API_KEY}`,
     },
     cache: "no-store",
   });
 
-  if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
-  }
-
   const data = await res.json();
+
   return data;
 }
 

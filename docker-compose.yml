@@ -18,6 +18,7 @@ services:
       dockerfile: Dockerfile
     environment:
       NODE_ENV: production
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.tedx-fe.rule=Host(`tedxuniversitasbrawijaya.org`) || Host(`www.tedxuniversitasbrawijaya.org`)"
