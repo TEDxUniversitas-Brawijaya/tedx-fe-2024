@@ -12,41 +12,43 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 export default function Section2() {
   return (
     <section className="relative h-full">
-      <div className="sticky left-0 top-0 z-0 flex h-screen w-full items-center justify-center overflow-hidden bg-[#F2F2F2] text-center">
-        <h2 className="absolute left-[10%] top-24 translate-y-2 text-3xl font-semibold text-[#1A1A1A] sm:text-4xl md:text-5xl">
-          CATEGORY
-        </h2>
+      <div className="sticky left-0 top-0 z-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#F2F2F2] text-center">
+        <div className="absolute top-0 flex w-full flex-col-reverse items-center justify-between px-5 sm:flex-row md:px-20">
+          <h2 className="-translate-y-10 text-3xl font-semibold text-[#1A1A1A] sm:translate-y-0 sm:text-4xl md:text-5xl">
+            CATEGORY
+          </h2>
 
-        <div className="absolute right-[5%] top-20">
-          <video
-            muted
-            loop
-            autoPlay
-            className="clip-video-2 absolute h-full w-full object-cover"
-          >
-            <source
-              src="https://res.cloudinary.com/dcvnwpyd9/video/upload/v1737275062/tedxuniversitasbrawijaya2025/tedx_propa_3_3_3_dfs4ne.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-          <svg className="h-full w-full">
-            <defs>
-              <clipPath id="clip-2">
-                <text
-                  x="50%"
-                  y="50%"
-                  dominantBaseline="start"
-                  textAnchor="middle"
-                  fontWeight="bold"
-                  fill="white"
-                  className="font-strong text-[2rem] sm:text-[3rem] md:text-[4rem]"
-                >
-                  TEDXUB
-                </text>
-              </clipPath>
-            </defs>
-          </svg>
+          <div className="sm:translate-x-8 sm:translate-y-4 md:translate-x-0 md:translate-y-6">
+            <video
+              muted
+              loop
+              autoPlay
+              className="clip-video-2 absolute h-full w-full object-cover"
+            >
+              <source
+                src="https://res.cloudinary.com/dcvnwpyd9/video/upload/v1737275062/tedxuniversitasbrawijaya2025/tedx_propa_3_3_3_dfs4ne.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+            <svg className="h-full w-full">
+              <defs>
+                <clipPath id="clip-2">
+                  <text
+                    x="50%"
+                    y="50%"
+                    dominantBaseline="start"
+                    textAnchor="middle"
+                    fontWeight="bold"
+                    fill="white"
+                    className="font-strong text-[2rem] sm:text-[3rem] md:text-[4rem]"
+                  >
+                    TEDXUB
+                  </text>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
         </div>
 
         <Swiper
@@ -120,7 +122,7 @@ export default function Section2() {
         </Swiper>
 
         {/* Marquee */}
-        <div className="bg-gradient absolute bottom-8 flex w-full justify-end bg-gradient-to-br from-[#0E0E0E] to-[#292929]">
+        <div className="bg-gradient absolute bottom-0 flex w-full justify-end bg-gradient-to-br from-[#0E0E0E] to-[#292929]">
           <motion.div
             animate={{ x: ["0%", "100%"] }}
             transition={{

@@ -23,7 +23,7 @@ export default function DesktopNavMenu() {
   if (!isMounted)
     return (
       <div className="hidden gap-5 md:flex">
-        {[...Array(3)].map((_, index) => (
+        {[...Array(4)].map((_, index) => (
           <div
             key={index}
             className="w-20 animate-pulse rounded-md bg-neutral-700 text-transparent"
@@ -78,7 +78,7 @@ export default function DesktopNavMenu() {
 
       <Link
         href={"/store/merch"}
-        className={`underline-offset-4 hover:underline ${pathname === "/merch" && "text-tedx-red"}`}
+        className={`underline-offset-4 hover:underline ${pathname === "/store/merch" && "text-tedx-red"}`}
       >
         Merch
       </Link>

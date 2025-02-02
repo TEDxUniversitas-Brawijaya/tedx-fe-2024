@@ -1,72 +1,72 @@
 export const merchsData = {
-  "t-shirt": [
+  tshirt: [
     {
       name: "T-Shirt 1",
       price: 75000,
       image: "/img/merch-tshirt-1.png",
+      hasSize: true,
     },
     {
       name: "T-Shirt 2",
       price: 75000,
       image: "/img/merch-tshirt-2.png",
+      hasSize: true,
     },
     {
       name: "T-Shirt 3",
       price: 75000,
       image: "/img/merch-tshirt-3.png",
+      hasSize: true,
     },
   ],
   workshirt: [
     {
       name: "Workshirt 1",
-      price: 155000,
+      price: 160_000,
       image: "/img/merch-workshirt-1.png",
+      hasSize: true,
     },
     {
       name: "Workshirt 2",
-      price: 165000,
+      price: 160_000,
       image: "/img/merch-workshirt-2.png",
-    },
-    {
-      name: "Workshirt 3",
-      price: 155000,
-      image: "/img/merch-workshirt-3.png",
+      hasSize: true,
     },
   ],
-  stickers: [
+  sticker: [
     {
       name: "Sticker 1",
       price: 15000,
-      image: "/img/merch-sticker-a.png",
+      image: "/img/merch-sticker-1.png",
+      hasSize: false,
     },
     {
       name: "Sticker 2",
       price: 15000,
-      image: "/img/merch-sticker-b.png",
+      image: "/img/merch-sticker-2.png",
+      hasSize: false,
     },
   ],
-  bags: [
+  totebag: [
     {
       name: "Totebag 1",
       price: 50000,
       image: "/img/merch-totebag-1.png",
-    },
-    {
-      name: "Totebag 2",
-      price: 50000,
-      image: "/img/merch-totebag-2.png",
+      hasSize: false,
     },
   ],
-  hats: [
+  hat: [
     {
       name: "Hat 1",
       price: 65000,
-      image: "/img/merch-cap-1.png",
+      image: "/img/merch-hat-1.png",
+      hasSize: false,
     },
     {
       name: "Hat 2",
       price: 65000,
-      image: "/img/merch-cap-2.png",
+      image: "/img/merch-hat-2.png",
+      hasSize: false,
     },
   ],
 };

@@ -5,13 +5,13 @@ import Section3 from "@/components/store/merch/sections/section-3";
 import { MerchFilter, merchsData } from "@/lib/static/merchs";
 
 export default function MerchPage({
-  searchParams: { filter = "t-shirt" },
+  searchParams: { filter = "tshirt" },
 }: {
   searchParams: { filter?: MerchFilter };
 }) {
   const isValidFilter = Object.keys(merchsData).includes(filter);
 
-  const selectedFilter = isValidFilter ? filter : "t-shirt";
+  const selectedFilter = isValidFilter ? filter : "tshirt";
 
   const merchs = merchsData[selectedFilter];
 
