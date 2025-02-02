@@ -1,3 +1,5 @@
+"use server"
+
 import { IRootResponse } from "@/types/general-types";
 import {
   ICreateTicketPayload,
