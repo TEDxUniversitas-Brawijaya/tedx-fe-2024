@@ -12,7 +12,7 @@ export default function NotFoundPage() {
       </h2>
       <button className="z-20">
         <Link
-          href={"about-us"}
+          href={"/about-us"}
           className="rounded-md bg-tedx-red px-7 py-3 text-base font-semibold transition-all duration-150 hover:bg-tedx-red/80"
         >
           Kembali
