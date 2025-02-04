@@ -24,6 +24,13 @@ export interface ICreateMerchOrderPayload {
   orderType: string;
   merchType: string;
   quantity: number;
-  size: string[];
-  paymentProof: string;
+  sizes?: string[];
+  paymentProof?: string;
+}
+
+export interface IMerchData {
+  name: string;
+  price: number;
+  image: string;
+  hasSize: boolean;
 }
