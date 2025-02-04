@@ -119,6 +119,21 @@ export default function Section3({
                   </DropdownMenuItem>
                 );
               })}
+              <DropdownMenuItem
+                className={`${filter === "bundling" ? "text-tedx-black" : "text-neutral-400"} flex w-full flex-row items-center justify-between gap-4 border-b-2 border-[#CACACA]/35 p-2 focus:bg-zinc-100`}
+                onClick={() => {
+                  router.push(`?filter=bundling`, {
+                    scroll: false,
+                  });
+                }}
+              >
+                <span className="uppercase">BUNDLING</span>
+                <span
+                  className={`font-semibold leading-none text-[#FF1818] ${filter === "bundling" ? "text-[#FF1818]" : "text-[#FF1818]/50"}`}
+                >
+                  {merchBundlingData.length}
+                </span>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
