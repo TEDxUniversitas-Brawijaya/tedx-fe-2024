@@ -6,7 +6,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shared/dropdown-menu";
-import { MerchFilter, merchsData } from "@/lib/static/merchs";
+import {
+  merchBundlingData,
+  MerchFilter,
+  merchsData,
+} from "@/lib/static/merchs";
 import { ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +22,7 @@ export default function Section3({
   filter,
 }: {
   merchs: (typeof merchsData)[keyof typeof merchsData];
-  filter: MerchFilter;
+  filter: MerchFilter | "bundling";
 }) {
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
@@ -31,6 +35,7 @@ export default function Section3({
         </div>
         <div className="hidden w-full space-y-10 lg:block">
           <div>
+            <h3 className="mb-5 text-xl font-semibold">REGULAR</h3>
             {Object.keys(merchsData).map((key) => {
               const isTypeActive = filter === key;
 
@@ -55,6 +60,24 @@ export default function Section3({
                 </div>
               );
             })}
+          </div>
+          <div>
+            <h3 className="mb-5 text-xl font-semibold">BUNDLING</h3>
+            <div
+              className={`flex cursor-pointer flex-row items-center justify-between border-b-2 border-[#CACACA]/35 py-2 transition-all duration-150 hover:bg-neutral-100 ${filter === "bundling" ? "text-tedx-black" : "text-neutral-400"}`}
+              onClick={() => {
+                router.push(`?filter=bundling`, {
+                  scroll: false,
+                });
+              }}
+            >
+              <span className="text-xl uppercase">BUNDLING</span>
+              <span
+                className={`text-2xl font-semibold leading-none ${filter === "bundling" ? "text-[#FF1818]" : "text-[#FF1818]/50"}`}
+              >
+                {merchBundlingData.length}
+              </span>
+            </div>
           </div>
         </div>
         <div className="block lg:hidden">
@@ -102,7 +125,11 @@ export default function Section3({
       </div>
       <div className="grid h-full w-full grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
         {merchs.map((merch, index) => (
-          <ProductCard key={index} {...merch} />
+          <ProductCard
+            key={index}
+            {...merch}
+            isBundling={filter === "bundling"}
+          />
         ))}
       </div>
     </section>
@@ -113,17 +140,25 @@ function ProductCard({
   name,
   price,
   image,
+  isBundling = false,
 }: {
   name: string;
   price: number;
   image: string;
+  isBundling: boolean;
 }) {
+  const regularRedirectPath = `/form/merch?item=${name.toLowerCase().replace("t-shirt", "tshirt").replaceAll(" ", "-")}`;
+
+  const bundlingRedirectPath = `/form/merch-bundle?item=${name.toLowerCase().replaceAll(" ", "-")}`;
+
   return (
     <Link
-      href={`/form/merch?item=${name.toLowerCase().replace("t-shirt", "tshirt").replaceAll(" ", "-")}`}
+      href={isBundling ? bundlingRedirectPath : regularRedirectPath}
       className="group space-y-6 rounded-xl border-[1.5px] border-transparent p-3 transition-all duration-150 hover:border-neutral-300"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-neutral-200">
+      <div
+        className={`relative w-full overflow-hidden rounded-lg bg-neutral-200 ${isBundling ? "aspect-[3/4]" : "aspect-[4/3]"}`}
+      >
         <Image
           src={image}
           fill
