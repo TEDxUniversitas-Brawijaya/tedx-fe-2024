@@ -51,8 +51,6 @@ const ClientFormMerchBundlingPage = ({ item, merch }: IClientFormMerchPage) => {
         paymentProof: paymentProofUrl,
       };
 
-      console.log(payloadWithProof);
-
       await createTicket(payloadWithProof, {
         onSuccess: () => {
           openDialog("success");
