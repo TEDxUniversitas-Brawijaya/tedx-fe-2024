@@ -18,4 +18,10 @@ const javaFont = localFont({
   weight: "100 200 300 400 500 600 700 800 900",
 });
 
-export const localFontVariables = `${headerFont.variable} ${bodyFont.variable} ${javaFont.variable}`;
+const StrongConcreteBold = localFont({
+  src: "../app/fonts/StrongConcrete-Bold.woff",
+  variable: "--font-strong-concrete-bold",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+
+export const localFontVariables = `${headerFont.variable} ${bodyFont.variable} ${javaFont.variable} ${StrongConcreteBold.variable}`;

@@ -39,6 +39,7 @@ export async function createMerchOrder(
     method: "POST",
     headers: {
       "TEDXUB25-API-KEY": `${API_KEY}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
   });
