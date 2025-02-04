@@ -1,3 +1,5 @@
+import { IMerchBundlingData } from "@/types/merch-types";
+
 export const merchsData = {
   tshirt: [
     {
@@ -70,5 +72,71 @@ export const merchsData = {
     },
   ],
 };
+
+export const merchBundlingData: IMerchBundlingData[] = [
+  {
+    name: "Bundling 1",
+    price: 130000,
+    image: "/img/merch-bundling-1.png",
+    hasSize: true,
+    items: ["tshirt", "hat"],
+  },
+  {
+    name: "Bundling 2",
+    price: 80000,
+    image: "/img/merch-bundling-2.png",
+    hasSize: true,
+    items: ["tshirt", "sticker"],
+  },
+  {
+    name: "Bundling 3",
+    price: 115000,
+    image: "/img/merch-bundling-3.png",
+    hasSize: true,
+    items: ["tshirt", "totebag"],
+  },
+  {
+    name: "Bundling 4",
+    price: 210000,
+    image: "/img/merch-bundling-4.png",
+    hasSize: true,
+    items: ["workshirt", "hat"],
+  },
+  {
+    name: "Bundling 5",
+    price: 170000,
+    image: "/img/merch-bundling-5.png",
+    hasSize: true,
+    items: ["workshirt", "sticker"],
+  },
+  {
+    name: "Bundling 6",
+    price: 195000,
+    image: "/img/merch-bundling-6.png",
+    hasSize: true,
+    items: ["workshirt", "totebag"],
+  },
+  {
+    name: "Bundling 7",
+    price: 105000,
+    image: "/img/merch-bundling-7.png",
+    hasSize: false,
+    items: ["totebag", "hat"],
+  },
+  {
+    name: "Bundling 8",
+    price: 55000,
+    image: "/img/merch-bundling-8.png",
+    hasSize: false,
+    items: ["totebag", "sticker"],
+  },
+  {
+    name: "Bundling 9",
+    price: 70000,
+    image: "/img/merch-bundling-9.png",
+    hasSize: false,
+    items: ["hat", "sticker"],
+  },
+];
 
 export type MerchFilter = keyof typeof merchsData;

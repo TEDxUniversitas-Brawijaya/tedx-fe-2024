@@ -2,18 +2,26 @@ import Footer from "@/components/shared/footer";
 import Section1 from "@/components/store/merch/sections/section-1";
 import Section2 from "@/components/store/merch/sections/section-2";
 import Section3 from "@/components/store/merch/sections/section-3";
-import { MerchFilter, merchsData } from "@/lib/static/merchs";
+import {
+  merchBundlingData,
+  MerchFilter,
+  merchsData,
+} from "@/lib/static/merchs";
 
 export default function MerchPage({
   searchParams: { filter = "tshirt" },
 }: {
-  searchParams: { filter?: MerchFilter };
+  searchParams: { filter?: MerchFilter | "bundling" };
 }) {
-  const isValidFilter = Object.keys(merchsData).includes(filter);
+  const isBundling = filter === "bundling";
+
+  const isValidFilter = Object.keys(merchsData).includes(filter) || isBundling;
 
   const selectedFilter = isValidFilter ? filter : "tshirt";
 
-  const merchs = merchsData[selectedFilter];
+  const merchs = isBundling
+    ? merchBundlingData
+    : merchsData[selectedFilter as MerchFilter];
 
   return (
     <main>

@@ -1,3 +1,4 @@
+import { MerchFilter } from "@/lib/static/merchs";
 import { IRootResponse } from "./general-types";
 
 export interface IMerchOrderDetail {
@@ -22,10 +23,13 @@ export interface ICreateMerchOrderPayload {
   name: string;
   phone: string;
   orderType: string;
-  merchType: string;
+  merchType?: string;
   quantity: number;
   sizes?: string[];
   paymentProof?: string;
+  item1?: string;
+  item2?: string;
+  merchItems?: string[];
 }
 
 export interface IMerchData {
@@ -33,4 +37,8 @@ export interface IMerchData {
   price: number;
   image: string;
   hasSize: boolean;
+}
+
+export interface IMerchBundlingData extends IMerchData {
+  items: MerchFilter[];
 }
