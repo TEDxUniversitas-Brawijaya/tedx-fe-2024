@@ -98,8 +98,8 @@ export default function MobileNavMenu() {
 
             <Link
               onClick={() => setShowMenu(false)}
-              href={"/merch"}
-              className={`underline-offset-4 hover:underline ${pathname === "/merch" && "text-tedx-red"}`}
+              href={"/store/merch"}
+              className={`underline-offset-4 hover:underline ${pathname === "/store/merch" && "text-tedx-red"}`}
             >
               Merch
             </Link>
