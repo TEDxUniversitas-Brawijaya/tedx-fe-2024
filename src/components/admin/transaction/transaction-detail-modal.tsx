@@ -15,8 +15,6 @@ import Image from "next/image";
 export default function TransactionDetailModal({ id }: { id: string }) {
   const { data, refetch } = useQueryTransactionById(id);
 
-  console.log(data);
-
   return (
     <Dialog>
       <DialogTrigger>
