@@ -10,9 +10,12 @@ import { formatToRupiah } from "@/lib/helpers/formatToRupiah";
 import useQueryTransactionById from "@/repository/client/admin/transactions/useQueryTransactionById";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { EyeIcon } from "lucide-react";
+import Image from "next/image";
 
 export default function TransactionDetailModal({ id }: { id: string }) {
   const { data, refetch } = useQueryTransactionById(id);
+
+  console.log(data);
 
   return (
     <Dialog>
@@ -36,6 +39,28 @@ export default function TransactionDetailModal({ id }: { id: string }) {
                   Tiket {event.replaceAll("-", " ")}
                 </p>
                 <p className="text-xs text-neutral-400">{number}</p>
+              </div>
+              <p>{formatToRupiah(price)}</p>
+            </div>
+          ))}
+          {data?.order?.merchs?.map(({ id, price, orderID, size, type }) => (
+            <div key={id} className="flex justify-between gap-2 py-2">
+              <div>
+                <div className="relative aspect-[4/3] w-20 overflow-hidden rounded-md">
+                  <Image
+                    src={`/img/merch-${type}.png`}
+                    alt={type}
+                    fill
+                    objectFit="cover"
+                  />
+                </div>
+                <p className="font-medium capitalize">
+                  {type.replaceAll("-", " ")}{" "}
+                  {Boolean(size) && `(size ${size})`}
+                </p>
+                <p className="line-clamp-1 text-xs text-neutral-400">
+                  {orderID}
+                </p>
               </div>
               <p>{formatToRupiah(price)}</p>
             </div>

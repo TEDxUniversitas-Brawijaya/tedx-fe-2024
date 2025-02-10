@@ -13,6 +13,13 @@ export interface IOrderDetail {
   totalPrice: number;
   paymentProof: string;
   tickets?: Omit<ITicketDetail, "name">[];
+  merchs?: {
+    id: number;
+    orderID: string;
+    price: number;
+    size: string;
+    type: string;
+  }[];
 }
 
 export interface IOrderDiscount {
