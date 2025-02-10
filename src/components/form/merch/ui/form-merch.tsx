@@ -37,6 +37,8 @@ interface IFormTicket {
 }
 
 const formatNumToAlphabet = (word: string) => {
+  if (!word.includes("sticker")) return word;
+
   return word.replace(/\d+$/, (match) => {
     const num = parseInt(match);
     return String.fromCharCode(96 + num);
