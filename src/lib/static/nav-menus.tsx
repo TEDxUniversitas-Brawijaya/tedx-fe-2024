@@ -1,4 +1,9 @@
-import { ArrowDownLeft, ArrowUpRight, TicketIcon } from "lucide-react";
+import {
+  ArrowDownLeft,
+  ArrowUpRight,
+  ScanQrCodeIcon,
+  TicketIcon,
+} from "lucide-react";
 import { ReactNode } from "react";
 
 interface INavMenu {
@@ -45,5 +50,10 @@ export const adminNavMenus: INavMenu[] = [
     label: "Tiket Terjual",
     href: "/admin/dashboard/ticket",
     icon: <TicketIcon />,
+  },
+  {
+    label: "Check In",
+    href: "/admin/dashboard/check-in",
+    icon: <ScanQrCodeIcon />,
   },
 ];
