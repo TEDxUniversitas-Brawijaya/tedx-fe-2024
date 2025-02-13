@@ -12,6 +12,7 @@ export interface IOrderDetail {
   quantity: number;
   totalPrice: number;
   paymentProof: string;
+  discount: string;
   tickets?: Omit<ITicketDetail, "name">[];
   merchs?: {
     id: number;
