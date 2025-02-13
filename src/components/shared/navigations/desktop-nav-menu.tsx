@@ -1,18 +1,19 @@
 "use client";
 
-import useMounted from "@/hooks/useMounted";
-import { ChevronDownIcon } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../dropdown-menu";
-import { eventMenus } from "@/lib/static/nav-menus";
+
 import { Button } from "../button";
+import { ChevronDownIcon } from "lucide-react";
+import Link from "next/link";
+import { eventMenus } from "@/lib/static/nav-menus";
+import useMounted from "@/hooks/useMounted";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function DesktopNavMenu() {
   const pathname = usePathname();
@@ -75,6 +76,13 @@ export default function DesktopNavMenu() {
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <Link
+        href={"/our-team"}
+        className={`underline-offset-4 hover:underline ${pathname === "/our-team" && "text-tedx-red"}`}
+      >
+        Our Team
+      </Link>
 
       <Link
         href={"/store/merch"}

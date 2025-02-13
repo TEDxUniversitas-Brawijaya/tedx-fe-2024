@@ -1,20 +1,21 @@
 "use client";
 
-import { MenuIcon, XIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import useMounted from "@/hooks/useMounted";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../accordion";
-import { eventMenus } from "@/lib/static/nav-menus";
+import { MenuIcon, XIcon } from "lucide-react";
+
 import { Button } from "../button";
+import Image from "next/image";
+import Link from "next/link";
+import { eventMenus } from "@/lib/static/nav-menus";
+import { motion } from "framer-motion";
+import useMounted from "@/hooks/useMounted";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function MobileNavMenu() {
   const pathname = usePathname();
@@ -95,6 +96,14 @@ export default function MobileNavMenu() {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+
+            <Link
+              onClick={() => setShowMenu(false)}
+              href={"/our-team"}
+              className={`underline-offset-4 hover:underline ${pathname === "/our-team" && "text-tedx-red"}`}
+            >
+              Our Team
+            </Link>
 
             <Link
               onClick={() => setShowMenu(false)}
