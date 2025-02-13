@@ -55,6 +55,7 @@ export default function TransactionTable({
           <TableHead>Instansi</TableHead>
           <TableHead>Jenis</TableHead>
           <TableHead>Detail</TableHead>
+          <TableHead>Diskon</TableHead>
           <TableHead>Total Harga</TableHead>
           <TableHead>Approval</TableHead>
         </TableRow>
@@ -80,6 +81,7 @@ export default function TransactionTable({
               totalPrice,
               type,
               paymentProof,
+              discount,
             },
             index,
           ) => (
@@ -100,6 +102,7 @@ export default function TransactionTable({
               <TableCell>
                 <TransactionDetailModal id={id} />
               </TableCell>
+              <TableCell>{discount}</TableCell>
               <TableCell>{formatToRupiah(totalPrice)}</TableCell>
               <TableCell className="flex gap-1">
                 <ProofImageModal url={paymentProof} name={name} type={type} />
