@@ -29,8 +29,13 @@ export default function useCheckIn() {
 
   const handleQrScan = (res: IDetectedBarcode[]) => {
     const value = res[0].rawValue.split("=")[1];
-    setTicketId(value);
 
+    if (!value) {
+      toast.error("Invalid QR Code");
+      return;
+    }
+
+    setTicketId(value);
     mutate(value);
   };
 

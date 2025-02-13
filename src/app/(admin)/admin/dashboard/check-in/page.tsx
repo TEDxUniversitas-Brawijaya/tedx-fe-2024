@@ -39,7 +39,7 @@ export default function CheckInPage() {
           {isPending ? (
             <p>Loading...</p>
           ) : isValid ? (
-            <div className="flex w-fit items-center gap-1 rounded-full bg-rose-100 px-2 py-1 text-sm font-medium text-rose-600">
+            <div className="flex w-fit items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-sm font-medium text-emerald-600">
               <CheckCircleIcon size={15} /> <span>Valid</span>
             </div>
           ) : (
