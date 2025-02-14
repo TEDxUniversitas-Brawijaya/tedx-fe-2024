@@ -14,6 +14,7 @@ export default function useCheckIn() {
     mutationFn: async (payload: string) => {
       try {
         const res = await checkIn(payload);
+        if (res.error) throw new Error(res.error);
         return res;
       } catch (error) {
         if (error instanceof Error) {
