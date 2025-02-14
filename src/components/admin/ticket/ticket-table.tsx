@@ -10,15 +10,17 @@ import {
 import { CheckCircleIcon, XCircleIcon } from "lucide-react";
 import TablePagination from "../shared/pagination";
 import { UseQueryResult } from "@tanstack/react-query";
-import { IGetTicketResponse } from "@/types/ticket-types";
+import { IGetTicketResponse, ITicketDetail } from "@/types/ticket-types";
 import { IGeneralFilter } from "@/types/general-types";
 import { formatToRupiah } from "@/lib/helpers/formatToRupiah";
 
 export default function TicketTable({
   result,
+  ticketData,
   onPageChange,
 }: {
   result: UseQueryResult<IGetTicketResponse, Error>;
+  ticketData: ITicketDetail[];
   onPageChange: React.Dispatch<React.SetStateAction<IGeneralFilter>>;
 }) {
   const { data, error, isLoading } = result;
@@ -53,14 +55,14 @@ export default function TicketTable({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {tickets?.length === 0 && (
+        {ticketData?.length === 0 && (
           <TableRow>
             <TableCell colSpan={11} className="italic text-neutral-400">
               <div className="flex w-full justify-center">Tidak ada data</div>
             </TableCell>
           </TableRow>
         )}
-        {tickets?.map(
+        {ticketData?.map(
           (
             { number, orderID, name, event, email, isCheckedIn, type, price },
             index,
@@ -97,7 +99,7 @@ export default function TicketTable({
               current_page={pagination?.current || 1}
               next_page={pagination?.next}
               previous_page={pagination?.prev}
-              total_data={pagination?.totalData || 0}
+              total_data={pagination?.totalData || ticketData.length}
               total_page={pagination?.totalPage || 0}
               onPageChange={onPageChange}
             />
