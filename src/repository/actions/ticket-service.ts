@@ -82,18 +82,13 @@ export async function checkIn(ticketId: string): Promise<IRootResponse> {
       },
     });
 
-    if (!res.ok) {
-      const response = await res.json();
-      throw new Error(response.message);
-    }
-
     const data = await res.json();
 
     return data;
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(error.message);
+      return { error: error.message, message: error.message };
     }
-    throw new Error("An unexpected error occurred");
+    return { error: "An Error Occured", message: "An Error Occured" };
   }
 }
