@@ -1,20 +1,21 @@
 "use client";
 
-import { MenuIcon, XIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import useMounted from "@/hooks/useMounted";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../accordion";
-import { eventMenus } from "@/lib/static/nav-menus";
+import { MenuIcon, XIcon } from "lucide-react";
+
 import { Button } from "../button";
+import Image from "next/image";
+import Link from "next/link";
+import { eventMenus } from "@/lib/static/nav-menus";
+import { motion } from "framer-motion";
+import useMounted from "@/hooks/useMounted";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function MobileNavMenu() {
   const pathname = usePathname();
@@ -24,12 +25,12 @@ export default function MobileNavMenu() {
 
   if (!isMounted)
     return (
-      <div className="block size-10 animate-pulse rounded-md bg-neutral-700 md:hidden" />
+      <div className="block size-10 animate-pulse rounded-md bg-neutral-700 lg:hidden" />
     );
 
   return (
     <>
-      <button onClick={() => setShowMenu(true)} className="block md:hidden">
+      <button onClick={() => setShowMenu(true)} className="block lg:hidden">
         <MenuIcon className="size-10" />
       </button>
 
@@ -37,7 +38,7 @@ export default function MobileNavMenu() {
         initial={{ top: "-150vh" }}
         animate={showMenu ? { top: "0", bottom: "0" } : { top: "-150vh" }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="fixed left-0 right-0 z-[100] h-screen overflow-hidden bg-tedx-black p-5 text-tedx-white md:hidden"
+        className="fixed left-0 right-0 z-[100] h-screen overflow-hidden bg-tedx-black p-5 text-tedx-white lg:hidden"
       >
         <div className="flex w-full flex-col">
           <div className="flex justify-between">
@@ -67,6 +68,14 @@ export default function MobileNavMenu() {
               className={`underline-offset-4 hover:underline ${pathname === "/about-us" && "text-tedx-red"}`}
             >
               About Us
+            </Link>
+
+            <Link
+              onClick={() => setShowMenu(false)}
+              href={"/our-team"}
+              className={`underline-offset-4 hover:underline ${pathname === "/our-team" && "text-tedx-red"}`}
+            >
+              Our Team
             </Link>
 
             <Accordion type="single" collapsible className="w-28">
