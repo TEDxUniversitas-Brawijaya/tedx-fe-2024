@@ -12,7 +12,15 @@ export default function useCheckIn() {
 
   const { mutate, isPending } = useMutation({
     mutationFn: async (payload: string) => {
-      return checkIn(payload);
+      try {
+        const res = await checkIn(payload);
+        return res;
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new Error(error.message);
+        }
+        throw new Error("An unexpected error occurred");
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
