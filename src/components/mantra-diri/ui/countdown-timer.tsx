@@ -18,7 +18,7 @@ export default function CountdownTimer() {
     );
 
   return (
-    <h3 className="font-header text-6xl font-bold text-tedx-red lg:text-7xl">
+    <h3 className="font-header text-5xl font-bold text-tedx-red md:text-6xl lg:text-7xl">
       {days}:{hours}:{minutes}:{seconds}
     </h3>
   );

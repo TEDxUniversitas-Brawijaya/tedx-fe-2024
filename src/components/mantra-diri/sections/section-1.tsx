@@ -89,7 +89,11 @@ export default function Section1() {
     damping: 20,
   });
 
-  const fireCenterCircleY = useTransform(scrollYProgress, [0.825, 0.9], [768, 0]);
+  const fireCenterCircleY = useTransform(
+    scrollYProgress,
+    [0.825, 0.9],
+    [768, 0],
+  );
   const smoothFireCenterCircleY = useSpring(fireCenterCircleY, {
     stiffness: 100,
     damping: 20,
@@ -193,9 +197,9 @@ export default function Section1() {
             />
           </motion.div>
           <motion.div
-            className="absolute aspect-[2.03/1] h-[48rem] bottom-0"
+            className="absolute bottom-0 aspect-[2.03/1] h-[48rem]"
             style={{
-              y: smoothFireCenterCircleY
+              y: smoothFireCenterCircleY,
             }}
           >
             <Image
@@ -268,6 +272,7 @@ export default function Section1() {
                 alt="Paper Texture"
                 fill
                 priority
+                className="opacity-45"
               />
             </motion.div>
 
@@ -275,7 +280,7 @@ export default function Section1() {
           </div>
 
           <motion.div
-            className="absolute w-[60%] text-center text-white"
+            className="absolute px-5 text-center text-white md:w-[70%] md:px-0 lg:w-[60%]"
             style={{
               filter: blur,
               opacity: smoothTextOpacity,
@@ -288,12 +293,12 @@ export default function Section1() {
           </motion.div>
 
           <motion.div
-            className="absolute w-[60%] text-center text-white"
+            className="absolute flex w-full flex-col items-center justify-center text-center text-white"
             style={{
               opacity: smoothText2Opacity,
             }}
           >
-            <p className="mb-12 text-xl italic lg:text-3xl">
+            <p className="mb-12 px-5 text-xl italic md:w-[70%] md:px-20 lg:w-[60%] lg:text-3xl">
               Sesaat lagi kamu akan sampai di perjalanan terakhir pencarian
               &apos;MANTRA DIRI&apos; besama TEDxUniversitasBrawijaya 2025
             </p>

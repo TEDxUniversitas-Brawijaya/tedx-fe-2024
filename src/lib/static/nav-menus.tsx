@@ -26,7 +26,7 @@ export const eventMenus: INavMenu[] = [
   },
   {
     label: "Main Event",
-    href: null,
+    href: "/events/mantra-diri",
   },
 ];
 
