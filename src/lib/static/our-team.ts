@@ -6,14 +6,14 @@ export const teamData: ITeam[] = [
     position: "start",
     members: [
       {
+        name: "Ardra",
+        bwPath: "/img/team-card/bw/arda.png",
+        colorPath: "/img/team-card/color/arda.png",
+      },
+      {
         name: "Aqsha",
         bwPath: "/img/team-card/bw/aqsha.png",
         colorPath: "/img/team-card/color/aqsha.png",
-      },
-      {
-        name: "Arda",
-        bwPath: "/img/team-card/bw/arda.png",
-        colorPath: "/img/team-card/color/arda.png",
       },
     ],
   },
@@ -144,7 +144,7 @@ export const teamData: ITeam[] = [
     ],
   },
   {
-    title: "Executive Production",
+    title: "Executive Producer",
     position: "end",
     members: [
       {

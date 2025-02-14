@@ -25,12 +25,12 @@ export default function MobileNavMenu() {
 
   if (!isMounted)
     return (
-      <div className="block size-10 animate-pulse rounded-md bg-neutral-700 md:hidden" />
+      <div className="block size-10 animate-pulse rounded-md bg-neutral-700 lg:hidden" />
     );
 
   return (
     <>
-      <button onClick={() => setShowMenu(true)} className="block md:hidden">
+      <button onClick={() => setShowMenu(true)} className="block lg:hidden">
         <MenuIcon className="size-10" />
       </button>
 
@@ -38,7 +38,7 @@ export default function MobileNavMenu() {
         initial={{ top: "-150vh" }}
         animate={showMenu ? { top: "0", bottom: "0" } : { top: "-150vh" }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="fixed left-0 right-0 z-[100] h-screen overflow-hidden bg-tedx-black p-5 text-tedx-white md:hidden"
+        className="fixed left-0 right-0 z-[100] h-screen overflow-hidden bg-tedx-black p-5 text-tedx-white lg:hidden"
       >
         <div className="flex w-full flex-col">
           <div className="flex justify-between">
@@ -70,6 +70,14 @@ export default function MobileNavMenu() {
               About Us
             </Link>
 
+            <Link
+              onClick={() => setShowMenu(false)}
+              href={"/our-team"}
+              className={`underline-offset-4 hover:underline ${pathname === "/our-team" && "text-tedx-red"}`}
+            >
+              Our Team
+            </Link>
+
             <Accordion type="single" collapsible className="w-28">
               <AccordionItem value="events" className="border-none">
                 <AccordionTrigger className="justify-center gap-4 p-0 font-semibold">
@@ -96,14 +104,6 @@ export default function MobileNavMenu() {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-
-            <Link
-              onClick={() => setShowMenu(false)}
-              href={"/our-team"}
-              className={`underline-offset-4 hover:underline ${pathname === "/our-team" && "text-tedx-red"}`}
-            >
-              Our Team
-            </Link>
 
             <Link
               onClick={() => setShowMenu(false)}

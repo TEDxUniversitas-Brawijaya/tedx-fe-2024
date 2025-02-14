@@ -23,8 +23,8 @@ export default function DesktopNavMenu() {
 
   if (!isMounted)
     return (
-      <div className="hidden gap-5 md:flex">
-        {[...Array(4)].map((_, index) => (
+      <div className="hidden gap-5 lg:flex">
+        {[...Array(5)].map((_, index) => (
           <div
             key={index}
             className="w-20 animate-pulse rounded-md bg-neutral-700 text-transparent"
@@ -36,12 +36,18 @@ export default function DesktopNavMenu() {
     );
 
   return (
-    <div className="hidden space-x-10 font-semibold md:block">
+    <div className="hidden space-x-10 font-semibold lg:block">
       <Link
         href={"/about-us"}
         className={`underline-offset-4 hover:underline ${pathname === "/about-us" && "text-tedx-red"}`}
       >
         About Us
+      </Link>
+      <Link
+        href={"/our-team"}
+        className={`underline-offset-4 hover:underline ${pathname === "/our-team" && "text-tedx-red"}`}
+      >
+        Our Team
       </Link>
       <DropdownMenu open={showMenu} onOpenChange={setShowMenu}>
         <DropdownMenuTrigger>
@@ -76,13 +82,6 @@ export default function DesktopNavMenu() {
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
-
-      <Link
-        href={"/our-team"}
-        className={`underline-offset-4 hover:underline ${pathname === "/our-team" && "text-tedx-red"}`}
-      >
-        Our Team
-      </Link>
 
       <Link
         href={"/store/merch"}

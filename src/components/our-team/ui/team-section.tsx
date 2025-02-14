@@ -10,7 +10,7 @@ export const TeamSection = ({ title, position = "start", members }: ITeam) => {
   return (
     <div className="z-20">
       <h3
-        className={`text-center text-3xl text-white md:text-2xl ${position === "end" ? "md:text-right" : "md:text-left"}`}
+        className={`text-center font-header text-3xl text-white md:text-2xl ${position === "end" ? "lg:text-right" : "lg:text-left"}`}
       >
         {title}
       </h3>

@@ -6,13 +6,13 @@ const Section2 = () => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-[#313131] px-[40px] pb-[120px] md:px-[120px]">
       <div className="relative z-10 mt-10 md:mt-40">
-        <p className="max-w-[830px] text-white">
+        <p className="max-w-[830px] text-center text-lg text-white md:text-start md:text-xl">
           Inilah insan-insan di balik perjalanan Pencarian Mantra Diri yang
           mengelola dan memastikan setiap proses perjalanan ini dapat berjalan
           lancar.
         </p>
         <div className="my-[120px] space-y-[120px]">
-          {teamData.map((team, index) => (
+          {teamData.map((team) => (
             <TeamSection
               key={team.title}
               title={team.title}
@@ -22,7 +22,7 @@ const Section2 = () => {
           ))}
         </div>
         <div className="flex flex-col items-center justify-center space-y-5 text-[#A5A5A5]">
-          <p className="text-xl">dan teman-teman volunteers...</p>
+          <p className="text-xl">dan teman-teman volunteers</p>
           <Image
             src={"/img/circle-thing.png"}
             alt="Circle Thing"
