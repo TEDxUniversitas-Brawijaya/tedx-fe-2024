@@ -13,59 +13,57 @@ export default function Section1() {
 
   const gradientHeight = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.45],
+    [0, 0.15, 0.3],
     ["50%", "40%", "0%"],
   );
 
   const blur = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.45],
+    [0, 0.15, 0.3],
     ["blur(10px)", "blur(6px)", "blur(0px)"],
   );
 
   const topMaskValue = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.25, 0.4, 0.5],
+    [0, 0.2, 0.25, 0.3],
     [
       "radial-gradient(30% 30% at bottom, transparent calc(100% - 1px), black)",
       "radial-gradient(60% 60% at bottom, transparent calc(100% - 1px), black)",
       "radial-gradient(70% 70% at bottom, transparent calc(100% - 1px), black)",
-      "radial-gradient(80% 80% at bottom, transparent calc(100% - 1px), black)",
       "radial-gradient(100% 100% at bottom, transparent calc(100% - 1px), black)",
     ],
   );
 
   const bottomMaskValue = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.25, 0.4, 0.5],
+    [0, 0.2, 0.25, 0.3],
     [
       "radial-gradient(30% 30% at top, transparent calc(100% - 1px), black)",
       "radial-gradient(60% 60% at top, transparent calc(100% - 1px), black)",
       "radial-gradient(70% 70% at top, transparent calc(100% - 1px), black)",
-      "radial-gradient(80% 80% at top, transparent calc(100% - 1px), black)",
       "radial-gradient(100% 100% at top, transparent calc(100% - 1px), black)",
     ],
   );
 
-  const humanScale = useTransform(scrollYProgress, [0.5, 0.8], [1, 1.6]);
+  const humanScale = useTransform(scrollYProgress, [0.3, 0.6], [1, 1.6]);
   const smoothHumanScale = useSpring(humanScale, {
     stiffness: 100,
     damping: 20,
   });
 
-  const cloud1X = useTransform(scrollYProgress, [0.5, 0.8], [0, 100]);
+  const cloud1X = useTransform(scrollYProgress, [0.3, 0.6], [0, 100]);
   const smoothCloud1X = useSpring(cloud1X, {
     stiffness: 100,
     damping: 20,
   });
 
-  const cloud2X = useTransform(scrollYProgress, [0.5, 0.8], [0, -100]);
+  const cloud2X = useTransform(scrollYProgress, [0.3, 0.6], [0, -100]);
   const smoothCloud2X = useSpring(cloud2X, {
     stiffness: 100,
     damping: 20,
   });
 
-  const cloud3X = useTransform(scrollYProgress, [0.5, 0.8], [0, -200]);
+  const cloud3X = useTransform(scrollYProgress, [0.3, 0.6], [0, -200]);
   const smoothCloud3X = useSpring(cloud3X, {
     stiffness: 100,
     damping: 20,
@@ -298,9 +296,10 @@ export default function Section1() {
               opacity: smoothText2Opacity,
             }}
           >
-            <p className="mb-12 px-5 text-xl italic md:w-[70%] md:px-20 lg:w-[60%] lg:text-3xl">
-              Sesaat lagi kamu akan sampai di perjalanan terakhir pencarian
-              &apos;MANTRA DIRI&apos; besama TEDxUniversitasBrawijaya 2025
+            <p className="mb-12 px-5 text-base italic md:w-[80%] md:px-20 lg:w-[70%] lg:text-xl">
+              Sesaat lagi kamu akan sampai di perjalanan terakhir <br />{" "}
+              pencarian &apos;MANTRA DIRI&apos; bersama TEDx Universitas
+              Brawijaya 2025
             </p>
             <CountdownTimer />
           </motion.div>
