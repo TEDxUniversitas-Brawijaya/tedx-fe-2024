@@ -73,20 +73,27 @@ export async function createTicket(
 }
 
 export async function checkIn(ticketId: string): Promise<IRootResponse> {
-  const res = await fetch(`${ticketUrl.toString()}/checked-in/${ticketId}`, {
-    method: "PATCH",
-    headers: {
-      "TEDXUB25-API-KEY": `${API_KEY}`,
-      "Content-Type": "application/json",
-    },
-  });
+  try {
+    const res = await fetch(`${ticketUrl.toString()}/checked-in/${ticketId}`, {
+      method: "PATCH",
+      headers: {
+        "TEDXUB25-API-KEY": `${API_KEY}`,
+        "Content-Type": "application/json",
+      },
+    });
 
-  if (!res.ok) {
-    const response = await res.json();
-    throw new Error(response.message);
+    if (!res.ok) {
+      const response = await res.json();
+      throw new Error(response.message);
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error("An unexpected error occurred");
   }
-
-  const data = await res.json();
-
-  return data;
 }
