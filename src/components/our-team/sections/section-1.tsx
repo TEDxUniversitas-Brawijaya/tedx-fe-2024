@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Section1 = () => {
   return (
-    <section className="relative flex h-fit min-h-screen w-full items-end overflow-hidden bg-[#313131] pb-7 md:items-center md:pb-0">
+    <section className="relative flex h-fit min-h-[100dvh] w-full items-end overflow-hidden bg-[#313131] pb-10 md:min-h-screen md:items-center md:pb-0">
       <div className="z-20 px-5 text-3xl text-white md:px-20 md:text-5xl lg:px-20 lg:text-6xl">
         <h1 className="font-header">Mengenal Core Team</h1>
         <h2 className="font-body text-3xl font-medium md:text-5xl xl:text-6xl">
@@ -30,7 +30,7 @@ const Section1 = () => {
           priority
         />
       </div>
-      <div className="absolute bottom-0 left-0 z-[5] h-[calc(100dvh-62px)] w-full">
+      <div className="absolute bottom-0 left-0 z-[5] h-full w-full">
         <Image
           src="/img/team-bg.png"
           alt="Our Team Background"
