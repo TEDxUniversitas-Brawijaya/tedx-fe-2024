@@ -17,6 +17,7 @@ export interface IResponsePagination {
 export interface IRootResponse {
   message: string;
   pagination?: IResponsePagination;
+  error?: string;
 }
 
 export interface IGeneralFilter {
