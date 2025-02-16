@@ -16,9 +16,9 @@ export default function Section2() {
           <div className="absolute h-screen w-full bg-gradient-to-b from-[#0F0F0F] to-transparent" />
           <div className="absolute h-screen w-full bg-gradient-to-b from-transparent via-[#082427] to-[#131012]" />
 
-          <div className="absolute aspect-video h-screen mix-blend-soft-light">
+          <div className="absolute aspect-video h-screen">
             <Image
-              src="/img/paper-texture-3.png"
+              src="/img/paper-texture-2.png"
               alt="Paper Texture"
               fill
               priority

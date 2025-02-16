@@ -231,7 +231,7 @@ export default function Section1() {
             />
           </motion.div>
           <motion.div
-            className="absolute bottom-0 aspect-[2.43/1] h-[48rem]"
+            className="absolute -bottom-2 aspect-[2.43/1] h-[48rem]"
             style={{
               y: smoothFireBottomY,
             }}

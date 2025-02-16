@@ -52,7 +52,7 @@ export default function Section2() {
           <div className="absolute h-screen w-full bg-gradient-to-b from-[#0F0F0F] to-transparent" />
           <div className="absolute h-screen w-full bg-gradient-to-b from-transparent via-[#082427] to-[#131012]" />
           <motion.div
-            className="absolute top-0 aspect-[2.43/1] h-[48rem] rotate-180"
+            className="absolute -top-2 aspect-[2.43/1] h-[48rem] rotate-180 scale-x-[-1]"
             style={{
               opacity: smoothFireOpacity,
             }}
@@ -64,9 +64,9 @@ export default function Section2() {
             />
           </motion.div>
 
-          <div className="absolute aspect-video h-screen mix-blend-soft-light">
+          <div className="absolute aspect-video h-screen">
             <Image
-              src="/img/paper-texture-3.png"
+              src="/img/paper-texture-2.png"
               alt="Paper Texture"
               fill
               priority
