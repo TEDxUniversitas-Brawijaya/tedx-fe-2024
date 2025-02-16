@@ -5,7 +5,7 @@ import Speakercard from "../ui/speaker-card";
 
 export default function Section2() {
   const [hoveredSpeaker, setHoveredSpeaker] = useState<{
-    name: string;
+    idx: number;
     position: "top" | "bottom";
   } | null>(null);
 
@@ -37,27 +37,27 @@ export default function Section2() {
                 }}
                 className="flex items-end justify-start"
               >
-                {speakers.map((speaker) => (
+                {speakers.map((speaker, idx) => (
                   <Speakercard
                     key={speaker.name}
                     name={speaker.name}
                     img={speaker.img}
                     isHovered={
                       hoveredSpeaker?.position === "top" &&
-                      hoveredSpeaker?.name === speaker.name
+                      hoveredSpeaker?.idx === idx
                     }
                     onMouseEnter={() =>
                       setHoveredSpeaker({
-                        name: speaker.name,
+                        idx,
                         position: "top",
                       })
                     }
                     onMouseLeave={() => setHoveredSpeaker(null)}
                     onClick={() =>
-                      hoveredSpeaker?.name === speaker.name
+                      hoveredSpeaker?.idx === idx
                         ? setHoveredSpeaker(null)
                         : setHoveredSpeaker({
-                            name: speaker.name,
+                            idx,
                             position: "top",
                           })
                     }
@@ -73,27 +73,27 @@ export default function Section2() {
                 }}
                 className="flex items-end justify-start"
               >
-                {speakers.map((speaker) => (
+                {speakers.map((speaker, idx) => (
                   <Speakercard
                     key={speaker.name}
                     name={speaker.name}
                     img={speaker.img}
                     isHovered={
                       hoveredSpeaker?.position === "top" &&
-                      hoveredSpeaker?.name === speaker.name
+                      hoveredSpeaker?.idx === idx
                     }
                     onMouseEnter={() =>
                       setHoveredSpeaker({
-                        name: speaker.name,
+                        idx,
                         position: "top",
                       })
                     }
                     onMouseLeave={() => setHoveredSpeaker(null)}
                     onClick={() =>
-                      hoveredSpeaker?.name === speaker.name
+                      hoveredSpeaker?.idx === idx
                         ? setHoveredSpeaker(null)
                         : setHoveredSpeaker({
-                            name: speaker.name,
+                            idx,
                             position: "top",
                           })
                     }
@@ -111,27 +111,27 @@ export default function Section2() {
                 }}
                 className="flex items-end justify-start"
               >
-                {speakers.map((speaker) => (
+                {speakers.map((speaker, idx) => (
                   <Speakercard
                     key={speaker.name}
                     name={speaker.name}
                     img={speaker.img}
                     isHovered={
                       hoveredSpeaker?.position === "bottom" &&
-                      hoveredSpeaker?.name === speaker.name
+                      hoveredSpeaker?.idx === idx
                     }
                     onMouseEnter={() =>
                       setHoveredSpeaker({
-                        name: speaker.name,
+                        idx,
                         position: "bottom",
                       })
                     }
                     onMouseLeave={() => setHoveredSpeaker(null)}
                     onClick={() =>
-                      hoveredSpeaker?.name === speaker.name
+                      hoveredSpeaker?.idx === idx
                         ? setHoveredSpeaker(null)
                         : setHoveredSpeaker({
-                            name: speaker.name,
+                            idx,
                             position: "bottom",
                           })
                     }
@@ -147,27 +147,27 @@ export default function Section2() {
                 }}
                 className="flex items-end justify-start"
               >
-                {speakers.map((speaker) => (
+                {speakers.map((speaker, idx) => (
                   <Speakercard
                     key={speaker.name}
                     name={speaker.name}
                     img={speaker.img}
                     isHovered={
                       hoveredSpeaker?.position === "bottom" &&
-                      hoveredSpeaker?.name === speaker.name
+                      hoveredSpeaker?.idx === idx
                     }
                     onMouseEnter={() =>
                       setHoveredSpeaker({
-                        name: speaker.name,
+                        idx,
                         position: "bottom",
                       })
                     }
                     onMouseLeave={() => setHoveredSpeaker(null)}
                     onClick={() =>
-                      hoveredSpeaker?.name === speaker.name
+                      hoveredSpeaker?.idx === idx
                         ? setHoveredSpeaker(null)
                         : setHoveredSpeaker({
-                            name: speaker.name,
+                            idx,
                             position: "bottom",
                           })
                     }
@@ -187,35 +187,35 @@ const speakers: {
   img: string;
 }[] = [
   {
-    name: "Akmal 1",
+    name: "Akmal Sabil Amrullah",
     img: "/img/speaker-akmal-1.png",
   },
   {
-    name: "Akmal 2",
+    name: "Mardhian Pratama",
+    img: "/img/speaker-mardhian-1.png",
+  },
+  {
+    name: "Khansa Putri Kirana",
+    img: "/img/speaker-khansayu-1.png",
+  },
+  {
+    name: "Akmal Sabil Amrullah",
     img: "/img/speaker-akmal-1.png",
   },
   {
-    name: "Akmal 3",
+    name: "Mardhian Pratama",
+    img: "/img/speaker-mardhian-1.png",
+  },
+  {
+    name: "Khansa Putri Kirana",
+    img: "/img/speaker-khansayu-1.png",
+  },
+  {
+    name: "Akmal Sabil Amrullah",
     img: "/img/speaker-akmal-1.png",
   },
   {
-    name: "Akmal 4",
-    img: "/img/speaker-akmal-1.png",
-  },
-  {
-    name: "Akmal 5",
-    img: "/img/speaker-akmal-1.png",
-  },
-  {
-    name: "Akmal 6",
-    img: "/img/speaker-akmal-1.png",
-  },
-  {
-    name: "Akmal 7",
-    img: "/img/speaker-akmal-1.png",
-  },
-  {
-    name: "Akmal 8",
-    img: "/img/speaker-akmal-1.png",
+    name: "Mardhian Pratama",
+    img: "/img/speaker-mardhian-1.png",
   },
 ];
