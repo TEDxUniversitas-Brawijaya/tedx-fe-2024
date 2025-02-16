@@ -29,7 +29,7 @@ export default function Speakercard({
         {name}
       </span>
       <div
-        className="relative aspect-square h-[20rem]"
+        className="relative aspect-square h-[15rem] lg:h-[20rem]"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onClick={onClick}
