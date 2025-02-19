@@ -15,7 +15,7 @@ export default function Section4() {
               alt="Paper Texture"
               fill
               priority
-              className="opacity-45"
+              className="opacity-25"
             />
           </div>
 

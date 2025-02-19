@@ -270,7 +270,7 @@ export default function Section1() {
                 alt="Paper Texture"
                 fill
                 priority
-                className="opacity-45"
+                className="opacity-25"
               />
             </motion.div>
 
