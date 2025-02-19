@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Speakercard from "../ui/speaker-card";
 
-export default function Section2() {
+export default function Section3() {
   const [hoveredSpeaker, setHoveredSpeaker] = useState<{
     idx: number;
     position: "top" | "bottom";
