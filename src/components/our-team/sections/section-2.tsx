@@ -13,22 +13,8 @@ const Section2 = () => {
         </p>
         <div className="my-[120px] space-y-[120px]">
           {teamData.map((team) => (
-            <TeamSection
-              key={team.title}
-              title={team.title}
-              position={team.position}
-              members={team.members}
-            />
+            <TeamSection key={team.title} {...team} />
           ))}
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-5 text-[#A5A5A5]">
-          <p className="text-xl">dan teman-teman volunteers</p>
-          <Image
-            src={"/img/circle-thing.png"}
-            alt="Circle Thing"
-            width={200}
-            height={50}
-          />
         </div>
       </div>
       <div className="absolute inset-0 z-0">
