@@ -199,23 +199,23 @@ const speakers: {
     img: "/img/speaker-khansayu-1.png",
   },
   {
-    name: "Akmal Sabil Amrullah",
+    name: "Dimas",
+    img: "/img/speaker-dimas-1.png",
+  },
+  {
+    name: "Kala",
+    img: "/img/speaker-kala-1.png",
+  },
+  {
+    name: "Rahka Ghanisatria",
+    img: "/img/speaker-rahka-1.png",
+  },
+  {
+    name: "Akmal Sabil Amrullah", // TODO
     img: "/img/speaker-akmal-1.png",
   },
   {
-    name: "Mardhian Pratama",
-    img: "/img/speaker-mardhian-1.png",
-  },
-  {
-    name: "Khansa Putri Kirana",
-    img: "/img/speaker-khansayu-1.png",
-  },
-  {
-    name: "Akmal Sabil Amrullah",
-    img: "/img/speaker-akmal-1.png",
-  },
-  {
-    name: "Mardhian Pratama",
+    name: "Mardhian Pratama", // TODO
     img: "/img/speaker-mardhian-1.png",
   },
 ];
