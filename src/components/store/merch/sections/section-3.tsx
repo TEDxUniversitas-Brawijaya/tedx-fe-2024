@@ -194,10 +194,6 @@ function ProductCard({
             })}
           </span>
         </div>
-        <div className="flex flex-row items-center space-x-2">
-          <div className="size-6 rounded-full bg-[#D9D9D9]" />
-          <div className="size-6 rounded-full bg-[#020202]" />
-        </div>
       </div>
     </Link>
   );
