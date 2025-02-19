@@ -18,6 +18,28 @@ export const teamData: ITeam[] = [
     ],
   },
   {
+    title: "Curator",
+    position: "end",
+    members: [
+      {
+        name: "Anas",
+        bwPath: "/img/team-card/bw/anas.png",
+        colorPath: "/img/team-card/color/anas.png",
+      },
+      {
+        name: "Ola",
+        bwPath: "/img/team-card/bw/ola.png",
+        colorPath: "/img/team-card/color/ola.png",
+      },
+    ],
+    volunteer: [
+      "Ade Zulkarnain",
+      "Khansa Nabila",
+      "Rangga Kusuma",
+      "Khaylila Ariella ",
+    ],
+  },
+  {
     title: "Communication, Editorial, & Marketing",
     position: "end",
     members: [
@@ -36,6 +58,12 @@ export const teamData: ITeam[] = [
         bwPath: "/img/team-card/bw/aisya.png",
         colorPath: "/img/team-card/color/aisya.png",
       },
+    ],
+    volunteer: [
+      "Juwina Riani",
+      "Citra Maharani",
+      "Tissar Abhirama",
+      "Nawala Tsania",
     ],
   },
   {
@@ -58,23 +86,15 @@ export const teamData: ITeam[] = [
         colorPath: "/img/team-card/color/givmi.png",
       },
     ],
-  },
-  {
-    title: "Curator",
-    position: "end",
-    members: [
-      {
-        name: "Anas",
-        bwPath: "/img/team-card/bw/anas.png",
-        colorPath: "/img/team-card/color/anas.png",
-      },
-      {
-        name: "Ola",
-        bwPath: "/img/team-card/bw/ola.png",
-        colorPath: "/img/team-card/color/ola.png",
-      },
+    volunteer: [
+      "Emir Budisani",
+      "Dwira Pitra",
+      "Ajeng Regina",
+      "Peni Afifa",
+      "Luqman Fakhrul",
     ],
   },
+
   {
     title: "Website",
     position: "start",
@@ -94,6 +114,89 @@ export const teamData: ITeam[] = [
         bwPath: "/img/team-card/bw/leo.png",
         colorPath: "/img/team-card/color/leo.png",
       },
+    ],
+    volunteer: [
+      "Ahmad Faiz",
+      "Nugraha Billy",
+      "Devan Ferrel",
+      "Alfredo Radhinal",
+    ],
+  },
+
+  {
+    title: "Video Production",
+    position: "start",
+    members: [
+      {
+        name: "El",
+        bwPath: "/img/team-card/bw/el.png",
+        colorPath: "/img/team-card/color/el.png",
+      },
+      {
+        name: "Hanif",
+        bwPath: "/img/team-card/bw/hanif.png",
+        colorPath: "/img/team-card/color/hanif.png",
+      },
+      {
+        name: "Nizar",
+        bwPath: "/img/team-card/bw/nizar.png",
+        colorPath: "/img/team-card/color/nizar.png",
+      },
+    ],
+    volunteer: [
+      "Hakim Al Hanif",
+      "Ridwansyah",
+      "Muhammad Faqih",
+      "Dhafa Praptama",
+    ],
+  },
+  {
+    title: "Executive Producer",
+    position: "end",
+    members: [
+      {
+        name: "Azmi",
+        bwPath: "/img/team-card/bw/azmi.png",
+        colorPath: "/img/team-card/color/azmi.png",
+      },
+      {
+        name: "Cantika",
+        bwPath: "/img/team-card/bw/cantika.png",
+        colorPath: "/img/team-card/color/cantika.png",
+      },
+      {
+        name: "Firda",
+        bwPath: "/img/team-card/bw/firda.png",
+        colorPath: "/img/team-card/color/firda.png",
+      },
+    ],
+    volunteer: ["Gading Desantio", "Mario Renaldhi", "Riska Khiya"],
+  },
+  {
+    title: "Sponsorship",
+    position: "start",
+    members: [
+      {
+        name: "Harffin",
+        bwPath: "/img/team-card/bw/harffin.png",
+        colorPath: "/img/team-card/color/harffin.png",
+      },
+      {
+        name: "Haikal",
+        bwPath: "/img/team-card/bw/haikal.png",
+        colorPath: "/img/team-card/color/haikal.png",
+      },
+      {
+        name: "ALda",
+        bwPath: "/img/team-card/bw/alda.png",
+        colorPath: "/img/team-card/color/alda.png",
+      },
+    ],
+    volunteer: [
+      "Khalilah Ferline",
+      "Masayu Diva",
+      "Chika Shakira",
+      "Nabiel Tatra",
     ],
   },
   {
@@ -121,68 +224,6 @@ export const teamData: ITeam[] = [
         colorPath: "/img/team-card/color/pandu.png",
       },
     ],
-  },
-  {
-    title: "Video Production",
-    position: "start",
-    members: [
-      {
-        name: "El",
-        bwPath: "/img/team-card/bw/el.png",
-        colorPath: "/img/team-card/color/el.png",
-      },
-      {
-        name: "Hanif",
-        bwPath: "/img/team-card/bw/hanif.png",
-        colorPath: "/img/team-card/color/hanif.png",
-      },
-      {
-        name: "Nizar",
-        bwPath: "/img/team-card/bw/nizar.png",
-        colorPath: "/img/team-card/color/nizar.png",
-      },
-    ],
-  },
-  {
-    title: "Executive Producer",
-    position: "end",
-    members: [
-      {
-        name: "Azmi",
-        bwPath: "/img/team-card/bw/azmi.png",
-        colorPath: "/img/team-card/color/azmi.png",
-      },
-      {
-        name: "Cantika",
-        bwPath: "/img/team-card/bw/cantika.png",
-        colorPath: "/img/team-card/color/cantika.png",
-      },
-      {
-        name: "Firda",
-        bwPath: "/img/team-card/bw/firda.png",
-        colorPath: "/img/team-card/color/firda.png",
-      },
-    ],
-  },
-  {
-    title: "Sponsorship",
-    position: "start",
-    members: [
-      {
-        name: "Harffin",
-        bwPath: "/img/team-card/bw/harffin.png",
-        colorPath: "/img/team-card/color/harffin.png",
-      },
-      {
-        name: "Haikal",
-        bwPath: "/img/team-card/bw/haikal.png",
-        colorPath: "/img/team-card/color/haikal.png",
-      },
-      {
-        name: "ALda",
-        bwPath: "/img/team-card/bw/alda.png",
-        colorPath: "/img/team-card/color/alda.png",
-      },
-    ],
+    volunteer: ["Mahardika", "Azzahro Fatimah", "Radya Bhre", "Ulan"],
   },
 ];

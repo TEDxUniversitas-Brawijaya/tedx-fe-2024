@@ -1,7 +1,13 @@
 import { CoreCard } from "./core-card";
 import { ITeam } from "@/types/team-types";
+import Image from "next/image";
 
-export const TeamSection = ({ title, position = "start", members }: ITeam) => {
+export const TeamSection = ({
+  title,
+  position = "start",
+  members,
+  volunteer,
+}: ITeam) => {
   const containerClasses =
     position === "end"
       ? "lg:justify-end text-right"
@@ -26,6 +32,35 @@ export const TeamSection = ({ title, position = "start", members }: ITeam) => {
           />
         ))}
       </div>
+      {volunteer && (
+        <>
+          <h4
+            className={`mt-7 text-center font-header text-3xl text-white md:mt-7 md:text-2xl ${position === "end" ? "lg:text-right" : "lg:text-left"}`}
+          >
+            Volunteer
+          </h4>
+          <div
+            className={`mt-7 flex flex-wrap items-center justify-center gap-x-2 gap-y-4 ${position === "end" ? "lg:justify-end" : "lg:justify-start"}`}
+          >
+            {volunteer.map((dx, idx) => (
+              <div
+                key={idx * 101}
+                className="relative flex h-[55px] w-[210px] items-center justify-center"
+              >
+                <p className="text-center font-header text-white">{dx}</p>
+                <Image
+                  src="/img/volunteer-frame.png"
+                  alt="volunteer Frame"
+                  className="absolute top-0"
+                  fill
+                  draggable={false}
+                  priority
+                />
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

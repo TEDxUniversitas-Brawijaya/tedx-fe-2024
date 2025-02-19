@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Section1 from '@/components/mantra-diri/sections/section-1';
-import Footer from '@/components/shared/footer';
+import Section1 from "@/components/mantra-diri/sections/section-1";
+import Footer from "@/components/shared/footer";
 
 export default function ClientMantraDiriPage() {
   return (
@@ -11,5 +11,5 @@ export default function ClientMantraDiriPage() {
       </div>
       <Footer />
     </main>
-  )
+  );
 }
