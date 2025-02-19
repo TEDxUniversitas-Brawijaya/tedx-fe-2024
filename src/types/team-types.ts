@@ -8,4 +8,5 @@ export interface ITeam {
   title: string;
   position: "start" | "end";
   members: ICore[];
+  volunteer?: string[];
 }
