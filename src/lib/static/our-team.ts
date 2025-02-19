@@ -37,6 +37,12 @@ export const teamData: ITeam[] = [
         colorPath: "/img/team-card/color/aisya.png",
       },
     ],
+    volunteer: [
+      "Juwina Riani",
+      "Citra Maharani",
+      "Tissar Abhirama",
+      "Nawala Tsania",
+    ],
   },
   {
     title: "Event Manager",
@@ -58,6 +64,13 @@ export const teamData: ITeam[] = [
         colorPath: "/img/team-card/color/givmi.png",
       },
     ],
+    volunteer: [
+      "Emir Budisani",
+      "Dwira Pitra",
+      "Ajeng Regina",
+      "Peni Afifa",
+      "Luqman Fakhrul",
+    ],
   },
   {
     title: "Curator",
@@ -73,6 +86,12 @@ export const teamData: ITeam[] = [
         bwPath: "/img/team-card/bw/ola.png",
         colorPath: "/img/team-card/color/ola.png",
       },
+    ],
+    volunteer: [
+      "Ade Zulkarnain",
+      "Khansa Nabila",
+      "Rangga Kusuma",
+      "Khaylila Ariella ",
     ],
   },
   {
@@ -94,6 +113,12 @@ export const teamData: ITeam[] = [
         bwPath: "/img/team-card/bw/leo.png",
         colorPath: "/img/team-card/color/leo.png",
       },
+    ],
+    volunteer: [
+      "Ahmad Faiz",
+      "Nugraha Billy",
+      "Devan Ferrel",
+      "Alfredo Radhinal",
     ],
   },
   {
@@ -121,6 +146,7 @@ export const teamData: ITeam[] = [
         colorPath: "/img/team-card/color/pandu.png",
       },
     ],
+    volunteer: ["Mahardika", "Azzahro Fatimah", "Radya Bhre", "Ulan"],
   },
   {
     title: "Video Production",
@@ -141,6 +167,12 @@ export const teamData: ITeam[] = [
         bwPath: "/img/team-card/bw/nizar.png",
         colorPath: "/img/team-card/color/nizar.png",
       },
+    ],
+    volunteer: [
+      "Hakim Al Hanif",
+      "Ridwansyah",
+      "Muhammad Faqih",
+      "Dhafa Praptama",
     ],
   },
   {
@@ -163,6 +195,7 @@ export const teamData: ITeam[] = [
         colorPath: "/img/team-card/color/firda.png",
       },
     ],
+    volunteer: ["Gading Desantio", "Mario Renaldhi", "Riska Khiya"],
   },
   {
     title: "Sponsorship",
@@ -183,6 +216,12 @@ export const teamData: ITeam[] = [
         bwPath: "/img/team-card/bw/alda.png",
         colorPath: "/img/team-card/color/alda.png",
       },
+    ],
+    volunteer: [
+      "Khalilah Ferline",
+      "Masayu Diva",
+      "Chika Shakira",
+      "Nabiel Tatra",
     ],
   },
 ];
