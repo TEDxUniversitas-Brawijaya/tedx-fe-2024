@@ -18,6 +18,28 @@ export const teamData: ITeam[] = [
     ],
   },
   {
+    title: "Curator",
+    position: "end",
+    members: [
+      {
+        name: "Anas",
+        bwPath: "/img/team-card/bw/anas.png",
+        colorPath: "/img/team-card/color/anas.png",
+      },
+      {
+        name: "Ola",
+        bwPath: "/img/team-card/bw/ola.png",
+        colorPath: "/img/team-card/color/ola.png",
+      },
+    ],
+    volunteer: [
+      "Ade Zulkarnain",
+      "Khansa Nabila",
+      "Rangga Kusuma",
+      "Khaylila Ariella ",
+    ],
+  },
+  {
     title: "Communication, Editorial, & Marketing",
     position: "end",
     members: [
@@ -72,28 +94,7 @@ export const teamData: ITeam[] = [
       "Luqman Fakhrul",
     ],
   },
-  {
-    title: "Curator",
-    position: "end",
-    members: [
-      {
-        name: "Anas",
-        bwPath: "/img/team-card/bw/anas.png",
-        colorPath: "/img/team-card/color/anas.png",
-      },
-      {
-        name: "Ola",
-        bwPath: "/img/team-card/bw/ola.png",
-        colorPath: "/img/team-card/color/ola.png",
-      },
-    ],
-    volunteer: [
-      "Ade Zulkarnain",
-      "Khansa Nabila",
-      "Rangga Kusuma",
-      "Khaylila Ariella ",
-    ],
-  },
+
   {
     title: "Website",
     position: "start",
@@ -121,33 +122,7 @@ export const teamData: ITeam[] = [
       "Alfredo Radhinal",
     ],
   },
-  {
-    title: "Design",
-    position: "end",
-    members: [
-      {
-        name: "Dandy",
-        bwPath: "/img/team-card/bw/dandy.png",
-        colorPath: "/img/team-card/color/dandy.png",
-      },
-      {
-        name: "Dini",
-        bwPath: "/img/team-card/bw/dini.png",
-        colorPath: "/img/team-card/color/dini.png",
-      },
-      {
-        name: "Jib",
-        bwPath: "/img/team-card/bw/jib.png",
-        colorPath: "/img/team-card/color/jib.png",
-      },
-      {
-        name: "Pandu",
-        bwPath: "/img/team-card/bw/pandu.png",
-        colorPath: "/img/team-card/color/pandu.png",
-      },
-    ],
-    volunteer: ["Mahardika", "Azzahro Fatimah", "Radya Bhre", "Ulan"],
-  },
+
   {
     title: "Video Production",
     position: "start",
@@ -223,5 +198,32 @@ export const teamData: ITeam[] = [
       "Chika Shakira",
       "Nabiel Tatra",
     ],
+  },
+  {
+    title: "Design",
+    position: "end",
+    members: [
+      {
+        name: "Dandy",
+        bwPath: "/img/team-card/bw/dandy.png",
+        colorPath: "/img/team-card/color/dandy.png",
+      },
+      {
+        name: "Dini",
+        bwPath: "/img/team-card/bw/dini.png",
+        colorPath: "/img/team-card/color/dini.png",
+      },
+      {
+        name: "Jib",
+        bwPath: "/img/team-card/bw/jib.png",
+        colorPath: "/img/team-card/color/jib.png",
+      },
+      {
+        name: "Pandu",
+        bwPath: "/img/team-card/bw/pandu.png",
+        colorPath: "/img/team-card/color/pandu.png",
+      },
+    ],
+    volunteer: ["Mahardika", "Azzahro Fatimah", "Radya Bhre", "Ulan"],
   },
 ];
