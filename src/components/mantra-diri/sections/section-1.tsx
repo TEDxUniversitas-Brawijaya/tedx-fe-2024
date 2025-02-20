@@ -207,7 +207,7 @@ export default function Section1() {
             />
           </motion.div>
           <motion.div
-            className="absolute aspect-video h-screen"
+            className="absolute aspect-video h-screen w-full"
             style={{
               y: smoothFireCenterY,
             }}
@@ -231,7 +231,7 @@ export default function Section1() {
             />
           </motion.div>
           <motion.div
-            className="absolute bottom-0 aspect-[2.43/1] h-[48rem]"
+            className="absolute -bottom-2 aspect-[2.43/1] h-[48rem]"
             style={{
               y: smoothFireBottomY,
             }}
@@ -270,7 +270,7 @@ export default function Section1() {
                 alt="Paper Texture"
                 fill
                 priority
-                className="opacity-45"
+                className="opacity-25"
               />
             </motion.div>
 
