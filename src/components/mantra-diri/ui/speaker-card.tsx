@@ -19,10 +19,10 @@ export default function Speakercard({
   onClick,
 }: Props) {
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-3">
       <span
         className={cn(
-          "text-2xl font-bold italic text-tedx-red transition-opacity duration-300 ease-in-out opacity-0",
+          "text-2xl font-bold italic text-tedx-red opacity-0 transition-opacity duration-300 ease-in-out",
           isHovered && "opacity-100",
         )}
       >
@@ -34,10 +34,15 @@ export default function Speakercard({
         onMouseLeave={onMouseLeave}
         onClick={onClick}
       >
-        <Image src={img} alt="Speaker Akmal" fill className={cn(
-          "transition-all duration-300 ease-in-out grayscale",
-          isHovered && "grayscale-0"
-        )} />
+        <Image
+          src={img}
+          alt="Speaker Akmal"
+          fill
+          className={cn(
+            "grayscale transition-all duration-300 ease-in-out",
+            isHovered && "grayscale-0",
+          )}
+        />
       </div>
     </div>
   );

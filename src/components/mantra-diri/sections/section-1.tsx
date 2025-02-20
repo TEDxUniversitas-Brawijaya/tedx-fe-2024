@@ -207,7 +207,7 @@ export default function Section1() {
             />
           </motion.div>
           <motion.div
-            className="absolute aspect-video h-screen"
+            className="absolute aspect-video h-screen w-full"
             style={{
               y: smoothFireCenterY,
             }}

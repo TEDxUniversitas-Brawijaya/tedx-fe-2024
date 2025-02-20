@@ -3,13 +3,13 @@ import Image from "next/image";
 
 export default function Section5() {
   return (
-    <section className="relative h-screen bg-[#1A1A1A]">
-      <motion.div className="sticky left-0 top-0 flex h-screen items-start">
-        <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
-          <div className="absolute h-screen w-full bg-gradient-to-b from-[#0F0F0F] to-transparent" />
-          <div className="absolute h-screen w-full bg-gradient-to-b from-transparent via-[#082427] to-[#131012]" />
+    <section className="relative h-full min-h-screen bg-[#1A1A1A]">
+      <motion.div className="sticky left-0 top-0 flex h-full items-start">
+        <div className="relative flex h-full w-full items-center justify-center overflow-hidden py-20 md:py-44">
+          <div className="absolute size-full bg-gradient-to-b from-[#0F0F0F] to-transparent" />
+          <div className="absolute size-full bg-gradient-to-b from-transparent via-[#082427] to-[#131012]" />
 
-          <div className="absolute aspect-video h-screen">
+          <div className="absolute aspect-video size-full">
             <Image
               src="/img/paper-texture-2.png"
               alt="Paper Texture"
@@ -19,7 +19,7 @@ export default function Section5() {
             />
           </div>
 
-          <div className="absolute flex flex-col gap-20 px-4 lg:px-20">
+          <div className="z-10 flex flex-col gap-20 px-4 lg:px-20">
             <div className="flex flex-col gap-6 px-4 text-center">
               <span className="text-base text-white lg:text-2xl">
                 SELAMAT BERTEMU DI
@@ -30,9 +30,9 @@ export default function Section5() {
               </h2>
             </div>
 
-            <div className="flex w-full flex-row flex-wrap justify-center gap-x-6 gap-y-3">
+            <div className="flex w-full flex-row flex-wrap justify-center gap-x-6 gap-y-3 px-5 md:px-20">
               {sponsors.map((sponsor) => (
-                <div key={sponsor.name} className="relative size-16 lg:size-24">
+                <div key={sponsor.name} className="relative size-20 lg:size-24">
                   <Image
                     src={sponsor.image}
                     alt={sponsor.name}
@@ -55,28 +55,32 @@ const sponsors: {
   image: string;
 }[] = [
   {
-    name: "5Days",
-    image: "/img/sponsor-5days.png",
+    name: "Kalimaya",
+    image: "/img/sponsor-kalimaya.png",
+  },
+  {
+    name: "RRI PRO",
+    image: "/img/sponsor-rri-pro.png",
   },
   {
     name: "101.3 MFM Radio",
     image: "/img/sponsor-101-3-mfm.png",
   },
   {
-    name: "AirNav",
-    image: "/img/sponsor-airnav.png",
+    name: "Detik Jatim",
+    image: "/img/sponsor-detikjatim.png",
   },
   {
     name: "BFAST",
     image: "/img/sponsor-bfast.png",
   },
   {
-    name: "bobobox",
-    image: "/img/sponsor-bobobox.png",
+    name: "UB Radio",
+    image: "/img/sponsor-ub-radio.png",
   },
   {
-    name: "Caffino",
-    image: "/img/sponsor-caffino.png",
+    name: "ShARE",
+    image: "/img/sponsor-share.png",
   },
   {
     name: "Curiouth",
@@ -87,39 +91,48 @@ const sponsors: {
     image: "/img/sponsor-fisip.png",
   },
   {
-    name: "Implora",
-    image: "/img/sponsor-implora.png",
+    name: "bobobox",
+    image: "/img/sponsor-bobobox.png",
   },
   {
     name: "Info Jatim",
     image: "/img/sponsor-infojatim.png",
   },
   {
-    name: "Kahf",
-    image: "/img/sponsor-kahf.png",
-  },
-  {
-    name: "Kalimaya",
-    image: "/img/sponsor-kalimaya.png",
+    name: "Caffino",
+    image: "/img/sponsor-caffino.png",
   },
   {
     name: "Kopi Gajah",
     image: "/img/sponsor-kopi-gajah.png",
   },
   {
-    name: "RRI PRO",
-    image: "/img/sponsor-rri-pro.png",
+    name: "Mahasiswa Malang",
+    image: "/img/sponsor-mhsmlg.png",
+  },
+
+  {
+    name: "Acara Mahasiwa",
+    image: "/img/sponsor-acaramahasiswa.png",
+  },
+  {
+    name: "5Days",
+    image: "/img/sponsor-5days.png",
+  },
+  {
+    name: "Implora",
+    image: "/img/sponsor-implora.png",
   },
   {
     name: "selfroom",
     image: "/img/sponsor-selfroom.png",
   },
   {
-    name: "ShARE",
-    image: "/img/sponsor-share.png",
+    name: "Kahf",
+    image: "/img/sponsor-kahf.png",
   },
   {
-    name: "UB Radio",
-    image: "/img/sponsor-ub-radio.png",
+    name: "AirNav",
+    image: "/img/sponsor-airnav.png",
   },
 ];

@@ -64,7 +64,7 @@ export default function Section2() {
             />
           </motion.div>
 
-          <div className="absolute aspect-video h-screen">
+          <div className="absolute aspect-video h-screen w-full">
             <Image
               src="/img/paper-texture-2.png"
               alt="Paper Texture"
@@ -79,8 +79,8 @@ export default function Section2() {
             className="relative flex h-screen w-full flex-shrink-0 overflow-visible"
             style={{ x: smoothHorizontalMovement }}
           >
-            <div className="flex h-screen w-full flex-shrink-0 items-center justify-center">
-              <div className="absolute flex flex-col gap-6 text-center px-4">
+            <div className="flex h-screen w-full flex-shrink-0 items-center justify-center px-5 md:px-20">
+              <div className="absolute flex flex-col gap-6 px-4 text-center">
                 <span className="text-base text-white lg:text-2xl">
                   SELAMAT DATANG DI
                 </span>
@@ -88,7 +88,7 @@ export default function Section2() {
                   TEDxUniversitasBrawijaya 2025 <br /> &apos;Mantra Diri:
                   Menembus Batas, Menyelami Realitas&apos;
                 </h2>
-                <p className="text-sm italic text-[#b9b9b9]">
+                <p className="italic text-[#b9b9b9]">
                   Sesaat lagi kamu akan sampai di perjalanan terakhir pencarian{" "}
                   <br />
                   &apos;MANTRA DIRI&apos; besama TEDxUniversitasBrawijaya 2025
@@ -96,8 +96,8 @@ export default function Section2() {
               </div>
             </div>
             <div className="flex h-screen w-full flex-shrink-0 items-center justify-center">
-              <div className="absolute flex w-full max-w-sm flex-col gap-10 text-center px-4">
-                <p className="text-sm italic text-[#b9b9b9]">
+              <div className="flex w-full max-w-2xl flex-col gap-10 px-5 text-center text-sm md:px-0 md:text-base">
+                <p className="italic text-[#b9b9b9]">
                   Rangkaian puncak acara TEDxUniversitasBrawijaya 2025 mengusung
                   tema &quot;Mantra Diri: Menembus Batas, Menyelami
                   Realitas&quot;. Inti dari acara ini adalah talkshow bersama
@@ -105,12 +105,12 @@ export default function Section2() {
                   kepada audiens. Rangkaian puncak acara ini dijadwalkan
                   berlangsung pada:
                 </p>
-                <p className="text-sm italic text-[#b9b9b9]">
+                <p className="italic text-[#b9b9b9]">
                   Hari/Tanggal : Sabtu, 22 Februari 2024 <br />
                   Waktu : 10.00 - 16.30 WIB <br />
                   Tempat : Universitas Brawijaya
                 </p>
-                <p className="text-sm italic text-[#b9b9b9]">
+                <p className="italic text-[#b9b9b9]">
                   Selain talkshow bersama para speaker, TEDxUniversitasBrawijaya
                   2025 juga menghadirkan berbagai interactive activities, mulai
                   dari interactive exhibition hingga interactive booth yang
@@ -121,7 +121,7 @@ export default function Section2() {
               </div>
             </div>
             <div className="flex h-screen w-full flex-shrink-0 items-center justify-center">
-              <div className="absolute flex flex-col gap-6 text-center px-4">
+              <div className="absolute flex flex-col gap-6 px-4 text-center">
                 <span className="text-base text-white lg:text-2xl">
                   MENGENAL SPEAKER
                 </span>

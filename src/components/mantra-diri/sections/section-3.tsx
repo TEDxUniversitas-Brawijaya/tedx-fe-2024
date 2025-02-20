@@ -10,13 +10,13 @@ export default function Section3() {
   } | null>(null);
 
   return (
-    <section className="relative h-screen bg-[#1A1A1A]">
-      <motion.div className="sticky left-0 top-0 flex h-screen items-start">
-        <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
-          <div className="absolute h-screen w-full bg-gradient-to-b from-[#0F0F0F] to-transparent" />
-          <div className="absolute h-screen w-full bg-gradient-to-b from-transparent via-[#082427] to-[#131012]" />
+    <section className="relative bg-[#1A1A1A]">
+      <motion.div className="sticky left-0 top-0 flex items-start">
+        <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden">
+          <div className="absolute size-full bg-gradient-to-b from-[#0F0F0F] to-transparent" />
+          <div className="absolute size-full bg-gradient-to-b from-transparent via-[#082427] to-[#131012]" />
 
-          <div className="absolute aspect-video h-screen">
+          <div className="absolute aspect-video h-full w-full">
             <Image
               src="/img/paper-texture-2.png"
               alt="Paper Texture"
@@ -39,7 +39,7 @@ export default function Section3() {
               >
                 {speakers.map((speaker, idx) => (
                   <Speakercard
-                    key={speaker.name}
+                    key={speaker.name + "1"}
                     name={speaker.name}
                     img={speaker.img}
                     isHovered={
@@ -75,7 +75,7 @@ export default function Section3() {
               >
                 {speakers.map((speaker, idx) => (
                   <Speakercard
-                    key={speaker.name}
+                    key={speaker.name + "2"}
                     name={speaker.name}
                     img={speaker.img}
                     isHovered={
