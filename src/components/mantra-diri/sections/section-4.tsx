@@ -3,13 +3,13 @@ import Image from "next/image";
 
 export default function Section4() {
   return (
-    <section className="relative h-screen bg-[#1A1A1A]">
-      <motion.div className="sticky left-0 top-0 flex h-screen items-start">
-        <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
-          <div className="absolute h-screen w-full bg-gradient-to-b from-[#0F0F0F] to-transparent" />
-          <div className="absolute h-screen w-full bg-gradient-to-b from-transparent via-[#082427] to-[#131012]" />
+    <section className="relative h-full min-h-screen bg-[#1A1A1A]">
+      <motion.div className="sticky left-0 top-0 flex h-full items-start">
+        <div className="relative flex h-full w-full items-center justify-center overflow-hidden pt-20">
+          <div className="absolute top-0 size-full bg-gradient-to-b from-[#0F0F0F] to-transparent" />
+          <div className="absolute top-0 size-full bg-gradient-to-b from-transparent via-[#082427] to-[#131012]" />
 
-          <div className="absolute aspect-video h-screen">
+          <div className="absolute top-0 aspect-video size-full">
             <Image
               src="/img/paper-texture-2.png"
               alt="Paper Texture"
@@ -44,7 +44,7 @@ export default function Section4() {
             </div>
 
             {/* TODO */}
-            <div className="z-0 relative aspect-video w-full bg-white opacity-50 sm:absolute sm:right-8 sm:w-[70%] md:right-12 lg:right-16">
+            <div className="relative z-0 aspect-video w-full bg-white opacity-50 sm:absolute sm:right-8 sm:w-[70%] md:right-12 lg:right-16">
               <Image
                 src="/img/gendhis-special-performance.jpg"
                 alt="Gendhis Special Performance"
