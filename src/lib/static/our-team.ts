@@ -33,15 +33,16 @@ export const teamData: ITeam[] = [
       },
     ],
     volunteer: [
-      "Ade Zulkarnain",
-      "Khansa Nabila",
-      "Rangga Kusuma",
-      "Khaylila Ariella ",
+      "Juwina Riani",
+      "Citra Maharani",
+      "Tissar Abhirama",
+      "Nawala Tsania",
+      "Faiz Putra",
     ],
   },
   {
     title: "Communication, Editorial, & Marketing",
-    position: "end",
+    position: "start",
     members: [
       {
         name: "Aulia",
@@ -60,15 +61,15 @@ export const teamData: ITeam[] = [
       },
     ],
     volunteer: [
-      "Juwina Riani",
-      "Citra Maharani",
-      "Tissar Abhirama",
-      "Nawala Tsania",
+      "Ade Zulkarnain",
+      "Khansa Nabila",
+      "Rangga Kusuma",
+      "Khaylila Ariella ",
     ],
   },
   {
     title: "Event Manager",
-    position: "start",
+    position: "end",
     members: [
       {
         name: "Azka",
@@ -90,7 +91,7 @@ export const teamData: ITeam[] = [
       "Emir Budisani",
       "Dwira Pitra",
       "Ajeng Regina",
-      "Peni Afifa",
+      "Feni Afifa",
       "Luqman Fakhrul",
     ],
   },
@@ -125,7 +126,7 @@ export const teamData: ITeam[] = [
 
   {
     title: "Video Production",
-    position: "start",
+    position: "end",
     members: [
       {
         name: "El",
@@ -144,15 +145,15 @@ export const teamData: ITeam[] = [
       },
     ],
     volunteer: [
-      "Hakim Al Hanif",
       "Ridwansyah",
       "Muhammad Faqih",
       "Dhafa Praptama",
+      "Hakim Al Hanif",
     ],
   },
   {
     title: "Executive Producer",
-    position: "end",
+    position: "start",
     members: [
       {
         name: "Azmi",
@@ -174,7 +175,7 @@ export const teamData: ITeam[] = [
   },
   {
     title: "Sponsorship",
-    position: "start",
+    position: "end",
     members: [
       {
         name: "Harffin",
@@ -201,7 +202,7 @@ export const teamData: ITeam[] = [
   },
   {
     title: "Design",
-    position: "end",
+    position: "start",
     members: [
       {
         name: "Dandy",
