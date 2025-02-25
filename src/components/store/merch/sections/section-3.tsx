@@ -13,7 +13,6 @@ import {
 } from "@/lib/static/merchs";
 import { ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -162,15 +161,12 @@ function ProductCard({
   image: string;
   isBundling: boolean;
 }) {
-  const regularRedirectPath = `/form/merch?item=${name.toLowerCase().replace("t-shirt", "tshirt").replaceAll(" ", "-")}`;
+  // const regularRedirectPath = `/form/merch?item=${name.toLowerCase().replace("t-shirt", "tshirt").replaceAll(" ", "-")}`;
 
-  const bundlingRedirectPath = `/form/merch-bundle?item=${name.toLowerCase().replaceAll(" ", "-")}`;
+  // const bundlingRedirectPath = `/form/merch-bundle?item=${name.toLowerCase().replaceAll(" ", "-")}`;
 
   return (
-    <Link
-      href={isBundling ? bundlingRedirectPath : regularRedirectPath}
-      className="group space-y-6 rounded-xl border-[1.5px] border-transparent p-3 transition-all duration-150 hover:border-neutral-300"
-    >
+    <div className="group space-y-6 rounded-xl border-[1.5px] border-transparent bg-neutral-100 p-3 transition-all duration-150">
       <div
         className={`relative w-full overflow-hidden rounded-lg bg-neutral-200 ${isBundling ? "aspect-[3/4]" : "aspect-[4/3]"}`}
       >
@@ -179,11 +175,11 @@ function ProductCard({
           fill
           alt={name}
           objectFit="cover"
-          className="transition-all duration-300 group-hover:scale-110"
+          className="opacity-45 transition-all duration-300"
         />
       </div>
       <div className="flex flex-row items-start justify-between">
-        <div className="flex flex-col">
+        <div className="flex flex-col opacity-45">
           <span className="text-xl font-bold text-black md:text-3xl">
             {name}
           </span>
@@ -195,6 +191,6 @@ function ProductCard({
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
